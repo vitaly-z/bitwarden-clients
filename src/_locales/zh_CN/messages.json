@@ -20,7 +20,7 @@
     "message": "登录"
   },
   "enterpriseSingleSignOn": {
-    "message": "企业单点登录（SSO）"
+    "message": "企业单点登录"
   },
   "cancel": {
     "message": "取消"
@@ -62,7 +62,7 @@
     "message": "设置"
   },
   "currentTab": {
-    "message": "当前标签"
+    "message": "当前标签页"
   },
   "copyPassword": {
     "message": "复制密码"
@@ -89,7 +89,7 @@
     "message": "生成密码 (并复制)"
   },
   "copyElementIdentifier": {
-    "message": "Copy Custom Field Name"
+    "message": "复制自定义字段名称"
   },
   "noMatchingLogins": {
     "message": "无匹配的登录信息。"
@@ -121,8 +121,20 @@
   "continue": {
     "message": "继续"
   },
+  "sendVerificationCode": {
+    "message": "发送验证码到您的电子邮箱"
+  },
+  "sendCode": {
+    "message": "发送验证码"
+  },
+  "codeSent": {
+    "message": "验证码已发送"
+  },
   "verificationCode": {
     "message": "验证码"
+  },
+  "confirmIdentity": {
+    "message": "确认您的身份以继续。"
   },
   "account": {
     "message": "账户"
@@ -308,11 +320,11 @@
   "browserNotSupportClipboard": {
     "message": "您的浏览器不支持剪贴板简单复制，请手动复制。"
   },
-  "verifyMasterPassword": {
-    "message": "验证主密码"
+  "verifyIdentity": {
+    "message": "验证身份"
   },
   "yourVaultIsLocked": {
-    "message": "您的密码库已锁定，验证您的主密码以继续。"
+    "message": "您的密码库已锁定。请先验证您的身份。"
   },
   "unlock": {
     "message": "解锁"
@@ -334,7 +346,7 @@
     "message": "无效的主密码"
   },
   "vaultTimeout": {
-    "message": "密码库超时"
+    "message": "密码库超时时间"
   },
   "lockNow": {
     "message": "立即锁定"
@@ -410,6 +422,9 @@
   },
   "verificationCodeRequired": {
     "message": "必须填写验证码。"
+  },
+  "invalidVerificationCode": {
+    "message": "无效的验证码"
   },
   "valueCopied": {
     "message": "$VALUE$ 已复制",
@@ -538,13 +553,13 @@
     "message": "标签页上不显示支付卡"
   },
   "dontShowCardsCurrentTabDesc": {
-    "message": "密码库中的支付卡项目会在 “当前标签” 页面列出，以便于自动填充。"
+    "message": "密码库中的支付卡项目会在「当前标签页」页面列出，以便于自动填充。"
   },
   "dontShowIdentitiesCurrentTab": {
     "message": "标签页上不显示身份"
   },
   "dontShowIdentitiesCurrentTabDesc": {
-    "message": "密码库中的身份项目会在 “当前标签” 页面列出，以便于自动填充。"
+    "message": "密码库中的身份项目会在「当前标签页」页面列出，以便于自动填充。"
   },
   "clearClipboard": {
     "message": "清除剪贴板",
@@ -558,28 +573,25 @@
     "message": "希望 Bitwarden 为您保存这个密码吗？"
   },
   "notificationAddSave": {
-    "message": "是，现在保存"
-  },
-  "notificationNeverSave": {
-    "message": "永久忽略此网站"
+    "message": "保存"
   },
   "disableChangedPasswordNotification": {
     "message": "禁用密码变更通知"
   },
   "disableChangedPasswordNotificationDesc": {
-    "message": "检测到您已变更网站上的密码时，“密码变更通知” 自动提醒您更新密码库中相应项的密码。"
+    "message": "当检测到您已变更网站上的密码时，「密码变更通知」将自动提醒您更新密码库中相应登录的密码。"
   },
   "notificationChangeDesc": {
     "message": "是否要在 Bitwarden 中更新此密码？"
   },
   "notificationChangeSave": {
-    "message": "是，立即更新"
+    "message": "更新"
   },
   "disableContextMenuItem": {
     "message": "关闭上下文菜单选项"
   },
   "disableContextMenuItemDesc": {
-    "message": "上下文菜单选项可以让您快速访问密码生成器，也可以登陆当前标签的网站。"
+    "message": "上下文菜单选项可以让您快速访问密码生成器，以及快速登陆当前标签页的网站。"
   },
   "defaultUriMatchDetection": {
     "message": "默认的 URI 匹配检测方式",
@@ -595,11 +607,11 @@
     "message": "更改本应用程序的颜色主题。"
   },
   "dark": {
-    "message": "暗",
+    "message": "深色",
     "description": "Dark color"
   },
   "light": {
-    "message": "亮",
+    "message": "浅色",
     "description": "Light color"
   },
   "solarizedDark": {
@@ -687,7 +699,7 @@
     "message": "附件已删除"
   },
   "newAttachment": {
-    "message": "添加新附件"
+    "message": "添加新的附件"
   },
   "noAttachments": {
     "message": "没有附件。"
@@ -753,7 +765,7 @@
     "message": "您可以在 bitwarden.com 网页版密码库购买高级会员。现在要访问吗？"
   },
   "premiumCurrentMember": {
-    "message": "您是高级会员！"
+    "message": "您目前是高级会员！"
   },
   "premiumCurrentMemberThanks": {
     "message": "感谢您支持 Bitwarden。"
@@ -777,7 +789,7 @@
     "message": "如果您的登录信息包含一个验证器密钥，当自动填充该登录项目时，TOTP 验证码将会自动复制到剪贴板。"
   },
   "disableAutoBiometricsPrompt": {
-    "message": "Do not prompt for biometrics on launch"
+    "message": "启动时不提示生物识别"
   },
   "premiumRequired": {
     "message": "需要高级会员"
@@ -983,6 +995,14 @@
   "cfTypeBoolean": {
     "message": "布尔值"
   },
+  "cfTypeLinked": {
+    "message": "已链接",
+    "description": "This describes a field that is 'linked' (tied) to another field."
+  },
+  "linkedValue": {
+    "message": "链接的值",
+    "description": "This describes a value that is 'linked' (tied) to another value."
+  },
   "popup2faCloseMessage": {
     "message": "如果您点击弹窗外的任何区域，将导致弹窗关闭。您想在新窗口中打开此弹窗，以便它不会关闭吗？"
   },
@@ -1084,6 +1104,9 @@
   },
   "lastName": {
     "message": "姓"
+  },
+  "fullName": {
+    "message": "全名"
   },
   "identityName": {
     "message": "身份名称"
@@ -1226,7 +1249,7 @@
     "message": "切换选项"
   },
   "toggleCurrentUris": {
-    "message": "切换当前网址",
+    "message": "切换当前 URI",
     "description": "Toggle the display of the URIs of the currently open tabs in the browser."
   },
   "currentUri": {
@@ -1261,7 +1284,7 @@
     "description": "ex. Date this password was updated"
   },
   "neverLockWarning": {
-    "message": "您确定要使用“从不”选项吗？将锁定选项设置为“从不”会将密码库的加密密钥存储在您的设备上。如果使用此选项，您必须确保您的设备安全。"
+    "message": "您确定要使用「从不」选项吗？将锁定选项设置为「从不」会将密码库的加密密钥存储在您的设备上。如果使用此选项，您必须确保您的设备安全。"
   },
   "noOrganizationsList": {
     "message": "您没有加入任何组织。组织允许您与其他用户安全地共享项目。"
@@ -1294,11 +1317,11 @@
     "message": "您选择的主密码较弱。您应该使用强密码（或密码短语）来正确保护您的 Bitwarden 账户。仍要使用此主密码吗？"
   },
   "pin": {
-    "message": "PIN",
+    "message": "PIN 码",
     "description": "PIN code. Ex. The short code (often numeric) that you use to unlock a device."
   },
   "unlockWithPin": {
-    "message": "使用 PIN 解锁"
+    "message": "使用 PIN 码解锁"
   },
   "setYourPinCode": {
     "message": "设定您用来解锁 Bitwarden 的 PIN 码。您的 PIN 设置将在您完全注销本应用程序时被重置。"
@@ -1308,12 +1331,6 @@
   },
   "invalidPin": {
     "message": "无效 PIN 码。"
-  },
-  "verifyPin": {
-    "message": "验证 PIN 码"
-  },
-  "yourVaultIsLockedPinCode": {
-    "message": "您的密码库已锁定。请验证您的 PIN 码以继续。"
   },
   "unlockWithBiometrics": {
     "message": "使用生物识别解锁"
@@ -1372,7 +1389,7 @@
     "message": "项目已恢复"
   },
   "vaultTimeoutLogOutConfirmation": {
-    "message": "超时后注销将解除对密码库的所有访问权限，并需要进行在线认证。确定使用此设置吗？"
+    "message": "超时后注销将解除对密码库的所有访问权限，并需要进行在线身份验证。确定使用此设置吗？"
   },
   "vaultTimeoutLogOutConfirmationTitle": {
     "message": "超时动作确认"
@@ -1453,7 +1470,7 @@
     "message": "桌面同步验证"
   },
   "desktopIntegrationVerificationText": {
-    "message": "请验证桌面应用程序显示的指纹为： "
+    "message": "请确认桌面应用程序显示此指纹： "
   },
   "desktopIntegrationDisabledTitle": {
     "message": "浏览器整合未启用"
@@ -1760,34 +1777,34 @@
     "message": "您必须验证电子邮件才能使用此功能。您可以在网页密码库中验证您的电子邮件。"
   },
   "updatedMasterPassword": {
-    "message": "Updated Master Password"
+    "message": "已更新主密码"
   },
   "updateMasterPassword": {
-    "message": "Update Master Password"
+    "message": "更新主密码"
   },
   "updateMasterPasswordWarning": {
-    "message": "Your Master Password was recently changed by an administrator in your organization. In order to access the vault, you must update it now. Proceeding will log you out of your current session, requiring you to log back in. Active sessions on other devices may continue to remain active for up to one hour."
+    "message": "您的主密码最近被您组织的管理员更改过。要访问密码库，您必须立即更新它。继续操作将使您退出当前会话，要求您重新登录。其他设备上的活动会话可能会继续保持活动状态长达一小时。"
   },
   "resetPasswordPolicyAutoEnroll": {
-    "message": "Automatic Enrollment"
+    "message": "自动注册"
   },
   "resetPasswordAutoEnrollInviteWarning": {
-    "message": "This organization has an enterprise policy that will automatically enroll you in password reset. Enrollment will allow organization administrators to change your master password."
+    "message": "此组织有一个企业策略，将为您自动注册密码重置。注册后将允许组织管理员更改您的主密码。"
   },
   "selectFolder": {
-    "message": "Select folder..."
+    "message": "选择文件夹..."
   },
   "ssoCompleteRegistration": {
-    "message": "In order to complete logging in with SSO, please set a master password to access and protect your vault."
+    "message": "要完成 SSO 登陆配置，请设置一个主密码以访问和保护您的密码库。"
   },
   "hours": {
-    "message": "Hours"
+    "message": "小时"
   },
   "minutes": {
-    "message": "Minutes"
+    "message": "分钟"
   },
   "vaultTimeoutPolicyInEffect": {
-    "message": "Your organization policies are affecting your vault timeout. Maximum allowed Vault Timeout is $HOURS$ hour(s) and $MINUTES$ minute(s)",
+    "message": "您的组织策略正在影响您的密码库超时时间。最大允许的密码库超时时间是 $HOURS$ 小时 $MINUTES$ 分钟。",
     "placeholders": {
       "hours": {
         "content": "$1",
@@ -1800,18 +1817,42 @@
     }
   },
   "vaultTimeoutToLarge": {
-    "message": "Your vault timeout exceeds the restrictions set by your organization."
+    "message": "您的密码库超时时间超出了组织设置的限制。"
   },
   "vaultExportDisabled": {
-    "message": "Vault Export Disabled"
+    "message": "密码库导出已禁用"
   },
   "personalVaultExportPolicyInEffect": {
-    "message": "One or more organization policies prevents you from exporting your personal vault."
+    "message": "一个或多个组织策略阻止您导出个人密码库。"
   },
   "copyCustomFieldNameInvalidElement": {
-    "message": "Unable to identify a valid form element. Try inspecting the HTML instead."
+    "message": "无法识别有效的表单元素。请尝试检查 HTML。"
   },
   "copyCustomFieldNameNotUnique": {
-    "message": "No unique identifier found."
+    "message": "未找到唯一的标识符。"
+  },
+  "convertOrganizationEncryptionDesc": {
+    "message": "$ORGANIZATION$ 使用自托管密钥服务器 SSO。这个组织的成员登录时将不再需要主密码。",
+    "placeholders": {
+      "organization": {
+        "content": "$1",
+        "example": "My Org Name"
+      }
+    }
+  },
+  "leaveOrganization": {
+    "message": "离开组织"
+  },
+  "removeMasterPassword": {
+    "message": "移除主密码"
+  },
+  "removedMasterPassword": {
+    "message": "主密码已移除。"
+  },
+  "leaveOrganizationConfirmation": {
+    "message": "您确定要离开该组织吗？"
+  },
+  "leftOrganization": {
+    "message": "您已经离开该组织。"
   }
 }
