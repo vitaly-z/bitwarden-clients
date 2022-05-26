@@ -24,7 +24,7 @@ jobs:
     name: Setup
     runs-on: ubuntu-20.04
     outputs:
-      package_version: ${{ steps.retrieve-version.outputs.package_version }}
+      release-version: ${{ steps.version.outputs.package-verison }}
       branch-name: ${{ steps.branch.outputs.branch-name }}
     steps:
       - name: Branch check
@@ -40,28 +40,21 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f  # v2.3.4
 
-      - name: Get Package Version
-        id: retrieve-version
+      - name: Check Release Version
+        id: version
         run: |
-          PKG_VERSION=$(jq -r .version src/package.json)
-          echo "::set-output name=package_version::$PKG_VERSION"
-
-      - name: Check to make sure Desktop release version has been bumped
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          latest_ver=$(
+          version=$( jq -r ".version" src/package.json)
+          previous_release_tag_version=$(
             curl -sL https://api.github.com/repos/$GITHUB_REPOSITORY/releases | jq -r 'first(.[] | select(.tag_name | startswith("desktop"))).tag_name'
           )
-          latest_ver=${latest_ver:1}
-          echo "Latest version: $latest_ver"
-          ver=${{ steps.retrieve-version.outputs.package_version }}
-          echo "Version: $ver"
-          if [ "$latest_ver" = "$ver" ] && \
+
+          if [ "v$version" == "$previous_release_tag_version" ] && \
           [ "${{ github.event.inputs.release_type }}" == "Initial Release" ]; then
-            echo "Version has not been bumped!"
+            echo "[!] Already released v$version. Please bump version to continue"
             exit 1
           fi
+
+          echo "::set-output name=package-version::$version"
 
       - name: Get branch name
         id: branch
@@ -91,7 +84,7 @@ jobs:
 
       - name: Rename .pkg to .pkg.archive
         env:
-          PKG_VERSION: ${{ steps.retrieve-version.outputs.package_version }}
+          PKG_VERSION: ${{ steps.version.outputs.package-version }}
         working-directory: ./artifacts
         run: mv Bitwarden-${{ env.PKG_VERSION }}-universal.pkg Bitwarden-${{ env.PKG_VERSION }}-universal.pkg.archive
 
@@ -111,7 +104,7 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@95215a3cb6e6a1908b3c44e00b4fdb15548b1e09  # v2.8.5
         env:
-          PKG_VERSION: ${{ steps.retrieve-version.outputs.package_version }}
+          PKG_VERSION: ${{ steps.version.outputs.package-version }}
         with:
           artifacts: "artifacts/Bitwarden-${{ env.PKG_VERSION }}-amd64.deb,
             artifacts/Bitwarden-${{ env.PKG_VERSION }}-x86_64.rpm,
@@ -146,7 +139,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs: setup
     env:
-      _PKG_VERSION: ${{ needs.setup.outputs.package_version }}
+      _PKG_VERSION: ${{ needs.setup.outputs.release-version }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f  # v2.3.4
@@ -194,7 +187,7 @@ jobs:
     runs-on: windows-2019
     needs: setup
     env:
-      _PKG_VERSION: ${{ needs.setup.outputs.package_version }}
+      _PKG_VERSION: ${{ needs.setup.outputs.release-version }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f  # v2.3.4
