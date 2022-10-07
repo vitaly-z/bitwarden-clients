@@ -182,12 +182,27 @@ export class NativeMessageHandlerService {
       this.ddgSharedSecret = SymmetricCryptoKey.fromJSON({ keyB64: storedKey });
     }
 
-    return JSON.parse(
-      await this.cryptoService.decryptToUtf8(
+    try {
+      let decryptedResult = await this.cryptoService.decryptToUtf8(
         message.encryptedCommand as EncString,
         this.ddgSharedSecret
-      )
-    );
+      );
+
+      // Trim any characters (specifically C null characters) that get padded at the end of messages by
+      // encryption libraries. None of valid received commands are contained in an array, so safe to check for }
+      decryptedResult = decryptedResult.substring(0, decryptedResult.lastIndexOf("}") + 1);
+
+      return JSON.parse(decryptedResult);
+    } catch {
+      this.sendResponse({
+        messageId: message.messageId,
+        version: NativeMessagingVersion.Latest,
+        payload: {
+          error: "cannot-decrypt",
+        },
+      });
+      return;
+    }
   }
 
   private async sendEncryptedResponse(
