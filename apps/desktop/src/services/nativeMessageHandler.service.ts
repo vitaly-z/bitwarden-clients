@@ -188,9 +188,17 @@ export class NativeMessageHandlerService {
         this.ddgSharedSecret
       );
 
-      // Trim any characters that get padded at the end of messages. This happens with C encryption libraries.
-      // None of valid received commands are contained in an array, so safe to check for }
-      decryptedResult = decryptedResult.substring(0, decryptedResult.lastIndexOf("}") + 1);
+      // Trim all null bytes padded at the end of messages. This happens with C encryption libraries.
+      for (let i = decryptedResult.length - 1; i >= 0; i--) {
+        // char code 0 is null
+        if (decryptedResult.charCodeAt(i) === 0) {
+          decryptedResult = decryptedResult.substring(0, decryptedResult.length - 1);
+        }
+        // char code 125 is } and 93 is ] which are valid json ending characters, stop checking
+        else if (decryptedResult.charCodeAt(i) === 125 || decryptedResult.charCodeAt(i) === 93) {
+          break;
+        }
+      }
 
       return JSON.parse(decryptedResult);
     } catch {
