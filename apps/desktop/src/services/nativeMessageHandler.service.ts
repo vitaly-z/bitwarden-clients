@@ -188,17 +188,7 @@ export class NativeMessageHandlerService {
         this.ddgSharedSecret
       );
 
-      // Trim all null bytes padded at the end of messages. This happens with C encryption libraries.
-      for (let i = decryptedResult.length - 1; i >= 0; i--) {
-        // char code 0 is null
-        if (decryptedResult.charCodeAt(i) === 0) {
-          decryptedResult = decryptedResult.substring(0, decryptedResult.length - 1);
-        }
-        // char code 125 is } and 93 is ] which are valid json ending characters, stop checking
-        else if (decryptedResult.charCodeAt(i) === 125 || decryptedResult.charCodeAt(i) === 93) {
-          break;
-        }
-      }
+      decryptedResult = this.trimNullCharsFromMessage(decryptedResult);
 
       return JSON.parse(decryptedResult);
     } catch {
@@ -240,5 +230,20 @@ export class NativeMessageHandlerService {
 
   private sendResponse(response: EncryptedMessageResponse | UnencryptedMessageResponse) {
     ipcRenderer.send("nativeMessagingReply", response);
+  }
+
+  private trimNullCharsFromMessage(message: string): string {
+    // Trim all null bytes padded at the end of messages. This happens with C encryption libraries.
+    for (let i = message.length - 1; i >= 0; i--) {
+      // char code 0 is null
+      if (message.charCodeAt(i) === 0) {
+        message = message.substring(0, message.length - 1);
+      }
+      // char code 125 is } and 93 is ] which are valid json ending characters, stop checking
+      else if (message.charCodeAt(i) === 125 || message.charCodeAt(i) === 93) {
+        break;
+      }
+    }
+    return message;
   }
 }
