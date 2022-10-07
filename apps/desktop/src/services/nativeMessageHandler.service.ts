@@ -188,8 +188,8 @@ export class NativeMessageHandlerService {
         this.ddgSharedSecret
       );
 
-      // Trim any characters (specifically C null characters) that get padded at the end of messages by
-      // encryption libraries. None of valid received commands are contained in an array, so safe to check for }
+      // Trim any characters that get padded at the end of messages. This happens with C encryption libraries.
+      // None of valid received commands are contained in an array, so safe to check for }
       decryptedResult = decryptedResult.substring(0, decryptedResult.lastIndexOf("}") + 1);
 
       return JSON.parse(decryptedResult);
