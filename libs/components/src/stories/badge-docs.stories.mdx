@@ -1,0 +1,57 @@
+import { Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Documentation/Badge" />
+
+# Badge
+
+The Badge directive can be used on a `<span>` (non clickable events), or an `<a>` or `<button>` tag for interactive events. The focus and Hhver states only apply to badges used for interactive events.
+
+Bitwarden typically only uses badges with text set to tailwind `text-xs` with a `bold` weight. If additional sizes are needed, Desing and the component library working group can review and adjust the component configurations.
+
+## Styles
+
+### Primary
+
+<Story id="component-library-badge--primary"></Story>
+
+### Secondary
+
+<Story id="component-library-badge--secondary"></Story>
+
+Use a secondary badge to indicate general information. See Web/Premium Badge.
+
+<Story id="web--premium-badge"></Story>
+
+### Success
+
+<Story id="component-library-badge--success"></Story>
+
+Use a success badge to indicate a premium feature or positive status message.
+
+### Info
+
+<Story id="component-library-badge--info"></Story>
+
+Used an info badge to indicate information that is important but not crittical.
+
+### Warning
+
+<Story id="component-library-badge--warning"></Story>
+
+Use a warning badge to indicate information that needs attention but is not crittical.
+
+### Danger
+
+<Story id="component-library-badge--danger"></Story>
+
+Use a danger badge to indicate information that needs attention and is crittical.
+
+### Custom
+
+The custom badge style generates a background color from a string, or a set variable. Currently the custom badge is used in the web vault to indicate the owner of an item.
+
+## Badges in Toggle Groups
+
+Badges can be used as part of links or buttons to provide a counter. See the "Toggle Group” component.
+
+<Story id="component-library-toggle-group--default"></Story>
