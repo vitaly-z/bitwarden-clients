@@ -166,7 +166,7 @@ export class Main {
           this.trayMain.hideToTray();
         }
         this.powerMonitorMain.init();
-        await this.updaterMain.init();
+        //await this.updaterMain.init();
         if (this.biometricMain != null) {
           await this.biometricMain.init();
         }
