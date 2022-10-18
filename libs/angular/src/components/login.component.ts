@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { take } from "rxjs/operators";
 
+import { ApiService } from "@bitwarden/common/abstractions/api.service";
+import { AppIdService } from "@bitwarden/common/abstractions/appId.service";
 import { AuthService } from "@bitwarden/common/abstractions/auth.service";
 import { CryptoFunctionService } from "@bitwarden/common/abstractions/cryptoFunction.service";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
@@ -30,11 +32,13 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
   onSuccessfulLoginTwoFactorNavigate: () => Promise<any>;
   onSuccessfulLoginForceResetNavigate: () => Promise<any>;
   selfHosted = false;
+  showLoginWithDevice: boolean;
+  validatedEmail = false;
 
   formGroup = this.formBuilder.group({
     email: ["", [Validators.required, Validators.email]],
     masterPassword: ["", [Validators.required, Validators.minLength(8)]],
-    rememberEmail: [true],
+    rememberEmail: [false],
   });
 
   protected twoFactorRoute = "2fa";
@@ -42,7 +46,13 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
   protected forcePasswordResetRoute = "update-temp-password";
   protected alwaysRememberEmail = false;
 
+  get loggedEmail() {
+    return this.formGroup.value.email;
+  }
+
   constructor(
+    protected apiService: ApiService,
+    protected appIdService: AppIdService,
     protected authService: AuthService,
     protected router: Router,
     platformUtilsService: PlatformUtilsService,
@@ -65,7 +75,7 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
   }
 
   async ngOnInit() {
-    let email = this.formGroup.get("email")?.value;
+    let email = this.loggedEmail;
     if (email == null || email === "") {
       email = await this.stateService.getRememberedEmail();
       this.formGroup.get("email")?.setValue(email);
@@ -78,10 +88,14 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
       const rememberEmail = (await this.stateService.getRememberedEmail()) != null;
       this.formGroup.get("rememberEmail")?.setValue(rememberEmail);
     }
+
+    if (email) {
+      this.validateEmail();
+    }
   }
 
   async submit(showToast = true) {
-    const email = this.formGroup.get("email")?.value;
+    const email = this.loggedEmail;
     const masterPassword = this.formGroup.get("masterPassword")?.value;
     const rememberEmail = this.formGroup.get("rememberEmail")?.value;
 
@@ -193,6 +207,14 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
     );
   }
 
+  async validateEmail() {
+    const emailInvalid = this.formGroup.get("email").invalid;
+    if (!emailInvalid) {
+      this.toggleValidateEmail(true);
+      await this.getLoginWithDevice(this.loggedEmail);
+    }
+  }
+
   private getErrorToastMessage() {
     const error: AllValidationErrors = this.formValidationErrorService
       .getFormValidationErrors(this.formGroup.controls)
@@ -215,8 +237,23 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
     return `${error.controlName}${name}`;
   }
 
+  private async getLoginWithDevice(email: string) {
+    try {
+      const deviceIdentifier = await this.appIdService.getAppId();
+      const res = await this.apiService.getKnownDevice(email, deviceIdentifier);
+      this.showLoginWithDevice = res;
+    } catch (e) {
+      this.showLoginWithDevice = false;
+    }
+  }
+
+  private toggleValidateEmail(value: boolean) {
+    this.validatedEmail = value;
+    this.formGroup.controls.masterPassword.reset();
+  }
+
   protected focusInput() {
-    const email = this.formGroup.get("email")?.value;
+    const email = this.loggedEmail;
     document.getElementById(email == null || email === "" ? "email" : "masterPassword").focus();
   }
 }
