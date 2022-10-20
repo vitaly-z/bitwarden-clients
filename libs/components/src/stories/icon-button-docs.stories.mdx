@@ -1,0 +1,49 @@
+import { Meta, Story, Source } from "@storybook/addon-docs";
+
+<Meta title="Documentation/Icon Button" />
+
+# Icon Button
+
+Icon buttons are used when a single icon is needed for a button and no additional text accompanys it.
+
+It consists of an icon that may be updated to any icon in the `bwi-font`, a `title` attribute, and an `aria-label`.
+
+Similar to the main button components, spacing between icon buttons should be .5rem.
+
+## Styles
+
+There are 3 styles of icon buttons that match the same styles used in the button component: primary, secondary, and danger.
+These icon button styles should follow the same useage guidelines as the component library button guidelines.
+
+The danger style is most often used for “trash” actions used throughout the experience.
+
+<Story id="component-library-icon-button--small"></Story>
+
+In addition to these styles,there are also the main, contrast, and muted. These styles are "ghost" styles, meaning there is no outline or fill on the container. The included icon takes on the text color of the styles' same name from the theme file.
+
+The main style is used on the theme’s main `background`.
+
+The muted style is used on the theme's background colors and the action should have lower visual emphasis.
+
+The contrast style is used on a theme’s colored or contrasting backgrounds, such as: `primary`, `success`, `warning`, `danger`, or `info`.
+
+The most common use of the icon button is in the banner, toast, and dialog components as a close button.
+It can also be found in tables as the 3 dot option menu, or on navigation list items when there are options that need to be collapsed into a menu.
+
+## Sizes
+
+There are 2 sizes for the icon button: small and default.
+
+The padding on the small size uses .25rem on all sides, while the padding on the default size matches that of the button component.
+
+<Story id="component-library-icon-button--default"></Story>
+
+The default icon button is used for most cases.
+
+<Story id="component-library-icon-button--small"></Story>
+
+The small icon button is typically used in navigation list items or collapsible trees.
+
+## Accessibility
+
+Be sure to include an `aria-label` so screen readers may announce the action the button takes, and a title attribute so that a user may hover and see the default browser tool tip.
