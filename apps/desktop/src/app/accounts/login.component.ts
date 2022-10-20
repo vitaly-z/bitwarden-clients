@@ -31,11 +31,19 @@ export class LoginComponent extends BaseLoginComponent implements OnDestroy {
   @ViewChild("environment", { read: ViewContainerRef, static: true })
   environmentModal: ViewContainerRef;
 
+  webVaultHostname = "";
+
   showingModal = false;
 
-  protected alwaysRememberEmail = true;
-
   private deferFocus: boolean = null;
+
+  get loggedEmail() {
+    return this.formGroup.value.email;
+  }
+
+  get selfHostedDomain() {
+    return this.environmentService.hasBaseUrl() ? this.environmentService.getWebVaultUrl() : null;
+  }
 
   constructor(
     apiService: ApiService,
@@ -135,7 +143,23 @@ export class LoginComponent extends BaseLoginComponent implements OnDestroy {
     this.showPassword = false;
   }
 
+  async continue() {
+    await super.validateEmail();
+    if (!this.formGroup.controls.email.valid) {
+      this.platformUtilsService.showToast(
+        "error",
+        this.i18nService.t("errorOccured"),
+        this.i18nService.t("invalidEmail")
+      );
+      return;
+    }
+  }
+
   async submit() {
+    if (!this.validatedEmail) {
+      return;
+    }
+
     await super.submit();
     if (this.captchaSiteKey) {
       const content = document.getElementById("content") as HTMLDivElement;
