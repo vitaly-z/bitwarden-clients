@@ -18,8 +18,8 @@ import { PasswordGenerationService } from "@bitwarden/common/abstractions/passwo
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { Utils } from "@bitwarden/common/misc/utils";
-import { AuthResult } from "@bitwarden/common/models/domain/authResult";
-import { PasswordLogInCredentials } from "@bitwarden/common/models/domain/logInCredentials";
+import { AuthResult } from "@bitwarden/common/models/domain/auth-result";
+import { PasswordLogInCredentials } from "@bitwarden/common/models/domain/log-in-credentials";
 
 import { CaptchaProtectedComponent } from "./captchaProtected.component";
 
@@ -105,9 +105,7 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
   }
 
   async submit(showToast = true) {
-    const email = this.loggedEmail;
-    const masterPassword = this.formGroup.get("masterPassword")?.value;
-    const rememberEmail = this.formGroup.get("rememberEmail")?.value;
+    const data = this.formGroup.value;
 
     await this.setupCaptcha();
 
@@ -127,16 +125,16 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
 
     try {
       const credentials = new PasswordLogInCredentials(
-        email,
-        masterPassword,
+        data.email,
+        data.masterPassword,
         this.captchaToken,
         null
       );
       this.formPromise = this.authService.logIn(credentials);
       const response = await this.formPromise;
-      if (rememberEmail || this.alwaysRememberEmail) {
-        await this.stateService.setRememberedEmail(email);
-      } else if (!this.skipRememberEmail) {
+      if (data.rememberEmail || this.alwaysRememberEmail) {
+        await this.stateService.setRememberedEmail(data.email);
+      } else {
         await this.stateService.setRememberedEmail(null);
       }
       if (this.handleCaptchaRequired(response)) {
