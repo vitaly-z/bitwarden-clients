@@ -28,14 +28,10 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   async ngOnInit(): Promise<void> {
-    if (await this.stateService.getRememberedEmail()) {
-      await this.initiateLogin();
+    const rememberedEmail = await this.stateService.getRememberedEmail();
+    if (rememberedEmail != null) {
+      this.formGroup.patchValue({ email: await this.stateService.getRememberedEmail() });
     }
-  }
-
-  async initiateLogin(): Promise<void> {
-    this.formGroup.patchValue({ email: await this.stateService.getRememberedEmail() });
-    this.loginInitiated = true;
   }
 
   submit() {
