@@ -11,7 +11,6 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
   selector: "app-hint",
   templateUrl: "hint.component.html",
 })
-
 export class HintComponent extends BaseHintComponent {
   constructor(
     router: Router,
