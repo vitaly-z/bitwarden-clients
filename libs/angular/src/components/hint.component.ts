@@ -1,4 +1,5 @@
-import { Router } from "@angular/router";
+import { Directive, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
@@ -6,8 +7,11 @@ import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { PasswordHintRequest } from "@bitwarden/common/models/request/password-hint.request";
 
-export class HintComponent {
+@Directive()
+export class HintComponent implements OnInit {
   email = "";
+  sentEmail: string;
+  rememberEmail: string;
   formPromise: Promise<any>;
 
   protected successRoute = "login";
@@ -18,8 +22,24 @@ export class HintComponent {
     protected i18nService: I18nService,
     protected apiService: ApiService,
     protected platformUtilsService: PlatformUtilsService,
+    private route: ActivatedRoute,
     private logService: LogService
   ) {}
+
+  ngOnInit() {
+    this.route?.queryParams.subscribe((params) => {
+      if (params) {
+        const qParamsEmail = params["email"];
+        if (qParamsEmail != null && qParamsEmail.indexOf("@") > -1) {
+          this.sentEmail = this.email = qParamsEmail;
+        }
+        const qParamsRememberEmail = params["rememberEmail"];
+        if (qParamsRememberEmail != null) {
+          this.rememberEmail = qParamsRememberEmail;
+        }
+      }
+    });
+  }
 
   async submit() {
     if (this.email == null || this.email === "") {
@@ -46,7 +66,9 @@ export class HintComponent {
       if (this.onSuccessfulSubmit != null) {
         this.onSuccessfulSubmit();
       } else if (this.router != null) {
-        this.router.navigate([this.successRoute]);
+        this.router.navigate([this.successRoute], {
+          queryParams: { email: this.sentEmail, rememberEmail: this.rememberEmail },
+        });
       }
     } catch (e) {
       this.logService.error(e);
