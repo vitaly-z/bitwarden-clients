@@ -37,6 +37,8 @@ export class TwoFactorComponent extends CaptchaProtectedComponent implements OnI
   formPromise: Promise<any>;
   emailPromise: Promise<any>;
   identifier: string = null;
+  email: string;
+  rememberEmail: string;
   onSuccessfulLogin: () => Promise<any>;
   onSuccessfulLoginNavigate: () => Promise<any>;
 
@@ -74,6 +76,12 @@ export class TwoFactorComponent extends CaptchaProtectedComponent implements OnI
     this.route.queryParams.pipe(first()).subscribe((qParams) => {
       if (qParams.identifier != null) {
         this.identifier = qParams.identifier;
+      }
+      if (qParams.email != null) {
+        this.email = qParams.email;
+      }
+      if (qParams.rememberEmail != null) {
+        this.rememberEmail = qParams.rememberEmail;
       }
     });
 

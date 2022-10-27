@@ -127,7 +127,14 @@
         >
         <i class="bwi bwi-spinner bwi-spin" [hidden]="!form.loading" aria-hidden="true"></i>
       </button>
-      <button type="button" routerLink="/login" class="btn block">{{ "cancel" | i18n }}</button>
+      <button
+        type="button"
+        routerLink="/login"
+        [queryParams]="{ email: this.email, rememberEmail: this.rememberEmail }"
+        class="btn block"
+      >
+        {{ "cancel" | i18n }}
+      </button>
     </div>
     <div class="sub-options">
       <button type="button" appStopClick (click)="anotherMethod()">
