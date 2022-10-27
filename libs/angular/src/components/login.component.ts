@@ -34,6 +34,7 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
   private selfHosted = false;
   showLoginWithDevice: boolean;
   validatedEmail = false;
+  overrideRememberedEmail = false;
 
   formGroup = this.formBuilder.group({
     email: ["", [Validators.required, Validators.email]],
@@ -49,6 +50,10 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
 
   get loggedEmail() {
     return this.formGroup.value.email;
+  }
+
+  get rememberEmail() {
+    return this.formGroup.value.rememberEmail;
   }
 
   constructor(
@@ -83,18 +88,19 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
         if (queryParamsEmail != null && queryParamsEmail.indexOf("@") > -1) {
           this.formGroup.get("email").setValue(queryParamsEmail);
         }
+        const queryParamsRememberEmail = params["rememberEmail"];
+        if (queryParamsRememberEmail != null) {
+          this.formGroup.get("rememberEmail").setValue(JSON.parse(queryParamsRememberEmail));
+          this.overrideRememberedEmail = true;
+        }
       }
     });
     let email = this.loggedEmail;
     if (email == null || email === "") {
       email = await this.stateService.getRememberedEmail();
-      this.formGroup.get("email")?.setValue(email);
-
-      if (email == null) {
-        this.formGroup.get("email")?.setValue("");
-      }
+      this.formGroup.get("email")?.setValue(email ?? "");
     }
-    if (!this.alwaysRememberEmail) {
+    if (!this.alwaysRememberEmail && !this.overrideRememberedEmail) {
       const rememberEmail = (await this.stateService.getRememberedEmail()) != null;
       this.formGroup.get("rememberEmail")?.setValue(rememberEmail);
     }
@@ -143,7 +149,9 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
         if (this.onSuccessfulLoginTwoFactorNavigate != null) {
           this.onSuccessfulLoginTwoFactorNavigate();
         } else {
-          this.router.navigate([this.twoFactorRoute]);
+          this.router.navigate([this.twoFactorRoute], {
+            queryParams: { email: data.email, rememberEmail: data.rememberEmail },
+          });
         }
       } else if (response.forcePasswordReset) {
         if (this.onSuccessfulLoginForceResetNavigate != null) {

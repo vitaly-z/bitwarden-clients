@@ -132,7 +132,15 @@
           </div>
         </div>
         <div class="sub-options">
-          <button type="button" class="text text-primary password-hint-btn" routerLink="/hint">
+          <button
+            type="button"
+            class="text text-primary password-hint-btn"
+            routerLink="/hint"
+            [queryParams]="{
+              email: loggedEmail,
+              rememberEmail: rememberEmail
+            }"
+          >
             {{ "getMasterPasswordHint" | i18n }}
           </button>
           <div>

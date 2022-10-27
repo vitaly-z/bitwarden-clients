@@ -88,7 +88,11 @@
         ></i>
       </button>
       <bit-hint>
-        <a routerLink="/hint">{{ "getMasterPasswordHint" | i18n }}</a>
+        <a
+          routerLink="/hint"
+          [queryParams]="{ email: loggedEmail, rememberEmail: rememberEmail }"
+          >{{ "getMasterPasswordHint" | i18n }}</a
+        >
       </bit-hint>
     </bit-form-field>
   </div>
