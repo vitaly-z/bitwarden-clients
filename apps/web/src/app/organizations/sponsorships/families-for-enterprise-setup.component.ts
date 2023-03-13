@@ -16,7 +16,7 @@ import { Organization } from "@bitwarden/common/models/domain/organization";
 import { OrganizationSponsorshipRedeemRequest } from "@bitwarden/common/models/request/organization/organization-sponsorship-redeem.request";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
-import { DeleteOrganizationComponent } from "../../organizations/settings";
+import { DeleteOrganizationDialogComponent } from "../../organizations/settings";
 import { OrganizationPlansComponent } from "../../settings/organization-plans.component";
 
 @Component({
@@ -138,7 +138,7 @@ export class FamiliesForEnterpriseSetupComponent implements OnInit, OnDestroy {
     } catch (e) {
       if (this.showNewOrganization) {
         await this.modalService.openViewRef(
-          DeleteOrganizationComponent,
+          DeleteOrganizationDialogComponent,
           this.deleteModalRef,
           (comp) => {
             comp.organizationId = organizationId;

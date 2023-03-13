@@ -45,9 +45,9 @@ class OrganizationContentSummary {
 
 @Component({
   selector: "app-delete-organization",
-  templateUrl: "delete-organization.component.html",
+  templateUrl: "delete-organization-dialog.component.html",
 })
-export class DeleteOrganizationComponent implements OnInit {
+export class DeleteOrganizationDialogComponent implements OnInit {
   organizationId: string;
   loaded: boolean;
   deleteOrganizationRequestType: "InvalidFamiliesForEnterprise" | "RegularDelete" = "RegularDelete";

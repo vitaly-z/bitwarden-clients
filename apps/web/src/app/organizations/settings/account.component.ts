@@ -15,7 +15,7 @@ import { OrganizationResponse } from "@bitwarden/common/models/response/organiza
 import { ApiKeyComponent } from "../../settings/api-key.component";
 import { PurgeVaultComponent } from "../../settings/purge-vault.component";
 
-import { DeleteOrganizationComponent } from "./delete-organization.component";
+import { DeleteOrganizationDialogComponent } from "./delete-organization-dialog.component";
 
 @Component({
   selector: "app-org-account",
@@ -99,7 +99,7 @@ export class AccountComponent {
 
   async deleteOrganization() {
     await this.modalService.openViewRef(
-      DeleteOrganizationComponent,
+      DeleteOrganizationDialogComponent,
       this.deleteModalRef,
       (comp) => {
         comp.organizationId = this.organizationId;
