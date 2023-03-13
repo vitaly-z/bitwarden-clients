@@ -8,6 +8,7 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 
 import { ProjectView } from "../../models/view/project.view";
 import { ProjectService } from "../../projects/project.service";
+import { trimValidator } from "../../shared/validators/trim.validator";
 
 export enum OperationType {
   Add,
@@ -26,7 +27,10 @@ export interface ProjectOperation {
 })
 export class ProjectDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [Validators.required]),
+    name: new FormControl("", [
+      Validators.required,
+      trimValidator(this.i18nService.t("smTrimValidatorMessage")),
+    ]),
   });
   protected loading = false;
 

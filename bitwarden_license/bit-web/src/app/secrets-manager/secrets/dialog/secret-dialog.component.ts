@@ -12,6 +12,7 @@ import { SecretListView } from "../../models/view/secret-list.view";
 import { SecretProjectView } from "../../models/view/secret-project.view";
 import { SecretView } from "../../models/view/secret.view";
 import { ProjectService } from "../../projects/project.service";
+import { trimValidator } from "../../shared/validators/trim.validator";
 import { SecretService } from "../secret.service";
 
 import { SecretDeleteDialogComponent, SecretDeleteOperation } from "./secret-delete.component";
@@ -34,9 +35,12 @@ export interface SecretOperation {
 })
 export class SecretDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [Validators.required]),
+    name: new FormControl("", [
+      Validators.required,
+      trimValidator(this.i18nService.t("smTrimValidatorMessage")),
+    ]),
     value: new FormControl("", [Validators.required]),
-    notes: new FormControl(""),
+    notes: new FormControl("", [trimValidator(this.i18nService.t("smTrimValidatorMessage"))]),
     project: new FormControl("", [Validators.required]),
   });
 

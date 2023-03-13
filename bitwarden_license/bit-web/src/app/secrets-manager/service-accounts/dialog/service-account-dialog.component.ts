@@ -6,6 +6,7 @@ import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 
 import { ServiceAccountView } from "../../models/view/service-account.view";
+import { trimValidator } from "../../shared/validators/trim.validator";
 import { ServiceAccountService } from "../service-account.service";
 
 export enum OperationType {
@@ -25,7 +26,10 @@ export interface ServiceAccountOperation {
 })
 export class ServiceAccountDialogComponent {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [Validators.required]),
+    name: new FormControl("", [
+      Validators.required,
+      trimValidator(this.i18nService.t("smTrimValidatorMessage")),
+    ]),
   });
 
   protected loading = false;
