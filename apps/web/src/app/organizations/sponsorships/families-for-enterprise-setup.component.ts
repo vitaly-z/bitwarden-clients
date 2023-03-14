@@ -20,7 +20,7 @@ import { OrganizationPlansComponent } from "../../settings/organization-plans.co
 import {
   DeleteOrganizationDialogResult,
   openDeleteOrganizationDialog,
-} from "../settings/components/delete-organization-dialog/delete-organization-dialog.component";
+} from "../settings/components/delete-organization-dialog";
 
 @Component({
   selector: "families-for-enterprise-setup",

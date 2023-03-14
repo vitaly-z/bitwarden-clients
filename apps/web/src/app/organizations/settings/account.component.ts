@@ -20,7 +20,7 @@ import { PurgeVaultComponent } from "../../settings/purge-vault.component";
 import {
   DeleteOrganizationDialogResult,
   openDeleteOrganizationDialog,
-} from "./components/delete-organization-dialog/delete-organization-dialog.component";
+} from "./components/delete-organization-dialog";
 
 @Component({
   selector: "app-org-account",
