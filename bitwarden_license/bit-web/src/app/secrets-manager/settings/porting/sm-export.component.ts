@@ -9,7 +9,7 @@ import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { OrganizationService } from "@bitwarden/common/abstractions/organization/organization.service.abstraction";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { UserVerificationPromptComponent } from "@bitwarden/web-vault/app/components/user-verification-prompt.component";
+import { UserVerificationPromptComponent } from "@bitwarden/web-vault/app/shared/components/user-verification";
 
 import { SecretsManagerPortingApiService } from "../services/sm-porting-api.service";
 import { SecretsManagerPortingService } from "../services/sm-porting.service";
