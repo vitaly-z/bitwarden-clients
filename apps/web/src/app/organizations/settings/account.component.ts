@@ -1,5 +1,6 @@
 import { Component, ViewChild, ViewContainerRef } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { lastValueFrom } from "rxjs";
 
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
@@ -11,11 +12,15 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 import { OrganizationKeysRequest } from "@bitwarden/common/models/request/organization-keys.request";
 import { OrganizationUpdateRequest } from "@bitwarden/common/models/request/organization-update.request";
 import { OrganizationResponse } from "@bitwarden/common/models/response/organization.response";
+import { DialogService } from "@bitwarden/components";
 
 import { ApiKeyComponent } from "../../settings/api-key.component";
 import { PurgeVaultComponent } from "../../settings/purge-vault.component";
 
-import { DeleteOrganizationDialogComponent } from "./delete-organization-dialog.component";
+import {
+  DeleteOrganizationDialogResult,
+  openDeleteOrganizationDialog,
+} from "./delete-organization-dialog.component";
 
 @Component({
   selector: "app-org-account",
@@ -23,7 +28,6 @@ import { DeleteOrganizationDialogComponent } from "./delete-organization-dialog.
 })
 // eslint-disable-next-line rxjs-angular/prefer-takeuntil
 export class AccountComponent {
-  @ViewChild("deleteOrganizationTemplate", { read: ViewContainerRef, static: true })
   deleteModalRef: ViewContainerRef;
   @ViewChild("purgeOrganizationTemplate", { read: ViewContainerRef, static: true })
   purgeModalRef: ViewContainerRef;
@@ -51,7 +55,8 @@ export class AccountComponent {
     private logService: LogService,
     private router: Router,
     private organizationService: OrganizationService,
-    private organizationApiService: OrganizationApiServiceAbstraction
+    private organizationApiService: OrganizationApiServiceAbstraction,
+    private dialogService: DialogService
   ) {}
 
   async ngOnInit() {
@@ -98,17 +103,18 @@ export class AccountComponent {
   }
 
   async deleteOrganization() {
-    await this.modalService.openViewRef(
-      DeleteOrganizationDialogComponent,
-      this.deleteModalRef,
-      (comp) => {
-        comp.organizationId = this.organizationId;
-        // eslint-disable-next-line rxjs-angular/prefer-takeuntil
-        comp.onSuccess.subscribe(() => {
-          this.router.navigate(["/"]);
-        });
-      }
-    );
+    const dialog = openDeleteOrganizationDialog(this.dialogService, {
+      data: {
+        organizationId: this.organizationId,
+        requestType: "RegularDelete",
+      },
+    });
+
+    const result = await lastValueFrom(dialog.closed);
+
+    if (result === DeleteOrganizationDialogResult.Deleted) {
+      this.router.navigate(["/"]);
+    }
   }
 
   async purgeVault() {
