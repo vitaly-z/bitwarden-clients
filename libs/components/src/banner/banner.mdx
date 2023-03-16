@@ -1,6 +1,10 @@
-import { Meta, Story } from "@storybook/addon-docs";
+import { Story } from "@storybook/addon-docs";
 
-<Meta title="Documentation/Banner" />
+import { Meta, Controls } from "@storybook/blocks";
+
+import * as BannerStories from "./banner.stories";
+
+<Meta of={BannerStories} />
 
 # Banner
 
@@ -13,6 +17,10 @@ Banners are used for important communication with the user that needs to be seen
 - Avoid stacking multiple banners.
 
 - Banners support a button link (text button).
+
+## Inputs
+
+<Controls />
 
 ## Types
 

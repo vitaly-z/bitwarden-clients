@@ -5,7 +5,7 @@ config.content = [
   "./libs/components/src/**/*.{html,ts,mdx}",
   "./apps/web/src/**/*.{html,ts,mdx}",
   "./bitwarden_license/bit-web/src/**/*.{html,ts,mdx}",
-  "./.storybook/preview.js",
+  "./.storybook/preview.tsx",
 ];
 config.safelist = [
   {

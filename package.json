@@ -22,9 +22,8 @@
     "test:watch": "jest --clearCache && jest --watch",
     "test:watch:all": "jest --watchAll",
     "test:types": "for p in libs/**/tsconfig.spec.json; do  echo \"Typechecking $p\"; tsc --noEmit --project $p; done",
-    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook",
+    "storybook": "ng run storybook:storybook",
+    "build-storybook": "ng run storybook:build-storybook",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
   "workspaces": [
@@ -43,13 +42,11 @@
     "@compodoc/compodoc": "^1.1.19",
     "@fluffy-spoon/substitute": "^1.208.0",
     "@ngtools/webpack": "^15.2.2",
-    "@storybook/addon-a11y": "^6.5.16",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/angular": "^6.5.16",
-    "@storybook/builder-webpack5": "^6.5.16",
-    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/addon-a11y": "^7.0.0-rc.3",
+    "@storybook/addon-actions": "^7.0.0-rc.3",
+    "@storybook/addon-essentials": "^7.0.0-rc.3",
+    "@storybook/addon-links": "^7.0.0-rc.3",
+    "@storybook/angular": "^7.0.0-rc.3",
     "@types/argon2-browser": "^1.18.1",
     "@types/chrome": "^0.0.190",
     "@types/duo_web_sdk": "^2.7.1",
@@ -122,10 +119,14 @@
     "prettier": "2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "process": "^0.11.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "regedit": "^3.0.3",
+    "remark-gfm": "^3.0.1",
     "rimraf": "^3.0.2",
     "sass": "^1.34.1",
     "sass-loader": "^13.0.2",
+    "storybook": "^7.0.0-rc.3",
     "storybook-addon-designs": "^6.2.1",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.24",
@@ -200,7 +201,6 @@
   },
   "overrides": {
     "tailwindcss": "$tailwindcss",
-    "react": "^18.0.0",
     "@storybook/angular": {
       "zone.js": "$zone.js"
     }
