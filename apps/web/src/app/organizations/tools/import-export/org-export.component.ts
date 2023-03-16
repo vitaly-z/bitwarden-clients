@@ -63,10 +63,6 @@ export class OrganizationExportComponent extends ExportComponent {
     await super.ngOnInit();
   }
 
-  async checkExportDisabled() {
-    return;
-  }
-
   getExportData() {
     if (this.isFileEncryptedExport) {
       return this.exportService.getPasswordProtectedExport(this.filePassword, this.organizationId);

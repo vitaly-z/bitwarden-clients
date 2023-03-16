@@ -62,9 +62,10 @@ export class ExportComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((policyAppliesToActiveUser) => {
         this._disabledByPolicy = policyAppliesToActiveUser;
+        if (this.disabledByPolicy) {
+          this.exportForm.disable();
+        }
       });
-
-    await this.checkExportDisabled();
 
     merge(
       this.exportForm.get("format").valueChanges,
@@ -77,12 +78,6 @@ export class ExportComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.destroy$.next();
-  }
-
-  async checkExportDisabled() {
-    if (this.disabledByPolicy) {
-      this.exportForm.disable();
-    }
   }
 
   get encryptedFormat() {
