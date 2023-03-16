@@ -29,10 +29,11 @@ export class ImportComponent implements OnInit {
   fileSelected: File;
   formPromise: Promise<ImportError>;
   loading = false;
-  importBlockedByPolicy = false;
 
   protected organizationId: string = null;
   protected successNavigate: any[] = ["vault"];
+
+  private _importBlockedByPolicy = false;
 
   constructor(
     protected i18nService: I18nService,
@@ -45,10 +46,14 @@ export class ImportComponent implements OnInit {
     protected syncService: SyncService
   ) {}
 
+  protected get importBlockedByPolicy(): boolean {
+    return this._importBlockedByPolicy;
+  }
+
   async ngOnInit() {
     this.setImportOptions();
 
-    this.importBlockedByPolicy = await firstValueFrom(
+    this._importBlockedByPolicy = await firstValueFrom(
       this.policyService.policyAppliesToActiveUser$(PolicyType.PersonalOwnership)
     );
   }

@@ -20,6 +20,10 @@ import { ImportComponent } from "../../../tools/import-export/import.component";
 export class OrganizationImportComponent extends ImportComponent {
   organizationName: string;
 
+  protected get importBlockedByPolicy(): boolean {
+    return false;
+  }
+
   constructor(
     i18nService: I18nService,
     importService: ImportService,
