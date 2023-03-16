@@ -1,11 +1,11 @@
-import { RouterTestingModule } from "@angular/router/testing";
-import { Meta, Story, moduleMetadata } from "@storybook/angular";
+import { Meta, StoryObj, moduleMetadata } from "@storybook/angular";
 
 import { JslibModule } from "@bitwarden/angular/jslib.module";
-import { BadgeModule, IconModule } from "@bitwarden/components";
+import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
+import { BadgeModule, I18nMockService, IconModule } from "@bitwarden/components";
 
-import { PreloadedEnglishI18nModule } from "../../../tests/preloaded-english-i18n.module";
 import { PremiumBadgeComponent } from "../../../vault/components/premium-badge.component";
+import { ReportExposedPasswords } from "../../icons/report-exposed-passwords.icon";
 import { ReportVariant } from "../models/report-variant";
 
 import { ReportCardComponent } from "./report-card.component";
@@ -15,37 +15,37 @@ export default {
   component: ReportCardComponent,
   decorators: [
     moduleMetadata({
-      imports: [
-        JslibModule,
-        BadgeModule,
-        IconModule,
-        RouterTestingModule,
-        PreloadedEnglishI18nModule,
-      ],
+      imports: [JslibModule, BadgeModule, IconModule],
       declarations: [PremiumBadgeComponent],
+      providers: [
+        {
+          provide: I18nService,
+          useFactory: () => {
+            return new I18nMockService({
+              premium: "Premium",
+            });
+          },
+        },
+      ],
     }),
   ],
   args: {
     title: "Exposed Passwords",
     description:
       "Passwords exposed in a data breach are easy targets for attackers. Change these passwords to prevent potential break-ins.",
-    icon: "reportExposedPasswords",
+    icon: ReportExposedPasswords,
     variant: ReportVariant.Enabled,
   },
 } as Meta;
 
-const Template: Story<ReportCardComponent> = (args: ReportCardComponent) => ({
-  props: args,
-});
+type Story = StoryObj<ReportCardComponent>;
 
-export const Enabled = Template.bind({});
+export const Enabled: Story = {};
 
-export const RequiresPremium = Template.bind({});
-RequiresPremium.args = {
-  variant: ReportVariant.RequiresPremium,
+export const RequiresPremium: Story = {
+  args: { variant: ReportVariant.RequiresPremium },
 };
 
-export const RequiresUpgrade = Template.bind({});
-RequiresUpgrade.args = {
-  variant: ReportVariant.RequiresUpgrade,
+export const RequiresUpgrade: Story = {
+  args: { variant: ReportVariant.RequiresUpgrade },
 };

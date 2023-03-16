@@ -1,4 +1,4 @@
-import { Meta, moduleMetadata, Story } from "@storybook/angular";
+import { Meta, moduleMetadata, StoryObj } from "@storybook/angular";
 
 import { BadgeModule } from "../badge";
 
@@ -25,30 +25,28 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ToggleGroupComponent> = (args: ToggleGroupComponent) => ({
-  props: args,
-  template: `
-    <bit-toggle-group [(selected)]="selected" aria-label="People list filter">
-      <bit-toggle value="all">
-        All <span bitBadge badgeType="info">3</span>
-      </bit-toggle>
+export const Default: StoryObj<ToggleGroupComponent> = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <bit-toggle-group [(selected)]="selected" aria-label="People list filter">
+        <bit-toggle value="all">
+          All <span bitBadge badgeType="info">3</span>
+        </bit-toggle>
 
-      <bit-toggle value="invited">
-        Invited
-      </bit-toggle>
+        <bit-toggle value="invited">
+          Invited
+        </bit-toggle>
 
-      <bit-toggle value="accepted">
-        Accepted <span bitBadge badgeType="info">2</span>
-      </bit-toggle>
+        <bit-toggle value="accepted">
+          Accepted <span bitBadge badgeType="info">2</span>
+        </bit-toggle>
 
-      <bit-toggle value="deactivated">
-        Deactivated
-      </bit-toggle>
-    </bit-toggle-group>
-  `,
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  selected: "all",
+        <bit-toggle value="deactivated">
+          Deactivated
+        </bit-toggle>
+      </bit-toggle-group>
+    `,
+  }),
+  args: { selected: "all" },
 };

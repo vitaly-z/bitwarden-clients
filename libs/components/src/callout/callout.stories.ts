@@ -1,4 +1,4 @@
-import { Meta, moduleMetadata, Story } from "@storybook/angular";
+import { Meta, moduleMetadata, StoryObj } from "@storybook/angular";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 
@@ -33,33 +33,34 @@ export default {
       url: "https://www.figma.com/file/Zt3YSeb6E6lebAffrNLa0h/Tailwind-Component-Library?node-id=1881%3A17484",
     },
   },
+  render: (args) => ({
+    props: args,
+    template: `
+      <bit-callout [type]="type" [title]="title">Content</bit-callout>
+    `,
+  }),
 } as Meta;
 
-const Template: Story<CalloutComponent> = (args: CalloutComponent) => ({
-  props: args,
-  template: `
-    <bit-callout [type]="type" [title]="title">Content</bit-callout>
-  `,
-});
+type Story = StoryObj<CalloutComponent>;
 
-export const Success = Template.bind({});
-Success.args = {
-  type: "success",
-  title: "Success",
+export const Success: Story = {
+  args: {
+    type: "success",
+    title: "Success",
+  },
 };
 
-export const Info = Template.bind({});
-Info.args = {
-  type: "info",
-  title: "Info",
+export const Info: Story = {
+  args: {
+    type: "info",
+    title: "Info",
+  },
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  type: "warning",
+export const Warning: Story = {
+  args: { type: "warning" },
 };
 
-export const Danger = Template.bind({});
-Danger.args = {
-  type: "danger",
+export const Danger: Story = {
+  args: { type: "danger" },
 };

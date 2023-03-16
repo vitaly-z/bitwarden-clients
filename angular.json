@@ -151,6 +151,9 @@
             "main": "libs/components/src/main.ts",
             "tsConfig": ".storybook/tsconfig.json",
             "styles": ["libs/components/src/styles.scss", "libs/components/src/styles.css"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/components/src/styles"]
+            },
             "scripts": []
           }
         },

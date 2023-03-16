@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { FormsModule, ReactiveFormsModule, FormBuilder } from "@angular/forms";
-import { Meta, moduleMetadata, Story } from "@storybook/angular";
+import { Meta, moduleMetadata, StoryObj } from "@storybook/angular";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 
@@ -124,24 +124,16 @@ export default {
   },
 } as Meta;
 
-const storyTemplate = `<app-example [selected]="selected" [groupDisabled]="groupDisabled" [optionDisabled]="optionDisabled" [label]="label" [layout]="layout"></app-example>`;
+type Story = StoryObj<ExampleComponent>;
 
-const InlineTemplate: Story<ExampleComponent> = (args: ExampleComponent) => ({
-  props: args,
-  template: storyTemplate,
-});
-
-export const Inline = InlineTemplate.bind({});
-Inline.args = {
-  layout: "inline",
+export const Inline: Story = {
+  args: {
+    layout: "inline",
+  },
 };
 
-const BlockTemplate: Story<ExampleComponent> = (args: ExampleComponent) => ({
-  props: args,
-  template: storyTemplate,
-});
-
-export const Block = BlockTemplate.bind({});
-Block.args = {
-  layout: "block",
+export const Block: Story = {
+  args: {
+    layout: "block",
+  },
 };
