@@ -1,6 +1,6 @@
 import { Directive, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
 import { UntypedFormBuilder, Validators } from "@angular/forms";
-import { merge, takeUntil, Subject, startWith } from "rxjs";
+import { merge, startWith, Subject, takeUntil } from "rxjs";
 
 import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { EventCollectionService } from "@bitwarden/common/abstractions/event/event-collection.service";
@@ -20,7 +20,11 @@ export class ExportComponent implements OnInit, OnDestroy {
   @Output() onSaved = new EventEmitter();
 
   formPromise: Promise<string>;
-  disabledByPolicy = false;
+  private _disabledByPolicy = false;
+
+  protected get disabledByPolicy(): boolean {
+    return this._disabledByPolicy;
+  }
 
   exportForm = this.formBuilder.group({
     format: ["json"],
@@ -57,7 +61,7 @@ export class ExportComponent implements OnInit, OnDestroy {
       .policyAppliesToActiveUser$(PolicyType.DisablePersonalVaultExport)
       .pipe(takeUntil(this.destroy$))
       .subscribe((policyAppliesToActiveUser) => {
-        this.disabledByPolicy = policyAppliesToActiveUser;
+        this._disabledByPolicy = policyAppliesToActiveUser;
       });
 
     await this.checkExportDisabled();
