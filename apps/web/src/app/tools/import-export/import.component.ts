@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import * as JSZip from "jszip";
-import { firstValueFrom } from "rxjs";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 import Swal, { SweetAlertIcon } from "sweetalert2";
 
 import { ModalService } from "@bitwarden/angular/services/modal.service";
@@ -21,7 +22,7 @@ import { FilePasswordPromptComponent } from "./file-password-prompt.component";
   selector: "app-import",
   templateUrl: "import.component.html",
 })
-export class ImportComponent implements OnInit {
+export class ImportComponent implements OnInit, OnDestroy {
   featuredImportOptions: ImportOption[];
   importOptions: ImportOption[];
   format: ImportType = null;
@@ -34,6 +35,7 @@ export class ImportComponent implements OnInit {
   protected successNavigate: any[] = ["vault"];
 
   private _importBlockedByPolicy = false;
+  private destroy$ = new Subject<void>();
 
   constructor(
     protected i18nService: I18nService,
@@ -50,12 +52,15 @@ export class ImportComponent implements OnInit {
     return this._importBlockedByPolicy;
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.setImportOptions();
 
-    this._importBlockedByPolicy = await firstValueFrom(
-      this.policyService.policyAppliesToActiveUser$(PolicyType.PersonalOwnership)
-    );
+    this.policyService
+      .policyAppliesToActiveUser$(PolicyType.PersonalOwnership)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((policyAppliesToActiveUser) => {
+        this._importBlockedByPolicy = policyAppliesToActiveUser;
+      });
   }
 
   async submit() {
@@ -282,5 +287,10 @@ export class ImportComponent implements OnInit {
     );
 
     return this.importService.import(passwordProtectedImporter, fileContents, this.organizationId);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
