@@ -32,6 +32,8 @@ export class CipherResponse extends BaseResponse {
   creationDate: string;
   deletedDate: string;
   reprompt: CipherRepromptType;
+  key: string;
+  forceKeyRotation: boolean;
 
   constructor(response: any) {
     super(response);
@@ -90,5 +92,7 @@ export class CipherResponse extends BaseResponse {
     }
 
     this.reprompt = this.getResponseProperty("Reprompt") || CipherRepromptType.None;
+    this.key = this.getResponseProperty("Key") || null;
+    this.forceKeyRotation = this.getResponseProperty("ForceKeyRotation");
   }
 }

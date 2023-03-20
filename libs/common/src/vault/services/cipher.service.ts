@@ -164,6 +164,12 @@ export class CipherService implements CipherServiceAbstraction {
         throw new Error("Cannot encrypt cipher for organization. No key.");
       }
     }
+
+    //If cipher.key != null
+    if (key == null && model.key != null) {
+      key = model.key;
+    }
+
     await Promise.all([
       this.encryptObjProperty(
         model,

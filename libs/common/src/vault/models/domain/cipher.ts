@@ -1,6 +1,7 @@
 import { Jsonify } from "type-fest";
 
 import { Decryptable } from "../../../interfaces/decryptable.interface";
+import { Utils } from "../../../misc/utils";
 import Domain from "../../../models/domain/domain-base";
 import { EncString } from "../../../models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../../models/domain/symmetric-crypto-key";
@@ -45,6 +46,8 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
   creationDate: Date;
   deletedDate: Date;
   reprompt: CipherRepromptType;
+  key: EncString;
+  forceKeyRotation: boolean;
 
   constructor(obj?: CipherData, localData: LocalData = null) {
     super();
@@ -61,6 +64,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
         folderId: null,
         name: null,
         notes: null,
+        key: null,
       },
       ["id", "organizationId", "folderId"]
     );
@@ -80,6 +84,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     this.creationDate = obj.creationDate != null ? new Date(obj.creationDate) : null;
     this.deletedDate = obj.deletedDate != null ? new Date(obj.deletedDate) : null;
     this.reprompt = obj.reprompt;
+    this.forceKeyRotation = obj.forceKeyRotation;
 
     switch (this.type) {
       case CipherType.Login:
@@ -119,6 +124,20 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
 
   async decrypt(encKey?: SymmetricCryptoKey): Promise<CipherView> {
     const model = new CipherView(this);
+
+    //if this.key != null, it means we have a individual cipher key
+    try {
+      const cryptoService = Utils.getContainerService().getCryptoService();
+      model.key = await cryptoService.makeSendKey(
+        await cryptoService.decryptToBytes(this.key, null)
+      );
+    } catch (e) {
+      // TODO: error?
+    }
+
+    if (encKey == null && model.key != null) {
+      encKey = model.key;
+    }
 
     await this.decryptObj(
       model,
