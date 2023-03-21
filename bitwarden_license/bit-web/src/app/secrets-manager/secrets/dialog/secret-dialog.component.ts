@@ -5,14 +5,13 @@ import { lastValueFrom, Subject } from "rxjs";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { DialogService } from "@bitwarden/components";
+import { BitValidators, DialogService } from "@bitwarden/components";
 
 import { ProjectListView } from "../../models/view/project-list.view";
 import { SecretListView } from "../../models/view/secret-list.view";
 import { SecretProjectView } from "../../models/view/secret-project.view";
 import { SecretView } from "../../models/view/secret.view";
 import { ProjectService } from "../../projects/project.service";
-import { trimValidator } from "../../shared/validators/trim.validator";
 import { SecretService } from "../secret.service";
 
 import { SecretDeleteDialogComponent, SecretDeleteOperation } from "./secret-delete.component";
@@ -35,12 +34,9 @@ export interface SecretOperation {
 })
 export class SecretDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [
-      Validators.required,
-      trimValidator(this.i18nService.t("smTrimValidatorMessage")),
-    ]),
+    name: new FormControl("", [Validators.required, BitValidators.trimValidator()]),
     value: new FormControl("", [Validators.required]),
-    notes: new FormControl("", [trimValidator(this.i18nService.t("smTrimValidatorMessage"))]),
+    notes: new FormControl("", [BitValidators.trimValidator()]),
     project: new FormControl("", [Validators.required]),
   });
 

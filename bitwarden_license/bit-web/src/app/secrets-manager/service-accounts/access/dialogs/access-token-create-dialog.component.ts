@@ -3,10 +3,9 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { DialogService } from "@bitwarden/components";
+import { BitValidators, DialogService } from "@bitwarden/components";
 
 import { ServiceAccountView } from "../../../models/view/service-account.view";
-import { trimValidator } from "../../../shared/validators/trim.validator";
 import { AccessTokenView } from "../../models/view/access-token.view";
 import { AccessService } from "../access.service";
 
@@ -26,7 +25,7 @@ export class AccessTokenCreateDialogComponent implements OnInit {
     name: new FormControl("", [
       Validators.required,
       Validators.maxLength(80),
-      trimValidator(this.i18nService.t("smTrimValidatorMessage")),
+      BitValidators.trimValidator(),
     ]),
     expirationDateControl: new FormControl(null),
   });

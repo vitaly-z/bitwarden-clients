@@ -5,10 +5,10 @@ import { Router } from "@angular/router";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
+import { BitValidators } from "@bitwarden/components";
 
 import { ProjectView } from "../../models/view/project.view";
 import { ProjectService } from "../../projects/project.service";
-import { trimValidator } from "../../shared/validators/trim.validator";
 
 export enum OperationType {
   Add,
@@ -27,10 +27,7 @@ export interface ProjectOperation {
 })
 export class ProjectDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [
-      Validators.required,
-      trimValidator(this.i18nService.t("smTrimValidatorMessage")),
-    ]),
+    name: new FormControl("", [Validators.required, BitValidators.trimValidator()]),
   });
   protected loading = false;
 
