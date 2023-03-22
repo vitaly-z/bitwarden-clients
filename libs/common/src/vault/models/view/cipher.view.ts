@@ -2,7 +2,6 @@ import { Jsonify } from "type-fest";
 
 import { LinkedIdType } from "../../../enums/linkedIdType";
 import { InitializerMetadata } from "../../../interfaces/initializer-metadata.interface";
-import { EncString } from "../../../models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../../models/domain/symmetric-crypto-key";
 import { View } from "../../../models/view/view";
 import { InitializerKey } from "../../../services/cryptography/initializer-key";
@@ -46,7 +45,6 @@ export class CipherView implements View, InitializerMetadata {
   deletedDate: Date = null;
   reprompt: CipherRepromptType = CipherRepromptType.None;
   key: SymmetricCryptoKey;
-  encKey: EncString;
   forceKeyRotation: boolean;
 
   constructor(c?: Cipher) {
@@ -70,7 +68,6 @@ export class CipherView implements View, InitializerMetadata {
     // Old locally stored ciphers might have reprompt == null. If so set it to None.
     this.reprompt = c.reprompt ?? CipherRepromptType.None;
     this.forceKeyRotation = c.forceKeyRotation;
-    this.encKey = c.key;
   }
 
   private get item() {

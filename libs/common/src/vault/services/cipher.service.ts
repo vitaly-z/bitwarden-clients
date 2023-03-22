@@ -165,10 +165,11 @@ export class CipherService implements CipherServiceAbstraction {
       }
     }
 
-    //If cipher.key != null
-    if (key == null && model.key != null) {
-      key = model.key;
+    // TODO: improve this
+    if (model.key == null) {
+      model.key = await this.cryptoService.makeCipherKey();
     }
+    cipher.key = await this.cryptoService.encrypt(model.key.key, key);
 
     await Promise.all([
       this.encryptObjProperty(
@@ -178,16 +179,16 @@ export class CipherService implements CipherServiceAbstraction {
           name: null,
           notes: null,
         },
-        key
+        model.key
       ),
-      this.encryptCipherData(cipher, model, key),
-      this.encryptFields(model.fields, key).then((fields) => {
+      this.encryptCipherData(cipher, model, model.key),
+      this.encryptFields(model.fields, model.key).then((fields) => {
         cipher.fields = fields;
       }),
-      this.encryptPasswordHistories(model.passwordHistory, key).then((ph) => {
+      this.encryptPasswordHistories(model.passwordHistory, model.key).then((ph) => {
         cipher.passwordHistory = ph;
       }),
-      this.encryptAttachments(model.attachments, key).then((attachments) => {
+      this.encryptAttachments(model.attachments, model.key).then((attachments) => {
         cipher.attachments = attachments;
       }),
     ]);

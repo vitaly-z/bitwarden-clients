@@ -125,17 +125,16 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
   async decrypt(encKey?: SymmetricCryptoKey): Promise<CipherView> {
     const model = new CipherView(this);
 
-    //if this.key != null, it means we have a individual cipher key
-    try {
-      const cryptoService = Utils.getContainerService().getCryptoService();
-      model.key = await cryptoService.makeSendKey(
-        await cryptoService.decryptToBytes(this.key, null)
-      );
-    } catch (e) {
-      // TODO: error?
-    }
+    const cryptoService = Utils.getContainerService().getCryptoService();
+    // TODO: improve this
+    model.key = new SymmetricCryptoKey(
+      await cryptoService.decryptToBytes(
+        this.key,
+        encKey ?? (await cryptoService.getOrgKey(this.organizationId))
+      )
+    );
 
-    if (encKey == null && model.key != null) {
+    if (model.key != null) {
       encKey = model.key;
     }
 
