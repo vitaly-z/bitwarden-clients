@@ -1,6 +1,7 @@
 import { Jsonify } from "type-fest";
 
 import { Decryptable } from "../../../interfaces/decryptable.interface";
+import { flagEnabled } from "../../../misc/flags";
 import { Utils } from "../../../misc/utils";
 import Domain from "../../../models/domain/domain-base";
 import { EncString } from "../../../models/domain/enc-string";
@@ -125,16 +126,9 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
   async decrypt(encKey?: SymmetricCryptoKey): Promise<CipherView> {
     const model = new CipherView(this);
 
-    const cryptoService = Utils.getContainerService().getCryptoService();
-    // TODO: improve this
-    model.key = new SymmetricCryptoKey(
-      await cryptoService.decryptToBytes(
-        this.key,
-        encKey ?? (await cryptoService.getOrgKey(this.organizationId))
-      )
-    );
-
-    if (model.key != null) {
+    if (flagEnabled("enableCipherKeyEncryption") && this.key != null) {
+      const encryptService = Utils.getContainerService().getEncryptService();
+      model.key = new SymmetricCryptoKey(await encryptService.decryptToBytes(this.key, encKey));
       encKey = model.key;
     }
 
@@ -275,6 +269,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     const attachments = obj.attachments?.map((a: any) => Attachment.fromJSON(a));
     const fields = obj.fields?.map((f: any) => Field.fromJSON(f));
     const passwordHistory = obj.passwordHistory?.map((ph: any) => Password.fromJSON(ph));
+    const key = EncString.fromJSON(obj.key);
 
     Object.assign(domain, obj, {
       name,
@@ -284,6 +279,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
       attachments,
       fields,
       passwordHistory,
+      key,
     });
 
     switch (obj.type) {

@@ -11,6 +11,7 @@ import { SettingsService } from "../../abstractions/settings.service";
 import { StateService } from "../../abstractions/state.service";
 import { FieldType } from "../../enums/fieldType";
 import { UriMatchType } from "../../enums/uriMatchType";
+import { flagEnabled } from "../../misc/flags";
 import { sequentialize } from "../../misc/sequentialize";
 import { Utils } from "../../misc/utils";
 import { AccountSettingsSettings } from "../../models/domain/account";
@@ -97,7 +98,9 @@ export class CipherService implements CipherServiceAbstraction {
         originalCipher = await this.get(model.id);
       }
       if (originalCipher != null) {
-        const existingCipher = await originalCipher.decrypt();
+        const existingCipher = await originalCipher.decrypt(
+          await this.getCipherKey(originalCipher.organizationId)
+        );
         model.passwordHistory = existingCipher.passwordHistory || [];
         if (model.type === CipherType.Login && existingCipher.type === CipherType.Login) {
           if (
@@ -157,6 +160,7 @@ export class CipherService implements CipherServiceAbstraction {
     cipher.revisionDate = model.revisionDate;
     cipher.reprompt = model.reprompt;
     cipher.edit = model.edit;
+    cipher.forceKeyRotation = model.forceKeyRotation;
 
     if (key == null && cipher.organizationId != null) {
       key = await this.cryptoService.getOrgKey(cipher.organizationId);
@@ -165,11 +169,15 @@ export class CipherService implements CipherServiceAbstraction {
       }
     }
 
-    // TODO: improve this
-    if (model.key == null) {
-      model.key = await this.cryptoService.makeCipherKey();
+    if (flagEnabled("enableCipherKeyEncryption")) {
+      if (model.key == null || model.forceKeyRotation) {
+        model.key = await this.cryptoService.makeCipherKey();
+      }
+      cipher.key = await this.encryptService.encrypt(model.key.key, key);
+      key = model.key;
+    } else {
+      cipher.key = null;
     }
-    cipher.key = await this.cryptoService.encrypt(model.key.key, key);
 
     await Promise.all([
       this.encryptObjProperty(
@@ -179,16 +187,16 @@ export class CipherService implements CipherServiceAbstraction {
           name: null,
           notes: null,
         },
-        model.key
+        key
       ),
-      this.encryptCipherData(cipher, model, model.key),
-      this.encryptFields(model.fields, model.key).then((fields) => {
+      this.encryptCipherData(cipher, model, key),
+      this.encryptFields(model.fields, key).then((fields) => {
         cipher.fields = fields;
       }),
-      this.encryptPasswordHistories(model.passwordHistory, model.key).then((ph) => {
+      this.encryptPasswordHistories(model.passwordHistory, key).then((ph) => {
         cipher.passwordHistory = ph;
       }),
-      this.encryptAttachments(model.attachments, model.key).then((attachments) => {
+      this.encryptAttachments(model.attachments, key).then((attachments) => {
         cipher.attachments = attachments;
       }),
     ]);
@@ -1074,6 +1082,12 @@ export class CipherService implements CipherServiceAbstraction {
       restores.push({ id: cipher.id, revisionDate: cipher.revisionDate });
     }
     await this.restore(restores);
+  }
+
+  async getCipherKey(orgId?: string): Promise<SymmetricCryptoKey> {
+    return orgId != null
+      ? this.cryptoService.getOrgKey(orgId)
+      : this.cryptoService.getKeyForUserEncryption();
   }
 
   // Helpers
