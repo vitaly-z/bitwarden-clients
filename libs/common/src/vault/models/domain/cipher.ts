@@ -124,7 +124,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
 
   async decrypt(encKey?: SymmetricCryptoKey): Promise<CipherView> {
     const model = new CipherView(this);
-    let cipherEncKey: SymmetricCryptoKey;
+    let cipherEncKey: SymmetricCryptoKey = null;
 
     if (this.key != null) {
       const encryptService = Utils.getContainerService().getEncryptService();
@@ -139,21 +139,24 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
         notes: null,
       },
       this.organizationId,
-      cipherEncKey
+      cipherEncKey ?? encKey
     );
 
     switch (this.type) {
       case CipherType.Login:
-        model.login = await this.login.decrypt(this.organizationId, cipherEncKey);
+        model.login = await this.login.decrypt(this.organizationId, cipherEncKey ?? encKey);
         break;
       case CipherType.SecureNote:
-        model.secureNote = await this.secureNote.decrypt(this.organizationId, cipherEncKey);
+        model.secureNote = await this.secureNote.decrypt(
+          this.organizationId,
+          cipherEncKey ?? encKey
+        );
         break;
       case CipherType.Card:
-        model.card = await this.card.decrypt(this.organizationId, cipherEncKey);
+        model.card = await this.card.decrypt(this.organizationId, cipherEncKey ?? encKey);
         break;
       case CipherType.Identity:
-        model.identity = await this.identity.decrypt(this.organizationId, cipherEncKey);
+        model.identity = await this.identity.decrypt(this.organizationId, cipherEncKey ?? encKey);
         break;
       default:
         break;
@@ -180,7 +183,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
       await this.fields.reduce((promise, field) => {
         return promise
           .then(() => {
-            return field.decrypt(orgId, cipherEncKey);
+            return field.decrypt(orgId, cipherEncKey ?? encKey);
           })
           .then((decField) => {
             fields.push(decField);
@@ -194,7 +197,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
       await this.passwordHistory.reduce((promise, ph) => {
         return promise
           .then(() => {
-            return ph.decrypt(orgId, cipherEncKey);
+            return ph.decrypt(orgId, cipherEncKey ?? encKey);
           })
           .then((decPh) => {
             passwordHistory.push(decPh);
