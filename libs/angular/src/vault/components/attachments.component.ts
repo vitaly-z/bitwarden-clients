@@ -81,7 +81,9 @@ export class AttachmentsComponent implements OnInit {
     try {
       this.formPromise = this.saveCipherAttachment(files[0]);
       this.cipherDomain = await this.formPromise;
-      this.cipher = await this.cipherDomain.decrypt();
+      this.cipher = await this.cipherDomain.decrypt(
+        await this.cipherService.getCipherKey(this.cipherDomain.organizationId)
+      );
       this.platformUtilsService.showToast("success", null, this.i18nService.t("attachmentSaved"));
       this.onUploadedAttachment.emit();
     } catch (e) {
@@ -190,7 +192,9 @@ export class AttachmentsComponent implements OnInit {
 
   protected async init() {
     this.cipherDomain = await this.loadCipher();
-    this.cipher = await this.cipherDomain.decrypt();
+    this.cipher = await this.cipherDomain.decrypt(
+      await this.cipherService.getCipherKey(this.cipherDomain.organizationId)
+    );
 
     this.hasUpdatedKey = await this.cryptoService.hasEncKey();
     const canAccessPremium = await this.stateService.getCanAccessPremium();

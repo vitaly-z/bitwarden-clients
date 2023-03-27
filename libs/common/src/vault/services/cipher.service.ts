@@ -173,7 +173,7 @@ export class CipherService implements CipherServiceAbstraction {
       if (model.key == null || model.forceKeyRotation) {
         model.key = await this.cryptoService.makeCipherKey();
       }
-      cipher.key = await this.encryptService.encrypt(model.key.key, key);
+      cipher.key = await this.cryptoService.encrypt(model.key.key, key);
       key = model.key;
     } else {
       cipher.key = null;
@@ -734,10 +734,16 @@ export class CipherService implements CipherServiceAbstraction {
     data: ArrayBuffer,
     admin = false
   ): Promise<Cipher> {
-    const key = await this.cryptoService.getOrgKey(cipher.organizationId);
-    const encFileName = await this.cryptoService.encrypt(filename, key);
+    const key = await this.getCipherKey(cipher.organizationId);
 
-    const dataEncKey = await this.cryptoService.makeEncKey(key);
+    const cipherEncKey = flagEnabled("enableCipherKeyEncryption")
+      ? new SymmetricCryptoKey(await this.encryptService.decryptToBytes(cipher.key, key))
+      : key;
+    const encFileName = await this.cryptoService.encrypt(filename, cipherEncKey);
+
+    const dataEncKey: [SymmetricCryptoKey, EncString] = flagEnabled("enableCipherKeyEncryption")
+      ? [cipherEncKey, cipher.key]
+      : await this.cryptoService.makeEncKey(cipherEncKey);
     const encData = await this.cryptoService.encryptToBytes(data, dataEncKey[0]);
 
     const request: AttachmentRequest = {
