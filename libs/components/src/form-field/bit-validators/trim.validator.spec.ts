@@ -5,7 +5,7 @@ import { trimValidator } from "./trim.validator";
 describe("trimValidator", () => {
   it("should return no error when input is null", () => {
     const input = createControl(null);
-    const validate = trimValidator();
+    const validate = trimValidator;
 
     const errors = validate(input);
 
@@ -14,7 +14,7 @@ describe("trimValidator", () => {
 
   it("should return no error when input is the empty string", () => {
     const input = createControl("");
-    const validate = trimValidator();
+    const validate = trimValidator;
 
     const errors = validate(input);
 
@@ -23,7 +23,7 @@ describe("trimValidator", () => {
 
   it("should return no error when input has not beginning or trailing whitespace", () => {
     const input = createControl("test value");
-    const validate = trimValidator();
+    const validate = trimValidator;
 
     const errors = validate(input);
 
@@ -32,7 +32,7 @@ describe("trimValidator", () => {
 
   it("should error when input has a beginning whitespace", () => {
     const input = createControl(" test value");
-    const validate = trimValidator();
+    const validate = trimValidator;
 
     const errors = validate(input);
 
@@ -41,7 +41,7 @@ describe("trimValidator", () => {
 
   it("should error when input has a trailing whitespace", () => {
     const input = createControl("test value ");
-    const validate = trimValidator();
+    const validate = trimValidator;
 
     const errors = validate(input);
 
@@ -50,7 +50,7 @@ describe("trimValidator", () => {
 
   it("should error when input has a beginning and trailing whitespace", () => {
     const input = createControl(" test value ");
-    const validate = trimValidator();
+    const validate = trimValidator;
 
     const errors = validate(input);
 
@@ -59,7 +59,7 @@ describe("trimValidator", () => {
 
   it("should error when input is just whitespace", () => {
     const input = createControl(" ");
-    const validate = trimValidator();
+    const validate = trimValidator;
 
     const errors = validate(input);
 

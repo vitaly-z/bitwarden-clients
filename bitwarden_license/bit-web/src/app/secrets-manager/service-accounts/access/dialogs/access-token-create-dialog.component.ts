@@ -25,7 +25,7 @@ export class AccessTokenCreateDialogComponent implements OnInit {
     name: new FormControl("", [
       Validators.required,
       Validators.maxLength(80),
-      BitValidators.trimValidator(),
+      BitValidators.trimValidator,
     ]),
     expirationDateControl: new FormControl(null),
   });
