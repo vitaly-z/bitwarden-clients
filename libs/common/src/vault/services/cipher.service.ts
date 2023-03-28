@@ -175,8 +175,6 @@ export class CipherService implements CipherServiceAbstraction {
       }
       cipher.key = await this.cryptoService.encrypt(model.key.key, key);
       key = model.key;
-    } else {
-      cipher.key = null;
     }
 
     await Promise.all([
