@@ -257,7 +257,9 @@ export class AttachmentsComponent implements OnInit {
             decBuf,
             admin
           );
-          this.cipher = await this.cipherDomain.decrypt();
+          this.cipher = await this.cipherDomain.decrypt(
+            await this.cipherService.getCipherKey(this.cipherDomain.organizationId)
+          );
 
           // 3. Delete old
           this.deletePromises[attachment.id] = this.deleteCipherAttachment(attachment.id);

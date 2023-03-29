@@ -72,7 +72,9 @@ export class ShareComponent implements OnInit, OnDestroy {
     });
 
     const cipherDomain = await this.cipherService.get(this.cipherId);
-    this.cipher = await cipherDomain.decrypt();
+    this.cipher = await cipherDomain.decrypt(
+      await this.cipherService.getCipherKey(cipherDomain.organizationId)
+    );
 
     this.filterCollections();
   }
