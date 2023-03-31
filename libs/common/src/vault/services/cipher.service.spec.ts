@@ -65,6 +65,10 @@ describe("Cipher Service", () => {
     const fileData = new Uint8Array(10).buffer;
     cryptoService.getOrgKey(Arg.any()).resolves(new SymmetricCryptoKey(new Uint8Array(32).buffer));
 
+    process.env.FLAGS = JSON.stringify({
+      enableCipherKeyEncryption: false,
+    });
+
     await cipherService.saveAttachmentRawWithServer(new Cipher(), fileName, fileData);
 
     cipherFileUploadService

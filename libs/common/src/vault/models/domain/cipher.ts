@@ -126,7 +126,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     const model = new CipherView(this);
     let cipherEncKey: SymmetricCryptoKey = null;
 
-    if (this.key != null) {
+    if (this.key != null && encKey != null) {
       const encryptService = Utils.getContainerService().getEncryptService();
       model.key = new SymmetricCryptoKey(await encryptService.decryptToBytes(this.key, encKey));
       cipherEncKey = model.key;
@@ -224,6 +224,8 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     c.creationDate = this.creationDate != null ? this.creationDate.toISOString() : null;
     c.deletedDate = this.deletedDate != null ? this.deletedDate.toISOString() : null;
     c.reprompt = this.reprompt;
+    c.key = this.key.encryptedString;
+    c.forceKeyRotation = this.forceKeyRotation;
 
     this.buildDataModel(this, c, {
       name: null,
@@ -273,6 +275,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     const fields = obj.fields?.map((f: any) => Field.fromJSON(f));
     const passwordHistory = obj.passwordHistory?.map((ph: any) => Password.fromJSON(ph));
     const key = EncString.fromJSON(obj.key);
+    const forceKeyRotation = obj.forceKeyRotation;
 
     Object.assign(domain, obj, {
       name,
@@ -283,6 +286,7 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
       fields,
       passwordHistory,
       key,
+      forceKeyRotation,
     });
 
     switch (obj.type) {

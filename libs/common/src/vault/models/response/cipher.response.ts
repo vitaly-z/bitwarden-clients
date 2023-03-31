@@ -93,6 +93,6 @@ export class CipherResponse extends BaseResponse {
 
     this.reprompt = this.getResponseProperty("Reprompt") || CipherRepromptType.None;
     this.key = this.getResponseProperty("Key") || null;
-    this.forceKeyRotation = this.getResponseProperty("ForceKeyRotation");
+    this.forceKeyRotation = this.getResponseProperty("ForceKeyRotation") || false;
   }
 }

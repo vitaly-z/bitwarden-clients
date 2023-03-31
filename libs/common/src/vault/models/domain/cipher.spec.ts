@@ -3,10 +3,13 @@ import { Substitute, Arg } from "@fluffy-spoon/substitute";
 import { Jsonify } from "type-fest";
 
 import { mockEnc, mockFromJson } from "../../../../spec/utils";
+import { CryptoService } from "../../../abstractions/crypto.service";
+import { EncryptService } from "../../../abstractions/encrypt.service";
 import { FieldType } from "../../../enums/fieldType";
 import { SecureNoteType } from "../../../enums/secureNoteType";
 import { UriMatchType } from "../../../enums/uriMatchType";
 import { EncString } from "../../../models/domain/enc-string";
+import { ContainerService } from "../../../services/container.service";
 import { InitializerKey } from "../../../services/cryptography/initializer-key";
 import { CipherRepromptType } from "../../enums/cipher-reprompt-type";
 import { CipherType } from "../../enums/cipher-type";
@@ -49,6 +52,8 @@ describe("Cipher DTO", () => {
       attachments: null,
       fields: null,
       passwordHistory: null,
+      key: null,
+      forceKeyRotation: undefined,
     });
   });
 
@@ -71,6 +76,8 @@ describe("Cipher DTO", () => {
         creationDate: "2022-01-01T12:00:00.000Z",
         deletedDate: null,
         reprompt: CipherRepromptType.None,
+        key: "EncryptedString",
+        forceKeyRotation: false,
         login: {
           uris: [{ uri: "EncryptedString", match: UriMatchType.Domain }],
           username: "EncryptedString",
@@ -138,6 +145,8 @@ describe("Cipher DTO", () => {
         creationDate: new Date("2022-01-01T12:00:00.000Z"),
         deletedDate: null,
         reprompt: 0,
+        key: { encryptedString: "EncryptedString", encryptionType: 0 },
+        forceKeyRotation: false,
         login: {
           passwordRevisionDate: new Date("2022-01-31T12:00:00.000Z"),
           autofillOnPageLoad: false,
@@ -208,6 +217,8 @@ describe("Cipher DTO", () => {
       cipher.creationDate = new Date("2022-01-01T12:00:00.000Z");
       cipher.deletedDate = null;
       cipher.reprompt = CipherRepromptType.None;
+      cipher.key = mockEnc("EncKey");
+      cipher.forceKeyRotation = false;
 
       const loginView = new LoginView();
       loginView.username = "username";
@@ -216,6 +227,14 @@ describe("Cipher DTO", () => {
       const login = Substitute.for<Login>();
       login.decrypt(Arg.any(), Arg.any()).resolves(loginView);
       cipher.login = login;
+
+      const cryptoService = Substitute.for<CryptoService>();
+      const encryptService = Substitute.for<EncryptService>();
+
+      (window as any).bitwardenContainerService = new ContainerService(
+        cryptoService,
+        encryptService
+      );
 
       const cipherView = await cipher.decrypt();
 
@@ -240,6 +259,7 @@ describe("Cipher DTO", () => {
         deletedDate: null,
         reprompt: 0,
         localData: undefined,
+        forceKeyRotation: false,
       });
     });
   });
@@ -263,6 +283,8 @@ describe("Cipher DTO", () => {
         creationDate: "2022-01-01T12:00:00.000Z",
         deletedDate: null,
         reprompt: CipherRepromptType.None,
+        key: "EncKey",
+        forceKeyRotation: false,
         secureNote: {
           type: SecureNoteType.Generic,
         },
@@ -294,6 +316,8 @@ describe("Cipher DTO", () => {
         attachments: null,
         fields: null,
         passwordHistory: null,
+        key: { encryptedString: "EncKey", encryptionType: 0 },
+        forceKeyRotation: false,
       });
     });
 
@@ -320,6 +344,16 @@ describe("Cipher DTO", () => {
       cipher.reprompt = CipherRepromptType.None;
       cipher.secureNote = new SecureNote();
       cipher.secureNote.type = SecureNoteType.Generic;
+      cipher.key = mockEnc("EncKey");
+      cipher.forceKeyRotation = false;
+
+      const cryptoService = Substitute.for<CryptoService>();
+      const encryptService = Substitute.for<EncryptService>();
+
+      (window as any).bitwardenContainerService = new ContainerService(
+        cryptoService,
+        encryptService
+      );
 
       const cipherView = await cipher.decrypt();
 
@@ -344,6 +378,7 @@ describe("Cipher DTO", () => {
         deletedDate: null,
         reprompt: 0,
         localData: undefined,
+        forceKeyRotation: false,
       });
     });
   });
@@ -375,6 +410,8 @@ describe("Cipher DTO", () => {
           expYear: "EncryptedString",
           code: "EncryptedString",
         },
+        key: "EncKey",
+        forceKeyRotation: false,
       };
     });
 
@@ -410,6 +447,8 @@ describe("Cipher DTO", () => {
         attachments: null,
         fields: null,
         passwordHistory: null,
+        key: { encryptedString: "EncKey", encryptionType: 0 },
+        forceKeyRotation: false,
       });
     });
 
@@ -434,6 +473,8 @@ describe("Cipher DTO", () => {
       cipher.creationDate = new Date("2022-01-01T12:00:00.000Z");
       cipher.deletedDate = null;
       cipher.reprompt = CipherRepromptType.None;
+      cipher.key = mockEnc("EncKey");
+      cipher.forceKeyRotation = false;
 
       const cardView = new CardView();
       cardView.cardholderName = "cardholderName";
@@ -442,6 +483,14 @@ describe("Cipher DTO", () => {
       const card = Substitute.for<Card>();
       card.decrypt(Arg.any(), Arg.any()).resolves(cardView);
       cipher.card = card;
+
+      const cryptoService = Substitute.for<CryptoService>();
+      const encryptService = Substitute.for<EncryptService>();
+
+      (window as any).bitwardenContainerService = new ContainerService(
+        cryptoService,
+        encryptService
+      );
 
       const cipherView = await cipher.decrypt();
 
@@ -466,6 +515,7 @@ describe("Cipher DTO", () => {
         deletedDate: null,
         reprompt: 0,
         localData: undefined,
+        forceKeyRotation: false,
       });
     });
   });
@@ -489,6 +539,8 @@ describe("Cipher DTO", () => {
         creationDate: "2022-01-01T12:00:00.000Z",
         deletedDate: null,
         reprompt: CipherRepromptType.None,
+        key: "EncKey",
+        forceKeyRotation: false,
         identity: {
           title: "EncryptedString",
           firstName: "EncryptedString",
@@ -556,6 +608,8 @@ describe("Cipher DTO", () => {
         attachments: null,
         fields: null,
         passwordHistory: null,
+        key: { encryptedString: "EncKey", encryptionType: 0 },
+        forceKeyRotation: false,
       });
     });
 
@@ -580,6 +634,8 @@ describe("Cipher DTO", () => {
       cipher.creationDate = new Date("2022-01-01T12:00:00.000Z");
       cipher.deletedDate = null;
       cipher.reprompt = CipherRepromptType.None;
+      cipher.key = mockEnc("EncKey");
+      cipher.forceKeyRotation = false;
 
       const identityView = new IdentityView();
       identityView.firstName = "firstName";
@@ -588,6 +644,14 @@ describe("Cipher DTO", () => {
       const identity = Substitute.for<Identity>();
       identity.decrypt(Arg.any(), Arg.any()).resolves(identityView);
       cipher.identity = identity;
+
+      const cryptoService = Substitute.for<CryptoService>();
+      const encryptService = Substitute.for<EncryptService>();
+
+      (window as any).bitwardenContainerService = new ContainerService(
+        cryptoService,
+        encryptService
+      );
 
       const cipherView = await cipher.decrypt();
 
@@ -612,6 +676,7 @@ describe("Cipher DTO", () => {
         deletedDate: null,
         reprompt: 0,
         localData: undefined,
+        forceKeyRotation: false,
       });
     });
   });
