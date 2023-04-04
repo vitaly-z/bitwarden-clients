@@ -25,7 +25,8 @@
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "chromatic": "chromatic --exit-zero-on-changes",
+    "postinstall": "patch-package"
   },
   "workspaces": [
     "apps/*",
@@ -188,6 +189,7 @@
     "nord": "0.2.1",
     "open": "^8.4.0",
     "papaparse": "^5.3.2",
+    "patch-package": "^6.5.1",
     "popper.js": "^1.16.1",
     "proper-lockfile": "^4.1.2",
     "qrious": "4.0.2",
