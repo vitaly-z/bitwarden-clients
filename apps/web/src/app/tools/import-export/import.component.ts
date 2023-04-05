@@ -40,9 +40,9 @@ export class ImportComponent implements OnInit, OnDestroy {
    * Optional callback to be called after a successful import, in place of navigating to successNavigate.
    */
   protected onSuccessfulImport: () => Promise<void> = null;
+  protected destroy$ = new Subject<void>();
 
   private _importBlockedByPolicy = false;
-  protected destroy$ = new Subject<void>();
 
   constructor(
     protected i18nService: I18nService,
