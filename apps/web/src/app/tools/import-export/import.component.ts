@@ -13,10 +13,10 @@ import { PolicyService } from "@bitwarden/common/admin-console/abstractions/poli
 import { PolicyType } from "@bitwarden/common/admin-console/enums/policy-type";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import {
-  ImportOption,
-  ImportType,
   ImportError,
+  ImportOption,
   ImportServiceAbstraction,
+  ImportType,
 } from "@bitwarden/importer";
 
 import { FilePasswordPromptComponent } from "./file-password-prompt.component";
@@ -36,9 +36,13 @@ export class ImportComponent implements OnInit, OnDestroy {
 
   protected organizationId: string = null;
   protected successNavigate: any[] = ["vault"];
+  /**
+   * Optional callback to be called after a successful import, in place of navigating to successNavigate.
+   */
+  protected onSuccessfulImport: () => Promise<void> = null;
 
   private _importBlockedByPolicy = false;
-  private destroy$ = new Subject<void>();
+  protected destroy$ = new Subject<void>();
 
   constructor(
     protected i18nService: I18nService,
@@ -149,7 +153,11 @@ export class ImportComponent implements OnInit, OnDestroy {
       //No errors, display success message
       this.platformUtilsService.showToast("success", null, this.i18nService.t("importSuccess"));
       this.syncService.fullSync(true);
-      this.router.navigate(this.successNavigate);
+      if (this.onSuccessfulImport != null) {
+        await this.onSuccessfulImport();
+      } else {
+        this.router.navigate(this.successNavigate);
+      }
     } catch (e) {
       this.logService.error(e);
     }

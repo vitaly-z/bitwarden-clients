@@ -1,11 +1,15 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { switchMap, takeUntil } from "rxjs/operators";
 
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
+import {
+  canAccessVaultTab,
+  OrganizationService,
+} from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import { ImportServiceAbstraction } from "@bitwarden/importer";
@@ -48,15 +52,26 @@ export class OrganizationImportComponent extends ImportComponent {
     );
   }
 
-  async ngOnInit() {
-    // eslint-disable-next-line rxjs-angular/prefer-takeuntil, rxjs/no-async-subscribe
-    this.route.parent.parent.params.subscribe(async (params) => {
-      this.organizationId = params.organizationId;
-      this.successNavigate = ["organizations", this.organizationId, "vault"];
-      await super.ngOnInit();
-    });
-    const organization = await this.organizationService.get(this.organizationId);
-    this.organizationName = organization.name;
+  ngOnInit() {
+    this.route.params
+      .pipe(
+        switchMap((params) => this.organizationService.get$(params.organizationId)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((organization) => {
+        this.organizationId = organization.id;
+        this.organizationName = organization.name;
+
+        if (canAccessVaultTab(organization)) {
+          this.successNavigate = ["organizations", this.organizationId, "vault"];
+        } else {
+          this.onSuccessfulImport = async () => {
+            this.fileSelected = null;
+            this.fileContents = "";
+          };
+        }
+      });
+    super.ngOnInit();
   }
 
   async submit() {
