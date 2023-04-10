@@ -930,8 +930,8 @@ export class CipherService implements CipherServiceAbstraction {
 
   async getCipherKey(orgId?: string): Promise<SymmetricCryptoKey> {
     return orgId != null
-      ? this.cryptoService.getOrgKey(orgId)
-      : this.cryptoService.getKeyForUserEncryption();
+      ? await this.cryptoService.getOrgKey(orgId)
+      : await this.cryptoService.getKeyForUserEncryption();
   }
 
   // Helpers
