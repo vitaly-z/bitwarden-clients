@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 
 import { BreadcrumbsModule } from "@bitwarden/components";
 
+import { CoreOrganizationModule } from "../../admin-console/organizations/core";
 import { LooseComponentsModule, SharedModule } from "../../shared";
 import { VaultItemsModule } from "../components/vault-items/vault-items.module";
 import { CollectionBadgeModule } from "../org-vault/collection-badge/collection-badge.module";
@@ -28,6 +29,7 @@ import { VaultComponent } from "./vault.component";
     BulkDialogsModule,
     BreadcrumbsModule,
     VaultItemsModule,
+    CoreOrganizationModule, // Needed to open the CollectionDialogComponent
   ],
   declarations: [VaultComponent, VaultHeaderComponent],
   exports: [VaultComponent],

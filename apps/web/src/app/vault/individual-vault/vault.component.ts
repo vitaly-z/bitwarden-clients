@@ -49,6 +49,10 @@ import { CipherRepromptType } from "@bitwarden/common/vault/enums/cipher-repromp
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 import { DialogService, Icons } from "@bitwarden/components";
 
+import {
+  openCollectionDialog,
+  CollectionDialogResult,
+} from "../../admin-console/organizations/shared";
 import { UpdateKeyComponent } from "../../settings/update-key.component";
 import { VaultItemEvent } from "../components/vault-items/vault-item-event";
 import { getNestedCollectionTree } from "../utils/collection-utils";
@@ -131,6 +135,7 @@ export class VaultComponent implements OnInit, OnDestroy {
   protected collections: CollectionView[];
   protected isEmpty: boolean;
   protected selectedCollection: TreeNode<CollectionView> | undefined;
+  protected canCreateCollections = false;
 
   private refresh$ = new BehaviorSubject<void>(null);
   private searchText$ = new Subject<string>();
@@ -224,12 +229,9 @@ export class VaultComponent implements OnInit, OnDestroy {
     const canAccessPremium$ = Utils.asyncToObservable(() =>
       this.stateService.getCanAccessPremium()
     ).pipe(shareReplay({ refCount: true, bufferSize: 1 }));
-    const allCollections$ = Utils.asyncToObservable(() =>
-      this.collectionService.getAllDecrypted()
-    ).pipe(shareReplay({ refCount: true, bufferSize: 1 }));
+    const allCollections$ = Utils.asyncToObservable(() => this.collectionService.getAllDecrypted());
     const nestedCollections$ = allCollections$.pipe(
-      map((collections) => getNestedCollectionTree(collections)),
-      shareReplay({ refCount: true, bufferSize: 1 })
+      map((collections) => getNestedCollectionTree(collections))
     );
 
     this.searchText$
@@ -373,6 +375,8 @@ export class VaultComponent implements OnInit, OnDestroy {
           this.ciphers = ciphers;
           this.collections = collections;
           this.selectedCollection = selectedCollection;
+
+          this.canCreateCollections = allOrganizations?.some((o) => o.canCreateNewCollections);
 
           this.showBulkMove =
             filter.type !== "trash" &&
@@ -624,6 +628,22 @@ export class VaultComponent implements OnInit, OnDestroy {
     });
 
     return childComponent;
+  }
+
+  async addCollection() {
+    const dialog = openCollectionDialog(this.dialogService, {
+      data: {
+        organizationId: this.allOrganizations.sort(
+          Utils.getSortFunction(this.i18nService, "name")
+        )[0].id,
+        parentCollectionId: this.filter.collectionId,
+        showOrgSelector: true,
+      },
+    });
+    const result = await lastValueFrom(dialog.closed);
+    if (result === CollectionDialogResult.Saved || result === CollectionDialogResult.Deleted) {
+      this.refresh();
+    }
   }
 
   async cloneCipher(cipher: CipherView) {
