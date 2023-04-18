@@ -94,7 +94,11 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
       this.formGroup.patchValue({ selectedOrg: this.orgId });
       this.organizationService.organizations$
         .pipe(
-          map((orgs) => orgs.sort(Utils.getSortFunction(this.i18nService, "name"))),
+          map((orgs) =>
+            orgs
+              .filter((o) => o.canCreateNewCollections)
+              .sort(Utils.getSortFunction(this.i18nService, "name"))
+          ),
           takeUntil(this.destroy$)
         )
         .subscribe((orgs: Organization[]) => {
