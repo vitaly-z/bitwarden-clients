@@ -1,7 +1,7 @@
 import { DIALOG_DATA, DialogConfig, DialogRef } from "@angular/cdk/dialog";
 import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { combineLatest, of, shareReplay, Subject, switchMap, takeUntil } from "rxjs";
+import { combineLatest, map, of, shareReplay, Subject, switchMap, takeUntil } from "rxjs";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { OrganizationUserService } from "@bitwarden/common/abstractions/organization-user/organization-user.service";
@@ -10,6 +10,7 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
+import { Utils } from "@bitwarden/common/misc/utils";
 import { BitValidators, DialogService } from "@bitwarden/components";
 
 import {
@@ -37,6 +38,7 @@ export interface CollectionDialogParams {
   organizationId: string;
   initialTab?: CollectionDialogTabType;
   parentCollectionId?: string;
+  showOrgSelector?: boolean;
 }
 
 export enum CollectionDialogResult {
@@ -59,11 +61,15 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
   protected nestOptions: CollectionView[] = [];
   protected accessItems: AccessItemView[] = [];
   protected deletedParentName: string | undefined;
+  protected organizations: Organization[];
+  protected orgId: string;
+  protected showOrgSelector = false;
   protected formGroup = this.formBuilder.group({
     name: ["", [Validators.required, BitValidators.forbiddenCharacters(["/"])]],
     externalId: "",
     parent: undefined as string | undefined,
     access: [[] as AccessItemValue[]],
+    selectedOrg: "",
   });
   protected PermissionMode = PermissionMode;
 
@@ -81,8 +87,30 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
     this.tabIndex = params.initialTab ?? CollectionDialogTabType.Info;
   }
 
-  ngOnInit() {
-    const organization$ = of(this.organizationService.get(this.params.organizationId)).pipe(
+  async ngOnInit() {
+    this.orgId = this.params.organizationId;
+    if (this.params.showOrgSelector) {
+      this.showOrgSelector = true;
+      this.formGroup.patchValue({ selectedOrg: this.orgId });
+      this.organizationService.organizations$
+        .pipe(
+          map((orgs) => orgs.sort(Utils.getSortFunction(this.i18nService, "name"))),
+          takeUntil(this.destroy$)
+        )
+        .subscribe((orgs: Organization[]) => {
+          this.organizations = orgs;
+        });
+    }
+    this.loadOrg();
+  }
+
+  changeOrg(newOrgId: string) {
+    this.orgId = newOrgId;
+    this.loadOrg();
+  }
+
+  async loadOrg() {
+    const organization$ = of(this.organizationService.get(this.orgId)).pipe(
       shareReplay({ refCount: true, bufferSize: 1 })
     );
     const groups$ = organization$.pipe(
@@ -91,18 +119,17 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
           return of([] as GroupView[]);
         }
 
-        return this.groupService.getAll(this.params.organizationId);
+        return this.groupService.getAll(this.orgId);
       })
     );
-
     combineLatest({
       organization: organization$,
-      collections: this.collectionService.getAll(this.params.organizationId),
+      collections: this.collectionService.getAll(this.orgId),
       collectionDetails: this.params.collectionId
-        ? this.collectionService.get(this.params.organizationId, this.params.collectionId)
+        ? this.collectionService.get(this.orgId, this.params.collectionId)
         : of(null),
       groups: groups$,
-      users: this.organizationUserService.getAllUsers(this.params.organizationId),
+      users: this.organizationUserService.getAllUsers(this.orgId),
     })
       .pipe(takeUntil(this.destroy$))
       .subscribe(({ organization, collections, collectionDetails, groups, users }) => {
@@ -170,7 +197,7 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
 
     const collectionView = new CollectionAdminView();
     collectionView.id = this.params.collectionId;
-    collectionView.organizationId = this.params.organizationId;
+    collectionView.organizationId = this.orgId;
     collectionView.externalId = this.formGroup.controls.externalId.value;
     collectionView.groups = this.formGroup.controls.access.value
       .filter((v) => v.type === AccessItemType.Group)
