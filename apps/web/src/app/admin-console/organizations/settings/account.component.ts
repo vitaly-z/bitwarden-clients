@@ -28,7 +28,6 @@ import {
 })
 // eslint-disable-next-line rxjs-angular/prefer-takeuntil
 export class AccountComponent {
-  deleteModalRef: ViewContainerRef;
   @ViewChild("purgeOrganizationTemplate", { read: ViewContainerRef, static: true })
   purgeModalRef: ViewContainerRef;
   @ViewChild("apiKeyTemplate", { read: ViewContainerRef, static: true })
