@@ -9,6 +9,7 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 import { UserVerificationService } from "@bitwarden/common/abstractions/userVerification/userVerification.service.abstraction";
 import { OrganizationApiServiceAbstraction } from "@bitwarden/common/admin-console/abstractions/organization/organization-api.service.abstraction";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
+import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { Verification } from "@bitwarden/common/types/verification";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
@@ -67,7 +68,7 @@ export class DeleteOrganizationDialogComponent implements OnInit, OnDestroy {
 
   loaded: boolean;
   deleteOrganizationRequestType: "InvalidFamiliesForEnterprise" | "RegularDelete" = "RegularDelete";
-  organizationName: string;
+  organization: Organization;
   organizationContentSummary: OrganizationContentSummary = new OrganizationContentSummary();
   secret: Verification;
 
@@ -103,7 +104,7 @@ export class DeleteOrganizationDialogComponent implements OnInit, OnDestroy {
     ])
       .pipe(takeUntil(this.destroy$))
       .subscribe(([organization, ciphers]) => {
-        this.organizationName = organization.name;
+        this.organization = organization;
         this.organizationContentSummary = this.buildOrganizationContentSummary(ciphers);
         this.loaded = true;
       });
@@ -113,7 +114,7 @@ export class DeleteOrganizationDialogComponent implements OnInit, OnDestroy {
     try {
       this.formPromise = this.userVerificationService
         .buildRequest(this.formGroup.value.secret)
-        .then((request) => this.organizationApiService.delete(this.params.organizationId, request));
+        .then((request) => this.organizationApiService.delete(this.organization.id, request));
       await this.formPromise;
       this.platformUtilsService.showToast(
         "success",
