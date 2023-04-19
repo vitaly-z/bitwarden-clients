@@ -1,7 +1,7 @@
 import { DIALOG_DATA, DialogConfig, DialogRef } from "@angular/cdk/dialog";
 import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
-import { combineLatest, of, Subject, takeUntil } from "rxjs";
+import { combineLatest, Subject, takeUntil } from "rxjs";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
@@ -98,7 +98,7 @@ export class DeleteOrganizationDialogComponent implements OnInit, OnDestroy {
     this.deleteOrganizationRequestType = this.params.requestType;
 
     combineLatest([
-      of(this.organizationService.get(this.params.organizationId)),
+      this.organizationService.get$(this.params.organizationId),
       this.cipherService.getAllFromApiForOrganization(this.params.organizationId),
     ])
       .pipe(takeUntil(this.destroy$))
