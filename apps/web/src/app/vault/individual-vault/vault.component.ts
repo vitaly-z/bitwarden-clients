@@ -641,9 +641,9 @@ export class VaultComponent implements OnInit, OnDestroy {
   async addCollection() {
     const dialog = openCollectionDialog(this.dialogService, {
       data: {
-        organizationId: this.allOrganizations.sort(
-          Utils.getSortFunction(this.i18nService, "name")
-        )[0].id,
+        organizationId: this.allOrganizations
+          .filter((o) => o.canCreateNewCollections)
+          .sort(Utils.getSortFunction(this.i18nService, "name"))[0].id,
         parentCollectionId: this.filter.collectionId,
         showOrgSelector: true,
       },
