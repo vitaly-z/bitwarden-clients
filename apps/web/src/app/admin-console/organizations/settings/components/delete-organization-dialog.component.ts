@@ -17,6 +17,9 @@ import { CipherType } from "@bitwarden/common/vault/enums/cipher-type";
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 import { DialogService } from "@bitwarden/components";
 
+import { UserVerificationModule } from "../../../../shared/components/user-verification";
+import { SharedModule } from "../../../../shared/shared.module";
+
 class CountBasedLocalizationKey {
   singular: string;
   plural: string;
@@ -61,6 +64,8 @@ export enum DeleteOrganizationDialogResult {
 
 @Component({
   selector: "app-delete-organization",
+  standalone: true,
+  imports: [SharedModule, UserVerificationModule],
   templateUrl: "delete-organization-dialog.component.html",
 })
 export class DeleteOrganizationDialogComponent implements OnInit, OnDestroy {

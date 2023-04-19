@@ -17,10 +17,7 @@ import { DialogService } from "@bitwarden/components";
 import { ApiKeyComponent } from "../../../settings/api-key.component";
 import { PurgeVaultComponent } from "../../../settings/purge-vault.component";
 
-import {
-  DeleteOrganizationDialogResult,
-  openDeleteOrganizationDialog,
-} from "./components/delete-organization-dialog";
+import { DeleteOrganizationDialogResult, openDeleteOrganizationDialog } from "./components";
 
 @Component({
   selector: "app-org-account",

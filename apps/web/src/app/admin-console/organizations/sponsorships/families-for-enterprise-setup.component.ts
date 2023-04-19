@@ -10,7 +10,7 @@ import { ValidationService } from "@bitwarden/common/abstractions/validation.ser
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { OrganizationSponsorshipRedeemRequest } from "@bitwarden/common/admin-console/models/request/organization/organization-sponsorship-redeem.request";
-import { PlanType, PlanSponsorshipType } from "@bitwarden/common/billing/enums";
+import { PlanSponsorshipType, PlanType } from "@bitwarden/common/billing/enums";
 import { ProductType } from "@bitwarden/common/enums";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import { DialogService } from "@bitwarden/components";
@@ -19,7 +19,7 @@ import { OrganizationPlansComponent } from "../../../billing/settings/organizati
 import {
   DeleteOrganizationDialogResult,
   openDeleteOrganizationDialog,
-} from "../settings/components/delete-organization-dialog";
+} from "../settings/components";
 
 @Component({
   selector: "families-for-enterprise-setup",
