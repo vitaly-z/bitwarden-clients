@@ -24,7 +24,7 @@
 
           <bit-form-field *ngIf="showOrgSelector">
             <bit-label>{{ "organization" | i18n }}</bit-label>
-            <bit-select bitInput formControlName="selectedOrg" (ngModelChange)="changeOrg($event)">
+            <bit-select bitInput formControlName="selectedOrg">
               <bit-option
                 *ngFor="let org of organizations"
                 icon="bwi-business"
