@@ -2,13 +2,14 @@
 import { Substitute, Arg } from "@fluffy-spoon/substitute";
 import { Jsonify } from "type-fest";
 
-import { mockEnc, mockFromJson } from "../../../../spec/utils";
+import { makeStaticByteArray, mockEnc, mockFromJson } from "../../../../spec/utils";
 import { CryptoService } from "../../../abstractions/crypto.service";
 import { EncryptService } from "../../../abstractions/encrypt.service";
 import { FieldType, SecureNoteType, UriMatchType } from "../../../enums";
 import { EncString } from "../../../models/domain/enc-string";
 import { ContainerService } from "../../../services/container.service";
 import { InitializerKey } from "../../../services/cryptography/initializer-key";
+import { CipherService } from "../../abstractions/cipher.service";
 import { CipherRepromptType } from "../../enums/cipher-reprompt-type";
 import { CipherType } from "../../enums/cipher-type";
 import { CipherData } from "../../models/data/cipher.data";
@@ -228,13 +229,16 @@ describe("Cipher DTO", () => {
 
       const cryptoService = Substitute.for<CryptoService>();
       const encryptService = Substitute.for<EncryptService>();
+      const cipherService = Substitute.for<CipherService>();
+
+      encryptService.decryptToBytes(Arg.any(), Arg.any()).resolves(makeStaticByteArray(64));
 
       (window as any).bitwardenContainerService = new ContainerService(
         cryptoService,
         encryptService
       );
 
-      const cipherView = await cipher.decrypt();
+      const cipherView = await cipher.decrypt(cipherService);
 
       expect(cipherView).toMatchObject({
         id: "id",
@@ -347,13 +351,16 @@ describe("Cipher DTO", () => {
 
       const cryptoService = Substitute.for<CryptoService>();
       const encryptService = Substitute.for<EncryptService>();
+      const cipherService = Substitute.for<CipherService>();
+
+      encryptService.decryptToBytes(Arg.any(), Arg.any()).resolves(makeStaticByteArray(64));
 
       (window as any).bitwardenContainerService = new ContainerService(
         cryptoService,
         encryptService
       );
 
-      const cipherView = await cipher.decrypt();
+      const cipherView = await cipher.decrypt(cipherService);
 
       expect(cipherView).toMatchObject({
         id: "id",
@@ -484,13 +491,16 @@ describe("Cipher DTO", () => {
 
       const cryptoService = Substitute.for<CryptoService>();
       const encryptService = Substitute.for<EncryptService>();
+      const cipherService = Substitute.for<CipherService>();
+
+      encryptService.decryptToBytes(Arg.any(), Arg.any()).resolves(makeStaticByteArray(64));
 
       (window as any).bitwardenContainerService = new ContainerService(
         cryptoService,
         encryptService
       );
 
-      const cipherView = await cipher.decrypt();
+      const cipherView = await cipher.decrypt(cipherService);
 
       expect(cipherView).toMatchObject({
         id: "id",
@@ -645,13 +655,16 @@ describe("Cipher DTO", () => {
 
       const cryptoService = Substitute.for<CryptoService>();
       const encryptService = Substitute.for<EncryptService>();
+      const cipherService = Substitute.for<CipherService>();
+
+      encryptService.decryptToBytes(Arg.any(), Arg.any()).resolves(makeStaticByteArray(64));
 
       (window as any).bitwardenContainerService = new ContainerService(
         cryptoService,
         encryptService
       );
 
-      const cipherView = await cipher.decrypt();
+      const cipherView = await cipher.decrypt(cipherService);
 
       expect(cipherView).toMatchObject({
         id: "id",

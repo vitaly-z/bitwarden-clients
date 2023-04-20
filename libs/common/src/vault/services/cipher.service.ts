@@ -91,9 +91,7 @@ export class CipherService implements CipherServiceAbstraction {
         originalCipher = await this.get(model.id);
       }
       if (originalCipher != null) {
-        const existingCipher = await originalCipher.decrypt(
-          await this.getCipherKey(originalCipher.organizationId)
-        );
+        const existingCipher = await originalCipher.decrypt(this);
         model.passwordHistory = existingCipher.passwordHistory || [];
         if (model.type === CipherType.Login && existingCipher.type === CipherType.Login) {
           if (

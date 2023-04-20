@@ -6,6 +6,7 @@ import Domain from "../../../models/domain/domain-base";
 import { EncString } from "../../../models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../../models/domain/symmetric-crypto-key";
 import { InitializerKey } from "../../../services/cryptography/initializer-key";
+import { CipherService } from "../../abstractions/cipher.service";
 import { CipherRepromptType } from "../../enums/cipher-reprompt-type";
 import { CipherType } from "../../enums/cipher-type";
 import { CipherData } from "../data/cipher.data";
@@ -122,13 +123,15 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     }
   }
 
-  async decrypt(encKey?: SymmetricCryptoKey): Promise<CipherView> {
+  async decrypt(cipherService: CipherService, encKey?: SymmetricCryptoKey): Promise<CipherView> {
     const model = new CipherView(this);
-    let cipherEncKey: SymmetricCryptoKey = null;
+    encKey = encKey ?? (await cipherService.getCipherKey(this.organizationId));
 
-    if (this.key != null && encKey != null) {
+    let cipherEncKey: SymmetricCryptoKey = null;
+    if (this.key != null) {
       const encryptService = Utils.getContainerService().getEncryptService();
-      model.key = new SymmetricCryptoKey(await encryptService.decryptToBytes(this.key, encKey));
+      const t = await encryptService.decryptToBytes(this.key, encKey);
+      model.key = new SymmetricCryptoKey(t);
       cipherEncKey = model.key;
     }
 
