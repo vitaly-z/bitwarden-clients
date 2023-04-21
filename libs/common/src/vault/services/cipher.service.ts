@@ -740,10 +740,11 @@ export class CipherService implements CipherServiceAbstraction {
   }
 
   async deleteManyWithServer(ids: string[], asAdmin = false): Promise<any> {
+    const request = new CipherBulkDeleteRequest(ids);
     if (asAdmin) {
-      await this.apiService.deleteManyCiphersAdmin(new CipherBulkDeleteRequest(ids));
+      await this.apiService.deleteManyCiphersAdmin(request);
     } else {
-      await this.apiService.deleteManyCiphers(new CipherBulkDeleteRequest(ids));
+      await this.apiService.deleteManyCiphers(request);
     }
     await this.delete(ids);
   }
@@ -879,10 +880,11 @@ export class CipherService implements CipherServiceAbstraction {
   }
 
   async softDeleteManyWithServer(ids: string[], asAdmin = false): Promise<any> {
+    const request = new CipherBulkDeleteRequest(ids);
     if (asAdmin) {
-      await this.apiService.putDeleteManyCiphersAdmin(new CipherBulkDeleteRequest(ids));
+      await this.apiService.putDeleteManyCiphersAdmin(request);
     } else {
-      await this.apiService.putDeleteManyCiphers(new CipherBulkDeleteRequest(ids));
+      await this.apiService.putDeleteManyCiphers(request);
     }
 
     await this.softDelete(ids);
