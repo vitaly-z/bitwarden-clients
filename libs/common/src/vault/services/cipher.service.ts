@@ -923,8 +923,16 @@ export class CipherService implements CipherServiceAbstraction {
     await this.restore({ id: id, revisionDate: response.revisionDate });
   }
 
-  async restoreManyWithServer(ids: string[]): Promise<any> {
-    const response = await this.apiService.putRestoreManyCiphers(new CipherBulkRestoreRequest(ids));
+  async restoreManyWithServer(
+    ids: string[],
+    organizationId: string = null,
+    asAdmin = false
+  ): Promise<any> {
+    const response = asAdmin
+      ? await this.apiService.putRestoreManyCiphersAdmin(
+          new CipherBulkRestoreRequest(ids, organizationId)
+        )
+      : await this.apiService.putRestoreManyCiphers(new CipherBulkRestoreRequest(ids));
     const restores: { id: string; revisionDate: string }[] = [];
     for (const cipher of response.data) {
       restores.push({ id: cipher.id, revisionDate: cipher.revisionDate });
