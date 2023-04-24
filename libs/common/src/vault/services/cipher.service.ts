@@ -161,36 +161,10 @@ export class CipherService implements CipherServiceAbstraction {
     }
 
     if (flagEnabled("enableCipherKeyEncryption")) {
-      if (model.key == null || model.forceKeyRotation) {
-        model.key = await this.cryptoService.makeCipherKey();
-      }
-      cipher.key = await this.cryptoService.encrypt(model.key.key, key);
-      key = model.key;
+      return this.encryptWithCipherKey(model, cipher, key);
     }
 
-    await Promise.all([
-      this.encryptObjProperty(
-        model,
-        cipher,
-        {
-          name: null,
-          notes: null,
-        },
-        key
-      ),
-      this.encryptCipherData(cipher, model, key),
-      this.encryptFields(model.fields, key).then((fields) => {
-        cipher.fields = fields;
-      }),
-      this.encryptPasswordHistories(model.passwordHistory, key).then((ph) => {
-        cipher.passwordHistory = ph;
-      }),
-      this.encryptAttachments(model.attachments, key).then((attachments) => {
-        cipher.attachments = attachments;
-      }),
-    ]);
-
-    return cipher;
+    return this.encryptCipher(model, cipher, key);
   }
 
   async encryptAttachments(
@@ -1157,5 +1131,50 @@ export class CipherService implements CipherServiceAbstraction {
 
   private clearSortedCiphers() {
     this.sortedCiphersCache.clear();
+  }
+
+  private async encryptWithCipherKey(
+    model: CipherView,
+    cipher: Cipher,
+    key: SymmetricCryptoKey
+  ): Promise<Cipher> {
+    if (model.key == null || model.forceKeyRotation) {
+      model.key = await this.cryptoService.makeCipherKey();
+      cipher.forceKeyRotation = false;
+    }
+    cipher.key = await this.cryptoService.encrypt(model.key.key, key);
+    key = model.key;
+
+    return this.encryptCipher(model, cipher, key);
+  }
+
+  private async encryptCipher(
+    model: CipherView,
+    cipher: Cipher,
+    key: SymmetricCryptoKey
+  ): Promise<Cipher> {
+    await Promise.all([
+      this.encryptObjProperty(
+        model,
+        cipher,
+        {
+          name: null,
+          notes: null,
+        },
+        key
+      ),
+      this.encryptCipherData(cipher, model, key),
+      this.encryptFields(model.fields, key).then((fields) => {
+        cipher.fields = fields;
+      }),
+      this.encryptPasswordHistories(model.passwordHistory, key).then((ph) => {
+        cipher.passwordHistory = ph;
+      }),
+      this.encryptAttachments(model.attachments, key).then((attachments) => {
+        cipher.attachments = attachments;
+      }),
+    ]);
+
+    return cipher;
   }
 }
