@@ -10,16 +10,17 @@ import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
-import { PolicyType } from "@bitwarden/common/admin-console/enums/policy-type";
+import { PolicyType } from "@bitwarden/common/admin-console/enums";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
+import { DialogService } from "@bitwarden/components";
 import {
-  ImportError,
   ImportOption,
-  ImportServiceAbstraction,
   ImportType,
+  ImportResult,
+  ImportServiceAbstraction,
 } from "@bitwarden/importer";
 
-import { FilePasswordPromptComponent } from "./file-password-prompt.component";
+import { ImportSuccessDialogComponent, FilePasswordPromptComponent } from "./dialog";
 
 @Component({
   selector: "app-import",
@@ -31,7 +32,6 @@ export class ImportComponent implements OnInit, OnDestroy {
   format: ImportType = null;
   fileContents: string;
   fileSelected: File;
-  formPromise: Promise<ImportError>;
   loading = false;
 
   protected organizationId: string = null;
@@ -52,7 +52,8 @@ export class ImportComponent implements OnInit, OnDestroy {
     protected policyService: PolicyService,
     private logService: LogService,
     protected modalService: ModalService,
-    protected syncService: SyncService
+    protected syncService: SyncService,
+    protected dialogService: DialogService
   ) {}
 
   protected get importBlockedByPolicy(): boolean {
@@ -82,7 +83,15 @@ export class ImportComponent implements OnInit, OnDestroy {
 
     this.loading = true;
 
-    const importer = this.importService.getImporter(this.format, this.organizationId);
+    const promptForPassword_callback = async () => {
+      return await this.getFilePassword();
+    };
+
+    const importer = this.importService.getImporter(
+      this.format,
+      promptForPassword_callback,
+      this.organizationId
+    );
     if (importer === null) {
       this.platformUtilsService.showToast(
         "error",
@@ -131,27 +140,13 @@ export class ImportComponent implements OnInit, OnDestroy {
     }
 
     try {
-      this.formPromise = this.importService.import(importer, fileContents, this.organizationId);
-      let error = await this.formPromise;
-
-      if (error?.passwordRequired) {
-        const filePassword = await this.getFilePassword();
-        if (filePassword == null) {
-          this.loading = false;
-          return;
-        }
-
-        error = await this.doPasswordProtectedImport(filePassword, fileContents);
-      }
-
-      if (error != null) {
-        this.error(error);
-        this.loading = false;
-        return;
-      }
+      const result = await this.importService.import(importer, fileContents, this.organizationId);
 
       //No errors, display success message
-      this.platformUtilsService.showToast("success", null, this.i18nService.t("importSuccess"));
+      this.dialogService.open<unknown, ImportResult>(ImportSuccessDialogComponent, {
+        data: result,
+      });
+
       this.syncService.fullSync(true);
       if (this.onSuccessfulImport != null) {
         await this.onSuccessfulImport();
@@ -159,6 +154,7 @@ export class ImportComponent implements OnInit, OnDestroy {
         this.router.navigate(this.successNavigate);
       }
     } catch (e) {
+      this.error(e);
       this.logService.error(e);
     }
 
@@ -285,19 +281,6 @@ export class ImportComponent implements OnInit, OnDestroy {
     }
 
     return await ref.onClosedPromise();
-  }
-
-  async doPasswordProtectedImport(
-    filePassword: string,
-    fileContents: string
-  ): Promise<ImportError> {
-    const passwordProtectedImporter = this.importService.getImporter(
-      "bitwardenpasswordprotected",
-      this.organizationId,
-      filePassword
-    );
-
-    return this.importService.import(passwordProtectedImporter, fileContents, this.organizationId);
   }
 
   ngOnDestroy(): void {
