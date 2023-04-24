@@ -11,6 +11,7 @@ import {
   OrganizationService,
 } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
+import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import { DialogService } from "@bitwarden/components";
 import { ImportServiceAbstraction } from "@bitwarden/importer";
@@ -23,7 +24,7 @@ import { ImportComponent } from "../../../../tools/import-export/import.componen
 })
 // eslint-disable-next-line rxjs-angular/prefer-takeuntil
 export class OrganizationImportComponent extends ImportComponent {
-  organizationName: string;
+  organization: Organization;
 
   protected get importBlockedByPolicy(): boolean {
     return false;
@@ -63,23 +64,23 @@ export class OrganizationImportComponent extends ImportComponent {
       )
       .subscribe((organization) => {
         this.organizationId = organization.id;
-        this.organizationName = organization.name;
-
-        if (canAccessVaultTab(organization)) {
-          this.successNavigate = ["organizations", this.organizationId, "vault"];
-        } else {
-          this.onSuccessfulImport = async () => {
-            this.fileSelected = null;
-            this.fileContents = "";
-          };
-        }
+        this.organization = organization;
       });
     super.ngOnInit();
   }
 
+  protected async onSuccessfulImport(): Promise<void> {
+    if (canAccessVaultTab(this.organization)) {
+      await this.router.navigate(["organizations", this.organizationId, "vault"]);
+    } else {
+      this.fileSelected = null;
+      this.fileContents = "";
+    }
+  }
+
   async submit() {
     const confirmed = await this.platformUtilsService.showDialog(
-      this.i18nService.t("importWarning", this.organizationName),
+      this.i18nService.t("importWarning", this.organization.name),
       this.i18nService.t("warning"),
       this.i18nService.t("yes"),
       this.i18nService.t("no"),

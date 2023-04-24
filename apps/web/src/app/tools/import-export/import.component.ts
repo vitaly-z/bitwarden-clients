@@ -15,12 +15,12 @@ import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.serv
 import { DialogService } from "@bitwarden/components";
 import {
   ImportOption,
-  ImportType,
   ImportResult,
   ImportServiceAbstraction,
+  ImportType,
 } from "@bitwarden/importer";
 
-import { ImportSuccessDialogComponent, FilePasswordPromptComponent } from "./dialog";
+import { FilePasswordPromptComponent, ImportSuccessDialogComponent } from "./dialog";
 
 @Component({
   selector: "app-import",
@@ -35,11 +35,6 @@ export class ImportComponent implements OnInit, OnDestroy {
   loading = false;
 
   protected organizationId: string = null;
-  protected successNavigate: any[] = ["vault"];
-  /**
-   * Optional callback to be called after a successful import, in place of navigating to successNavigate.
-   */
-  protected onSuccessfulImport: () => Promise<void> = null;
   protected destroy$ = new Subject<void>();
 
   private _importBlockedByPolicy = false;
@@ -58,6 +53,13 @@ export class ImportComponent implements OnInit, OnDestroy {
 
   protected get importBlockedByPolicy(): boolean {
     return this._importBlockedByPolicy;
+  }
+
+  /**
+   * Callback that is called after a successful import.
+   */
+  protected async onSuccessfulImport(): Promise<void> {
+    await this.router.navigate(["vault"]);
   }
 
   ngOnInit() {
@@ -148,11 +150,7 @@ export class ImportComponent implements OnInit, OnDestroy {
       });
 
       this.syncService.fullSync(true);
-      if (this.onSuccessfulImport != null) {
-        await this.onSuccessfulImport();
-      } else {
-        this.router.navigate(this.successNavigate);
-      }
+      await this.onSuccessfulImport();
     } catch (e) {
       this.error(e);
       this.logService.error(e);
