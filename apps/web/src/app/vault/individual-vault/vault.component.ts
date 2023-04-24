@@ -42,7 +42,9 @@ import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { CollectionService } from "@bitwarden/common/admin-console/abstractions/collection.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
+import { CollectionData } from "@bitwarden/common/admin-console/models/data/collection.data";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
+import { CollectionDetailsResponse } from "@bitwarden/common/admin-console/models/response/collection.response";
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { TokenService } from "@bitwarden/common/auth/abstractions/token.service";
 import { KdfType, DEFAULT_PBKDF2_ITERATIONS, EventType } from "@bitwarden/common/enums";
@@ -58,7 +60,7 @@ import { DialogService, Icons } from "@bitwarden/components";
 
 import {
   openCollectionDialog,
-  CollectionDialogResult,
+  CollectionDialogAction,
 } from "../../admin-console/organizations/shared";
 import { UpdateKeyComponent } from "../../settings/update-key.component";
 import { VaultItemEvent } from "../components/vault-items/vault-item-event";
@@ -649,7 +651,16 @@ export class VaultComponent implements OnInit, OnDestroy {
       },
     });
     const result = await lastValueFrom(dialog.closed);
-    if (result === CollectionDialogResult.Saved || result === CollectionDialogResult.Deleted) {
+    if (result.action === CollectionDialogAction.Saved) {
+      if (result.collection) {
+        // Update CollectionService with the new collection
+        const c = new CollectionData(result.collection as CollectionDetailsResponse);
+        await this.collectionService.upsert(c);
+      }
+      this.refresh();
+    } else if (result.action === CollectionDialogAction.Deleted) {
+      // TODO: Remove collection from collectionService when collection
+      // deletion is implemented in the individual vault.
       this.refresh();
     }
   }

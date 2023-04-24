@@ -62,7 +62,7 @@ import {
 } from "../../admin-console/organizations/core";
 import { EntityEventsComponent } from "../../admin-console/organizations/manage/entity-events.component";
 import {
-  CollectionDialogResult,
+  CollectionDialogAction,
   CollectionDialogTabType,
   openCollectionDialog,
 } from "../../admin-console/organizations/shared";
@@ -873,7 +873,10 @@ export class VaultComponent implements OnInit, OnDestroy {
     });
 
     const result = await lastValueFrom(dialog.closed);
-    if (result === CollectionDialogResult.Saved || result === CollectionDialogResult.Deleted) {
+    if (
+      result.action === CollectionDialogAction.Saved ||
+      result.action === CollectionDialogAction.Deleted
+    ) {
       this.refresh();
     }
   }
@@ -884,7 +887,10 @@ export class VaultComponent implements OnInit, OnDestroy {
     });
 
     const result = await lastValueFrom(dialog.closed);
-    if (result === CollectionDialogResult.Saved || result === CollectionDialogResult.Deleted) {
+    if (
+      result.action === CollectionDialogAction.Saved ||
+      result.action === CollectionDialogAction.Deleted
+    ) {
       this.refresh();
     }
   }

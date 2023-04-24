@@ -2,13 +2,10 @@ import { Injectable } from "@angular/core";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
-import { CollectionService } from "@bitwarden/common/admin-console/abstractions/collection.service";
-import { CollectionData } from "@bitwarden/common/admin-console/models/data/collection.data";
 import { CollectionRequest } from "@bitwarden/common/admin-console/models/request/collection.request";
 import { SelectionReadOnlyRequest } from "@bitwarden/common/admin-console/models/request/selection-read-only.request";
 import {
   CollectionAccessDetailsResponse,
-  CollectionDetailsResponse,
   CollectionResponse,
 } from "@bitwarden/common/admin-console/models/response/collection.response";
 import { EncString } from "@bitwarden/common/models/domain/enc-string";
@@ -18,11 +15,7 @@ import { CollectionAdminView } from "../views/collection-admin.view";
 
 @Injectable({ providedIn: CoreOrganizationModule })
 export class CollectionAdminService {
-  constructor(
-    private apiService: ApiService,
-    private cryptoService: CryptoService,
-    private collectionService: CollectionService
-  ) {}
+  constructor(private apiService: ApiService, private cryptoService: CryptoService) {}
 
   async getAll(organizationId: string): Promise<CollectionAdminView[]> {
     const collectionResponse = await this.apiService.getManyCollectionsWithAccessDetails(
@@ -54,7 +47,7 @@ export class CollectionAdminService {
     return view;
   }
 
-  async save(collection: CollectionAdminView): Promise<unknown> {
+  async save(collection: CollectionAdminView): Promise<CollectionResponse> {
     const request = await this.encrypt(collection);
 
     let response: CollectionResponse;
@@ -69,9 +62,7 @@ export class CollectionAdminService {
       );
     }
 
-    const c = new CollectionData(response as CollectionDetailsResponse);
-    await this.collectionService.upsert(c);
-    return;
+    return response;
   }
 
   async delete(organizationId: string, collectionId: string): Promise<void> {

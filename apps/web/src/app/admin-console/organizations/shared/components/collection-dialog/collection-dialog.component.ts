@@ -9,6 +9,7 @@ import { OrganizationUserUserDetailsResponse } from "@bitwarden/common/abstracti
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
+import { CollectionResponse } from "@bitwarden/common/admin-console/models/response/collection.response";
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { BitValidators, DialogService } from "@bitwarden/components";
@@ -41,7 +42,17 @@ export interface CollectionDialogParams {
   showOrgSelector?: boolean;
 }
 
-export enum CollectionDialogResult {
+export class CollectionDialogResult {
+  action: CollectionDialogAction;
+  collection: CollectionResponse;
+
+  constructor(result: CollectionDialogAction, collection: CollectionResponse) {
+    this.action = result;
+    this.collection = collection;
+  }
+}
+
+export enum CollectionDialogAction {
   Saved = "saved",
   Canceled = "canceled",
   Deleted = "deleted",
@@ -178,7 +189,7 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
   }
 
   protected async cancel() {
-    this.close(CollectionDialogResult.Canceled);
+    this.close(CollectionDialogAction.Canceled);
   }
 
   protected submit = async () => {
@@ -213,7 +224,7 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
       collectionView.name = this.formGroup.controls.name.value;
     }
 
-    await this.collectionService.save(collectionView);
+    const savedCollection = await this.collectionService.save(collectionView);
 
     this.platformUtilsService.showToast(
       "success",
@@ -224,7 +235,7 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
       )
     );
 
-    this.close(CollectionDialogResult.Saved);
+    this.close(CollectionDialogAction.Saved, savedCollection);
   };
 
   protected delete = async () => {
@@ -248,7 +259,7 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
       this.i18nService.t("deletedCollectionId", this.collection?.name)
     );
 
-    this.close(CollectionDialogResult.Deleted);
+    this.close(CollectionDialogAction.Deleted);
   };
 
   ngOnDestroy(): void {
@@ -256,8 +267,8 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private close(result: CollectionDialogResult) {
-    this.dialogRef.close(result);
+  private close(action: CollectionDialogAction, collection?: CollectionResponse) {
+    this.dialogRef.close(new CollectionDialogResult(action, collection));
   }
 }
 
