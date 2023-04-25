@@ -25,9 +25,15 @@ export interface ServiceAccountOperation {
   templateUrl: "./service-account-dialog.component.html",
 })
 export class ServiceAccountDialogComponent {
-  protected formGroup = new FormGroup({
-    name: new FormControl("", [Validators.required, BitValidators.trimValidator]),
-  });
+  protected formGroup = new FormGroup(
+    {
+      name: new FormControl("", {
+        validators: [Validators.required, BitValidators.trimValidator],
+        updateOn: "blur",
+      }),
+    },
+    {}
+  );
 
   protected loading = false;
 

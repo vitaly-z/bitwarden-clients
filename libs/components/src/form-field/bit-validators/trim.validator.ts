@@ -1,19 +1,27 @@
-import { AbstractControl, FormControl, ValidationErrors } from "@angular/forms";
+import { AbstractControl, FormControl, ValidatorFn } from "@angular/forms";
 
-export function trimValidator(control: AbstractControl): ValidationErrors | null {
+/**
+ * Automatically trims FormControl value. Errors if value only contains whitespace.
+ *
+ * Should be used with `updateOn: "blur"`
+ */
+export const trimValidator: ValidatorFn = (control: AbstractControl<string>) => {
   if (!(control instanceof FormControl)) {
     throw new Error("trimValidator only supports validating FormControls");
   }
-  if (control.value === null || control.value === undefined) {
+  const value = control.value;
+  if (value === null || value === undefined || value === "") {
     return null;
   }
-  const value = control.value;
-  if (value != value.trim()) {
+  if (!value.trim().length) {
     return {
       trim: {
-        message: "input is not trimmed",
+        message: "input is only whitespace",
       },
     };
   }
+  if (value !== value.trim()) {
+    control.setValue(value.trim());
+  }
   return null;
-}
+};

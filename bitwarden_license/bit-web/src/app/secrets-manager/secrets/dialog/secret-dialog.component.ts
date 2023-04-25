@@ -34,9 +34,15 @@ export interface SecretOperation {
 })
 export class SecretDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [Validators.required, BitValidators.trimValidator]),
+    name: new FormControl("", {
+      validators: [Validators.required, BitValidators.trimValidator],
+      updateOn: "blur",
+    }),
     value: new FormControl("", [Validators.required]),
-    notes: new FormControl("", [BitValidators.trimValidator]),
+    notes: new FormControl("", {
+      validators: [BitValidators.trimValidator],
+      updateOn: "blur",
+    }),
     project: new FormControl("", [Validators.required]),
   });
 

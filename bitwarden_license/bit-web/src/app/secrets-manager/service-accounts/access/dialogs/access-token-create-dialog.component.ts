@@ -22,11 +22,10 @@ export interface AccessTokenOperation {
 })
 export class AccessTokenCreateDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [
-      Validators.required,
-      Validators.maxLength(80),
-      BitValidators.trimValidator,
-    ]),
+    name: new FormControl("", {
+      validators: [Validators.required, Validators.maxLength(80), BitValidators.trimValidator],
+      updateOn: "blur",
+    }),
     expirationDateControl: new FormControl(null),
   });
   protected loading = false;

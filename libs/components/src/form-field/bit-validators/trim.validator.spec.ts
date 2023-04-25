@@ -1,69 +1,58 @@
 import { FormControl } from "@angular/forms";
 
-import { trimValidator } from "./trim.validator";
+import { trimValidator as validate } from "./trim.validator";
 
 describe("trimValidator", () => {
-  it("should return no error when input is null", () => {
+  it("should not error when input is null", () => {
     const input = createControl(null);
-    const validate = trimValidator;
-
     const errors = validate(input);
 
     expect(errors).toBe(null);
   });
 
-  it("should return no error when input is the empty string", () => {
+  it("should not error when input is an empty string", () => {
     const input = createControl("");
-    const validate = trimValidator;
-
     const errors = validate(input);
 
     expect(errors).toBe(null);
   });
 
-  it("should return no error when input has not beginning or trailing whitespace", () => {
+  it("should not error when input has no whitespace", () => {
     const input = createControl("test value");
-    const validate = trimValidator;
-
     const errors = validate(input);
 
     expect(errors).toBe(null);
   });
 
-  it("should error when input has a beginning whitespace", () => {
+  it("should remove beginning whitespace", () => {
     const input = createControl(" test value");
-    const validate = trimValidator;
-
     const errors = validate(input);
 
-    expect(errors).toEqual({ trim: { message: "input is not trimmed" } });
+    expect(errors).toBe(null);
+    expect(input.value).toBe("test value");
   });
 
-  it("should error when input has a trailing whitespace", () => {
+  it("should remove trailing whitespace", () => {
     const input = createControl("test value ");
-    const validate = trimValidator;
-
     const errors = validate(input);
 
-    expect(errors).toEqual({ trim: { message: "input is not trimmed" } });
+    expect(errors).toBe(null);
+    expect(input.value).toBe("test value");
   });
 
-  it("should error when input has a beginning and trailing whitespace", () => {
+  it("should remove beginning and trailing whitespace", () => {
     const input = createControl(" test value ");
-    const validate = trimValidator;
-
     const errors = validate(input);
 
-    expect(errors).toEqual({ trim: { message: "input is not trimmed" } });
+    expect(errors).toBe(null);
+    expect(input.value).toBe("test value");
   });
 
   it("should error when input is just whitespace", () => {
     const input = createControl(" ");
-    const validate = trimValidator;
-
     const errors = validate(input);
 
-    expect(errors).toEqual({ trim: { message: "input is not trimmed" } });
+    expect(errors).toEqual({ trim: { message: "input is only whitespace" } });
   });
 });
 

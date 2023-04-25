@@ -60,7 +60,13 @@ export const ForbiddenCharacters: Story<BitFormFieldComponent> = (args: BitFormF
 export const TrimValidator: Story<BitFormFieldComponent> = (args: BitFormFieldComponent) => ({
   props: {
     formObj: new FormBuilder().group({
-      name: ["", trimValidator],
+      name: [
+        "",
+        {
+          updateOn: "blur",
+          validators: [trimValidator],
+        },
+      ],
     }),
   },
   template,

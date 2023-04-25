@@ -6672,8 +6672,8 @@
     }
   },
   "inputTrimValidator": {
-    "message": "Input must not start or end in whitespace.",
-    "description": "Notification to inform the user that on the form the input provided can't contain whitespace at the beginning or end of the input."
+    "message": "Input must not contain only whitespace.",
+    "description": "Notification to inform the user that a form's input can't contain only whitespace."
   },
   "dismiss": {
     "message": "Dismiss"

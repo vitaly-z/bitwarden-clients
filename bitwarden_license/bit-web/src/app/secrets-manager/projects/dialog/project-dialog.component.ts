@@ -27,7 +27,10 @@ export interface ProjectOperation {
 })
 export class ProjectDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
-    name: new FormControl("", [Validators.required, BitValidators.trimValidator]),
+    name: new FormControl("", {
+      validators: [Validators.required, BitValidators.trimValidator],
+      updateOn: "blur",
+    }),
   });
   protected loading = false;
 
