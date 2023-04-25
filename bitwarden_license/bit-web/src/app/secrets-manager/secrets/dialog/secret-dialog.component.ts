@@ -5,6 +5,7 @@ import { lastValueFrom, Subject } from "rxjs";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
+import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { BitValidators, DialogService } from "@bitwarden/components";
 
 import { ProjectListView } from "../../models/view/project-list.view";
@@ -46,10 +47,10 @@ export class SecretDialogComponent implements OnInit {
     project: new FormControl("", [Validators.required]),
   });
 
+  private destroy$ = new Subject<void>();
   private loading = true;
   projects: ProjectListView[];
 
-  private destroy$ = new Subject<void>();
   constructor(
     public dialogRef: DialogRef,
     @Inject(DIALOG_DATA) private data: SecretOperation,
@@ -57,7 +58,8 @@ export class SecretDialogComponent implements OnInit {
     private i18nService: I18nService,
     private platformUtilsService: PlatformUtilsService,
     private projectService: ProjectService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private organizationService: OrganizationService
   ) {}
 
   async ngOnInit() {
@@ -70,6 +72,11 @@ export class SecretDialogComponent implements OnInit {
 
     if (this.data.projectId) {
       this.formGroup.get("project").setValue(this.data.projectId);
+    }
+
+    if (this.organizationService.get(this.data.organizationId)?.isAdmin) {
+      this.formGroup.get("project").removeValidators(Validators.required);
+      this.formGroup.get("project").updateValueAndValidity();
     }
 
     this.projects = await this.projectService
@@ -86,8 +93,12 @@ export class SecretDialogComponent implements OnInit {
       notes: secret.note,
       project: secret.projects[0]?.id ?? "",
     });
+
     this.loading = false;
-    this.formGroup.enable();
+
+    if (secret.write) {
+      this.formGroup.enable();
+    }
   }
 
   ngOnDestroy(): void {
@@ -158,7 +169,10 @@ export class SecretDialogComponent implements OnInit {
     secretView.name = this.formGroup.value.name;
     secretView.value = this.formGroup.value.value;
     secretView.note = this.formGroup.value.notes;
-    secretView.projects = [this.projects.find((p) => p.id == this.formGroup.value.project)];
+
+    const project = this.projects.find((p) => p.id == this.formGroup.value.project);
+    secretView.projects = project != undefined ? [project] : [];
+
     return secretView;
   }
 
