@@ -40,6 +40,7 @@ export interface CollectionDialogParams {
   initialTab?: CollectionDialogTabType;
   parentCollectionId?: string;
   showOrgSelector?: boolean;
+  collectionIds?: string[];
 }
 
 export class CollectionDialogResult {
@@ -103,7 +104,7 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
       this.showOrgSelector = true;
       this.formGroup.controls.selectedOrg.valueChanges
         .pipe(takeUntil(this.destroy$))
-        .subscribe((id) => this.loadOrg(id));
+        .subscribe((id) => this.loadOrg(id, this.params.collectionIds));
       this.organizationService.organizations$
         .pipe(
           map((orgs) =>
@@ -117,10 +118,10 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
           this.organizations = orgs;
         });
     }
-    this.loadOrg(this.params.organizationId);
+    this.loadOrg(this.params.organizationId, this.params.collectionIds);
   }
 
-  async loadOrg(orgId: string) {
+  async loadOrg(orgId: string, collectionIds: string[]) {
     const organization$ = of(this.organizationService.get(orgId)).pipe(
       shareReplay({ refCount: true, bufferSize: 1 })
     );
@@ -149,6 +150,10 @@ export class CollectionDialogComponent implements OnInit, OnDestroy {
           groups.map(mapGroupToAccessItemView),
           users.data.map(mapUserToAccessItemView)
         );
+
+        if (collectionIds) {
+          collections = collections.filter((c) => collectionIds.includes(c.id));
+        }
 
         if (this.params.collectionId) {
           this.collection = collections.find((c) => c.id === this.collectionId);

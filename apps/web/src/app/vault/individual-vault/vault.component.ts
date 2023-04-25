@@ -648,6 +648,7 @@ export class VaultComponent implements OnInit, OnDestroy {
           .sort(Utils.getSortFunction(this.i18nService, "name"))[0].id,
         parentCollectionId: this.filter.collectionId,
         showOrgSelector: true,
+        collectionIds: this.allCollections.map((c) => c.id),
       },
     });
     const result = await lastValueFrom(dialog.closed);
