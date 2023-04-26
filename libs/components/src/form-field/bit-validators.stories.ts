@@ -25,7 +25,7 @@ export default {
             return new I18nMockService({
               inputForbiddenCharacters: (chars) =>
                 `The following characters are not allowed: ${chars}`,
-              inputTrimValidator: "Input must not start or end in whitespace.",
+              inputTrimValidator: "Input must not contain only whitespaces.",
             });
           },
         },
