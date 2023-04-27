@@ -14,6 +14,7 @@ import {
 } from "rxjs";
 import { first } from "rxjs/operators";
 
+import { EllipsisPipe } from "@bitwarden/angular/pipes/ellipsis.pipe";
 import { SearchPipe } from "@bitwarden/angular/pipes/search.pipe";
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
@@ -132,6 +133,7 @@ export class GroupsComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private logService: LogService,
     private collectionService: CollectionService,
+    private ellipsisPipe: EllipsisPipe,
     private searchPipe: SearchPipe
   ) {}
 
@@ -316,6 +318,11 @@ export class GroupsComponent implements OnInit, OnDestroy {
       this.resetPaging();
     }
     return !searching && this.groups && this.groups.length > this.pageSize;
+  }
+
+  truncateCollectionNames(collectionNames: string[]) {
+    // run the pipe manually by calling transform
+    return collectionNames.map((name) => this.ellipsisPipe.transform(name));
   }
 
   private removeGroup(id: string) {
