@@ -849,6 +849,7 @@ export class CryptoService implements CryptoServiceAbstraction {
     return symmetricCryptoKey;
   }
 
+  // TODO: write tests for this method
   async makeDeviceKey(): Promise<SymmetricCryptoKey> {
     // Create 512-bit device key
     const randomBytes: CsprngArray = await this.cryptoFunctionService.randomBytes(64);
