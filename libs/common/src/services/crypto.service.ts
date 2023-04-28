@@ -27,6 +27,7 @@ import { EFFLongWordList } from "../misc/wordlist";
 import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
 import { EncString } from "../models/domain/enc-string";
 import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
+import { CsprngArray } from "../types/csprng";
 
 export class CryptoService implements CryptoServiceAbstraction {
   constructor(
@@ -846,5 +847,16 @@ export class CryptoService implements CryptoServiceAbstraction {
     const symmetricCryptoKey = new SymmetricCryptoKey(decEncKey);
     await this.stateService.setDecryptedCryptoSymmetricKey(symmetricCryptoKey);
     return symmetricCryptoKey;
+  }
+
+  async makeDeviceKey(): Promise<SymmetricCryptoKey> {
+    // Create 512-bit device key
+    const randomBytes: CsprngArray = await this.cryptoFunctionService.randomBytes(64);
+    const deviceKey = new SymmetricCryptoKey(randomBytes);
+
+    // Save device key in secure storage
+    await this.stateService.setDeviceKey(deviceKey);
+
+    return deviceKey;
   }
 }

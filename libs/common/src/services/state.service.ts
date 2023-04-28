@@ -62,6 +62,7 @@ const partialKeys = {
 };
 
 const DDG_SHARED_KEY = "DuckDuckGoSharedKey";
+const DEVICE_KEY = "BitwardenDeviceKey";
 
 export class StateService<
   TGlobalState extends GlobalState = GlobalState,
@@ -1052,6 +1053,24 @@ export class StateService<
     value == null
       ? await this.secureStorageService.remove(DDG_SHARED_KEY, options)
       : await this.secureStorageService.save(DDG_SHARED_KEY, value, options);
+  }
+
+  async getDeviceKey(options?: StorageOptions): Promise<SymmetricCryptoKey> {
+    options = this.reconcileOptions(options, await this.defaultSecureStorageOptions());
+    if (options?.userId == null) {
+      return null;
+    }
+    return await this.secureStorageService.get<SymmetricCryptoKey>(DEVICE_KEY, options);
+  }
+
+  async setDeviceKey(value: SymmetricCryptoKey, options?: StorageOptions): Promise<void> {
+    options = this.reconcileOptions(options, await this.defaultSecureStorageOptions());
+    if (options?.userId == null) {
+      return;
+    }
+    value == null
+      ? await this.secureStorageService.remove(DEVICE_KEY, options)
+      : await this.secureStorageService.save(DEVICE_KEY, value, options);
   }
 
   async getEmail(options?: StorageOptions): Promise<string> {
