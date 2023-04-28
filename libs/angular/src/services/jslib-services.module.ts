@@ -10,6 +10,7 @@ import { ConfigApiServiceAbstraction } from "@bitwarden/common/abstractions/conf
 import { ConfigServiceAbstraction } from "@bitwarden/common/abstractions/config/config.service.abstraction";
 import { CryptoService as CryptoServiceAbstraction } from "@bitwarden/common/abstractions/crypto.service";
 import { CryptoFunctionService as CryptoFunctionServiceAbstraction } from "@bitwarden/common/abstractions/cryptoFunction.service";
+import { DevicesApiServiceAbstraction } from "@bitwarden/common/abstractions/devices/devices-api.service.abstraction";
 import { EncryptService } from "@bitwarden/common/abstractions/encrypt.service";
 import { EnvironmentService as EnvironmentServiceAbstraction } from "@bitwarden/common/abstractions/environment.service";
 import { EventCollectionService as EventCollectionServiceAbstraction } from "@bitwarden/common/abstractions/event/event-collection.service";
@@ -90,6 +91,7 @@ import { ConsoleLogService } from "@bitwarden/common/services/consoleLog.service
 import { CryptoService } from "@bitwarden/common/services/crypto.service";
 import { EncryptServiceImplementation } from "@bitwarden/common/services/cryptography/encrypt.service.implementation";
 import { MultithreadEncryptServiceImplementation } from "@bitwarden/common/services/cryptography/multithread-encrypt.service.implementation";
+import { DevicesApiServiceImplementation } from "@bitwarden/common/services/devices/devices-api.service.implementation";
 import { EnvironmentService } from "@bitwarden/common/services/environment.service";
 import { EventCollectionService } from "@bitwarden/common/services/event/event-collection.service";
 import { EventUploadService } from "@bitwarden/common/services/event/event-upload.service";
@@ -650,6 +652,11 @@ import { AbstractThemingService } from "./theming/theming.service.abstraction";
       provide: OrgDomainApiServiceAbstraction,
       useClass: OrgDomainApiService,
       deps: [OrgDomainServiceAbstraction, ApiServiceAbstraction],
+    },
+    {
+      provide: DevicesApiServiceAbstraction,
+      useClass: DevicesApiServiceImplementation,
+      deps: [ApiServiceAbstraction],
     },
   ],
 })
