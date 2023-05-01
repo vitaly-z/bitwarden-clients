@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import BrowserPlatformUtilsService from "../services/browserPlatformUtils.service";
 
 require("./scss/popup.scss");
+require("./scss/tailwind.css");
 
 import { AppModule } from "./app.module";
 
