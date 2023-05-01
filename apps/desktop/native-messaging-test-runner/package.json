@@ -2,17 +2,17 @@
   "name": "native-messaging-test-runner",
   "version": "1.0.0",
   "description": "Test runner for Desktop native messaging",
+  "license": "GPL-3.0",
+  "author": "Bitwarden Inc. <hello@bitwarden.com> (https://bitwarden.com)",
   "main": "dist/bw-handshake.ts",
   "scripts": {
-    "handshake": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-handshake.js",
-    "status": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-status.js",
-    "retrieve": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-credential-retrieval.js",
     "create": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-credential-create.js",
-    "update": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-credential-update.js",
-    "generate": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-generate-password.js"
+    "generate": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-generate-password.js",
+    "handshake": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-handshake.js",
+    "retrieve": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-credential-retrieval.js",
+    "status": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-status.js",
+    "update": "tsc && node dist/apps/desktop/native-messaging-test-runner/src/commands/bw-credential-update.js"
   },
-  "author": "Bitwarden Inc. <hello@bitwarden.com> (https://bitwarden.com)",
-  "license": "GPL-3.0",
   "dependencies": {
     "@bitwarden/common": "file:../../../libs/common",
     "@bitwarden/node": "file:../../../libs/node",

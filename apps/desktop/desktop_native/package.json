@@ -2,14 +2,14 @@
   "name": "@bitwarden/desktop-native",
   "version": "0.1.0",
   "description": "",
+  "license": "GPL-3.0",
+  "author": "",
   "scripts": {
     "build": "napi build --release --platform --js false",
-    "build:debug": "napi build --platform --js false",
     "build:cross-platform": "node build.js",
+    "build:debug": "napi build --platform --js false",
     "test": "cargo test"
   },
-  "author": "",
-  "license": "GPL-3.0",
   "devDependencies": {
     "@napi-rs/cli": "^2.6.2"
   },
