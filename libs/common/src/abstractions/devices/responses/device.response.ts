@@ -1,8 +1,6 @@
 import { DeviceType } from "../../../enums";
 import { BaseResponse } from "../../../models/response/base.response";
 
-// TODO: confirm that moving device.response.ts to the same devices folder in abstractions is correct.
-
 export class DeviceResponse extends BaseResponse {
   id: string;
   name: number;
