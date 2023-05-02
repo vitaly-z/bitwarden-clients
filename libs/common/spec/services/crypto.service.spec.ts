@@ -18,8 +18,6 @@ describe("cryptoService", () => {
   const logService = mock<LogService>();
   const stateService = mock<StateService>();
 
-  const deviceKeyBytesLength = 64;
-
   beforeEach(() => {
     mockReset(cryptoFunctionService);
     mockReset(encryptService);
@@ -40,21 +38,25 @@ describe("cryptoService", () => {
     expect(cryptoService).not.toBeFalsy();
   });
 
-  it("makeDeviceKey functions per requirements: (1) creates 512 bit device encryption key (2) securely stores it", async () => {
-    const mockRandomBytes = new Uint8Array(deviceKeyBytesLength).buffer as CsprngArray;
+  describe("makeDeviceKey", () => {
+    const deviceKeyBytesLength = 64;
 
-    const cryptoFuncSvcRandomBytesSpy = jest
-      .spyOn(cryptoFunctionService, "randomBytes")
-      .mockResolvedValue(mockRandomBytes);
-    const stateSvcSetDeviceKeySpy = jest.spyOn(stateService, "setDeviceKey");
+    it("Creates a non-null 64 byte device encryption key and securely stores it", async () => {
+      const mockRandomBytes = new Uint8Array(deviceKeyBytesLength).buffer as CsprngArray;
 
-    const deviceKey = await cryptoService.makeDeviceKey();
+      const cryptoFuncSvcRandomBytesSpy = jest
+        .spyOn(cryptoFunctionService, "randomBytes")
+        .mockResolvedValue(mockRandomBytes);
+      const stateSvcSetDeviceKeySpy = jest.spyOn(stateService, "setDeviceKey");
 
-    expect(cryptoFuncSvcRandomBytesSpy).toHaveBeenCalledTimes(1);
-    expect(cryptoFuncSvcRandomBytesSpy).toHaveBeenCalledWith(deviceKeyBytesLength);
-    expect(deviceKey).not.toBeNull();
-    expect(deviceKey).toBeInstanceOf(SymmetricCryptoKey);
-    expect(stateSvcSetDeviceKeySpy).toHaveBeenCalledTimes(1);
-    expect(stateSvcSetDeviceKeySpy).toHaveBeenCalledWith(deviceKey);
+      const deviceKey = await cryptoService.makeDeviceKey();
+
+      expect(cryptoFuncSvcRandomBytesSpy).toHaveBeenCalledTimes(1);
+      expect(cryptoFuncSvcRandomBytesSpy).toHaveBeenCalledWith(deviceKeyBytesLength);
+      expect(deviceKey).not.toBeNull();
+      expect(deviceKey).toBeInstanceOf(SymmetricCryptoKey);
+      expect(stateSvcSetDeviceKeySpy).toHaveBeenCalledTimes(1);
+      expect(stateSvcSetDeviceKeySpy).toHaveBeenCalledWith(deviceKey);
+    });
   });
 });
