@@ -75,6 +75,7 @@ export default class RuntimeBackground {
         this.systemService.cancelProcessReload();
 
         if (item) {
+          await BrowserApi.focusWindow(item.commandToRetry.sender.tab.windowId);
           await BrowserApi.tabSendMessageData(
             item.commandToRetry.sender.tab,
             "unlockCompleted",

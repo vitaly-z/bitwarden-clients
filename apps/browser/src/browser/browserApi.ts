@@ -127,11 +127,23 @@ export class BrowserApi {
     return Promise.resolve(chrome.extension.getViews({ type: "popup" }).length > 0);
   }
 
-  static createNewTab(url: string, active = true, openerTab?: chrome.tabs.Tab) {
-    chrome.tabs.create({ url: url, active: active, openerTabId: openerTab?.id });
+  static async createNewTab(
+    url: string,
+    active = true,
+    openerTab?: chrome.tabs.Tab
+  ): Promise<chrome.tabs.Tab> {
+    return new Promise((resolve) =>
+      chrome.tabs.create({ url: url, active: active, openerTabId: openerTab?.id }, (tab) =>
+        resolve(tab)
+      )
+    );
   }
 
-  static openBitwardenExtensionTab(
+  static async focusWindow(windowId: number) {
+    await chrome.windows.update(windowId, { focused: true });
+  }
+
+  static async openBitwardenExtensionTab(
     relativeUrl: string,
     active = true,
     openerTab?: chrome.tabs.Tab
@@ -144,7 +156,14 @@ export class BrowserApi {
     const fullUrl = chrome.extension.getURL(relativeUrl);
     const parsedUrl = new URL(fullUrl);
     parsedUrl.searchParams.set("uilocation", "tab");
-    this.createNewTab(parsedUrl.toString(), active, openerTab);
+    const url = parsedUrl.toString();
+    if (openerTab?.incognito) {
+      const createdTab = await this.createNewTab(url, active);
+      this.focusWindow(createdTab.windowId);
+      return;
+    }
+
+    this.createNewTab(url, active, openerTab);
   }
 
   static async closeBitwardenExtensionTab() {
