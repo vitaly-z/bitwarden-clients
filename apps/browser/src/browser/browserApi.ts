@@ -127,7 +127,7 @@ export class BrowserApi {
     return Promise.resolve(chrome.extension.getViews({ type: "popup" }).length > 0);
   }
 
-  static async createNewTab(url: string, active = true): Promise<chrome.tabs.Tab> {
+  static createNewTab(url: string, active = true): Promise<chrome.tabs.Tab> {
     return new Promise((resolve) =>
       chrome.tabs.create({ url: url, active: active }, (tab) => resolve(tab))
     );
