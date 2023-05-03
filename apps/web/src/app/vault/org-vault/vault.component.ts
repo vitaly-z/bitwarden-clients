@@ -61,13 +61,13 @@ import {
   GroupView,
 } from "../../admin-console/organizations/core";
 import { EntityEventsComponent } from "../../admin-console/organizations/manage/entity-events.component";
+import { VaultFilterService } from "../../vault/individual-vault/vault-filter/services/abstractions/vault-filter.service";
+import { VaultFilter } from "../../vault/individual-vault/vault-filter/shared/models/vault-filter.model";
 import {
   CollectionDialogResult,
   CollectionDialogTabType,
   openCollectionDialog,
-} from "../../admin-console/organizations/shared";
-import { VaultFilterService } from "../../vault/individual-vault/vault-filter/services/abstractions/vault-filter.service";
-import { VaultFilter } from "../../vault/individual-vault/vault-filter/shared/models/vault-filter.model";
+} from "../components/collection-dialog";
 import { VaultItemEvent } from "../components/vault-items/vault-item-event";
 import {
   BulkDeleteDialogResult,

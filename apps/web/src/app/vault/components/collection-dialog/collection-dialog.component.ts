@@ -17,15 +17,15 @@ import {
   CollectionAdminView,
   GroupService,
   GroupView,
-} from "../../../core";
+} from "../../../admin-console/organizations/core";
+import { PermissionMode } from "../../../admin-console/organizations/shared/components/access-selector/access-selector.component";
 import {
-  AccessItemType,
-  AccessItemValue,
   AccessItemView,
-  convertToPermission,
+  AccessItemValue,
+  AccessItemType,
   convertToSelectionView,
-  PermissionMode,
-} from "../access-selector";
+  convertToPermission,
+} from "../../../admin-console/organizations/shared/components/access-selector/access-selector.models";
 
 export enum CollectionDialogTabType {
   Info = 0,

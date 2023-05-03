@@ -18,7 +18,7 @@ import {
   CollectionAdminService,
   CollectionAdminView,
 } from "../../../admin-console/organizations/core";
-import { CollectionDialogTabType } from "../../../admin-console/organizations/shared";
+import { CollectionDialogTabType } from "../../components/collection-dialog";
 import {
   All,
   RoutedVaultFilterModel,
