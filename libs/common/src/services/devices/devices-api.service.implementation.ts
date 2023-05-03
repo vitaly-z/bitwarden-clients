@@ -41,7 +41,7 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
     return new DeviceResponse(result);
   }
 
-  async updateDeviceEncryptedMasterKey(
+  async updateDeviceEncryptedUserSymmetricKey(
     deviceId: string,
     deviceEncryptedUserSymmetricKey: string
   ): Promise<DeviceResponse> {
