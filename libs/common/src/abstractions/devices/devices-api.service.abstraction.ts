@@ -5,10 +5,10 @@ export abstract class DevicesApiServiceAbstraction {
 
   updateDeviceEncryptedUserSymmetricKey: (
     deviceId: string,
-    deviceEncryptedMasterKey: string
+    deviceEncryptedUserSymmetricKey: string
   ) => Promise<DeviceResponse>;
   createDeviceEncryptedUserSymmetricKey: (
     deviceId: string,
-    deviceEncryptedMasterKey: string
+    deviceEncryptedUserSymmetricKey: string
   ) => Promise<DeviceResponse>;
 }
