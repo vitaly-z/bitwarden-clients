@@ -148,22 +148,16 @@ export class BrowserApi {
     active = true,
     openerTab?: chrome.tabs.Tab
   ) {
-    if (relativeUrl.includes("uilocation=tab")) {
-      this.createNewTab(relativeUrl, active, openerTab);
-      return;
+    let url = relativeUrl;
+    if (!relativeUrl.includes("uilocation=tab")) {
+      const fullUrl = chrome.extension.getURL(relativeUrl);
+      const parsedUrl = new URL(fullUrl);
+      parsedUrl.searchParams.set("uilocation", "tab");
+      url = parsedUrl.toString();
     }
 
-    const fullUrl = chrome.extension.getURL(relativeUrl);
-    const parsedUrl = new URL(fullUrl);
-    parsedUrl.searchParams.set("uilocation", "tab");
-    const url = parsedUrl.toString();
-    if (openerTab?.incognito) {
-      const createdTab = await this.createNewTab(url, active);
-      this.focusWindow(createdTab.windowId);
-      return;
-    }
-
-    this.createNewTab(url, active, openerTab);
+    const createdTab = await this.createNewTab(url, active);
+    this.focusWindow(createdTab.windowId);
   }
 
   static async closeBitwardenExtensionTab() {
@@ -180,10 +174,6 @@ export class BrowserApi {
 
     const tabToClose = tabs[tabs.length - 1];
     chrome.tabs.remove(tabToClose.id);
-
-    if (tabToClose.openerTabId) {
-      this.focusTab(tabToClose.openerTabId);
-    }
   }
 
   static messageListener(
