@@ -84,11 +84,5 @@ export abstract class CryptoService {
   randomNumber: (min: number, max: number) => Promise<number>;
   validateKey: (key: SymmetricCryptoKey) => Promise<boolean>;
 
-  // Establish trust Steps:
-  // 1. Generate a random 64 device key and store on device in secure storage (makeDeviceKey)
-  //    -- No key derivation needed like w/ master password
-  // 2. Call makeEncKey to generate a random 512 master key and encrypt it with the device key (passed in)
-  // 3. Send encrypted master key to server via devices api service (not created yet)
-
   makeDeviceKey: () => Promise<SymmetricCryptoKey>;
 }
