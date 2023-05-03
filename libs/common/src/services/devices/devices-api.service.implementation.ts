@@ -3,7 +3,7 @@ import { DeviceResponse } from "../../abstractions/devices/responses/device.resp
 import { Utils } from "../../misc/utils";
 import { ApiService } from "../api.service";
 
-import { DeviceEncryptedMasterKeyRequest } from "./requests/device-encrypted-master-key.request";
+import { DeviceEncryptedUserSymmetricKeyRequest } from "./requests/device-encrypted-user-symmetric-key.request";
 
 export class DevicesApiServiceImplementation implements DevicesApiServiceAbstraction {
   constructor(private apiService: ApiService) {}
@@ -24,11 +24,11 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
     return r as boolean;
   }
 
-  async createDeviceEncryptedMasterKey(
+  async createDeviceEncryptedUserSymmetricKey(
     deviceId: string,
-    deviceEncryptedMasterKey: string
+    deviceEncryptedUserSymmetricKey: string
   ): Promise<DeviceResponse> {
-    const request = new DeviceEncryptedMasterKeyRequest(deviceEncryptedMasterKey);
+    const request = new DeviceEncryptedUserSymmetricKeyRequest(deviceEncryptedUserSymmetricKey);
 
     const result = await this.apiService.send(
       "POST",
@@ -43,9 +43,9 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
 
   async updateDeviceEncryptedMasterKey(
     deviceId: string,
-    deviceEncryptedMasterKey: string
+    deviceEncryptedUserSymmetricKey: string
   ): Promise<DeviceResponse> {
-    const request = new DeviceEncryptedMasterKeyRequest(deviceEncryptedMasterKey);
+    const request = new DeviceEncryptedUserSymmetricKeyRequest(deviceEncryptedUserSymmetricKey);
 
     const result = await this.apiService.send(
       "PUT",
@@ -57,6 +57,4 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
 
     return new DeviceResponse(result);
   }
-
-  // TODO: move other devices endpoint calls out of api service
 }
