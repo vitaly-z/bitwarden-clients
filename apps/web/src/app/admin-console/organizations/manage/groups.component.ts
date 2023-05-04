@@ -14,7 +14,6 @@ import {
 } from "rxjs";
 import { first } from "rxjs/operators";
 
-import { EllipsisPipe } from "@bitwarden/angular/pipes/ellipsis.pipe";
 import { SearchPipe } from "@bitwarden/angular/pipes/search.pipe";
 import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/services/dialog";
 import { ModalService } from "@bitwarden/angular/services/modal.service";
@@ -133,7 +132,6 @@ export class GroupsComponent implements OnInit, OnDestroy {
     private searchService: SearchService,
     private logService: LogService,
     private collectionService: CollectionService,
-    private ellipsisPipe: EllipsisPipe,
     private searchPipe: SearchPipe
   ) {}
 

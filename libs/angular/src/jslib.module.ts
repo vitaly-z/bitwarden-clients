@@ -98,14 +98,6 @@ import { IconComponent } from "./vault/components/icon.component";
     PasswordStrengthComponent,
     UserTypePipe,
   ],
-  providers: [
-    CreditCardNumberPipe,
-    DatePipe,
-    EllipsisPipe,
-    I18nPipe,
-    SearchPipe,
-    UserNamePipe,
-    UserTypePipe,
-  ],
+  providers: [CreditCardNumberPipe, DatePipe, I18nPipe, SearchPipe, UserNamePipe, UserTypePipe],
 })
 export class JslibModule {}
