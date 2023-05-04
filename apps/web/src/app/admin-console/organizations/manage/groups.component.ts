@@ -319,11 +319,6 @@ export class GroupsComponent implements OnInit, OnDestroy {
     return !searching && this.groups && this.groups.length > this.pageSize;
   }
 
-  truncateCollectionNames(collectionNames: string[]) {
-    // run the pipe manually by calling transform
-    return collectionNames.map((name) => this.ellipsisPipe.transform(name));
-  }
-
   private removeGroup(id: string) {
     const index = this.groups.findIndex((g) => g.details.id === id);
     if (index > -1) {
