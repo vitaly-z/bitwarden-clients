@@ -137,11 +137,7 @@ export class BrowserApi {
     await chrome.windows.update(windowId, { focused: true });
   }
 
-  static async openBitwardenExtensionTab(
-    relativeUrl: string,
-    active = true,
-    openerTab?: chrome.tabs.Tab
-  ) {
+  static async openBitwardenExtensionTab(relativeUrl: string, active = true) {
     let url = relativeUrl;
     if (!relativeUrl.includes("uilocation=tab")) {
       const fullUrl = chrome.extension.getURL(relativeUrl);
