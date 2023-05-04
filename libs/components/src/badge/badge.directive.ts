@@ -44,10 +44,12 @@ export class BadgeDirective {
       "focus:tw-ring-primary-700",
     ]
       .concat(styles[this.badgeType])
-      .concat(this.hasHoverEffects ? hoverStyles[this.badgeType] : []);
+      .concat(this.hasHoverEffects ? hoverStyles[this.badgeType] : [])
+      .concat(this.truncate ? ["tw-truncate", "tw-max-w-40"] : []);
   }
 
   @Input() badgeType: BadgeTypes = "primary";
+  @Input() truncate = false;
 
   private hasHoverEffects = false;
 
