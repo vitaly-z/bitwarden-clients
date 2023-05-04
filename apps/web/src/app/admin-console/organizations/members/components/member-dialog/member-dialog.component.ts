@@ -17,9 +17,9 @@ import { Organization } from "@bitwarden/common/admin-console/models/domain/orga
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 
 import { flagEnabled } from "../../../../../../utils/flags";
+import { CollectionAdminService } from "../../../../../vault/core/collection-admin.service";
 import {
   CollectionAccessSelectionView,
-  CollectionAdminService,
   GroupService,
   GroupView,
   OrganizationUserAdminView,

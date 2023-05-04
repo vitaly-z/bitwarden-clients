@@ -13,12 +13,7 @@ import { Organization } from "@bitwarden/common/admin-console/models/domain/orga
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { BitValidators } from "@bitwarden/components";
 
-import {
-  CollectionAdminService,
-  CollectionAdminView,
-  GroupService,
-  GroupView,
-} from "../../../admin-console/organizations/core";
+import { GroupService, GroupView } from "../../../admin-console/organizations/core";
 import { PermissionMode } from "../../../admin-console/organizations/shared/components/access-selector/access-selector.component";
 import {
   AccessItemView,
@@ -27,6 +22,8 @@ import {
   convertToSelectionView,
   convertToPermission,
 } from "../../../admin-console/organizations/shared/components/access-selector/access-selector.models";
+import { CollectionAdminService } from "../../core/collection-admin.service";
+import { CollectionAdminView } from "../../core/views/collection-admin.view";
 
 export enum CollectionDialogTabType {
   Info = 0,

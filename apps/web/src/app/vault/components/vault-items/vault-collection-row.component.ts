@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 
-import { CollectionAdminView, GroupView } from "../../../admin-console/organizations/core";
+import { GroupView } from "../../../admin-console/organizations/core";
+import { CollectionAdminView } from "../../core/views/collection-admin.view";
 
 import { VaultItemEvent } from "./vault-item-event";
 import { RowHeightClass } from "./vault-items.component";

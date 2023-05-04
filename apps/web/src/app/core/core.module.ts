@@ -25,6 +25,7 @@ import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.s
 import { PasswordRepromptService as PasswordRepromptServiceAbstraction } from "@bitwarden/common/vault/abstractions/password-reprompt.service";
 
 import { PolicyListService } from "../admin-console/core/policy-list.service";
+import { CollectionAdminService } from "../vault/core/collection-admin.service";
 import { PasswordRepromptService } from "../vault/core/password-reprompt.service";
 
 import { BroadcasterMessagingService } from "./broadcaster-messaging.service";
@@ -105,6 +106,10 @@ import { WebPlatformUtilsService } from "./web-platform-utils.service";
       provide: LoginServiceAbstraction,
       useClass: LoginService,
       deps: [StateService],
+    },
+    {
+      provide: CollectionAdminService,
+      useClass: CollectionAdminService,
     },
   ],
 })

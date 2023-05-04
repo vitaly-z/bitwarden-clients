@@ -14,11 +14,9 @@ import { Organization } from "@bitwarden/common/admin-console/models/domain/orga
 import { ProductType } from "@bitwarden/common/enums";
 import { TreeNode } from "@bitwarden/common/models/domain/tree-node";
 
-import {
-  CollectionAdminService,
-  CollectionAdminView,
-} from "../../../admin-console/organizations/core";
+import { CollectionAdminView } from "../../../vault/core/views/collection-admin.view";
 import { CollectionDialogTabType } from "../../components/collection-dialog";
+import { CollectionAdminService } from "../../core/collection-admin.service";
 import {
   All,
   RoutedVaultFilterModel,

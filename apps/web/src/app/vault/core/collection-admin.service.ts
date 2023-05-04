@@ -10,10 +10,9 @@ import {
 } from "@bitwarden/common/admin-console/models/response/collection.response";
 import { EncString } from "@bitwarden/common/models/domain/enc-string";
 
-import { CoreOrganizationModule } from "../core-organization.module";
-import { CollectionAdminView } from "../views/collection-admin.view";
+import { CollectionAdminView } from "./views/collection-admin.view";
 
-@Injectable({ providedIn: CoreOrganizationModule })
+@Injectable()
 export class CollectionAdminService {
   constructor(private apiService: ApiService, private cryptoService: CryptoService) {}
 
