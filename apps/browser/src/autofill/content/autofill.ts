@@ -47,6 +47,7 @@
   11. Work on array of saved urls instead of just one to determine if we should autofill non-https sites
   12. Remove setting of attribute com.browser.browser.userEdited on user-inputs
   13. Handle null value URLs in urlNotSecure
+  14. Convert to Typescript, add typings and remove dead code (not marked with START/END MODIFICATION)
   */
 import AutofillForm from "../models/autofill-form";
 import AutofillPageDetails from "../models/autofill-page-details";
