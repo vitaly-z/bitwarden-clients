@@ -71,36 +71,6 @@ function collect(document, undefined) {
       return "string" == typeof attrVal ? attrVal : null;
     }
 
-    // has the element been fake tested?
-    function checkIfFakeTested(field, el) {
-      if (
-        -1 === ["text", "password"].indexOf(el.type.toLowerCase()) ||
-        !(
-          passwordRegEx.test(field.value) ||
-          passwordRegEx.test(field.htmlID) ||
-          passwordRegEx.test(field.htmlName) ||
-          passwordRegEx.test(field.placeholder) ||
-          passwordRegEx.test(field["label-tag"]) ||
-          passwordRegEx.test(field["label-data"]) ||
-          passwordRegEx.test(field["label-aria"])
-        )
-      ) {
-        return false;
-      }
-
-      if (!field.visible) {
-        return true;
-      }
-
-      if ("password" == el.type.toLowerCase()) {
-        return false;
-      }
-
-      var elType = el.type;
-      focusElement(el, true);
-      return elType !== el.type;
-    }
-
     /**
      * Returns the value of the given element.
      * @param {HTMLElement} el
