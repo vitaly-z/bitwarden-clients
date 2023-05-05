@@ -68,11 +68,9 @@ type AutofillDocument = Document & {
 /**
  * A HTMLElement (usually a form element) with additional custom properties added by this script
  */
-type Autofill<T> = T & {
+type ElementWithOpId<T> = T & {
   opid: string;
 };
-type AutofillHTMLForm = Autofill<HTMLFormElement>;
-type AutofillHTMLFormElement = Autofill<FormElement>;
 
 /**
  * This script's definition of a Form Element (only a subset of HTML form elements)
@@ -81,7 +79,7 @@ type AutofillHTMLFormElement = Autofill<FormElement>;
 type FormElement = HTMLInputElement | HTMLSelectElement | HTMLSpanElement;
 
 /**
- * A Form Element that we can set a value on
+ * A Form Element that we can set a value on (fill)
  */
 type FillableControl = HTMLInputElement | HTMLSelectElement;
 
@@ -326,7 +324,7 @@ function collect(document: Document) {
         var op: AutofillForm = {} as any,
           formOpId: unknown = "__form__" + elIndex;
 
-        (formEl as AutofillHTMLForm).opid = formOpId as string;
+        (formEl as ElementWithOpId<HTMLFormElement>).opid = formOpId as string;
         op.opid = formOpId as string;
         addProp(op, "htmlName", getElementAttrValue(formEl, "name"));
         addProp(op, "htmlID", getElementAttrValue(formEl, "id"));
@@ -352,7 +350,7 @@ function collect(document: Document) {
         }
 
         (theDoc as AutofillDocument).elementsByOPID[opId] = el;
-        (el as AutofillHTMLFormElement).opid = opId;
+        (el as ElementWithOpId<FormElement>).opid = opId;
         field.opid = opId;
         field.elementNumber = elIndex;
         addProp(field, "maxLength", Math.min(elMaxLen, 999), 999);
@@ -732,7 +730,7 @@ function collect(document: Document) {
 
     try {
       var formEls = Array.prototype.slice.call(getFormElements(document));
-      var filteredFormEls = formEls.filter(function (el: AutofillHTMLFormElement) {
+      var filteredFormEls = formEls.filter(function (el: ElementWithOpId<FormElement>) {
         return el.opid == opId;
       });
 
@@ -1308,7 +1306,7 @@ function fill(document: Document, fillScript: AutofillScript) {
       );
       // END MODIFICATION
       var filteredElements = elements.filter(function (o) {
-        return (o as Autofill<FillableControl | HTMLButtonElement>).opid == theOpId;
+        return (o as ElementWithOpId<FillableControl | HTMLButtonElement>).opid == theOpId;
       });
       if (0 < filteredElements.length) {
         (theElement = filteredElements[0]),
