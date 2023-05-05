@@ -26,11 +26,11 @@ export default {
 const Template: Story<BadgeDirective> = (args: BadgeDirective) => ({
   props: args,
   template: `
-    <span class="tw-text-main">Span </span><span bitBadge [badgeType]="badgeType">Badge</span>
+    <span class="tw-text-main">Span </span><span bitBadge [badgeType]="badgeType" [truncate]="truncate">Badge</span>
     <br><br>
-    <span class="tw-text-main">Link </span><a href="#" bitBadge [badgeType]="badgeType">Badge</a>
+    <span class="tw-text-main">Link </span><a href="#" bitBadge [badgeType]="badgeType" [truncate]="truncate">Badge</a>
     <br><br>
-    <span class="tw-text-main">Button </span><button bitBadge [badgeType]="badgeType">Badge</button>
+    <span class="tw-text-main">Button </span><button bitBadge [badgeType]="badgeType" [truncate]="truncate">Badge</button>
   `,
 });
 

@@ -41,7 +41,7 @@ export default {
 const ListTemplate: Story<BadgeListComponent> = (args: BadgeListComponent) => ({
   props: args,
   template: `
-    <bit-badge-list [badgeType]="badgeType" [maxItems]="maxItems" [items]="items"></bit-badge-list>
+    <bit-badge-list [badgeType]="badgeType" [maxItems]="maxItems" [items]="items" [truncate]="truncate"></bit-badge-list>
   `,
 });
 
