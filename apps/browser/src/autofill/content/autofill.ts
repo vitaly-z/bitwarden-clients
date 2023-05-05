@@ -1,3 +1,7 @@
+/* eslint-disable no-var, no-console, no-prototype-builtins */
+// These eslint rules are disabled because the original JS was not written with them in mind and we don't want to fix
+// them all now
+
 /*
   1Password Extension
 
@@ -44,7 +48,7 @@
   12. Remove setting of attribute com.browser.browser.userEdited on user-inputs
   13. Handle null value URLs in urlNotSecure
   */
-import AutofillForm from '../models/autofill-form';
+import AutofillForm from "../models/autofill-form";
 import AutofillPageDetails from "../models/autofill-page-details";
 import AutofillScript, {
   AutofillScriptOptions,
@@ -80,7 +84,7 @@ type FormElement = HTMLInputElement | HTMLSelectElement | HTMLSpanElement;
  */
 type FillableControl = HTMLInputElement | HTMLSelectElement;
 
-function collect(document: Document, undefined?: unknown) {
+function collect(document: Document) {
   // START MODIFICATION
   var isFirefox =
     navigator.userAgent.indexOf("Firefox") !== -1 || navigator.userAgent.indexOf("Gecko/") !== -1;
@@ -142,15 +146,18 @@ function collect(document: Document, undefined?: unknown) {
         return null;
       }
 
-      var options = Array.prototype.slice.call(el.options).map(function (option: HTMLOptionElement) {
-        var optionText = option.text
-          ? toLowerString(option.text)
-              .replace(/\\s/gm, "")
-              .replace(/[~`!@$%^&*()\\-_+=:;'\"\\[\\]|\\\\,<.>\\?]/gm, "")
-          : null;
+      var options = Array.prototype.slice
+        .call(el.options)
+        .map(function (option: HTMLOptionElement) {
+          var optionText = option.text
+            ? toLowerString(option.text)
+                .replace(/\\s/gm, "")
+                // eslint-disable-next-line no-useless-escape
+                .replace(/[~`!@$%^&*()\\-_+=:;'\"\\[\\]|\\\\,<.>\\?]/gm, "")
+            : null;
 
-        return [optionText ? optionText : null, option.value];
-      });
+          return [optionText ? optionText : null, option.value];
+        });
 
       return {
         options: options,
@@ -214,12 +221,17 @@ function collect(document: Document, undefined?: unknown) {
       } else {
         if (el.id) {
           theLabels = theLabels.concat(
-            Array.prototype.slice.call(queryDoc<HTMLLabelElement>(theDoc, "label[for=" + JSON.stringify(el.id) + "]"))
+            Array.prototype.slice.call(
+              queryDoc<HTMLLabelElement>(theDoc, "label[for=" + JSON.stringify(el.id) + "]")
+            )
           );
         }
 
         if (el.name) {
-          docLabel = queryDoc<HTMLLabelElement>(theDoc, "label[for=" + JSON.stringify(el.name) + "]");
+          docLabel = queryDoc<HTMLLabelElement>(
+            theDoc,
+            "label[for=" + JSON.stringify(el.name) + "]"
+          );
 
           for (var labelIndex = 0; labelIndex < docLabel.length; labelIndex++) {
             if (-1 === theLabels.indexOf(docLabel[labelIndex])) {
@@ -228,8 +240,15 @@ function collect(document: Document, undefined?: unknown) {
           }
         }
 
-        for (var theEl: HTMLElement = el; theEl && theEl != theDoc as any; theEl = theEl.parentNode as HTMLElement) {
-          if ("label" === toLowerString(theEl.tagName) && -1 === theLabels.indexOf(theEl as HTMLLabelElement)) {
+        for (
+          var theEl: HTMLElement = el;
+          theEl && theEl != (theDoc as any);
+          theEl = theEl.parentNode as HTMLElement
+        ) {
+          if (
+            "label" === toLowerString(theEl.tagName) &&
+            -1 === theLabels.indexOf(theEl as HTMLLabelElement)
+          ) {
             theLabels.push(theEl as HTMLLabelElement);
           }
         }
@@ -290,17 +309,14 @@ function collect(document: Document, undefined?: unknown) {
       try {
         // Technically this returns a NodeListOf<Element> but it's ducktyped as an Array everywhere, so return it as an array here
         els = doc.querySelectorAll(query) as unknown as Array<T>;
+        // eslint-disable-next-line no-empty
       } catch (e) {}
       return els;
     }
 
     // end helpers
 
-    var theView = theDoc.defaultView ? theDoc.defaultView : window,
-      passwordRegEx = RegExp(
-        "((\\\\b|_|-)pin(\\\\b|_|-)|password|passwort|kennwort|(\\\\b|_|-)passe(\\\\b|_|-)|contraseña|senha|密码|adgangskode|hasło|wachtwoord)",
-        "i"
-      );
+    var theView = theDoc.defaultView ? theDoc.defaultView : window;
 
     // get all the docs
     var theForms: AutofillForm[] = Array.prototype.slice
@@ -327,7 +343,8 @@ function collect(document: Document, undefined?: unknown) {
       .map(function (el: FormElement, elIndex: number) {
         var field: Record<string, any> = {},
           opId = "__" + elIndex,
-          elMaxLen = -1 == (el as HTMLInputElement).maxLength ? 999 : (el as HTMLInputElement).maxLength;
+          elMaxLen =
+            -1 == (el as HTMLInputElement).maxLength ? 999 : (el as HTMLInputElement).maxLength;
 
         if (!elMaxLen || ("number" === typeof elMaxLen && isNaN(elMaxLen))) {
           elMaxLen = 999;
@@ -396,7 +413,11 @@ function collect(document: Document, undefined?: unknown) {
         addProp(field, "aria-haspopup", "true" == el.getAttribute("aria-haspopup"), false);
         addProp(field, "data-unmasked", el.dataset.unmasked);
         addProp(field, "data-stripe", getElementAttrValue(el, "data-stripe"));
-        addProp(field, "onepasswordFieldType", el.dataset.onepasswordFieldType || (el as FillableControl).type);
+        addProp(
+          field,
+          "onepasswordFieldType",
+          el.dataset.onepasswordFieldType || (el as FillableControl).type
+        );
         addProp(field, "onepasswordDesignation", el.dataset.onepasswordDesignation);
         addProp(field, "onepasswordSignInUrl", el.dataset.onepasswordSignInUrl);
         addProp(field, "onepasswordSectionTitle", el.dataset.onepasswordSectionTitle);
@@ -590,6 +611,7 @@ function collect(document: Document, undefined?: unknown) {
   function isElementVisible(el: any) {
     var theEl = el;
     // Get the top level document
+    // eslint-disable-next-line no-cond-assign
     el = (el = el.ownerDocument) ? el.defaultView : {};
 
     // walk the dom tree until we reach the top
@@ -724,6 +746,7 @@ function collect(document: Document, undefined?: unknown) {
     } catch (e) {
       console.error("An unexpected error occurred: " + e);
     } finally {
+      // eslint-disable-next-line no-unsafe-finally
       return theEl;
     }
   }
@@ -744,6 +767,7 @@ function collect(document: Document, undefined?: unknown) {
           "span[data-bwautofill]"
       );
       els = Array.prototype.slice.call(elsList);
+      // eslint-disable-next-line no-empty
     } catch (e) {}
 
     if (!limit || els.length <= limit) {
@@ -759,7 +783,9 @@ function collect(document: Document, undefined?: unknown) {
       }
 
       var el = els[i];
-      var type = (el as HTMLInputElement).type ? (el as HTMLInputElement).type.toLowerCase() : (el as HTMLInputElement).type;
+      var type = (el as HTMLInputElement).type
+        ? (el as HTMLInputElement).type.toLowerCase()
+        : (el as HTMLInputElement).type;
       if (type === "checkbox" || type === "radio") {
         unimportantEls.push(el);
       } else {
@@ -797,10 +823,7 @@ function collect(document: Document, undefined?: unknown) {
   return JSON.stringify(getPageDetails(document, "oneshotUUID"));
 }
 
-function fill(document: Document, fillScript: AutofillScript, undefined?: unknown) {
-  var isFirefox =
-    navigator.userAgent.indexOf("Firefox") !== -1 || navigator.userAgent.indexOf("Gecko/") !== -1;
-
+function fill(document: Document, fillScript: AutofillScript) {
   var markTheFilling = true,
     animateTheFilling = true;
 
@@ -982,13 +1005,16 @@ function fill(document: Document, fillScript: AutofillScript, undefined?: unknow
   function doSimpleSetByQuery(query: string, valueToSet: string): FillableControl[] {
     var elements = selectAllFromDoc(query),
       arr: FillableControl[] = [];
-    Array.prototype.forEach.call(Array.prototype.slice.call(elements), function (el: FillableControl) {
-      el.disabled ||
-        (el as any).a ||
-        (el as HTMLInputElement).readOnly ||
-        void 0 === el.value ||
-        ((el.value = valueToSet), arr.push(el));
-    });
+    Array.prototype.forEach.call(
+      Array.prototype.slice.call(elements),
+      function (el: FillableControl) {
+        el.disabled ||
+          (el as any).a ||
+          (el as HTMLInputElement).readOnly ||
+          void 0 === el.value ||
+          ((el.value = valueToSet), arr.push(el));
+      }
+    );
     return arr;
   }
 
@@ -1052,7 +1078,12 @@ function fill(document: Document, fillScript: AutofillScript, undefined?: unknow
    */
   function fillTheElement(el: FillableControl, op: string) {
     var shouldCheck: boolean;
-    if (el && null !== op && void 0 !== op && !(el.disabled || (el as any).a || (el as HTMLInputElement).readOnly)) {
+    if (
+      el &&
+      null !== op &&
+      void 0 !== op &&
+      !(el.disabled || (el as any).a || (el as HTMLInputElement).readOnly)
+    ) {
       switch (
         (markTheFilling && el.form && !el.form.opfilled && (el.form.opfilled = true),
         el.type ? el.type.toLowerCase() : null)
@@ -1091,7 +1122,10 @@ function fill(document: Document, fillScript: AutofillScript, undefined?: unknow
    * @param {HTMLElement} el
    * @param {*} afterValSetFunc The function to perform after the operations are complete.
    */
-  function doAllFillOperations(el: FillableControl, afterValSetFunc: (el:FillableControl) => void) {
+  function doAllFillOperations(
+    el: FillableControl,
+    afterValSetFunc: (el: FillableControl) => void
+  ) {
     setValueForElement(el);
     afterValSetFunc(el);
     setValueForElementByEvent(el);
@@ -1194,9 +1228,11 @@ function fill(document: Document, fillScript: AutofillScript, undefined?: unknow
       "((\\\\b|_|-)pin(\\\\b|_|-)|password|passwort|kennwort|passe|contraseña|senha|密码|adgangskode|hasło|wachtwoord)",
       "i"
     );
-    return Array.prototype.slice.call(selectAllFromDoc("input[type='text']")).filter(function (el: HTMLInputElement) {
-      return el.value && r.test(el.value);
-    }, this);
+    return Array.prototype.slice
+      .call(selectAllFromDoc("input[type='text']"))
+      .filter(function (el: HTMLInputElement) {
+        return el.value && r.test(el.value);
+      }, this);
   }
 
   /**
@@ -1247,7 +1283,10 @@ function fill(document: Document, fillScript: AutofillScript, undefined?: unknow
     }
     // END MODIFICATION
     return currentEl
-      ? -1 !== "email text password number tel url".split(" ").indexOf((el as HTMLInputElement).type || "")
+      ? -1 !==
+          "email text password number tel url"
+            .split(" ")
+            .indexOf((el as HTMLInputElement).type || "")
       : false;
   }
 
@@ -1281,6 +1320,7 @@ function fill(document: Document, fillScript: AutofillScript, undefined?: unknow
     } catch (e) {
       console.error("An unexpected error occurred: " + e);
     } finally {
+      // eslint-disable-next-line no-unsafe-finally
       return theElement;
     }
   }
@@ -1296,6 +1336,7 @@ function fill(document: Document, fillScript: AutofillScript, undefined?: unknow
     try {
       // Technically this returns a NodeListOf<Element> but it's ducktyped as an Array everywhere, so return it as an array here
       elements = d.querySelectorAll(theSelector) as unknown as Array<T>;
+      // eslint-disable-next-line no-empty
     } catch (e) {}
     return elements;
   }
