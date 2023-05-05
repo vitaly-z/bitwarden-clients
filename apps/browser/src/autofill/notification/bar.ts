@@ -28,6 +28,10 @@ function load() {
     notificationEdit: chrome.i18n.getMessage("edit"),
     notificationChangeSave: chrome.i18n.getMessage("notificationChangeSave"),
     notificationChangeDesc: chrome.i18n.getMessage("notificationChangeDesc"),
+    /** CG BEEEP */
+    notificationUnlock: chrome.i18n.getMessage("notificationUnlock"),
+    notificationUnlockDesc: chrome.i18n.getMessage("notificationUnlockDesc"),
+    /** END BEEEP */
   };
 
   document.getElementById("logo-link").title = i18n.appName;
@@ -63,6 +67,15 @@ function load() {
 
   changeTemplate.content.getElementById("change-text").textContent = i18n.notificationChangeDesc;
 
+  /** CG BEEEP */
+  const unlockTemplate = document.getElementById("template-unlock") as HTMLTemplateElement;
+
+  const unlockButton = unlockTemplate.content.getElementById("unlock-vault");
+  unlockButton.textContent = i18n.notificationUnlock;
+
+  unlockTemplate.content.getElementById("unlock-text").textContent = i18n.notificationUnlockDesc;
+  /** END BEEEP */
+
   // i18n for body content
   const closeButton = document.getElementById("close-button");
   closeButton.title = i18n.close;
@@ -71,6 +84,10 @@ function load() {
     handleTypeAdd();
   } else if (getQueryVariable("type") === "change") {
     handleTypeChange();
+  } else if (getQueryVariable("type") === "unlock") {
+    /** CG BEEEP */
+    handleTypeUnlock();
+    /** END BEEEP */
   }
 
   closeButton.addEventListener("click", (e) => {
@@ -162,6 +179,19 @@ function handleTypeChange() {
     });
   });
 }
+
+/** CG BEEEP */
+function handleTypeUnlock() {
+  setContent(document.getElementById("template-unlock") as HTMLTemplateElement);
+
+  const unlockButton = document.getElementById("unlock-vault");
+  unlockButton.addEventListener("click", (e) => {
+    sendPlatformMessage({
+      command: "bgReopenPromptForLogin",
+    });
+  });
+}
+/** END BEEEP */
 
 function setContent(template: HTMLTemplateElement) {
   const content = document.getElementById("content");

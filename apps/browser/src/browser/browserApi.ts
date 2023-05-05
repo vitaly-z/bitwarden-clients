@@ -166,6 +166,50 @@ export class BrowserApi {
     chrome.tabs.remove(tabToClose.id);
   }
 
+  /** CG BEEEP */
+  static getWindow(windowId?: number): Promise<chrome.windows.Window> | void {
+    if (!windowId) {
+      return;
+    }
+
+    return new Promise((resolve) =>
+      chrome.windows.get(windowId, { populate: true }, (window) => resolve(window))
+    );
+  }
+
+  static async openBitwardenLoginPromptWindow(senderWindowId?: number) {
+    const senderWindow = await BrowserApi.getWindow(senderWindowId);
+    await BrowserApi.closeBitwardenLoginPromptWindow();
+
+    const url = chrome.extension.getURL("popup/index.html?uilocation=popout");
+
+    const defaultWindowOptions: chrome.windows.CreateData = {
+      url,
+      type: "popup",
+      focused: true,
+      width: 375,
+      height: 600,
+    };
+    const windowOptions = !senderWindow
+      ? defaultWindowOptions
+      : {
+          ...defaultWindowOptions,
+          left: senderWindow.left + 25,
+          top: senderWindow.top + 25,
+        };
+    await chrome.windows.create(windowOptions);
+  }
+
+  static async closeBitwardenLoginPromptWindow() {
+    const url = chrome.extension.getURL("popup/index.html?uilocation=popout");
+    const tabs = await BrowserApi.tabsQuery({
+      url,
+      windowType: "popup",
+    });
+    tabs.forEach((tab) => chrome.tabs.remove(tab.id));
+  }
+  /** END BEEEP */
+
   static messageListener(
     name: string,
     callback: (message: any, sender: chrome.runtime.MessageSender, response: any) => void

@@ -66,7 +66,10 @@ export default class RuntimeBackground {
 
         if (this.lockedVaultPendingNotifications?.length > 0) {
           item = this.lockedVaultPendingNotifications.pop();
-          BrowserApi.closeBitwardenExtensionTab();
+          /** CG BEEEP */
+          // BrowserApi.closeBitwardenExtensionTab();
+          await BrowserApi.closeBitwardenLoginPromptWindow();
+          /** END BEEEP */
         }
 
         await this.main.refreshBadge();
@@ -105,7 +108,11 @@ export default class RuntimeBackground {
         await this.main.openPopup();
         break;
       case "promptForLogin":
-        BrowserApi.openBitwardenExtensionTab("popup/index.html", true);
+      case "bgReopenPromptForLogin":
+        /** CG BEEEP */
+        //  BrowserApi.openBitwardenExtensionTab("popup/index.html", true);
+        this.handlePromptForLoginMessage(sender);
+        /** END BEEEP */
         break;
       case "openAddEditCipher": {
         const addEditCipherUrl =
@@ -249,5 +256,9 @@ export default class RuntimeBackground {
         this.onInstalledReason = null;
       }
     }, 100);
+  }
+
+  private handlePromptForLoginMessage(sender: chrome.runtime.MessageSender) {
+    BrowserApi.openBitwardenLoginPromptWindow(sender.tab?.windowId);
   }
 }

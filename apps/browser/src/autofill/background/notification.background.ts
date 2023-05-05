@@ -14,6 +14,9 @@ import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 import AddChangePasswordQueueMessage from "../../background/models/addChangePasswordQueueMessage";
 import AddLoginQueueMessage from "../../background/models/addLoginQueueMessage";
 import AddLoginRuntimeMessage from "../../background/models/addLoginRuntimeMessage";
+/** CG BEEEP */
+import AddUnlockVaultQueueMessage from "../../background/models/addUnlockVaultQueueMessage";
+/** END BEEEP */
 import ChangePasswordRuntimeMessage from "../../background/models/changePasswordRuntimeMessage";
 import LockedVaultPendingNotificationsItem from "../../background/models/lockedVaultPendingNotificationsItem";
 import { NotificationQueueMessageType } from "../../background/models/notificationQueueMessageType";
@@ -22,7 +25,14 @@ import { BrowserStateService } from "../../services/abstractions/browser-state.s
 import { AutofillService } from "../services/abstractions/autofill.service";
 
 export default class NotificationBackground {
-  private notificationQueue: (AddLoginQueueMessage | AddChangePasswordQueueMessage)[] = [];
+  /** CG BEEEP */
+  // private notificationQueue: (AddLoginQueueMessage | AddChangePasswordQueueMessage)[] = [];
+  private notificationQueue: (
+    | AddLoginQueueMessage
+    | AddChangePasswordQueueMessage
+    | AddUnlockVaultQueueMessage
+  )[] = [];
+  /** END BEEEP */
 
   constructor(
     private autofillService: AutofillService,
@@ -51,6 +61,9 @@ export default class NotificationBackground {
   async processMessage(msg: any, sender: chrome.runtime.MessageSender) {
     switch (msg.command) {
       case "unlockCompleted":
+        /** CG BEEEP */
+        await BrowserApi.tabSendMessageData(sender.tab, "closeNotificationBar");
+        /** END BEEEP */
         if (msg.data.target !== "notification.background") {
           return;
         }
@@ -112,6 +125,11 @@ export default class NotificationBackground {
             break;
         }
         break;
+      /** CG BEEEP */
+      case "promptForLogin":
+        await this.unlockVault(sender.tab);
+        break;
+      /** END BEEEP */
       default:
         break;
     }
@@ -177,6 +195,16 @@ export default class NotificationBackground {
             theme: await this.getCurrentTheme(),
           },
         });
+      } else if (this.notificationQueue[i].type === NotificationQueueMessageType.UnlockVault) {
+        /** CG BEEEP */
+        BrowserApi.tabSendMessageData(tab, "openNotificationBar", {
+          type: "unlock",
+          typeData: {
+            isVaultLocked: this.notificationQueue[i].wasVaultLocked,
+            theme: await this.getCurrentTheme(),
+          },
+        });
+        /** END BEEEP */
       }
       break;
     }
@@ -301,6 +329,21 @@ export default class NotificationBackground {
     }
   }
 
+  /** CG BEEEP */
+  private async unlockVault(tab: chrome.tabs.Tab) {
+    if ((await this.authService.getAuthStatus()) !== AuthenticationStatus.Locked) {
+      return;
+    }
+
+    const loginDomain = Utils.getDomain(tab.url);
+    if (loginDomain == null) {
+      return;
+    }
+
+    this.pushUnlockVaultToQueue(loginDomain, tab);
+  }
+  /** END BEEEP */
+
   private async pushChangePasswordToQueue(
     cipherId: string,
     loginDomain: string,
@@ -322,6 +365,22 @@ export default class NotificationBackground {
     this.notificationQueue.push(message);
     await this.checkNotificationQueue(tab);
   }
+
+  /** CG BEEEP */
+  private async pushUnlockVaultToQueue(loginDomain: string, tab: chrome.tabs.Tab) {
+    this.removeTabFromNotificationQueue(tab);
+    const message: AddUnlockVaultQueueMessage = {
+      type: NotificationQueueMessageType.UnlockVault,
+      domain: loginDomain,
+      tabId: tab.id,
+      expires: new Date(new Date().getTime() + 0.5 * 60000), // 30 seconds
+      wasVaultLocked: true,
+    };
+    this.notificationQueue.push(message);
+    await this.checkNotificationQueue(tab);
+    this.removeTabFromNotificationQueue(tab);
+  }
+  /** END BEEEP */
 
   private async saveOrUpdateCredentials(tab: chrome.tabs.Tab, edit: boolean, folderId?: string) {
     for (let i = this.notificationQueue.length - 1; i >= 0; i--) {
