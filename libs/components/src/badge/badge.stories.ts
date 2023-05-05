@@ -14,6 +14,7 @@ export default {
   ],
   args: {
     badgeType: "primary",
+    truncate: false,
   },
   parameters: {
     design: {
@@ -26,7 +27,7 @@ export default {
 const Template: Story<BadgeDirective> = (args: BadgeDirective) => ({
   props: args,
   template: `
-    <span class="tw-text-main">Span </span><span bitBadge [badgeType]="badgeType" [truncate]="truncate">Badge</span>
+    <span class="tw-text-main">Span </span><span bitBadge [badgeType]="badgeType" [truncate]="truncate">Badge containing lengthy text</span>
     <br><br>
     <span class="tw-text-main">Link </span><a href="#" bitBadge [badgeType]="badgeType" [truncate]="truncate">Badge</a>
     <br><br>
@@ -60,4 +61,9 @@ Warning.args = {
 export const Info = Template.bind({});
 Info.args = {
   badgeType: "info",
+};
+
+export const Truncated = Template.bind({});
+Truncated.args = {
+  truncate: true,
 };

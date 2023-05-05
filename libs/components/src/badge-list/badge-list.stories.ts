@@ -50,4 +50,13 @@ Default.args = {
   badgeType: "info",
   maxItems: 3,
   items: ["Badge 1", "Badge 2", "Badge 3", "Badge 4", "Badge 5"],
+  truncate: false,
+};
+
+export const Truncated = ListTemplate.bind({});
+Truncated.args = {
+  badgeType: "info",
+  maxItems: 3,
+  items: ["Badge 1", "Badge 2 containing lengthy text", "Badge 3", "Badge 4", "Badge 5"],
+  truncate: true,
 };
