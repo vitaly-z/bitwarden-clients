@@ -437,12 +437,6 @@
               collectedTimestamp: new Date().getTime()
           };
 
-          // get proper page title. maybe they are using the special meta tag?
-          var theTitle = document.querySelector('[data-onepassword-title]')
-          if (theTitle && theTitle.dataset[DISPLAY_TITLE_ATTRIBUTE]) {
-              pageDetails.displayTitle = theTitle.dataset.onepasswordTitle;
-          }
-
           return pageDetails;
       }
 
