@@ -14,7 +14,7 @@ export class BadgeListComponent implements OnChanges {
 
   @Input() badgeType: BadgeTypes = "primary";
   @Input() items: string[] = [];
-  @Input() truncate = false;
+  @Input() truncate = true;
 
   @Input()
   get maxItems(): number | undefined {

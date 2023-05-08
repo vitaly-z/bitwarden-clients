@@ -52,7 +52,7 @@ export class BadgeDirective {
   }
 
   @Input() badgeType: BadgeTypes = "primary";
-  @Input() truncate = false;
+  @Input() truncate = true;
 
   private hasHoverEffects = false;
 
