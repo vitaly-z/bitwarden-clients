@@ -21,7 +21,7 @@ import { ProviderUserConfirmRequest } from "@bitwarden/common/admin-console/mode
 import { ProviderUserBulkResponse } from "@bitwarden/common/admin-console/models/response/provider/provider-user-bulk.response";
 import { ProviderUserUserDetailsResponse } from "@bitwarden/common/admin-console/models/response/provider/provider-user.response";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
-import { EntityEventsComponent } from "@bitwarden/web-vault/app/admin-console/organizations/manage/entity-events.component";
+import { openEntityEventsDialog } from "@bitwarden/web-vault/app/admin-console/organizations/manage/entity-events.component";
 import { BulkStatusComponent } from "@bitwarden/web-vault/app/admin-console/organizations/members/components/bulk/bulk-status.component";
 import { BasePeopleComponent } from "@bitwarden/web-vault/app/common/base.people.component";
 
@@ -41,8 +41,6 @@ export class PeopleComponent
   @ViewChild("addEdit", { read: ViewContainerRef, static: true }) addEditModalRef: ViewContainerRef;
   @ViewChild("groupsTemplate", { read: ViewContainerRef, static: true })
   groupsModalRef: ViewContainerRef;
-  @ViewChild("eventsTemplate", { read: ViewContainerRef, static: true })
-  eventsModalRef: ViewContainerRef;
   @ViewChild("bulkStatusTemplate", { read: ViewContainerRef, static: true })
   bulkStatusModalRef: ViewContainerRef;
   @ViewChild("bulkConfirmTemplate", { read: ViewContainerRef, static: true })
@@ -167,12 +165,14 @@ export class PeopleComponent
   }
 
   async events(user: ProviderUserUserDetailsResponse) {
-    await this.modalService.openViewRef(EntityEventsComponent, this.eventsModalRef, (comp) => {
-      comp.name = this.userNamePipe.transform(user);
-      comp.providerId = this.providerId;
-      comp.entityId = user.id;
-      comp.showUser = false;
-      comp.entity = "user";
+    await openEntityEventsDialog(this.dialogService, {
+      data: {
+        name: this.userNamePipe.transform(user),
+        providerId: this.providerId,
+        entityId: user.id,
+        showUser: false,
+        entity: "user",
+      },
     });
   }
 

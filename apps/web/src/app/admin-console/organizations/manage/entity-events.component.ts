@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { DIALOG_DATA, DialogConfig } from "@angular/cdk/dialog";
+import { Component, Inject, OnInit } from "@angular/core";
 
 import { UserNamePipe } from "@bitwarden/angular/pipes/user-name.pipe";
+import { DialogServiceAbstraction } from "@bitwarden/angular/services/dialog";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
@@ -11,18 +13,21 @@ import { ListResponse } from "@bitwarden/common/models/response/list.response";
 
 import { EventService } from "../../../core";
 
+export interface EntityEventsDialogParams {
+  entity: "user" | "cipher";
+  entityId: string;
+
+  organizationId?: string;
+  providerId?: string;
+  showUser?: boolean;
+  name?: string;
+}
+
 @Component({
   selector: "app-entity-events",
   templateUrl: "entity-events.component.html",
 })
 export class EntityEventsComponent implements OnInit {
-  @Input() name: string;
-  @Input() entity: "user" | "cipher";
-  @Input() entityId: string;
-  @Input() organizationId: string;
-  @Input() providerId: string;
-  @Input() showUser = false;
-
   loading = true;
   loaded = false;
   events: any[];
@@ -35,7 +40,16 @@ export class EntityEventsComponent implements OnInit {
   private orgUsersUserIdMap = new Map<string, any>();
   private orgUsersIdMap = new Map<string, any>();
 
+  get name() {
+    return this.params.name;
+  }
+
+  get showUser() {
+    return this.params.showUser ?? false;
+  }
+
   constructor(
+    @Inject(DIALOG_DATA) private params: EntityEventsDialogParams,
     private apiService: ApiService,
     private i18nService: I18nService,
     private eventService: EventService,
@@ -54,7 +68,7 @@ export class EntityEventsComponent implements OnInit {
 
   async load() {
     if (this.showUser) {
-      const response = await this.organizationUserService.getAllUsers(this.organizationId);
+      const response = await this.organizationUserService.getAllUsers(this.params.organizationId);
       response.data.forEach((u) => {
         const name = this.userNamePipe.transform(u);
         this.orgUsersIdMap.set(u.id, { name: name, email: u.email });
@@ -86,25 +100,25 @@ export class EntityEventsComponent implements OnInit {
     let response: ListResponse<EventResponse>;
     try {
       let promise: Promise<any>;
-      if (this.entity === "user" && this.providerId) {
+      if (this.params.entity === "user" && this.params.providerId) {
         promise = this.apiService.getEventsProviderUser(
-          this.providerId,
-          this.entityId,
+          this.params.providerId,
+          this.params.entityId,
           dates[0],
           dates[1],
           clearExisting ? null : this.continuationToken
         );
-      } else if (this.entity === "user") {
+      } else if (this.params.entity === "user") {
         promise = this.apiService.getEventsOrganizationUser(
-          this.organizationId,
-          this.entityId,
+          this.params.organizationId,
+          this.params.entityId,
           dates[0],
           dates[1],
           clearExisting ? null : this.continuationToken
         );
       } else {
         promise = this.apiService.getEventsCipher(
-          this.entityId,
+          this.params.entityId,
           dates[0],
           dates[1],
           clearExisting ? null : this.continuationToken
@@ -154,3 +168,15 @@ export class EntityEventsComponent implements OnInit {
     this.refreshPromise = null;
   }
 }
+
+/**
+ * Strongly typed helper to open a EntityEventsComponent as a dialog
+ * @param dialogService Instance of the dialog service that will be used to open the dialog
+ * @param config Configuration for the dialog
+ */
+export const openEntityEventsDialog = (
+  dialogService: DialogServiceAbstraction,
+  config: DialogConfig<EntityEventsDialogParams>
+) => {
+  return dialogService.open<void, EntityEventsDialogParams>(EntityEventsComponent, config);
+};

@@ -61,7 +61,7 @@ import {
   GroupService,
   GroupView,
 } from "../../admin-console/organizations/core";
-import { EntityEventsComponent } from "../../admin-console/organizations/manage/entity-events.component";
+import { openEntityEventsDialog } from "../../admin-console/organizations/manage/entity-events.component";
 import {
   CollectionDialogResult,
   CollectionDialogTabType,
@@ -112,8 +112,6 @@ export class VaultComponent implements OnInit, OnDestroy {
   cipherAddEditModalRef: ViewContainerRef;
   @ViewChild("collectionsModal", { read: ViewContainerRef, static: true })
   collectionsModalRef: ViewContainerRef;
-  @ViewChild("eventsTemplate", { read: ViewContainerRef, static: true })
-  eventsModalRef: ViewContainerRef;
 
   trashCleanupWarning: string = null;
   activeFilter: VaultFilter = new VaultFilter();
@@ -888,12 +886,14 @@ export class VaultComponent implements OnInit, OnDestroy {
   }
 
   async viewEvents(cipher: CipherView) {
-    await this.modalService.openViewRef(EntityEventsComponent, this.eventsModalRef, (comp) => {
-      comp.name = cipher.name;
-      comp.organizationId = this.organization.id;
-      comp.entityId = cipher.id;
-      comp.showUser = true;
-      comp.entity = "cipher";
+    await openEntityEventsDialog(this.dialogService, {
+      data: {
+        name: cipher.name,
+        organizationId: this.organization.id,
+        entityId: cipher.id,
+        showUser: true,
+        entity: "cipher",
+      },
     });
   }
 
