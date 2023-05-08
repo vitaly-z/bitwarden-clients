@@ -849,14 +849,21 @@ export class CryptoService implements CryptoServiceAbstraction {
     return symmetricCryptoKey;
   }
 
-  async makeDeviceKey(): Promise<SymmetricCryptoKey> {
-    // Create 512-bit device key
-    const randomBytes: CsprngArray = await this.cryptoFunctionService.randomBytes(64);
-    const deviceKey = new SymmetricCryptoKey(randomBytes);
+  async getDeviceKey(): Promise<SymmetricCryptoKey> {
+    // Check if device key is already stored
+    let deviceKey = await this.stateService.getDeviceKey();
 
-    // Save device key in secure storage
-    await this.stateService.setDeviceKey(deviceKey);
+    if (deviceKey != null) {
+      return deviceKey;
+    } else {
+      // Create 512-bit device key
+      const randomBytes: CsprngArray = await this.cryptoFunctionService.randomBytes(64);
+      deviceKey = new SymmetricCryptoKey(randomBytes);
 
-    return deviceKey;
+      // Save device key in secure storage
+      await this.stateService.setDeviceKey(deviceKey);
+
+      return deviceKey;
+    }
   }
 }

@@ -49,7 +49,7 @@ describe("cryptoService", () => {
         .mockResolvedValue(mockRandomBytes);
       const stateSvcSetDeviceKeySpy = jest.spyOn(stateService, "setDeviceKey");
 
-      const deviceKey = await cryptoService.makeDeviceKey();
+      const deviceKey = await cryptoService.getDeviceKey();
 
       expect(cryptoFuncSvcRandomBytesSpy).toHaveBeenCalledTimes(1);
       expect(cryptoFuncSvcRandomBytesSpy).toHaveBeenCalledWith(deviceKeyBytesLength);

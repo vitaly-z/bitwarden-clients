@@ -1055,7 +1055,7 @@ export class StateService<
       : await this.secureStorageService.save(DDG_SHARED_KEY, value, options);
   }
 
-  async getDeviceKey(options?: StorageOptions): Promise<SymmetricCryptoKey> {
+  async getDeviceKey(options?: StorageOptions): Promise<SymmetricCryptoKey | null> {
     options = this.reconcileOptions(options, await this.defaultSecureStorageOptions());
     if (options?.userId == null) {
       return null;

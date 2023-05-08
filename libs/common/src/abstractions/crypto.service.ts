@@ -84,5 +84,5 @@ export abstract class CryptoService {
   randomNumber: (min: number, max: number) => Promise<number>;
   validateKey: (key: SymmetricCryptoKey) => Promise<boolean>;
 
-  makeDeviceKey: () => Promise<SymmetricCryptoKey>;
+  getDeviceKey: () => Promise<SymmetricCryptoKey>;
 }
