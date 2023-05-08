@@ -11,7 +11,7 @@
     ":separateMajorReleases"
   ],
   "prConcurrentLimit": 3,
-  "enabledManagers": ["npm"],
+  "enabledManagers": ["cargo", "github-actions", "npm"],
   "packageRules": [
     {
       "groupName": "{{manager}}",
@@ -28,5 +28,13 @@
       "matchUpdateTypes": "patch"
     }
   ],
-  "ignoreDeps": ["bootstrap", "electron-builder", "electron", "node-ipc", "regedit", "zone.js"]
+  "ignoreDeps": [
+    "@types/koa-bodyparser",
+    "bootstrap",
+    "electron-builder",
+    "electron",
+    "node-ipc",
+    "regedit",
+    "zone.js"
+  ]
 }
