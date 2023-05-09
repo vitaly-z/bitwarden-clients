@@ -1,10 +1,5 @@
 // String values affect code flow in autofill.ts and must not be changed
-export enum FillScriptOp {
-  click = "click_on_opid",
-  focus = "focus_by_opid",
-  fill = "fill_by_opid",
-  delay = "delay",
-}
+export type FillScriptOp = "click_on_opid" | "focus_by_opid" | "fill_by_opid" | "delay";
 
 export type FillScript = [op: FillScriptOp, opid: string, value?: string];
 
