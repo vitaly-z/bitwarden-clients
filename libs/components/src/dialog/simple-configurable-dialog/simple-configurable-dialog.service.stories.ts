@@ -112,6 +112,14 @@ class StoryDialogComponent {
           type: SimpleDialogType.PRIMARY,
           disableClose: true,
         },
+        {
+          title: this.i18nService.t("asyncTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          acceptAction: () => {
+            return new Promise((resolve) => setTimeout(resolve, 10000));
+          },
+          type: SimpleDialogType.PRIMARY,
+        },
       ],
     },
   ];
@@ -152,6 +160,7 @@ export default {
               infoTypeSimpleDialog: "Info Type Simple Dialog",
               warningTypeSimpleDialog: "Warning Type Simple Dialog",
               dangerTypeSimpleDialog: "Danger Type Simple Dialog",
+              asyncTypeSimpleDialog: "Async",
               dialogContent: "Dialog content goes here",
               yes: "Yes",
               no: "No",
