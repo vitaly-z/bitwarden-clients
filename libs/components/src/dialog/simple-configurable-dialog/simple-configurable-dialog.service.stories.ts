@@ -17,96 +17,17 @@ import { SimpleDialogComponent } from "../simple-dialog/simple-dialog.component"
 
 @Component({
   template: `
-    <h2 class="tw-text-main">Dialog Type Examples:</h2>
-    <div class="tw-mb-4 tw-flex tw-flex-row tw-gap-2">
-      <button
-        bitButton
-        buttonType="primary"
-        (click)="openSimpleConfigurableDialog(primaryLocalizedSimpleDialogOpts)"
-      >
-        Open Primary Type Simple Dialog
-      </button>
-
-      <button
-        bitButton
-        buttonType="secondary"
-        (click)="openSimpleConfigurableDialog(successLocalizedSimpleDialogOpts)"
-      >
-        Open Success Type Simple Dialog
-      </button>
-
-      <button
-        bitButton
-        buttonType="secondary"
-        (click)="openSimpleConfigurableDialog(infoLocalizedSimpleDialogOpts)"
-      >
-        Open Info Type Simple Dialog
-      </button>
-
-      <button
-        bitButton
-        buttonType="secondary"
-        (click)="openSimpleConfigurableDialog(warningLocalizedSimpleDialogOpts)"
-      >
-        Open Warning Type Simple Dialog
-      </button>
-
-      <button
-        bitButton
-        buttonType="secondary"
-        (click)="openSimpleConfigurableDialog(dangerLocalizedSimpleDialogOpts)"
-      >
-        Open Danger Type Simple Dialog
-      </button>
-    </div>
-
-    <h2 class="tw-text-main">Custom Button Examples:</h2>
-    <div class="tw-mb-4 tw-flex tw-flex-row tw-gap-2">
-      <button
-        bitButton
-        buttonType="primary"
-        (click)="openSimpleConfigurableDialog(primaryAcceptBtnOverrideSimpleDialogOpts)"
-      >
-        Open Simple Dialog with custom accept button text
-      </button>
-
-      <button
-        bitButton
-        buttonType="primary"
-        (click)="openSimpleConfigurableDialog(primaryCustomBtnsSimpleDialogOpts)"
-      >
-        Open Simple Dialog with 2 custom buttons
-      </button>
-
-      <button
-        bitButton
-        buttonType="primary"
-        (click)="openSimpleConfigurableDialog(primarySingleBtnSimpleDialogOpts)"
-      >
-        Open Single Button Simple Dialog
-      </button>
-    </div>
-
-    <h2 class="tw-text-main">Custom Icon Example:</h2>
-    <div class="tw-mb-4 tw-flex tw-flex-row tw-gap-2">
-      <button
-        bitButton
-        buttonType="primary"
-        (click)="openSimpleConfigurableDialog(primaryCustomIconSimpleDialogOpts)"
-      >
-        Open Simple Dialog with custom icon
-      </button>
-    </div>
-
-    <h2 class="tw-text-main">Additional Examples:</h2>
-    <div class="tw-mb-4 tw-flex tw-flex-row tw-gap-2">
-      <button
-        bitButton
-        buttonType="primary"
-        (click)="openSimpleConfigurableDialog(primaryDisableCloseSimpleDialogOpts)"
-      >
-        Open Simple Dialog with backdrop click / escape key press disabled
-      </button>
+    <div *ngFor="let group of dialogs">
+      <h2>{{ group.title }}</h2>
+      <div class="tw-mb-4 tw-flex tw-flex-row tw-gap-2">
+        <button
+          *ngFor="let dialog of group.dialogs"
+          bitButton
+          (click)="openSimpleConfigurableDialog(dialog)"
+        >
+          {{ dialog.title }}
+        </button>
+      </div>
     </div>
 
     <bit-callout *ngIf="showCallout" [type]="calloutType" title="Dialog Close Result">
@@ -115,72 +36,85 @@ import { SimpleDialogComponent } from "../simple-dialog/simple-dialog.component"
   `,
 })
 class StoryDialogComponent {
-  primaryLocalizedSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("primaryTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.PRIMARY,
-  };
-
-  successLocalizedSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("successTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.SUCCESS,
-  };
-
-  infoLocalizedSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("infoTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.INFO,
-  };
-
-  warningLocalizedSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("warningTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.WARNING,
-  };
-
-  dangerLocalizedSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("dangerTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.DANGER,
-  };
-
-  primarySingleBtnSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("primaryTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.PRIMARY,
-    acceptButtonText: "Ok",
-    cancelButtonText: null,
-  };
-
-  primaryCustomBtnsSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("primaryTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.PRIMARY,
-    acceptButtonText: this.i18nService.t("accept"),
-    cancelButtonText: this.i18nService.t("decline"),
-  };
-
-  primaryAcceptBtnOverrideSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("primaryTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.PRIMARY,
-    acceptButtonText: "Ok",
-  };
-
-  primaryCustomIconSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("primaryTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.PRIMARY,
-    icon: "bwi-family",
-  };
-
-  primaryDisableCloseSimpleDialogOpts: SimpleDialogOptions = {
-    title: this.i18nService.t("primaryTypeSimpleDialog"),
-    content: this.i18nService.t("dialogContent"),
-    type: SimpleDialogType.PRIMARY,
-    disableClose: true,
-  };
+  protected dialogs: { title: string; dialogs: SimpleDialogOptions[] }[] = [
+    {
+      title: "Regular",
+      dialogs: [
+        {
+          title: this.i18nService.t("primaryTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.PRIMARY,
+        },
+        {
+          title: this.i18nService.t("successTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.SUCCESS,
+        },
+        {
+          title: this.i18nService.t("infoTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.INFO,
+        },
+        {
+          title: this.i18nService.t("warningTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.WARNING,
+        },
+        {
+          title: this.i18nService.t("dangerTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.DANGER,
+        },
+      ],
+    },
+    {
+      title: "Custom",
+      dialogs: [
+        {
+          title: this.i18nService.t("primaryTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.PRIMARY,
+          acceptButtonText: "Ok",
+          cancelButtonText: null,
+        },
+        {
+          title: this.i18nService.t("primaryTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.PRIMARY,
+          acceptButtonText: this.i18nService.t("accept"),
+          cancelButtonText: this.i18nService.t("decline"),
+        },
+        {
+          title: this.i18nService.t("primaryTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.PRIMARY,
+          acceptButtonText: "Ok",
+        },
+      ],
+    },
+    {
+      title: "Icon",
+      dialogs: [
+        {
+          title: this.i18nService.t("primaryTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.PRIMARY,
+          icon: "bwi-family",
+        },
+      ],
+    },
+    {
+      title: "Additional",
+      dialogs: [
+        {
+          title: this.i18nService.t("primaryTypeSimpleDialog"),
+          content: this.i18nService.t("dialogContent"),
+          type: SimpleDialogType.PRIMARY,
+          disableClose: true,
+        },
+      ],
+    },
+  ];
 
   showCallout = false;
   calloutType = "info";
