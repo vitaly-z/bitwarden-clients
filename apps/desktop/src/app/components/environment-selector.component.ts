@@ -44,7 +44,7 @@ export class EnvironmentSelectorComponent implements OnInit, OnDestroy {
   euServerFlagEnabled: boolean;
   overlayPostition: ConnectedPosition[] = [
     {
-      originX: "end",
+      originX: "start",
       originY: "bottom",
       overlayX: "start",
       overlayY: "top",
@@ -77,12 +77,12 @@ export class EnvironmentSelectorComponent implements OnInit, OnDestroy {
     } else if (option === ServerEnvironment.US) {
       await this.environmentService.setUrls({ base: "https://vault.bitwarden.com" });
     } else if (option === ServerEnvironment.SelfHosted) {
-      this.settings();
+      this.openSelfHostedSettingsModal();
     }
     this.updateEnvironmentInfo();
   }
 
-  async settings() {
+  async openSelfHostedSettingsModal() {
     const modal = this.modalService.open(EnvironmentComponent);
     modal.onShown.pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
       this.showingModal = true;

@@ -1,13 +1,13 @@
-<label
-  (click)="toggle(null)"
-  cdkOverlayOrigin
-  #trigger="cdkOverlayOrigin"
-  aria-haspopup="menu"
-  aria-controls="cdk-overlay-container"
-  class="environment-selector-btn"
->
+<label class="environment-selector-btn">
   {{ "region" | i18n }}:
-  <a [ngSwitch]="selectedEnvironment">
+  <a
+    (click)="toggle(null)"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    aria-haspopup="menu"
+    aria-controls="cdk-overlay-container"
+    [ngSwitch]="selectedEnvironment"
+  >
     <label *ngSwitchCase="ServerEnvironmentType.US" class="text-primary">{{ "us" | i18n }}</label>
     <label *ngSwitchCase="ServerEnvironmentType.EU" class="text-primary">{{ "eu" | i18n }}</label>
     <label *ngSwitchCase="ServerEnvironmentType.SelfHosted" class="text-primary">{{
