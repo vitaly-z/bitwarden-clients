@@ -9,8 +9,11 @@ import {
   tokenServiceFactory,
   TokenServiceInitOptions,
 } from "../../auth/background/service-factories/token-service.factory";
+import {
+  CryptoServiceInitOptions,
+  cryptoServiceFactory,
+} from "../../platform/background/service-factories/crypto-service.factory";
 
-import { cryptoServiceFactory, CryptoServiceInitOptions } from "./crypto-service.factory";
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
 import {
   stateServiceFactory as stateServiceFactory,

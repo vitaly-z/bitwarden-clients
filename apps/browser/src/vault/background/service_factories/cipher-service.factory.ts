@@ -10,14 +10,6 @@ import {
   cipherFileUploadServiceFactory,
 } from "../../../background/service-factories/cipher-file-upload-service.factory";
 import {
-  cryptoServiceFactory,
-  CryptoServiceInitOptions,
-} from "../../../background/service-factories/crypto-service.factory";
-import {
-  encryptServiceFactory,
-  EncryptServiceInitOptions,
-} from "../../../background/service-factories/encrypt-service.factory";
-import {
   CachedServices,
   factory,
   FactoryOptions,
@@ -38,6 +30,14 @@ import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../../background/service-factories/state-service.factory";
+import {
+  CryptoServiceInitOptions,
+  cryptoServiceFactory,
+} from "../../../platform/background/service-factories/crypto-service.factory";
+import {
+  EncryptServiceInitOptions,
+  encryptServiceFactory,
+} from "../../../platform/background/service-factories/encrypt-service.factory";
 
 type CipherServiceFactoryOptions = FactoryOptions;
 

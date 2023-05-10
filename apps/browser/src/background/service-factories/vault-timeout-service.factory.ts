@@ -12,6 +12,10 @@ import {
   keyConnectorServiceFactory,
   KeyConnectorServiceInitOptions,
 } from "../../auth/background/service-factories/key-connector-service.factory";
+import {
+  CryptoServiceInitOptions,
+  cryptoServiceFactory,
+} from "../../platform/background/service-factories/crypto-service.factory";
 import VaultTimeoutService from "../../services/vaultTimeout/vaultTimeout.service";
 import {
   cipherServiceFactory,
@@ -22,7 +26,6 @@ import {
   FolderServiceInitOptions,
 } from "../../vault/background/service_factories/folder-service.factory";
 
-import { cryptoServiceFactory, CryptoServiceInitOptions } from "./crypto-service.factory";
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
 import { messagingServiceFactory, MessagingServiceInitOptions } from "./messaging-service.factory";
 import {

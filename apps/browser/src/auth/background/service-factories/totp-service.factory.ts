@@ -2,10 +2,6 @@ import { TotpService as AbstractTotpService } from "@bitwarden/common/abstractio
 import { TotpService } from "@bitwarden/common/services/totp.service";
 
 import {
-  CryptoFunctionServiceInitOptions,
-  cryptoFunctionServiceFactory,
-} from "../../../background/service-factories/crypto-function-service.factory";
-import {
   FactoryOptions,
   CachedServices,
   factory,
@@ -14,6 +10,10 @@ import {
   LogServiceInitOptions,
   logServiceFactory,
 } from "../../../background/service-factories/log-service.factory";
+import {
+  CryptoFunctionServiceInitOptions,
+  cryptoFunctionServiceFactory,
+} from "../../../platform/background/service-factories/crypto-function-service.factory";
 
 type TotpServiceOptions = FactoryOptions;
 

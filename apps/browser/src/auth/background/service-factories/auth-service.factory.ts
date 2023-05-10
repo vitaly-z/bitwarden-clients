@@ -11,14 +11,6 @@ import {
 } from "../../../background/service-factories/api-service.factory";
 import { appIdServiceFactory } from "../../../background/service-factories/app-id-service.factory";
 import {
-  cryptoServiceFactory,
-  CryptoServiceInitOptions,
-} from "../../../background/service-factories/crypto-service.factory";
-import {
-  encryptServiceFactory,
-  EncryptServiceInitOptions,
-} from "../../../background/service-factories/encrypt-service.factory";
-import {
   environmentServiceFactory,
   EnvironmentServiceInitOptions,
 } from "../../../background/service-factories/environment-service.factory";
@@ -51,6 +43,14 @@ import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../../background/service-factories/state-service.factory";
+import {
+  CryptoServiceInitOptions,
+  cryptoServiceFactory,
+} from "../../../platform/background/service-factories/crypto-service.factory";
+import {
+  EncryptServiceInitOptions,
+  encryptServiceFactory,
+} from "../../../platform/background/service-factories/encrypt-service.factory";
 
 import {
   keyConnectorServiceFactory,

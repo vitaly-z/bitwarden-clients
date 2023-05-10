@@ -1,10 +1,14 @@
-import { KeyGenerationService } from "../../services/keyGeneration.service";
+import {
+  FactoryOptions,
+  CachedServices,
+  factory,
+} from "../../../background/service-factories/factory-options";
+import { KeyGenerationService } from "../../../services/keyGeneration.service";
 
 import {
   cryptoFunctionServiceFactory,
   CryptoFunctionServiceInitOptions,
 } from "./crypto-function-service.factory";
-import { CachedServices, factory, FactoryOptions } from "./factory-options";
 
 type KeyGenerationServiceFactoryOptions = FactoryOptions;
 

@@ -5,15 +5,18 @@ import {
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 
 import { BrowserApi } from "../../browser/browserApi";
+import {
+  EncryptServiceInitOptions,
+  encryptServiceFactory,
+} from "../../platform/background/service-factories/encrypt-service.factory";
+import {
+  KeyGenerationServiceInitOptions,
+  keyGenerationServiceFactory,
+} from "../../platform/background/service-factories/key-generation-service.factory";
 import BrowserLocalStorageService from "../../services/browserLocalStorage.service";
 import { LocalBackedSessionStorageService } from "../../services/localBackedSessionStorage.service";
 
-import { encryptServiceFactory, EncryptServiceInitOptions } from "./encrypt-service.factory";
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
-import {
-  keyGenerationServiceFactory,
-  KeyGenerationServiceInitOptions,
-} from "./key-generation-service.factory";
 
 type StorageServiceFactoryOptions = FactoryOptions;
 
