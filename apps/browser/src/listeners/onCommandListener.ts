@@ -6,13 +6,13 @@ import { authServiceFactory } from "../auth/background/service-factories/auth-se
 import { autofillServiceFactory } from "../autofill/background/service_factories/autofill-service.factory";
 import { GeneratePasswordToClipboardCommand } from "../autofill/clipboard";
 import { AutofillTabCommand } from "../autofill/commands/autofill-tab-command";
-import { CachedServices } from "../background/service_factories/factory-options";
-import { logServiceFactory } from "../background/service_factories/log-service.factory";
+import { CachedServices } from "../background/service-factories/factory-options";
+import { logServiceFactory } from "../background/service-factories/log-service.factory";
 import {
   passwordGenerationServiceFactory,
   PasswordGenerationServiceInitOptions,
-} from "../background/service_factories/password-generation-service.factory";
-import { stateServiceFactory } from "../background/service_factories/state-service.factory";
+} from "../background/service-factories/password-generation-service.factory";
+import { stateServiceFactory } from "../background/service-factories/state-service.factory";
 import { BrowserApi } from "../browser/browserApi";
 import { Account } from "../models/account";
 

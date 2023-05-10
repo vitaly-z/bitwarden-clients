@@ -8,28 +8,28 @@ import {
 import {
   apiServiceFactory,
   ApiServiceInitOptions,
-} from "../../../background/service_factories/api-service.factory";
+} from "../../../background/service-factories/api-service.factory";
 import {
   cryptoFunctionServiceFactory,
   CryptoFunctionServiceInitOptions,
-} from "../../../background/service_factories/crypto-function-service.factory";
+} from "../../../background/service-factories/crypto-function-service.factory";
 import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,
-} from "../../../background/service_factories/crypto-service.factory";
+} from "../../../background/service-factories/crypto-service.factory";
 import {
   FactoryOptions,
   CachedServices,
   factory,
-} from "../../../background/service_factories/factory-options";
+} from "../../../background/service-factories/factory-options";
 import {
   logServiceFactory,
   LogServiceInitOptions,
-} from "../../../background/service_factories/log-service.factory";
+} from "../../../background/service-factories/log-service.factory";
 import {
   stateServiceFactory,
   StateServiceInitOptions,
-} from "../../../background/service_factories/state-service.factory";
+} from "../../../background/service-factories/state-service.factory";
 
 import { TokenServiceInitOptions, tokenServiceFactory } from "./token-service.factory";
 

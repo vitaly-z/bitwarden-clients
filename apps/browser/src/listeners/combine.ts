@@ -1,4 +1,4 @@
-import { CachedServices } from "../background/service_factories/factory-options";
+import { CachedServices } from "../background/service-factories/factory-options";
 
 type Listener<T extends unknown[]> = (...args: [...T, CachedServices]) => Promise<void>;
 

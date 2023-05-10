@@ -4,7 +4,7 @@ import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import {
   environmentServiceFactory,
   EnvironmentServiceInitOptions,
-} from "../background/service_factories/environment-service.factory";
+} from "../background/service-factories/environment-service.factory";
 import { BrowserApi } from "../browser/browserApi";
 import { Account } from "../models/account";
 
