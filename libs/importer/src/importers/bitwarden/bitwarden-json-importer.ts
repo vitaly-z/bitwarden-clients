@@ -105,10 +105,7 @@ export class BitwardenJsonImporter extends BaseImporter implements Importer {
         });
       }
 
-      const encKey =
-        cipher.organizationId != null
-          ? await this.cryptoService.getOrgKey(cipher.organizationId)
-          : await this.cryptoService.getKeyForUserEncryption();
+      const encKey = await this.cryptoService.getKeyForCipherKeyEncryption(cipher.organizationId);
       const view = await cipher.decrypt(null, encKey);
       this.cleanupCipher(view);
       this.result.ciphers.push(view);

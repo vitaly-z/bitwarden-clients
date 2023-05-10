@@ -80,7 +80,7 @@ export class CreateCommand {
     try {
       await this.cipherService.createWithServer(cipher);
       const newCipher = await this.cipherService.get(cipher.id);
-      const decCipher = await newCipher.decrypt(this.cipherService);
+      const decCipher = await newCipher.decrypt();
       const res = new CipherResponse(decCipher);
       return Response.success(res);
     } catch (e) {
@@ -141,7 +141,7 @@ export class CreateCommand {
         new Uint8Array(fileBuf).buffer
       );
       const updatedCipher = await this.cipherService.get(cipher.id);
-      const decCipher = await updatedCipher.decrypt(this.cipherService);
+      const decCipher = await updatedCipher.decrypt();
       return Response.success(new CipherResponse(decCipher));
     } catch (e) {
       return Response.error(e);

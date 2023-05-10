@@ -193,7 +193,7 @@ export class EncryptedMessageHandlerService {
       if (cipher === null) {
         return { status: "failure" };
       }
-      const cipherView = await cipher.decrypt(this.cipherService);
+      const cipherView = await cipher.decrypt();
       cipherView.name = credentialUpdatePayload.name;
       cipherView.login.password = credentialUpdatePayload.password;
       cipherView.login.username = credentialUpdatePayload.userName;

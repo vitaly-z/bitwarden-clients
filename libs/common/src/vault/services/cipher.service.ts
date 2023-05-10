@@ -91,7 +91,7 @@ export class CipherService implements CipherServiceAbstraction {
         originalCipher = await this.get(model.id);
       }
       if (originalCipher != null) {
-        const existingCipher = await originalCipher.decrypt(this);
+        const existingCipher = await originalCipher.decrypt();
         model.passwordHistory = existingCipher.passwordHistory || [];
         if (model.type === CipherType.Login && existingCipher.type === CipherType.Login) {
           if (
@@ -618,7 +618,7 @@ export class CipherService implements CipherServiceAbstraction {
     data: ArrayBuffer,
     admin = false
   ): Promise<Cipher> {
-    const key = await this.getCipherKey(cipher.organizationId);
+    const key = await this.cryptoService.getKeyForCipherKeyEncryption(cipher.organizationId);
 
     const cipherEncKey = flagEnabled("enableCipherKeyEncryption")
       ? new SymmetricCryptoKey(await this.encryptService.decryptToBytes(cipher.key, key))
@@ -919,12 +919,6 @@ export class CipherService implements CipherServiceAbstraction {
       restores.push({ id: cipher.id, revisionDate: cipher.revisionDate });
     }
     await this.restore(restores);
-  }
-
-  async getCipherKey(orgId?: string): Promise<SymmetricCryptoKey> {
-    return orgId != null
-      ? await this.cryptoService.getOrgKey(orgId)
-      : await this.cryptoService.getKeyForUserEncryption();
   }
 
   // Helpers

@@ -33,7 +33,7 @@ export class PasswordHistoryComponent implements OnInit {
 
   protected async init() {
     const cipher = await this.cipherService.get(this.cipherId);
-    const decCipher = await cipher.decrypt(this.cipherService);
+    const decCipher = await cipher.decrypt();
     this.history = decCipher.passwordHistory == null ? [] : decCipher.passwordHistory;
   }
 }

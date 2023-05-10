@@ -250,7 +250,7 @@ export class VaultExportService implements VaultExportServiceAbstraction {
               .forEach((c) => {
                 const cipher = new Cipher(new CipherData(c));
                 exportPromises.push(
-                  cipher.decrypt(this.cipherService).then((decCipher) => {
+                  cipher.decrypt().then((decCipher) => {
                     decCiphers.push(decCipher);
                   })
                 );
