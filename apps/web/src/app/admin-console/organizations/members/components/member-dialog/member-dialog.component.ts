@@ -14,7 +14,7 @@ import {
 } from "@bitwarden/common/admin-console/enums";
 import { PermissionsApi } from "@bitwarden/common/admin-console/models/api/permissions.api";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
-import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
+import { CollectionView } from "@bitwarden/common/vault/models/view/collection.view";
 
 import { flagEnabled } from "../../../../../../utils/flags";
 import { CollectionAdminService } from "../../../../../vault/core/collection-admin.service";

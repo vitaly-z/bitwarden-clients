@@ -1,5 +1,4 @@
 import { AbstractStorageService } from "../abstractions/storage.service";
-import { CollectionData } from "../admin-console/models/data/collection.data";
 import { OrganizationData } from "../admin-console/models/data/organization.data";
 import { PolicyData } from "../admin-console/models/data/policy.data";
 import { ProviderData } from "../admin-console/models/data/provider.data";
@@ -20,6 +19,7 @@ import { StorageOptions } from "../models/domain/storage-options";
 import { GeneratedPasswordHistory } from "../tools/generator/password";
 import { SendData } from "../tools/send/models/data/send.data";
 import { CipherData } from "../vault/models/data/cipher.data";
+import { CollectionData } from "../vault/models/data/collection.data";
 import { FolderData } from "../vault/models/data/folder.data";
 
 // Originally (before January 2022) storage was handled as a flat key/value pair store.

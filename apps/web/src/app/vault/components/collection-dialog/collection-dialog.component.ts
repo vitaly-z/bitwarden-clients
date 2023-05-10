@@ -10,7 +10,7 @@ import { OrganizationUserUserDetailsResponse } from "@bitwarden/common/abstracti
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
-import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
+import { CollectionView } from "@bitwarden/common/vault/models/view/collection.view";
 import { BitValidators } from "@bitwarden/components";
 
 import { GroupService, GroupView } from "../../../admin-console/organizations/core";

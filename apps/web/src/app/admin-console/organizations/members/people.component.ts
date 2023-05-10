@@ -45,15 +45,15 @@ import {
   OrganizationUserType,
   PolicyType,
 } from "@bitwarden/common/admin-console/enums";
-import { CollectionData } from "@bitwarden/common/admin-console/models/data/collection.data";
-import { Collection } from "@bitwarden/common/admin-console/models/domain/collection";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { OrganizationKeysRequest } from "@bitwarden/common/admin-console/models/request/organization-keys.request";
-import { CollectionDetailsResponse } from "@bitwarden/common/admin-console/models/response/collection.response";
 import { ProductType } from "@bitwarden/common/enums";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
 import { CollectionService } from "@bitwarden/common/vault/abstractions/collection.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
+import { CollectionData } from "@bitwarden/common/vault/models/data/collection.data";
+import { Collection } from "@bitwarden/common/vault/models/domain/collection";
+import { CollectionDetailsResponse } from "@bitwarden/common/vault/models/response/collection.response";
 
 import { EntityEventsComponent } from "../../../admin-console/organizations/manage/entity-events.component";
 import { BasePeopleComponent } from "../../../common/base.people.component";

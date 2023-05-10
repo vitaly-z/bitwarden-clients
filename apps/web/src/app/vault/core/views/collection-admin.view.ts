@@ -1,5 +1,5 @@
-import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
-import { CollectionAccessDetailsResponse } from "@bitwarden/common/src/admin-console/models/response/collection.response";
+import { CollectionAccessDetailsResponse } from "@bitwarden/common/src/vault/models/response/collection.response";
+import { CollectionView } from "@bitwarden/common/vault/models/view/collection.view";
 
 import { CollectionAccessSelectionView } from "../../../admin-console/organizations/core/views/collection-access-selection.view";
 

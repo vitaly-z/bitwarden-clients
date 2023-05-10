@@ -43,7 +43,6 @@ import { SearchService } from "@bitwarden/common/abstractions/search.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
-import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { EventType } from "@bitwarden/common/enums";
 import { ServiceUtils } from "@bitwarden/common/misc/serviceUtils";
 import { Utils } from "@bitwarden/common/misc/utils";
@@ -53,6 +52,7 @@ import { PasswordRepromptService } from "@bitwarden/common/vault/abstractions/pa
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import { CipherRepromptType } from "@bitwarden/common/vault/enums/cipher-reprompt-type";
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
+import { CollectionView } from "@bitwarden/common/vault/models/view/collection.view";
 import { Icons } from "@bitwarden/components";
 
 import { GroupService, GroupView } from "../../admin-console/organizations/core";

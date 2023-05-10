@@ -44,7 +44,6 @@ import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
-import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { TokenService } from "@bitwarden/common/auth/abstractions/token.service";
 import { DEFAULT_PBKDF2_ITERATIONS, EventType, KdfType } from "@bitwarden/common/enums";
 import { FeatureFlag } from "@bitwarden/common/enums/feature-flag.enum";
@@ -57,6 +56,7 @@ import { PasswordRepromptService } from "@bitwarden/common/vault/abstractions/pa
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import { CipherRepromptType } from "@bitwarden/common/vault/enums/cipher-reprompt-type";
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
+import { CollectionView } from "@bitwarden/common/vault/models/view/collection.view";
 import { Icons } from "@bitwarden/components";
 
 import { UpdateKeyComponent } from "../../settings/update-key.component";

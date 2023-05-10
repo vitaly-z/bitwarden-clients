@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
-import { CollectionRequest } from "@bitwarden/common/admin-console/models/request/collection.request";
 import { SelectionReadOnlyRequest } from "@bitwarden/common/admin-console/models/request/selection-read-only.request";
+import { EncString } from "@bitwarden/common/models/domain/enc-string";
+import { CollectionRequest } from "@bitwarden/common/vault/models/request/collection.request";
 import {
   CollectionAccessDetailsResponse,
   CollectionResponse,
-} from "@bitwarden/common/admin-console/models/response/collection.response";
-import { EncString } from "@bitwarden/common/models/domain/enc-string";
+} from "@bitwarden/common/vault/models/response/collection.response";
 
 import { CollectionAdminView } from "./views/collection-admin.view";
 

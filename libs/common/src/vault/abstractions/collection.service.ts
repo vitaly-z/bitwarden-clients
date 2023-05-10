@@ -1,7 +1,7 @@
-import { CollectionData } from "../../admin-console/models/data/collection.data";
-import { Collection } from "../../admin-console/models/domain/collection";
-import { CollectionView } from "../../admin-console/models/view/collection.view";
 import { TreeNode } from "../../models/domain/tree-node";
+import { CollectionData } from "../models/data/collection.data";
+import { Collection } from "../models/domain/collection";
+import { CollectionView } from "../models/view/collection.view";
 
 export abstract class CollectionService {
   clearCache: (userId?: string) => Promise<void>;

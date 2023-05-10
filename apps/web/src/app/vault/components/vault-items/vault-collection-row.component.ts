@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostBinding, HostListener, Input, Output } fro
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
-import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
+import { CollectionView } from "@bitwarden/common/vault/models/view/collection.view";
 
 import { GroupView } from "../../../admin-console/organizations/core";
 import { CollectionAdminView } from "../../core/views/collection-admin.view";
