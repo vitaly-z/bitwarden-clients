@@ -26,6 +26,7 @@ const hoverStyles: Record<BadgeTypes, string[]> = {
 export class BadgeDirective {
   @HostBinding("class") get classList() {
     return [
+      "tw-inline-block",
       "tw-py-0.5",
       "tw-px-1.5",
       "tw-font-bold",
@@ -41,14 +42,11 @@ export class BadgeDirective {
       "focus:tw-ring",
       "focus:tw-ring-offset-2",
       "focus:tw-ring-primary-700",
+      "tw-align-text-top",
     ]
       .concat(styles[this.badgeType])
       .concat(this.hasHoverEffects ? hoverStyles[this.badgeType] : [])
-      .concat(
-        this.truncate
-          ? ["tw-inline-block", "tw-truncate", "tw-max-w-40", "tw-align-bottom"]
-          : ["tw-inline"]
-      );
+      .concat(this.truncate ? ["tw-truncate", "tw-max-w-40"] : []);
   }
 
   @Input() badgeType: BadgeTypes = "primary";
