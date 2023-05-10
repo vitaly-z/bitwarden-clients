@@ -1,13 +1,13 @@
 import { mock, mockReset } from "jest-mock-extended";
 
-import { CryptoFunctionService } from "@bitwarden/common/abstractions/cryptoFunction.service";
-import { EncryptService } from "@bitwarden/common/abstractions/encrypt.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
-import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
-import { SymmetricCryptoKey } from "@bitwarden/common/models/domain/symmetric-crypto-key";
-import { CryptoService } from "@bitwarden/common/services/crypto.service";
-import { CsprngArray } from "@bitwarden/common/types/csprng";
+import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
+import { EncryptService } from "../abstractions/encrypt.service";
+import { LogService } from "../abstractions/log.service";
+import { PlatformUtilsService } from "../abstractions/platformUtils.service";
+import { StateService } from "../abstractions/state.service";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
+import { CryptoService } from "../services/crypto.service";
+import { CsprngArray } from "../types/csprng";
 
 describe("cryptoService", () => {
   let cryptoService: CryptoService;
