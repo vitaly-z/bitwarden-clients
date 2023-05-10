@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, Input } from "@angular/core";
+import { Directive, ElementRef, HostBinding, Input, AfterContentInit } from "@angular/core";
 
 export type BadgeTypes = "primary" | "secondary" | "success" | "danger" | "warning" | "info";
 
@@ -23,7 +23,7 @@ const hoverStyles: Record<BadgeTypes, string[]> = {
 @Directive({
   selector: "span[bitBadge], a[bitBadge], button[bitBadge]",
 })
-export class BadgeDirective {
+export class BadgeDirective implements AfterContentInit {
   @HostBinding("class") get classList() {
     return [
       "tw-inline-block",
@@ -54,7 +54,13 @@ export class BadgeDirective {
 
   private hasHoverEffects = false;
 
-  constructor(el: ElementRef<Element>) {
+  constructor(private el: ElementRef<HTMLElement>) {
     this.hasHoverEffects = el?.nativeElement?.nodeName != "SPAN";
+  }
+
+  ngAfterContentInit() {
+    if (this.truncate && !this.el?.nativeElement.title) {
+      this.el.nativeElement.setAttribute("title", this.el.nativeElement.innerText);
+    }
   }
 }
