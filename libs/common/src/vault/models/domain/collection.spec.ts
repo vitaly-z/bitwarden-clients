@@ -1,6 +1,7 @@
 import { mockEnc } from "../../../../spec";
-import { CollectionData } from "../../../vault/models/data/collection.data";
-import { Collection } from "../../../vault/models/domain/collection";
+import { CollectionData } from "../data/collection.data";
+
+import { Collection } from "./collection";
 
 describe("Collection", () => {
   let data: CollectionData;
