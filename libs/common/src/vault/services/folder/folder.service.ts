@@ -1,9 +1,9 @@
 import { BehaviorSubject, concatMap } from "rxjs";
 
-import { CryptoService } from "../../../abstractions/crypto.service";
 import { I18nService } from "../../../abstractions/i18n.service";
 import { StateService } from "../../../abstractions/state.service";
 import { Utils } from "../../../misc/utils";
+import { CryptoService } from "../../../platform/abstractions/crypto.service";
 import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";
 import { CipherService } from "../../../vault/abstractions/cipher.service";
 import { InternalFolderService as InternalFolderServiceAbstraction } from "../../../vault/abstractions/folder/folder.service.abstraction";

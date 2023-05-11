@@ -2,12 +2,12 @@ import { Component } from "@angular/core";
 import { firstValueFrom } from "rxjs";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { UpdateKeyRequest } from "@bitwarden/common/models/request/update-key.request";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { CipherWithIdRequest } from "@bitwarden/common/vault//models/request/cipher-with-id.request";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";

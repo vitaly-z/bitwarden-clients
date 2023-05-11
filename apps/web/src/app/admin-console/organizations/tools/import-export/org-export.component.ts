@@ -4,7 +4,6 @@ import { ActivatedRoute } from "@angular/router";
 
 import { DialogServiceAbstraction } from "@bitwarden/angular/services/dialog";
 import { ModalService } from "@bitwarden/angular/services/modal.service";
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { EventCollectionService } from "@bitwarden/common/abstractions/event/event-collection.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
@@ -13,6 +12,7 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 import { UserVerificationService } from "@bitwarden/common/abstractions/userVerification/userVerification.service.abstraction";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
 import { EventType } from "@bitwarden/common/enums";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { VaultExportServiceAbstraction } from "@bitwarden/exporter/vault-export";
 
 import { ExportComponent } from "../../../../tools/import-export/export.component";

@@ -6,7 +6,6 @@ import { RegisterComponent as BaseRegisterComponent } from "@bitwarden/angular/c
 import { DialogServiceAbstraction } from "@bitwarden/angular/services/dialog";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { AuditService } from "@bitwarden/common/abstractions/audit.service";
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
 import { FormValidationErrorsService } from "@bitwarden/common/abstractions/formValidationErrors.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
@@ -17,6 +16,7 @@ import { PolicyService } from "@bitwarden/common/admin-console/abstractions/poli
 import { MasterPasswordPolicyOptions } from "@bitwarden/common/admin-console/models/domain/master-password-policy-options";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { ReferenceEventRequest } from "@bitwarden/common/models/request/reference-event.request";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 
 @Component({

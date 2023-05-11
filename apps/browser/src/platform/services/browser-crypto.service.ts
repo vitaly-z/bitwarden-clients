@@ -1,5 +1,5 @@
 import { KeySuffixOptions } from "@bitwarden/common/enums";
-import { CryptoService } from "@bitwarden/common/services/crypto.service";
+import { CryptoService } from "@bitwarden/common/platform/services/crypto.service";
 
 export class BrowserCryptoService extends CryptoService {
   protected async retrieveKeyFromStorage(keySuffix: KeySuffixOptions) {

@@ -1,15 +1,14 @@
 import { mockReset, mock } from "jest-mock-extended";
 
-import { makeStaticByteArray } from "../../spec";
-import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
-import { LogService } from "../abstractions/log.service";
-import { EncryptionType } from "../enums";
-import { EncArrayBuffer } from "../platform/models/domain/enc-array-buffer";
-import { EncString } from "../platform/models/domain/enc-string";
-import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
-import { CsprngArray } from "../types/csprng";
-
-import { EncryptServiceImplementation } from "./cryptography/encrypt.service.implementation";
+import { makeStaticByteArray } from "../../../spec";
+import { LogService } from "../../abstractions/log.service";
+import { EncryptionType } from "../../enums";
+import { CsprngArray } from "../../types/csprng";
+import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
+import { EncString } from "../models/domain/enc-string";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
+import { CryptoFunctionService } from "../platform/abstractions/crypto-function.service";
+import { EncryptServiceImplementation } from "../services/cryptography/encrypt.service.implementation";
 
 describe("EncryptService", () => {
   const cryptoFunctionService = mock<CryptoFunctionService>();

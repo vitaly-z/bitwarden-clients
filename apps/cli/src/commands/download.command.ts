@@ -1,6 +1,6 @@
 import * as fet from "node-fetch";
 
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncArrayBuffer } from "@bitwarden/common/platform/models/domain/enc-array-buffer";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 

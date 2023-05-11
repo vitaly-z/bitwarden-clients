@@ -1,8 +1,8 @@
 import { Jsonify } from "type-fest";
 
-import { EncryptService } from "@bitwarden/common/abstractions/encrypt.service";
 import { AbstractMemoryStorageService } from "@bitwarden/common/abstractions/storage.service";
 import { MemoryStorageOptions } from "@bitwarden/common/models/domain/storage-options";
+import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 

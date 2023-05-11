@@ -1,10 +1,10 @@
 import { defaultIfEmpty, filter, firstValueFrom, fromEvent, map, Subject, takeUntil } from "rxjs";
 import { Jsonify } from "type-fest";
 
+import { Utils } from "../../../misc/utils";
 import { Decryptable } from "../../interfaces/decryptable.interface";
 import { InitializerMetadata } from "../../interfaces/initializer-metadata.interface";
-import { Utils } from "../../misc/utils";
-import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
+import { SymmetricCryptoKey } from "../../models/domain/symmetric-crypto-key";
 
 import { EncryptServiceImplementation } from "./encrypt.service.implementation";
 import { getClassInitializer } from "./get-class-initializer";
@@ -35,7 +35,7 @@ export class MultithreadEncryptServiceImplementation extends EncryptServiceImple
     this.worker ??= new Worker(
       new URL(
         /* webpackChunkName: 'encrypt-worker' */
-        "@bitwarden/common/services/cryptography/encrypt.worker.ts",
+        "@bitwarden/common/platform/services/cryptography/encrypt.worker.ts",
         import.meta.url
       )
     );

@@ -1,9 +1,9 @@
 import { Directive, OnInit } from "@angular/core";
 
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { KeyConnectorService } from "@bitwarden/common/auth/abstractions/key-connector.service";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 
 import { ModalRef } from "./modal/modal.ref";
 

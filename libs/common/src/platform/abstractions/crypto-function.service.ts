@@ -1,6 +1,6 @@
-import { DecryptParameters } from "../platform/models/domain/decrypt-parameters";
-import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
-import { CsprngArray } from "../types/csprng";
+import { CsprngArray } from "../../types/csprng";
+import { DecryptParameters } from "../models/domain/decrypt-parameters";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 
 export abstract class CryptoFunctionService {
   pbkdf2: (

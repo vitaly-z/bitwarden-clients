@@ -42,7 +42,6 @@
 ./libs/common/src/abstractions/formValidationErrors.service.ts
 ./libs/common/src/abstractions/vaultTimeout/vaultTimeoutSettings.service.ts
 ./libs/common/src/abstractions/vaultTimeout/vaultTimeout.service.ts
-./libs/common/src/abstractions/cryptoFunction.service.ts
 ./libs/common/src/abstractions/anonymousHub.service.ts
 ./libs/common/src/abstractions/appId.service.ts
 ./libs/common/src/services/azureFileUpload.service.ts
@@ -56,8 +55,6 @@
 ./libs/common/src/services/noopMessaging.service.ts
 ./libs/common/src/services/memoryStorage.service.ts
 ./libs/common/src/services/bitwardenFileUpload.service.ts
-./libs/common/src/services/webCryptoFunction.service.ts
-./libs/common/src/interfaces/IEncrypted.ts
 ./README.md
 ./LICENSE_BITWARDEN.txt
 ./CONTRIBUTING.md

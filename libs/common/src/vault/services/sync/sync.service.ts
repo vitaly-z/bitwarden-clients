@@ -1,5 +1,4 @@
 import { ApiService } from "../../../abstractions/api.service";
-import { CryptoService } from "../../../abstractions/crypto.service";
 import { LogService } from "../../../abstractions/log.service";
 import { MessagingService } from "../../../abstractions/messaging.service";
 import { SettingsService } from "../../../abstractions/settings.service";
@@ -24,6 +23,7 @@ import {
   SyncSendNotification,
 } from "../../../models/response/notification.response";
 import { ProfileResponse } from "../../../models/response/profile.response";
+import { CryptoService } from "../../../platform/abstractions/crypto.service";
 import { SendData } from "../../../tools/send/models/data/send.data";
 import { SendResponse } from "../../../tools/send/models/response/send.response";
 import { SendApiService } from "../../../tools/send/services/send-api.service.abstraction";

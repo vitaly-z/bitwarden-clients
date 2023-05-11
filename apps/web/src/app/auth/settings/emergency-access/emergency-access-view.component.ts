@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { EmergencyAccessViewResponse } from "@bitwarden/common/auth/models/response/emergency-access.response";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { CipherData } from "@bitwarden/common/vault/models/data/cipher.data";

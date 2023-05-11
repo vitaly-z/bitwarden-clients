@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
@@ -18,6 +17,7 @@ import { PolicyService } from "@bitwarden/common/admin-console/abstractions/poli
 import { Policy } from "@bitwarden/common/admin-console/models/domain/policy";
 import { OrganizationKeysRequest } from "@bitwarden/common/admin-console/models/request/organization-keys.request";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 
 import { BaseAcceptComponent } from "../common/base.accept.component";
 

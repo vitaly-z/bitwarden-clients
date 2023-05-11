@@ -2,7 +2,6 @@ import { Component, ViewChild, ViewContainerRef } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { ModalService } from "@bitwarden/angular/services/modal.service";
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
@@ -11,6 +10,7 @@ import { OrganizationService } from "@bitwarden/common/admin-console/abstraction
 import { OrganizationKeysRequest } from "@bitwarden/common/admin-console/models/request/organization-keys.request";
 import { OrganizationUpdateRequest } from "@bitwarden/common/admin-console/models/request/organization-update.request";
 import { OrganizationResponse } from "@bitwarden/common/admin-console/models/response/organization.response";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 
 import { ApiKeyComponent } from "../../../settings/api-key.component";
 import { PurgeVaultComponent } from "../../../settings/purge-vault.component";

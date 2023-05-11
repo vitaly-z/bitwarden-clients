@@ -1,6 +1,4 @@
 import { ApiService } from "../../abstractions/api.service";
-import { CryptoService } from "../../abstractions/crypto.service";
-import { EncryptService } from "../../abstractions/encrypt.service";
 import { I18nService } from "../../abstractions/i18n.service";
 import { SearchService } from "../../abstractions/search.service";
 import { SettingsService } from "../../abstractions/settings.service";
@@ -11,6 +9,8 @@ import { Utils } from "../../misc/utils";
 import Domain from "../../models/domain/domain-base";
 import { ErrorResponse } from "../../models/response/error.response";
 import { View } from "../../models/view/view";
+import { CryptoService } from "../../platform/abstractions/crypto.service";
+import { EncryptService } from "../../platform/abstractions/encrypt.service";
 import { EncArrayBuffer } from "../../platform/models/domain/enc-array-buffer";
 import { EncString } from "../../platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";

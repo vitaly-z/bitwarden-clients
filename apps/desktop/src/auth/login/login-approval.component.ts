@@ -6,13 +6,13 @@ import { ModalRef } from "@bitwarden/angular/components/modal/modal.ref";
 import { ModalConfig } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { AppIdService } from "@bitwarden/common/abstractions/appId.service";
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { AuthRequestResponse } from "@bitwarden/common/auth/models/response/auth-request.response";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 
 const RequestTimeOut = 60000 * 15; //15 Minutes
 const RequestTimeUpdate = 60000 * 5; //5 Minutes

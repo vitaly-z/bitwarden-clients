@@ -1,7 +1,7 @@
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { AbstractStorageService } from "@bitwarden/common/abstractions/storage.service";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncArrayBuffer } from "@bitwarden/common/platform/models/domain/enc-array-buffer";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 

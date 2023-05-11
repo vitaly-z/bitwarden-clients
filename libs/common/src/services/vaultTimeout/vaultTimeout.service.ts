@@ -1,6 +1,5 @@
 import { firstValueFrom } from "rxjs";
 
-import { CryptoService } from "../../abstractions/crypto.service";
 import { MessagingService } from "../../abstractions/messaging.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { SearchService } from "../../abstractions/search.service";
@@ -12,6 +11,7 @@ import { AuthService } from "../../auth/abstractions/auth.service";
 import { KeyConnectorService } from "../../auth/abstractions/key-connector.service";
 import { AuthenticationStatus } from "../../auth/enums/authentication-status";
 import { VaultTimeoutAction } from "../../enums/vault-timeout-action.enum";
+import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { CipherService } from "../../vault/abstractions/cipher.service";
 import { FolderService } from "../../vault/abstractions/folder/folder.service.abstraction";
 

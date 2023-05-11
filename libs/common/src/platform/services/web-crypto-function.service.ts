@@ -1,11 +1,11 @@
 import * as argon2 from "argon2-browser";
 import * as forge from "node-forge";
 
-import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
-import { Utils } from "../misc/utils";
-import { DecryptParameters } from "../platform/models/domain/decrypt-parameters";
-import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
-import { CsprngArray } from "../types/csprng";
+import { Utils } from "../../misc/utils";
+import { CsprngArray } from "../../types/csprng";
+import { CryptoFunctionService } from "../abstractions/crypto-function.service";
+import { DecryptParameters } from "../models/domain/decrypt-parameters";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 
 export class WebCryptoFunctionService implements CryptoFunctionService {
   private crypto: Crypto;

@@ -1,11 +1,11 @@
 import { any, mock, MockProxy } from "jest-mock-extended";
 import { BehaviorSubject, firstValueFrom } from "rxjs";
 
-import { CryptoService } from "../../../abstractions/crypto.service";
-import { CryptoFunctionService } from "../../../abstractions/cryptoFunction.service";
-import { EncryptService } from "../../../abstractions/encrypt.service";
 import { I18nService } from "../../../abstractions/i18n.service";
 import { StateService } from "../../../abstractions/state.service";
+import { CryptoFunctionService } from "../../../platform/abstractions/crypto-function.service";
+import { CryptoService } from "../../../platform/abstractions/crypto.service";
+import { EncryptService } from "../../../platform/abstractions/encrypt.service";
 import { EncString } from "../../../platform/models/domain/enc-string";
 import { ContainerService } from "../../../services/container.service";
 import { SendData } from "../models/data/send.data";

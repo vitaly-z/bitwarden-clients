@@ -1,4 +1,4 @@
-import { CryptoService as AbstractCryptoService } from "@bitwarden/common/abstractions/crypto.service";
+import { CryptoService as AbstractCryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 
 import {
   FactoryOptions,

@@ -23,12 +23,12 @@ import { ClientType, KeySuffixOptions, LogLevelType } from "@bitwarden/common/en
 import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { Account } from "@bitwarden/common/models/domain/account";
 import { GlobalState } from "@bitwarden/common/models/domain/global-state";
+import { CryptoService } from "@bitwarden/common/platform/services/crypto.service";
+import { EncryptServiceImplementation } from "@bitwarden/common/platform/services/cryptography/encrypt.service.implementation";
 import { AppIdService } from "@bitwarden/common/services/appId.service";
 import { AuditService } from "@bitwarden/common/services/audit.service";
 import { BroadcasterService } from "@bitwarden/common/services/broadcaster.service";
 import { ContainerService } from "@bitwarden/common/services/container.service";
-import { CryptoService } from "@bitwarden/common/services/crypto.service";
-import { EncryptServiceImplementation } from "@bitwarden/common/services/cryptography/encrypt.service.implementation";
 import { EnvironmentService } from "@bitwarden/common/services/environment.service";
 import { FileUploadService } from "@bitwarden/common/services/file-upload/file-upload.service";
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";

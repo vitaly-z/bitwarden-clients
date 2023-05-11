@@ -1,4 +1,4 @@
-import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 
 import { InitializerMetadata } from "./initializer-metadata.interface";
 

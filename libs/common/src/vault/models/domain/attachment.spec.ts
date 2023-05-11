@@ -1,8 +1,8 @@
 import { mock, MockProxy } from "jest-mock-extended";
 
 import { makeStaticByteArray, mockEnc, mockFromJson } from "../../../../spec";
-import { CryptoService } from "../../../abstractions/crypto.service";
-import { EncryptService } from "../../../abstractions/encrypt.service";
+import { CryptoService } from "../../../platform/abstractions/crypto.service";
+import { EncryptService } from "../../../platform/abstractions/encrypt.service";
 import { EncString } from "../../../platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";
 import { ContainerService } from "../../../services/container.service";

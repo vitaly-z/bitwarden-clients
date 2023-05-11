@@ -2,8 +2,6 @@ import { Observable, Subject } from "rxjs";
 
 import { ApiService } from "../../abstractions/api.service";
 import { AppIdService } from "../../abstractions/appId.service";
-import { CryptoService } from "../../abstractions/crypto.service";
-import { EncryptService } from "../../abstractions/encrypt.service";
 import { EnvironmentService } from "../../abstractions/environment.service";
 import { I18nService } from "../../abstractions/i18n.service";
 import { LogService } from "../../abstractions/log.service";
@@ -16,6 +14,8 @@ import { Utils } from "../../misc/utils";
 import { PreloginRequest } from "../../models/request/prelogin.request";
 import { ErrorResponse } from "../../models/response/error.response";
 import { AuthRequestPushNotification } from "../../models/response/notification.response";
+import { CryptoService } from "../../platform/abstractions/crypto.service";
+import { EncryptService } from "../../platform/abstractions/encrypt.service";
 import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
 import { PasswordGenerationServiceAbstraction } from "../../tools/generator/password";
 import { AuthService as AuthServiceAbstraction } from "../abstractions/auth.service";

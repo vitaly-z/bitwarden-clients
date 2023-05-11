@@ -1,6 +1,5 @@
 import { ApiService } from "../../abstractions/api.service";
 import { AppIdService } from "../../abstractions/appId.service";
-import { CryptoService } from "../../abstractions/crypto.service";
 import { EnvironmentService } from "../../abstractions/environment.service";
 import { LogService } from "../../abstractions/log.service";
 import { MessagingService } from "../../abstractions/messaging.service";
@@ -8,6 +7,7 @@ import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
 import { TokenService } from "../../auth/abstractions/token.service";
 import { TwoFactorService } from "../../auth/abstractions/two-factor.service";
+import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { KeyConnectorService } from "../abstractions/key-connector.service";
 import { UserApiLogInCredentials } from "../models/domain/log-in-credentials";
 import { UserApiTokenRequest } from "../models/request/identity-token/user-api-token.request";

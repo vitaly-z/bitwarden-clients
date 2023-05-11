@@ -2,8 +2,6 @@ import { Inject, Injectable } from "@angular/core";
 
 import { WINDOW } from "@bitwarden/angular/services/injection-tokens";
 import { AbstractThemingService } from "@bitwarden/angular/services/theming/theming.service.abstraction";
-import { CryptoService as CryptoServiceAbstraction } from "@bitwarden/common/abstractions/crypto.service";
-import { EncryptService } from "@bitwarden/common/abstractions/encrypt.service";
 import {
   EnvironmentService as EnvironmentServiceAbstraction,
   Urls,
@@ -14,6 +12,8 @@ import { NotificationsService as NotificationsServiceAbstraction } from "@bitwar
 import { StateService as StateServiceAbstraction } from "@bitwarden/common/abstractions/state.service";
 import { VaultTimeoutService as VaultTimeoutServiceAbstraction } from "@bitwarden/common/abstractions/vaultTimeout/vaultTimeout.service";
 import { TwoFactorService as TwoFactorServiceAbstraction } from "@bitwarden/common/auth/abstractions/two-factor.service";
+import { CryptoService as CryptoServiceAbstraction } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
 import { ContainerService } from "@bitwarden/common/services/container.service";
 import { EventUploadService } from "@bitwarden/common/services/event/event-upload.service";
 import { VaultTimeoutService as VaultTimeoutService } from "@bitwarden/common/services/vaultTimeout/vaultTimeout.service";

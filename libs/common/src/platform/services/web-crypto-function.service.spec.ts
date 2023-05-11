@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-restricted-imports
 import { Substitute } from "@fluffy-spoon/substitute";
 
-import { PlatformUtilsService } from "../abstractions/platformUtils.service";
-import { Utils } from "../misc/utils";
-import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
+import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
+import { Utils } from "../../misc/utils";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 
-import { WebCryptoFunctionService } from "./webCryptoFunction.service";
+import { WebCryptoFunctionService } from "./web-crypto-function.service";
 
 const RsaPublicKey =
   "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl0Vawl/toXzkEvB82FEtqHP" +

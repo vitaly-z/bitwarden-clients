@@ -1,32 +1,32 @@
 import * as bigInt from "big-integer";
 
-import { CryptoService as CryptoServiceAbstraction } from "../abstractions/crypto.service";
-import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
-import { EncryptService } from "../abstractions/encrypt.service";
-import { LogService } from "../abstractions/log.service";
-import { PlatformUtilsService } from "../abstractions/platformUtils.service";
-import { StateService } from "../abstractions/state.service";
-import { EncryptedOrganizationKeyData } from "../admin-console/models/data/encrypted-organization-key.data";
-import { BaseEncryptedOrganizationKey } from "../admin-console/models/domain/encrypted-organization-key";
-import { ProfileOrganizationResponse } from "../admin-console/models/response/profile-organization.response";
-import { ProfileProviderOrganizationResponse } from "../admin-console/models/response/profile-provider-organization.response";
-import { ProfileProviderResponse } from "../admin-console/models/response/profile-provider.response";
-import { KdfConfig } from "../auth/models/domain/kdf-config";
+import { LogService } from "../../abstractions/log.service";
+import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
+import { StateService } from "../../abstractions/state.service";
+import { EncryptedOrganizationKeyData } from "../../admin-console/models/data/encrypted-organization-key.data";
+import { BaseEncryptedOrganizationKey } from "../../admin-console/models/domain/encrypted-organization-key";
+import { ProfileOrganizationResponse } from "../../admin-console/models/response/profile-organization.response";
+import { ProfileProviderOrganizationResponse } from "../../admin-console/models/response/profile-provider-organization.response";
+import { ProfileProviderResponse } from "../../admin-console/models/response/profile-provider.response";
+import { KdfConfig } from "../../auth/models/domain/kdf-config";
 import {
+  KeySuffixOptions,
+  HashPurpose,
+  KdfType,
   DEFAULT_ARGON2_ITERATIONS,
   DEFAULT_ARGON2_MEMORY,
   DEFAULT_ARGON2_PARALLELISM,
   EncryptionType,
-  HashPurpose,
-  KdfType,
-  KeySuffixOptions,
-} from "../enums";
-import { sequentialize } from "../misc/sequentialize";
-import { Utils } from "../misc/utils";
-import { EFFLongWordList } from "../misc/wordlist";
-import { EncArrayBuffer } from "../platform/models/domain/enc-array-buffer";
-import { EncString } from "../platform/models/domain/enc-string";
-import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
+} from "../../enums";
+import { sequentialize } from "../../misc/sequentialize";
+import { Utils } from "../../misc/utils";
+import { EFFLongWordList } from "../../misc/wordlist";
+import { CryptoFunctionService } from "../abstractions/crypto-function.service";
+import { CryptoService as CryptoServiceAbstraction } from "../abstractions/crypto.service";
+import { EncryptService } from "../abstractions/encrypt.service";
+import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
+import { EncString } from "../models/domain/enc-string";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 
 export class CryptoService implements CryptoServiceAbstraction {
   constructor(

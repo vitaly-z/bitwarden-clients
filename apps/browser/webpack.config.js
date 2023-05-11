@@ -147,7 +147,7 @@ const mainConfig = {
     "content/contextMenuHandler": "./src/autofill/content/context-menu-handler.ts",
     "content/message_handler": "./src/autofill/content/message_handler.ts",
     "notification/bar": "./src/autofill/notification/bar.ts",
-    "encrypt-worker": "../../libs/common/src/services/cryptography/encrypt.worker.ts",
+    "encrypt-worker": "../../libs/common/src/platform/services/cryptography/encrypt.worker.ts",
   },
   optimization: {
     minimize: ENV !== "development",

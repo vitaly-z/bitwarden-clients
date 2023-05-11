@@ -1,10 +1,10 @@
 import { Jsonify } from "type-fest";
 
+import { ConsoleLogService } from "../../../services/consoleLog.service";
+import { ContainerService } from "../../../services/container.service";
 import { Decryptable } from "../../interfaces/decryptable.interface";
-import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
-import { ConsoleLogService } from "../../services/consoleLog.service";
-import { ContainerService } from "../../services/container.service";
-import { WebCryptoFunctionService } from "../../services/webCryptoFunction.service";
+import { SymmetricCryptoKey } from "../../models/domain/symmetric-crypto-key";
+import { WebCryptoFunctionService } from "../web-crypto-function.service";
 
 import { EncryptServiceImplementation } from "./encrypt.service.implementation";
 import { getClassInitializer } from "./get-class-initializer";

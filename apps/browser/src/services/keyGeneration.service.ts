@@ -1,4 +1,4 @@
-import { CryptoFunctionService } from "@bitwarden/common/abstractions/cryptoFunction.service";
+import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 
 import { AbstractKeyGenerationService } from "./abstractions/abstractKeyGeneration.service";

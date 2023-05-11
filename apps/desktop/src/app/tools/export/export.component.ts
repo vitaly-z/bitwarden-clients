@@ -6,7 +6,6 @@ import { UntypedFormBuilder } from "@angular/forms";
 import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/services/dialog";
 import { ExportComponent as BaseExportComponent } from "@bitwarden/angular/tools/export/components/export.component";
 import { BroadcasterService } from "@bitwarden/common/abstractions/broadcaster.service";
-import { CryptoService } from "@bitwarden/common/abstractions/crypto.service";
 import { EventCollectionService } from "@bitwarden/common/abstractions/event/event-collection.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
@@ -14,6 +13,7 @@ import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { UserVerificationService } from "@bitwarden/common/abstractions/userVerification/userVerification.service.abstraction";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
+import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { VaultExportServiceAbstraction } from "@bitwarden/exporter/vault-export";
 
 const BroadcasterSubscriptionId = "ExportComponent";
