@@ -54,6 +54,7 @@ import { ViewComponent } from "../vault/popup/components/vault/view.component";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { EnvironmentSelectorComponent } from "./components/environment-selector.component";
 import { PopOutComponent } from "./components/pop-out.component";
 import { PrivateModeWarningComponent } from "./components/private-mode-warning.component";
 import { SetPinComponent } from "./components/set-pin.component";
@@ -153,6 +154,7 @@ import "./locales";
     AboutComponent,
     HelpAndFeedbackComponent,
     AutofillComponent,
+    EnvironmentSelectorComponent,
   ],
   providers: [CurrencyPipe, DatePipe],
   bootstrap: [AppComponent],
