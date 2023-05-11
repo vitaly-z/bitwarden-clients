@@ -151,7 +151,6 @@ export class CipherService implements CipherServiceAbstraction {
     cipher.revisionDate = model.revisionDate;
     cipher.reprompt = model.reprompt;
     cipher.edit = model.edit;
-    cipher.forceKeyRotation = model.forceKeyRotation;
 
     if (key == null && cipher.organizationId != null) {
       key = await this.cryptoService.getOrgKey(cipher.organizationId);
@@ -1153,9 +1152,8 @@ export class CipherService implements CipherServiceAbstraction {
     cipher: Cipher,
     key: SymmetricCryptoKey
   ): Promise<Cipher> {
-    if (model.key == null || model.forceKeyRotation) {
+    if (model.key == null) {
       model.key = await this.cryptoService.makeCipherKey();
-      cipher.forceKeyRotation = false;
     }
     cipher.key = await this.cryptoService.encrypt(model.key.key, key);
     key = model.key;

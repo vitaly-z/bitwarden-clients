@@ -47,7 +47,6 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
   deletedDate: Date;
   reprompt: CipherRepromptType;
   key: EncString;
-  forceKeyRotation: boolean;
 
   constructor(obj?: CipherData, localData: LocalData = null) {
     super();
@@ -84,7 +83,6 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     this.creationDate = obj.creationDate != null ? new Date(obj.creationDate) : null;
     this.deletedDate = obj.deletedDate != null ? new Date(obj.deletedDate) : null;
     this.reprompt = obj.reprompt;
-    this.forceKeyRotation = obj.forceKeyRotation;
 
     switch (this.type) {
       case CipherType.Login:
@@ -230,7 +228,6 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     c.deletedDate = this.deletedDate != null ? this.deletedDate.toISOString() : null;
     c.reprompt = this.reprompt;
     c.key = this.key.encryptedString;
-    c.forceKeyRotation = this.forceKeyRotation;
 
     this.buildDataModel(this, c, {
       name: null,
@@ -280,7 +277,6 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
     const fields = obj.fields?.map((f: any) => Field.fromJSON(f));
     const passwordHistory = obj.passwordHistory?.map((ph: any) => Password.fromJSON(ph));
     const key = EncString.fromJSON(obj.key);
-    const forceKeyRotation = obj.forceKeyRotation;
 
     Object.assign(domain, obj, {
       name,
@@ -291,7 +287,6 @@ export class Cipher extends Domain implements Decryptable<CipherView> {
       fields,
       passwordHistory,
       key,
-      forceKeyRotation,
     });
 
     switch (obj.type) {
