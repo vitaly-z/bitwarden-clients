@@ -16,7 +16,7 @@ import { TrayMain } from "./main/tray.main";
 import { UpdaterMain } from "./main/updater.main";
 import { WindowMain } from "./main/window.main";
 import { Account } from "./models/account";
-import { ElectronLogService } from "./services/electron-log.service";
+import { ElectronLogService } from "./platform/services/electron-log.service";
 import { ElectronMainMessagingService } from "./services/electron-main-messaging.service";
 import { ElectronStateService } from "./services/electron-state.service";
 import { ElectronStorageService } from "./services/electron-storage.service";

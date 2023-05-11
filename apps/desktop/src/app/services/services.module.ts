@@ -43,9 +43,9 @@ import { PasswordRepromptService as PasswordRepromptServiceAbstraction } from "@
 
 import { LoginGuard } from "../../auth/guards/login.guard";
 import { Account } from "../../models/account";
-import { ElectronCryptoService } from "../../platform/electron-crypto.service";
+import { ElectronCryptoService } from "../../platform/services/electron-crypto.service";
+import { ElectronLogService } from "../../platform/services/electron-log.service";
 import { ElectronDialogService } from "../../services/electron-dialog.service";
-import { ElectronLogService } from "../../services/electron-log.service";
 import { ElectronPlatformUtilsService } from "../../services/electron-platform-utils.service";
 import { ElectronRendererMessagingService } from "../../services/electron-renderer-messaging.service";
 import { ElectronRendererSecureStorageService } from "../../services/electron-renderer-secure-storage.service";
