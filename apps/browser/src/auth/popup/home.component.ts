@@ -3,19 +3,20 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 
+import { EnvironmentSelectorComponent } from "@bitwarden/angular/auth/components/environment-selector.component";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { LoginService } from "@bitwarden/common/auth/abstractions/login.service";
-import { EnvironmentSelectorComponent } from "@bitwarden/angular/auth/components/environment-selector.component";
 
 @Component({
   selector: "app-home",
   templateUrl: "home.component.html",
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  @ViewChild(EnvironmentSelectorComponent) environmentSelector!: EnvironmentSelectorComponent;
+  @ViewChild(EnvironmentSelectorComponent, { static: true })
+  environmentSelector!: EnvironmentSelectorComponent;
   private componentDestroyed$: Subject<void> = new Subject();
 
   loginInitiated = false;

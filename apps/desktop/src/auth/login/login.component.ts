@@ -1,7 +1,9 @@
 import { Component, NgZone, OnDestroy, ViewChild, ViewContainerRef } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Subject, takeUntil } from "rxjs";
 
+import { EnvironmentSelectorComponent } from "@bitwarden/angular/auth/components/environment-selector.component";
 import { LoginComponent as BaseLoginComponent } from "@bitwarden/angular/auth/components/login.component";
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
@@ -21,8 +23,6 @@ import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/ge
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
 import { EnvironmentComponent } from "../environment.component";
-import { EnvironmentSelectorComponent } from "@bitwarden/angular/auth/components/environment-selector.component";
-import { Subject, takeUntil } from "rxjs";
 
 const BroadcasterSubscriptionId = "LoginComponent";
 
@@ -33,7 +33,7 @@ const BroadcasterSubscriptionId = "LoginComponent";
 export class LoginComponent extends BaseLoginComponent implements OnDestroy {
   @ViewChild("environment", { read: ViewContainerRef, static: true })
   environmentModal: ViewContainerRef;
-  @ViewChild(EnvironmentSelectorComponent) 
+  @ViewChild(EnvironmentSelectorComponent)
   environmentSelector!: EnvironmentSelectorComponent;
 
   protected componentDestroyed$: Subject<void> = new Subject();
@@ -120,7 +120,7 @@ export class LoginComponent extends BaseLoginComponent implements OnDestroy {
         }
       });
     });
-    this.messagingService.send("getWindowIsFocused");    
+    this.messagingService.send("getWindowIsFocused");
     this.environmentSelector.onOpenSelfHostedSettings
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(() => {
