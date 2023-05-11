@@ -24,9 +24,9 @@ import {
 import { sequentialize } from "../misc/sequentialize";
 import { Utils } from "../misc/utils";
 import { EFFLongWordList } from "../misc/wordlist";
-import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
-import { EncString } from "../models/domain/enc-string";
-import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
+import { EncArrayBuffer } from "../platform/models/domain/enc-array-buffer";
+import { EncString } from "../platform/models/domain/enc-string";
+import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
 
 export class CryptoService implements CryptoServiceAbstraction {
   constructor(

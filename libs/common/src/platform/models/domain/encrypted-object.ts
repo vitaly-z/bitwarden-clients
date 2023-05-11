@@ -1,4 +1,4 @@
-import { SymmetricCryptoKey } from "./symmetric-crypto-key";
+import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";
 
 export class EncryptedObject {
   iv: ArrayBuffer;

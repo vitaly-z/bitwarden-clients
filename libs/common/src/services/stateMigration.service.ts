@@ -14,9 +14,9 @@ import {
   AccountSettingsSettings,
   EncryptionPair,
 } from "../models/domain/account";
-import { EncString } from "../models/domain/enc-string";
 import { GlobalState } from "../models/domain/global-state";
 import { StorageOptions } from "../models/domain/storage-options";
+import { EncString } from "../platform/models/domain/enc-string";
 import { GeneratedPasswordHistory } from "../tools/generator/password";
 import { SendData } from "../tools/send/models/data/send.data";
 import { CipherData } from "../vault/models/data/cipher.data";

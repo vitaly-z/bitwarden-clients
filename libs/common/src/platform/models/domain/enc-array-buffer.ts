@@ -1,6 +1,6 @@
-import { EncryptionType } from "../../enums";
-import { IEncrypted } from "../../interfaces/IEncrypted";
-import { Utils } from "../../misc/utils";
+import { EncryptionType } from "../../../enums";
+import { IEncrypted } from "../../../interfaces/IEncrypted";
+import { Utils } from "../../../misc/utils";
 
 const ENC_TYPE_LENGTH = 1;
 const IV_LENGTH = 16;

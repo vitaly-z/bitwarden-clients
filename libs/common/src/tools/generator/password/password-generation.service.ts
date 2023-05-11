@@ -6,7 +6,7 @@ import { PolicyService } from "../../../admin-console/abstractions/policy/policy
 import { PolicyType } from "../../../admin-console/enums";
 import { PasswordGeneratorPolicyOptions } from "../../../admin-console/models/domain/password-generator-policy-options";
 import { EFFLongWordList } from "../../../misc/wordlist";
-import { EncString } from "../../../models/domain/enc-string";
+import { EncString } from "../../../platform/models/domain/enc-string";
 
 import { GeneratedPasswordHistory } from "./generated-password-history";
 import { PasswordGenerationServiceAbstraction } from "./password-generation.service.abstraction";

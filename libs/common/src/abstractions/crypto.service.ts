@@ -3,9 +3,9 @@ import { ProfileProviderOrganizationResponse } from "../admin-console/models/res
 import { ProfileProviderResponse } from "../admin-console/models/response/profile-provider.response";
 import { KdfConfig } from "../auth/models/domain/kdf-config";
 import { HashPurpose, KdfType, KeySuffixOptions } from "../enums";
-import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
-import { EncString } from "../models/domain/enc-string";
-import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
+import { EncArrayBuffer } from "../platform/models/domain/enc-array-buffer";
+import { EncString } from "../platform/models/domain/enc-string";
+import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
 
 export abstract class CryptoService {
   setKey: (key: SymmetricCryptoKey) => Promise<any>;

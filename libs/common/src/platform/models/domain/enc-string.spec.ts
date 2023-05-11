@@ -2,13 +2,12 @@
 import { Substitute, Arg } from "@fluffy-spoon/substitute";
 import { mock, MockProxy } from "jest-mock-extended";
 
-import { CryptoService } from "../../abstractions/crypto.service";
-import { EncryptService } from "../../abstractions/encrypt.service";
-import { EncryptionType } from "../../enums";
-import { ContainerService } from "../../services/container.service";
-
-import { EncString } from "./enc-string";
-import { SymmetricCryptoKey } from "./symmetric-crypto-key";
+import { CryptoService } from "../../../abstractions/crypto.service";
+import { EncryptService } from "../../../abstractions/encrypt.service";
+import { EncryptionType } from "../../../enums";
+import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";
+import { ContainerService } from "../../../services/container.service";
+import { EncString } from "../../platform/models/domain/enc-string";
 
 describe("EncString", () => {
   afterEach(() => {

@@ -1,7 +1,6 @@
-import { makeStaticByteArray } from "../../../spec";
-import { EncryptionType } from "../../enums";
-
-import { EncArrayBuffer } from "./enc-array-buffer";
+import { makeStaticByteArray } from "../../../../spec";
+import { EncryptionType } from "../../../enums";
+import { EncArrayBuffer } from "../../platform/models/domain/enc-array-buffer";
 
 describe("encArrayBuffer", () => {
   describe("parses the buffer", () => {

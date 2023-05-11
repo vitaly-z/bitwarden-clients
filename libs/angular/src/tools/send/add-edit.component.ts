@@ -10,7 +10,7 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
 import { PolicyType } from "@bitwarden/common/admin-console/enums";
-import { EncArrayBuffer } from "@bitwarden/common/models/domain/enc-array-buffer";
+import { EncArrayBuffer } from "@bitwarden/common/platform/models/domain/enc-array-buffer";
 import { SendType } from "@bitwarden/common/tools/send/enums/send-type";
 import { Send } from "@bitwarden/common/tools/send/models/domain/send";
 import { SendFileView } from "@bitwarden/common/tools/send/models/view/send-file.view";

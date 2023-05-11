@@ -2,7 +2,7 @@ import { Jsonify } from "type-fest";
 
 import { Utils } from "../../../../misc/utils";
 import Domain from "../../../../models/domain/domain-base";
-import { EncString } from "../../../../models/domain/enc-string";
+import { EncString } from "../../../../platform/models/domain/enc-string";
 import { SendType } from "../../enums/send-type";
 import { SendData } from "../data/send.data";
 import { SendView } from "../view/send.view";

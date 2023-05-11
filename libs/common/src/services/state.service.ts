@@ -31,12 +31,12 @@ import {
   AccountSettings,
   AccountSettingsSettings,
 } from "../models/domain/account";
-import { EncString } from "../models/domain/enc-string";
 import { GlobalState } from "../models/domain/global-state";
 import { State } from "../models/domain/state";
 import { StorageOptions } from "../models/domain/storage-options";
-import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 import { WindowState } from "../models/domain/window-state";
+import { EncString } from "../platform/models/domain/enc-string";
+import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
 import { GeneratedPasswordHistory } from "../tools/generator/password";
 import { SendData } from "../tools/send/models/data/send.data";
 import { SendView } from "../tools/send/models/view/send.view";

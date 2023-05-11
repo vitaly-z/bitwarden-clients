@@ -10,7 +10,7 @@ import { StateService } from "../../abstractions/state.service";
 import { PolicyService } from "../../admin-console/abstractions/policy/policy.service.abstraction";
 import { HashPurpose } from "../../enums";
 import { Utils } from "../../misc/utils";
-import { SymmetricCryptoKey } from "../../models/domain/symmetric-crypto-key";
+import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
 import { PasswordGenerationService } from "../../tools/generator/password";
 import { AuthService } from "../abstractions/auth.service";
 import { TokenService } from "../abstractions/token.service";

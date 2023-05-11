@@ -4,9 +4,9 @@ import { makeStaticByteArray } from "../../spec";
 import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
 import { LogService } from "../abstractions/log.service";
 import { EncryptionType } from "../enums";
-import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
-import { EncString } from "../models/domain/enc-string";
-import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
+import { EncArrayBuffer } from "../platform/models/domain/enc-array-buffer";
+import { EncString } from "../platform/models/domain/enc-string";
+import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
 import { CsprngArray } from "../types/csprng";
 
 import { EncryptServiceImplementation } from "./cryptography/encrypt.service.implementation";

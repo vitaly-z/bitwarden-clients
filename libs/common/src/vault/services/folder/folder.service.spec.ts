@@ -5,7 +5,7 @@ import { BehaviorSubject, firstValueFrom } from "rxjs";
 import { CryptoService } from "../../../abstractions/crypto.service";
 import { EncryptService } from "../../../abstractions/encrypt.service";
 import { I18nService } from "../../../abstractions/i18n.service";
-import { EncString } from "../../../models/domain/enc-string";
+import { EncString } from "../../../platform/models/domain/enc-string";
 import { ContainerService } from "../../../services/container.service";
 import { StateService } from "../../../services/state.service";
 import { CipherService } from "../../abstractions/cipher.service";

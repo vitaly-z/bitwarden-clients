@@ -8,7 +8,7 @@ import {
   CollectionAccessDetailsResponse,
   CollectionResponse,
 } from "@bitwarden/common/admin-console/models/response/collection.response";
-import { EncString } from "@bitwarden/common/models/domain/enc-string";
+import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 
 import { CoreOrganizationModule } from "../core-organization.module";
 import { CollectionAdminView } from "../views/collection-admin.view";

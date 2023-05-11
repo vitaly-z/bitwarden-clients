@@ -12,6 +12,8 @@ import { EnvironmentUrls } from "../../auth/models/domain/environment-urls";
 import { ForceResetPasswordReason } from "../../auth/models/domain/force-reset-password-reason";
 import { KdfType, UriMatchType } from "../../enums";
 import { Utils } from "../../misc/utils";
+import { EncString } from "../../platform/models/domain/enc-string";
+import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
 import { GeneratedPasswordHistory } from "../../tools/generator/password";
 import { SendData } from "../../tools/send/models/data/send.data";
 import { SendView } from "../../tools/send/models/view/send.view";
@@ -22,8 +24,6 @@ import { CipherView } from "../../vault/models/view/cipher.view";
 import { EventData } from "../data/event.data";
 import { ServerConfigData } from "../data/server-config.data";
 
-import { EncString } from "./enc-string";
-import { SymmetricCryptoKey } from "./symmetric-crypto-key";
 
 export class EncryptionPair<TEncrypted, TDecrypted> {
   encrypted?: TEncrypted;

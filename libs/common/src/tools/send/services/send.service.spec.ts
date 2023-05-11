@@ -6,7 +6,7 @@ import { CryptoFunctionService } from "../../../abstractions/cryptoFunction.serv
 import { EncryptService } from "../../../abstractions/encrypt.service";
 import { I18nService } from "../../../abstractions/i18n.service";
 import { StateService } from "../../../abstractions/state.service";
-import { EncString } from "../../../models/domain/enc-string";
+import { EncString } from "../../../platform/models/domain/enc-string";
 import { ContainerService } from "../../../services/container.service";
 import { SendData } from "../models/data/send.data";
 import { Send } from "../models/domain/send";

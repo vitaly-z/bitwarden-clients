@@ -10,7 +10,7 @@ import { StateService } from "../../abstractions/state.service";
 import { PolicyService } from "../../admin-console/abstractions/policy/policy.service.abstraction";
 import { Utils } from "../../misc/utils";
 import { Account, AccountProfile, AccountTokens } from "../../models/domain/account";
-import { EncString } from "../../models/domain/enc-string";
+import { EncString } from "../../platform/models/domain/enc-string";
 import { PasswordGenerationService } from "../../tools/generator/password";
 import { AuthService } from "../abstractions/auth.service";
 import { TokenService } from "../abstractions/token.service";

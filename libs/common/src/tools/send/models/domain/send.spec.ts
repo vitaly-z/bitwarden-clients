@@ -4,7 +4,7 @@ import { Substitute, Arg, SubstituteOf } from "@fluffy-spoon/substitute";
 import { makeStaticByteArray, mockEnc } from "../../../../../spec";
 import { CryptoService } from "../../../../abstractions/crypto.service";
 import { EncryptService } from "../../../../abstractions/encrypt.service";
-import { EncString } from "../../../../models/domain/enc-string";
+import { EncString } from "../../../../platform/models/domain/enc-string";
 import { ContainerService } from "../../../../services/container.service";
 import { SendType } from "../../enums/send-type";
 import { SendData } from "../data/send.data";

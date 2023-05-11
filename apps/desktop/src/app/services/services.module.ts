@@ -43,7 +43,7 @@ import { PasswordRepromptService as PasswordRepromptServiceAbstraction } from "@
 
 import { LoginGuard } from "../../auth/guards/login.guard";
 import { Account } from "../../models/account";
-import { ElectronCryptoService } from "../../services/electron-crypto.service";
+import { ElectronCryptoService } from "../../platform/electron-crypto.service";
 import { ElectronDialogService } from "../../services/electron-dialog.service";
 import { ElectronLogService } from "../../services/electron-log.service";
 import { ElectronPlatformUtilsService } from "../../services/electron-platform-utils.service";

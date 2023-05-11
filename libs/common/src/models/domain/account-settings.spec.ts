@@ -1,5 +1,6 @@
+import { EncString } from "../../platform/models/domain/enc-string";
+
 import { AccountSettings, EncryptionPair } from "./account";
-import { EncString } from "./enc-string";
 
 describe("AccountSettings", () => {
   describe("fromJSON", () => {

@@ -1,7 +1,7 @@
-import { View } from "../view/view";
 
-import { EncString } from "./enc-string";
-import { SymmetricCryptoKey } from "./symmetric-crypto-key";
+import { EncString } from "../../platform/models/domain/enc-string";
+import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
+import { View } from "../view/view";
 
 // https://contributing.bitwarden.com/architecture/clients/data-model#domain
 export default class Domain {

@@ -3,8 +3,8 @@ import * as forge from "node-forge";
 
 import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
 import { Utils } from "../misc/utils";
-import { DecryptParameters } from "../models/domain/decrypt-parameters";
-import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
+import { DecryptParameters } from "../platform/models/domain/decrypt-parameters";
+import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
 import { CsprngArray } from "../types/csprng";
 
 export class WebCryptoFunctionService implements CryptoFunctionService {

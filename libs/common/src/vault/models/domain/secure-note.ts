@@ -2,7 +2,7 @@ import { Jsonify } from "type-fest";
 
 import { SecureNoteType } from "../../../enums";
 import Domain from "../../../models/domain/domain-base";
-import { SymmetricCryptoKey } from "../../../models/domain/symmetric-crypto-key";
+import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";
 import { SecureNoteData } from "../data/secure-note.data";
 import { SecureNoteView } from "../view/secure-note.view";
 

@@ -1,4 +1,4 @@
-import { SymmetricCryptoKey } from "@bitwarden/common/models/domain/symmetric-crypto-key";
+import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 
 export interface AbstractKeyGenerationService {
   makeEphemeralKey(numBytes?: number): Promise<SymmetricCryptoKey>;
