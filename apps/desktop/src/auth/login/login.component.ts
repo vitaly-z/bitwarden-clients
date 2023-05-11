@@ -21,6 +21,8 @@ import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/ge
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
 import { EnvironmentComponent } from "../environment.component";
+import { EnvironmentSelectorComponent } from "@bitwarden/angular/auth/components/environment-selector.component";
+import { Subject, takeUntil } from "rxjs";
 
 const BroadcasterSubscriptionId = "LoginComponent";
 
@@ -31,7 +33,10 @@ const BroadcasterSubscriptionId = "LoginComponent";
 export class LoginComponent extends BaseLoginComponent implements OnDestroy {
   @ViewChild("environment", { read: ViewContainerRef, static: true })
   environmentModal: ViewContainerRef;
+  @ViewChild(EnvironmentSelectorComponent) 
+  environmentSelector!: EnvironmentSelectorComponent;
 
+  protected componentDestroyed$: Subject<void> = new Subject();
   webVaultHostname = "";
 
   showingModal = false;
@@ -115,11 +120,18 @@ export class LoginComponent extends BaseLoginComponent implements OnDestroy {
         }
       });
     });
-    this.messagingService.send("getWindowIsFocused");
+    this.messagingService.send("getWindowIsFocused");    
+    this.environmentSelector.onOpenSelfHostedSettings
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe(() => {
+        this.settings();
+      });
   }
 
   ngOnDestroy() {
     this.broadcasterService.unsubscribe(BroadcasterSubscriptionId);
+    this.componentDestroyed$.next();
+    this.componentDestroyed$.complete();
   }
 
   async settings() {
@@ -129,16 +141,16 @@ export class LoginComponent extends BaseLoginComponent implements OnDestroy {
     );
 
     // eslint-disable-next-line rxjs-angular/prefer-takeuntil
-    modal.onShown.subscribe(() => {
+    modal.onShown.pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
       this.showingModal = true;
     });
     // eslint-disable-next-line rxjs-angular/prefer-takeuntil
-    modal.onClosed.subscribe(() => {
+    modal.onClosed.pipe(takeUntil(this.componentDestroyed$)).subscribe(() => {
       this.showingModal = false;
     });
 
     // eslint-disable-next-line rxjs-angular/prefer-takeuntil, rxjs/no-async-subscribe
-    childComponent.onSaved.subscribe(async () => {
+    childComponent.onSaved.pipe(takeUntil(this.componentDestroyed$)).subscribe(async () => {
       modal.close();
       await this.checkSelfHosted();
     });

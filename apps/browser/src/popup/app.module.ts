@@ -14,6 +14,7 @@ import { BitwardenToastModule } from "@bitwarden/angular/components/toastr.compo
 import { JslibModule } from "@bitwarden/angular/jslib.module";
 import { ColorPasswordCountPipe } from "@bitwarden/angular/pipes/color-password-count.pipe";
 import { ColorPasswordPipe } from "@bitwarden/angular/pipes/color-password.pipe";
+import { EnvironmentSelectorComponent } from "@bitwarden/angular/auth/components/environment-selector.component";
 
 import { EnvironmentComponent } from "../auth/popup/environment.component";
 import { HintComponent } from "../auth/popup/hint.component";
@@ -54,7 +55,6 @@ import { ViewComponent } from "../vault/popup/components/vault/view.component";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { EnvironmentSelectorComponent } from "./components/environment-selector.component";
 import { PopOutComponent } from "./components/pop-out.component";
 import { PrivateModeWarningComponent } from "./components/private-mode-warning.component";
 import { SetPinComponent } from "./components/set-pin.component";

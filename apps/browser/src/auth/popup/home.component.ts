@@ -8,8 +8,7 @@ import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { LoginService } from "@bitwarden/common/auth/abstractions/login.service";
-
-import { EnvironmentSelectorComponent } from "../../popup/components/environment-selector.component";
+import { EnvironmentSelectorComponent } from "@bitwarden/angular/auth/components/environment-selector.component";
 
 @Component({
   selector: "app-home",
@@ -58,6 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(() => {
         this.setFormValues();
+        this.router.navigate(["environment"]);
       });
   }
 

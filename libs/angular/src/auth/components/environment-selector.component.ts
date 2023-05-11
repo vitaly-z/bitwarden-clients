@@ -47,12 +47,12 @@ export class EnvironmentSelectorComponent implements OnInit, OnDestroy {
       overlayY: "top",
     },
   ];
-  private componentDestroyed$: Subject<void> = new Subject();
+  protected componentDestroyed$: Subject<void> = new Subject();
 
   constructor(
-    private environmentService: EnvironmentService,
-    private configService: ConfigServiceAbstraction,
-    private router: Router
+    protected environmentService: EnvironmentService,
+    protected configService: ConfigServiceAbstraction,
+    protected router: Router
   ) {}
 
   async ngOnInit() {
@@ -74,7 +74,7 @@ export class EnvironmentSelectorComponent implements OnInit, OnDestroy {
     } else if (option === ServerEnvironment.US) {
       await this.environmentService.setUrls({ base: "https://vault.bitwarden.com" });
     } else if (option === ServerEnvironment.SelfHosted) {
-      this.openSelfHostedSettings();
+      this.onOpenSelfHostedSettings.emit();
     }
     this.updateEnvironmentInfo();
   }
@@ -93,11 +93,6 @@ export class EnvironmentSelectorComponent implements OnInit, OnDestroy {
   close() {
     this.isOpen = false;
     this.updateEnvironmentInfo();
-  }
-
-  async openSelfHostedSettings() {
-    this.onOpenSelfHostedSettings.emit();
-    this.router.navigate(["environment"]);
   }
 }
 
