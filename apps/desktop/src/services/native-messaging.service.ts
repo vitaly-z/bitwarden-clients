@@ -4,7 +4,6 @@ import { firstValueFrom } from "rxjs";
 import Swal from "sweetalert2";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
@@ -12,6 +11,7 @@ import { KeySuffixOptions } from "@bitwarden/common/enums";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 

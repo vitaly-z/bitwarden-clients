@@ -1,7 +1,6 @@
 import { BehaviorSubject, concatMap } from "rxjs";
 import { Jsonify, JsonValue } from "type-fest";
 
-import { LogService } from "../abstractions/log.service";
 import { StateService as StateServiceAbstraction } from "../abstractions/state.service";
 import { StateMigrationService } from "../abstractions/stateMigration.service";
 import {
@@ -35,6 +34,7 @@ import { GlobalState } from "../models/domain/global-state";
 import { State } from "../models/domain/state";
 import { StorageOptions } from "../models/domain/storage-options";
 import { WindowState } from "../models/domain/window-state";
+import { LogService } from "../platform/abstractions/log.service";
 import { EncString } from "../platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
 import { GeneratedPasswordHistory } from "../tools/generator/password";

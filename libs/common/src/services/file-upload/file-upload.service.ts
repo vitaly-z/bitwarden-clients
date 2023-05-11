@@ -2,8 +2,8 @@ import {
   FileUploadApiMethods,
   FileUploadService as FileUploadServiceAbstraction,
 } from "../../abstractions/file-upload/file-upload.service";
-import { LogService } from "../../abstractions/log.service";
 import { FileUploadType } from "../../enums";
+import { LogService } from "../../platform/abstractions/log.service";
 import { EncArrayBuffer } from "../../platform/models/domain/enc-array-buffer";
 import { EncString } from "../../platform/models/domain/enc-string";
 import { AzureFileUploadService } from "../azureFileUpload.service";

@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { ClientType, DeviceType } from "@bitwarden/common/enums";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 @Injectable()
 export class WebPlatformUtilsService implements PlatformUtilsService {

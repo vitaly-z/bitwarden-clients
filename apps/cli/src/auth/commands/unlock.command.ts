@@ -8,7 +8,7 @@ import { HashPurpose } from "@bitwarden/common/enums";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
-import { ConsoleLogService } from "@bitwarden/common/services/consoleLog.service";
+import { ConsoleLogService } from "@bitwarden/common/platform/services/console-log.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
 import { ConvertToKeyConnectorCommand } from "../../commands/convert-to-key-connector.command";

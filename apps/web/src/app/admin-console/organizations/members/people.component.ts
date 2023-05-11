@@ -24,7 +24,6 @@ import {
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { OrganizationUserService } from "@bitwarden/common/abstractions/organization-user/organization-user.service";
 import { OrganizationUserConfirmRequest } from "@bitwarden/common/abstractions/organization-user/requests";
 import {
@@ -53,6 +52,7 @@ import { CollectionDetailsResponse } from "@bitwarden/common/admin-console/model
 import { ProductType } from "@bitwarden/common/enums";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
 import { EntityEventsComponent } from "../../../admin-console/organizations/manage/entity-events.component";

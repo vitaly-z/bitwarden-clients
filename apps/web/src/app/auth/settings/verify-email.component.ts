@@ -2,9 +2,9 @@ import { Component, EventEmitter, Output } from "@angular/core";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { TokenService } from "@bitwarden/common/auth/abstractions/token.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 @Component({
   selector: "app-verify-email",

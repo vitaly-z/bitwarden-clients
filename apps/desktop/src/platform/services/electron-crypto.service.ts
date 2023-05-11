@@ -1,9 +1,9 @@
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { KeySuffixOptions } from "@bitwarden/common/enums";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 import { CryptoService } from "@bitwarden/common/platform/services/crypto.service";
 import { CsprngString } from "@bitwarden/common/types/csprng";

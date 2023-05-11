@@ -4,7 +4,6 @@ import { Observable, Subject, takeUntil, concatMap } from "rxjs";
 import { AuditService } from "@bitwarden/common/abstractions/audit.service";
 import { EventCollectionService } from "@bitwarden/common/abstractions/event/event-collection.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
@@ -19,6 +18,7 @@ import { Organization } from "@bitwarden/common/admin-console/models/domain/orga
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { EventType, SecureNoteType, UriMatchType } from "@bitwarden/common/enums";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { SendApiService } from "@bitwarden/common/tools/send/services/send-api.service.abstraction";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { FolderService } from "@bitwarden/common/vault/abstractions/folder/folder.service.abstraction";

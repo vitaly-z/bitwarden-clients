@@ -6,7 +6,6 @@ import { concatMap, take, takeUntil } from "rxjs/operators";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
@@ -22,6 +21,7 @@ import { MasterPasswordPolicyResponse } from "@bitwarden/common/auth/models/resp
 import { HashPurpose, KeySuffixOptions } from "@bitwarden/common/enums";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";

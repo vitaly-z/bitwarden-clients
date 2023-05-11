@@ -3,7 +3,6 @@ import { Component, NgZone } from "@angular/core";
 import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/services/dialog";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { UserVerificationService } from "@bitwarden/common/abstractions/userVerification/userVerification.service.abstraction";
 import { TwoFactorProviderType } from "@bitwarden/common/auth/enums/two-factor-provider-type";
@@ -15,6 +14,7 @@ import {
   TwoFactorWebAuthnResponse,
 } from "@bitwarden/common/auth/models/response/two-factor-web-authn.response";
 import { AuthResponse } from "@bitwarden/common/auth/types/auth-response";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { TwoFactorBaseComponent } from "./two-factor-base.component";
 

@@ -3,9 +3,9 @@ import { Router } from "@angular/router";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { DeleteRecoverRequest } from "@bitwarden/common/models/request/delete-recover.request";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 @Component({
   selector: "app-recover-delete",

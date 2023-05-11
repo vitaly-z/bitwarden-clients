@@ -1,6 +1,5 @@
 import * as bigInt from "big-integer";
 
-import { LogService } from "../../abstractions/log.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
 import { EncryptedOrganizationKeyData } from "../../admin-console/models/data/encrypted-organization-key.data";
@@ -24,6 +23,7 @@ import { EFFLongWordList } from "../../misc/wordlist";
 import { CryptoFunctionService } from "../abstractions/crypto-function.service";
 import { CryptoService as CryptoServiceAbstraction } from "../abstractions/crypto.service";
 import { EncryptService } from "../abstractions/encrypt.service";
+import { LogService } from "../abstractions/log.service";
 import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
 import { EncString } from "../models/domain/enc-string";
 import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";

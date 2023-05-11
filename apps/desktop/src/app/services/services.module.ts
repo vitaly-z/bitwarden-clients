@@ -15,10 +15,6 @@ import { AbstractThemingService } from "@bitwarden/angular/services/theming/them
 import { BroadcasterService as BroadcasterServiceAbstraction } from "@bitwarden/common/abstractions/broadcaster.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/abstractions/i18n.service";
-import {
-  LogService,
-  LogService as LogServiceAbstraction,
-} from "@bitwarden/common/abstractions/log.service";
 import { MessagingService as MessagingServiceAbstraction } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService as PlatformUtilsServiceAbstraction } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService as StateServiceAbstraction } from "@bitwarden/common/abstractions/state.service";
@@ -35,6 +31,10 @@ import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { CryptoFunctionService as CryptoFunctionServiceAbstraction } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService as CryptoServiceAbstraction } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
+import {
+  LogService,
+  LogService as LogServiceAbstraction,
+} from "@bitwarden/common/platform/abstractions/log.service";
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 import { SystemService } from "@bitwarden/common/services/system.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";

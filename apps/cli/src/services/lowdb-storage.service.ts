@@ -6,11 +6,11 @@ import * as FileSync from "lowdb/adapters/FileSync";
 import * as lock from "proper-lockfile";
 import { OperationOptions } from "retry";
 
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { AbstractStorageService } from "@bitwarden/common/abstractions/storage.service";
 import { NodeUtils } from "@bitwarden/common/misc/nodeUtils";
 import { sequentialize } from "@bitwarden/common/misc/sequentialize";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 const retries: OperationOptions = {
   retries: 50,

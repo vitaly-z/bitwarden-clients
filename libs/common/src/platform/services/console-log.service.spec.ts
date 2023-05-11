@@ -1,6 +1,6 @@
-import { interceptConsole, restoreConsole } from "../../spec";
+import { interceptConsole, restoreConsole } from "../../../spec";
 
-import { ConsoleLogService } from "./consoleLog.service";
+import { ConsoleLogService } from "./console-log.service";
 
 let caughtMessage: any;
 

@@ -7,9 +7,9 @@ import { mock, MockProxy } from "jest-mock-extended";
 
 import { I18nPipe } from "@bitwarden/angular/pipes/i18n.pipe";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 import { UsernameGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/username";
 

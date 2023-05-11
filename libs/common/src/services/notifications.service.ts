@@ -4,7 +4,6 @@ import * as signalRMsgPack from "@microsoft/signalr-protocol-msgpack";
 import { ApiService } from "../abstractions/api.service";
 import { AppIdService } from "../abstractions/appId.service";
 import { EnvironmentService } from "../abstractions/environment.service";
-import { LogService } from "../abstractions/log.service";
 import { MessagingService } from "../abstractions/messaging.service";
 import { NotificationsService as NotificationsServiceAbstraction } from "../abstractions/notifications.service";
 import { StateService } from "../abstractions/state.service";
@@ -17,6 +16,7 @@ import {
   SyncFolderNotification,
   SyncSendNotification,
 } from "../models/response/notification.response";
+import { LogService } from "../platform/abstractions/log.service";
 import { SyncService } from "../vault/abstractions/sync/sync.service.abstraction";
 
 export class NotificationsService implements NotificationsServiceAbstraction {

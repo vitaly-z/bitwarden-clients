@@ -6,7 +6,6 @@ import {
   STATE_FACTORY,
   STATE_SERVICE_USE_CACHE,
 } from "@bitwarden/angular/services/injection-tokens";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { StateMigrationService } from "@bitwarden/common/abstractions/stateMigration.service";
 import {
   AbstractMemoryStorageService,
@@ -15,6 +14,7 @@ import {
 import { CollectionData } from "@bitwarden/common/admin-console/models/data/collection.data";
 import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { StorageOptions } from "@bitwarden/common/models/domain/storage-options";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { StateService as BaseStateService } from "@bitwarden/common/services/state.service";
 import { SendData } from "@bitwarden/common/tools/send/models/data/send.data";
 import { CipherData } from "@bitwarden/common/vault/models/data/cipher.data";

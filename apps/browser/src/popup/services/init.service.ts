@@ -2,8 +2,8 @@ import { Injectable } from "@angular/core";
 
 import { AbstractThemingService } from "@bitwarden/angular/services/theming/theming.service.abstraction";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService as LogServiceAbstraction } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
+import { LogService as LogServiceAbstraction } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { BrowserStateService as StateServiceAbstraction } from "../../services/abstractions/browser-state.service";
 

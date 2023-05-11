@@ -1,8 +1,8 @@
 import { EventCollectionService } from "@bitwarden/common/abstractions/event/event-collection.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { SettingsService } from "@bitwarden/common/abstractions/settings.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { EventType, FieldType, UriMatchType } from "@bitwarden/common/enums";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { CipherRepromptType } from "@bitwarden/common/vault/enums/cipher-reprompt-type";
 import { CipherType } from "@bitwarden/common/vault/enums/cipher-type";

@@ -18,7 +18,6 @@ import { EventUploadService } from "@bitwarden/common/abstractions/event/event-u
 import { FileUploadService } from "@bitwarden/common/abstractions/file-upload/file-upload.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService as LogServiceAbstraction } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { NotificationsService } from "@bitwarden/common/abstractions/notifications.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
@@ -58,7 +57,8 @@ import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
-import { ConsoleLogService } from "@bitwarden/common/services/consoleLog.service";
+import { LogService as LogServiceAbstraction } from "@bitwarden/common/platform/abstractions/log.service";
+import { ConsoleLogService } from "@bitwarden/common/platform/services/console-log.service";
 import { ContainerService } from "@bitwarden/common/services/container.service";
 import { SearchService } from "@bitwarden/common/services/search.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";

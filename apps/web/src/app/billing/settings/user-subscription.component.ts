@@ -5,10 +5,10 @@ import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/s
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { SubscriptionResponse } from "@bitwarden/common/billing/models/response/subscription.response";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 @Component({
   selector: "app-user-subscription",

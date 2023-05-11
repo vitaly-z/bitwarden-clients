@@ -11,7 +11,6 @@ import {
   FormValidationErrorsService,
 } from "@bitwarden/common/abstractions/formValidationErrors.service";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
@@ -21,6 +20,7 @@ import { ForceResetPasswordReason } from "@bitwarden/common/auth/models/domain/f
 import { PasswordLogInCredentials } from "@bitwarden/common/auth/models/domain/log-in-credentials";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 
 import { CaptchaProtectedComponent } from "./captcha-protected.component";

@@ -1,7 +1,7 @@
 import { Jsonify } from "type-fest";
 
-import Domain from "../../../platform/models/domain/domain-base";
 import { Decryptable } from "../../../platform/interfaces/decryptable.interface";
+import Domain from "../../../platform/models/domain/domain-base";
 import { EncString } from "../../../platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";
 import { InitializerKey } from "../../../platform/services/cryptography/initializer-key";

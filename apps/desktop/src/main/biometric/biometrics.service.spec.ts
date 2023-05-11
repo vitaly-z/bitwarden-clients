@@ -1,8 +1,8 @@
 import { mock, MockProxy } from "jest-mock-extended";
 
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { ElectronStateService } from "../../services/electron-state.service.abstraction";
 import { WindowMain } from "../window.main";

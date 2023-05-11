@@ -2,7 +2,6 @@ import { mock, MockProxy } from "jest-mock-extended";
 
 import { ApiService } from "../../abstractions/api.service";
 import { AppIdService } from "../../abstractions/appId.service";
-import { LogService } from "../../abstractions/log.service";
 import { MessagingService } from "../../abstractions/messaging.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
@@ -10,6 +9,7 @@ import { PolicyService } from "../../admin-console/abstractions/policy/policy.se
 import { Utils } from "../../misc/utils";
 import { Account, AccountProfile, AccountTokens } from "../../models/domain/account";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
+import { LogService } from "../../platform/abstractions/log.service";
 import { EncString } from "../../platform/models/domain/enc-string";
 import { PasswordGenerationService } from "../../tools/generator/password";
 import { AuthService } from "../abstractions/auth.service";

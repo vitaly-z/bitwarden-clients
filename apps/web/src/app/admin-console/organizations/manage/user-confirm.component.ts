@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
-import { LogService } from "@bitwarden/common/abstractions/log.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 @Component({
   selector: "app-user-confirm",

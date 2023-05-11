@@ -1,12 +1,12 @@
 import { ApiService } from "../../abstractions/api.service";
 import { AppIdService } from "../../abstractions/appId.service";
-import { LogService } from "../../abstractions/log.service";
 import { MessagingService } from "../../abstractions/messaging.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
 import { Account, AccountProfile, AccountTokens } from "../../models/domain/account";
 import { KeysRequest } from "../../models/request/keys.request";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
+import { LogService } from "../../platform/abstractions/log.service";
 import { TokenService } from "../abstractions/token.service";
 import { TwoFactorService } from "../abstractions/two-factor.service";
 import { TwoFactorProviderType } from "../enums/two-factor-provider-type";
