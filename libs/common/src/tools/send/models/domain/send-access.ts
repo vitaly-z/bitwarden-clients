@@ -1,4 +1,4 @@
-import Domain from "../../../../models/domain/domain-base";
+import Domain from "../../../../platform/models/domain/domain-base";
 import { EncString } from "../../../../platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../../../platform/models/domain/symmetric-crypto-key";
 import { SendType } from "../../enums/send-type";

@@ -6,7 +6,7 @@ import { StateService } from "../../abstractions/state.service";
 import { FieldType, UriMatchType } from "../../enums";
 import { sequentialize } from "../../misc/sequentialize";
 import { Utils } from "../../misc/utils";
-import Domain from "../../models/domain/domain-base";
+import Domain from "../../platform/models/domain/domain-base";
 import { ErrorResponse } from "../../models/response/error.response";
 import { View } from "../../models/view/view";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
