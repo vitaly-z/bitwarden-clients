@@ -3,11 +3,12 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { lastValueFrom, Subject, takeUntil } from "rxjs";
 
+import { DialogServiceAbstraction } from "@bitwarden/angular/services/dialog";
 import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Utils } from "@bitwarden/common/misc/utils";
-import { BitValidators, DialogService } from "@bitwarden/components";
+import { BitValidators } from "@bitwarden/components";
 
 import { ProjectListView } from "../../models/view/project-list.view";
 import { ProjectView } from "../../models/view/project.view";
@@ -32,7 +33,6 @@ export interface SecretOperation {
 }
 
 @Component({
-  selector: "sm-secret-dialog",
   templateUrl: "./secret-dialog.component.html",
 })
 export class SecretDialogComponent implements OnInit {
@@ -63,7 +63,7 @@ export class SecretDialogComponent implements OnInit {
     private i18nService: I18nService,
     private platformUtilsService: PlatformUtilsService,
     private projectService: ProjectService,
-    private dialogService: DialogService,
+    private dialogService: DialogServiceAbstraction,
     private organizationService: OrganizationService
   ) {}
 
@@ -150,7 +150,7 @@ export class SecretDialogComponent implements OnInit {
       this.formGroup.get("newProjectName").clearValidators();
     }
 
-    this.formGroup.updateValueAndValidity();
+    this.formGroup.get("newProjectName").updateValueAndValidity();
   }
 
   get title() {

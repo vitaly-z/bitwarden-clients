@@ -22,7 +22,6 @@ export interface ProjectOperation {
 }
 
 @Component({
-  selector: "sm-project-dialog",
   templateUrl: "./project-dialog.component.html",
 })
 export class ProjectDialogComponent implements OnInit {
