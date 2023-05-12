@@ -4,7 +4,6 @@
     bitBadge
     [badgeType]="badgeType"
     [truncate]="truncate"
-    [attr.title]="truncate ? item : null"
   >
     {{ item }}
     <span class="tw-sr-only" *ngIf="!last || isFiltered">, </span>
