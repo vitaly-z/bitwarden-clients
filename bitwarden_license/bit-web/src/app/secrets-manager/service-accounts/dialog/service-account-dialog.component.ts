@@ -28,7 +28,7 @@ export class ServiceAccountDialogComponent {
     {
       name: new FormControl("", {
         validators: [Validators.required, BitValidators.trimValidator],
-        updateOn: "blur",
+        updateOn: "submit",
       }),
     },
     {}

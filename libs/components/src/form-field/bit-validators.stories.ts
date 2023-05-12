@@ -63,7 +63,7 @@ export const TrimValidator: Story<BitFormFieldComponent> = (args: BitFormFieldCo
       name: [
         "",
         {
-          updateOn: "blur",
+          updateOn: "submit",
           validators: [trimValidator],
         },
       ],

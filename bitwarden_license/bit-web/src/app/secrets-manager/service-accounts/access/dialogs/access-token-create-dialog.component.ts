@@ -24,7 +24,7 @@ export class AccessTokenCreateDialogComponent implements OnInit {
   protected formGroup = new FormGroup({
     name: new FormControl("", {
       validators: [Validators.required, Validators.maxLength(80), BitValidators.trimValidator],
-      updateOn: "blur",
+      updateOn: "submit",
     }),
     expirationDateControl: new FormControl(null),
   });

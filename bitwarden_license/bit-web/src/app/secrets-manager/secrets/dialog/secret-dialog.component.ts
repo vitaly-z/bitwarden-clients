@@ -44,7 +44,7 @@ export class SecretDialogComponent implements OnInit {
     value: new FormControl("", [Validators.required]),
     notes: new FormControl("", {
       validators: [BitValidators.trimValidator],
-      updateOn: "blur",
+      updateOn: "submit",
     }),
     project: new FormControl("", [Validators.required]),
     newProjectName: new FormControl(""),

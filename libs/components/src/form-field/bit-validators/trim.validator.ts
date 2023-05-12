@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, ValidatorFn } from "@angular/forms";
 /**
  * Automatically trims FormControl value. Errors if value only contains whitespace.
  *
- * Should be used with `updateOn: "blur"`
+ * Should be used with `updateOn: "submit"`
  */
 export const trimValidator: ValidatorFn = (control: AbstractControl<string>) => {
   if (!(control instanceof FormControl)) {
