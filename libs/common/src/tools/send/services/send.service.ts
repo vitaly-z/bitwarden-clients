@@ -2,7 +2,7 @@ import { BehaviorSubject, concatMap } from "rxjs";
 
 import { StateService } from "../../../abstractions/state.service";
 import { SEND_KDF_ITERATIONS } from "../../../enums";
-import { Utils } from "../../../misc/utils";
+import { Utils } from "../../../platform/misc/utils";
 import { CryptoFunctionService } from "../../../platform/abstractions/crypto-function.service";
 import { CryptoService } from "../../../platform/abstractions/crypto.service";
 import { I18nService } from "../../../platform/abstractions/i18n.service";

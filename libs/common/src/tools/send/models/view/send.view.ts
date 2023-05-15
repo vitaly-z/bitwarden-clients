@@ -1,4 +1,4 @@
-import { Utils } from "../../../../misc/utils";
+import { Utils } from "../../../../platform/misc/utils";
 import { View } from "../../../../models/view/view";
 import { SymmetricCryptoKey } from "../../../../platform/models/domain/symmetric-crypto-key";
 import { DeepJsonify } from "../../../../types/deep-jsonify";

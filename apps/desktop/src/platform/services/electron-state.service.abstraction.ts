@@ -2,7 +2,7 @@ import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { StorageOptions } from "@bitwarden/common/models/domain/storage-options";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 
-import { Account } from "../models/account";
+import { Account } from "../../models/account";
 
 export abstract class ElectronStateService extends StateService<Account> {
   getBiometricEncryptionClientKeyHalf: (options?: StorageOptions) => Promise<EncString>;

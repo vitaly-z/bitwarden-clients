@@ -1,7 +1,7 @@
 import { defaultIfEmpty, filter, firstValueFrom, fromEvent, map, Subject, takeUntil } from "rxjs";
 import { Jsonify } from "type-fest";
 
-import { Utils } from "../../../misc/utils";
+import { Utils } from "../../../platform/misc/utils";
 import { Decryptable } from "../../interfaces/decryptable.interface";
 import { InitializerMetadata } from "../../interfaces/initializer-metadata.interface";
 import { SymmetricCryptoKey } from "../../models/domain/symmetric-crypto-key";

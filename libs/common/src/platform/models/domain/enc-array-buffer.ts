@@ -1,5 +1,5 @@
 import { EncryptionType } from "../../../enums";
-import { Utils } from "../../../misc/utils";
+import { Utils } from "../../../platform/misc/utils";
 import { IEncrypted } from "../../interfaces/IEncrypted";
 
 const ENC_TYPE_LENGTH = 1;

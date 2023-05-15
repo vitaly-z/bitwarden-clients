@@ -21,7 +21,7 @@ import { BiometricKey } from "../auth/types/biometric-key";
 import { HtmlStorageLocation, KdfType, StorageLocation, ThemeType, UriMatchType } from "../enums";
 import { VaultTimeoutAction } from "../enums/vault-timeout-action.enum";
 import { StateFactory } from "../factories/stateFactory";
-import { Utils } from "../misc/utils";
+import { Utils } from "../platform/misc/utils";
 import { EventData } from "../models/data/event.data";
 import { ServerConfigData } from "../models/data/server-config.data";
 import {

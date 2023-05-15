@@ -1,5 +1,5 @@
 import { makeStaticByteArray } from "../../../spec";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
 
 import { AccountKeys, EncryptionPair } from "./account";

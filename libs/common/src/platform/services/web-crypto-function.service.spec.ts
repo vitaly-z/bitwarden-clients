@@ -2,7 +2,7 @@
 import { Substitute } from "@fluffy-spoon/substitute";
 
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 
 import { WebCryptoFunctionService } from "./web-crypto-function.service";

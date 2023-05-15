@@ -7,7 +7,7 @@ import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
 import { PolicyService } from "../../admin-console/abstractions/policy/policy.service.abstraction";
 import { HashPurpose } from "../../enums";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { LogService } from "../../platform/abstractions/log.service";
 import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";

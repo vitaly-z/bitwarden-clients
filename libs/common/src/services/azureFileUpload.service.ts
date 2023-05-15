@@ -1,4 +1,4 @@
-import { Utils } from "../misc/utils";
+import { Utils } from "../platform/misc/utils";
 import { LogService } from "../platform/abstractions/log.service";
 import { EncArrayBuffer } from "../platform/models/domain/enc-array-buffer";
 

@@ -1,7 +1,7 @@
 import { AppIdService as AppIdServiceAbstraction } from "../abstractions/appId.service";
 import { AbstractStorageService } from "../abstractions/storage.service";
 import { HtmlStorageLocation } from "../enums";
-import { Utils } from "../misc/utils";
+import { Utils } from "../platform/misc/utils";
 
 export class AppIdService implements AppIdServiceAbstraction {
   constructor(private storageService: AbstractStorageService) {}

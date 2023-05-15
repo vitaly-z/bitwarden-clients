@@ -1,5 +1,5 @@
 import { TotpService as TotpServiceAbstraction } from "../abstractions/totp.service";
-import { Utils } from "../misc/utils";
+import { Utils } from "../platform/misc/utils";
 import { CryptoFunctionService } from "../platform/abstractions/crypto-function.service";
 import { LogService } from "../platform/abstractions/log.service";
 

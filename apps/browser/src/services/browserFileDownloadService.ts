@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { FileDownloadBuilder } from "@bitwarden/common/abstractions/fileDownload/fileDownloadBuilder";
 import { FileDownloadRequest } from "@bitwarden/common/abstractions/fileDownload/fileDownloadRequest";
-import { Utils } from "@bitwarden/common/misc/utils";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 import { SafariApp } from "../browser/safariApp";
 import { BrowserApi } from "../platform/browser/browser-api";

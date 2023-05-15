@@ -6,7 +6,7 @@ import { StateService } from "../abstractions/state.service";
 import { SystemService as SystemServiceAbstraction } from "../abstractions/system.service";
 import { AuthService } from "../auth/abstractions/auth.service";
 import { AuthenticationStatus } from "../auth/enums/authentication-status";
-import { Utils } from "../misc/utils";
+import { Utils } from "../platform/misc/utils";
 
 export class SystemService implements SystemServiceAbstraction {
   private reloadInterval: any = null;

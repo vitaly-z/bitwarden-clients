@@ -1,7 +1,7 @@
 import { Jsonify } from "type-fest";
 
 import { EncryptionType, EXPECTED_NUM_PARTS_BY_ENCRYPTION_TYPE } from "../../../enums";
-import { Utils } from "../../../misc/utils";
+import { Utils } from "../../../platform/misc/utils";
 import { IEncrypted } from "../../interfaces/IEncrypted";
 
 import { SymmetricCryptoKey } from "./symmetric-crypto-key";

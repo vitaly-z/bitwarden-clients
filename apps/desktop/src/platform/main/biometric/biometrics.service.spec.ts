@@ -5,7 +5,7 @@ import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.servic
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { WindowMain } from "../../../main/window.main";
-import { ElectronStateService } from "../../../services/electron-state.service.abstraction";
+import { ElectronStateService } from "../../services/electron-state.service.abstraction";
 
 import BiometricDarwinMain from "./biometric.darwin.main";
 import BiometricWindowsMain from "./biometric.windows.main";

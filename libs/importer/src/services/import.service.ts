@@ -1,6 +1,6 @@
 import { CollectionService } from "@bitwarden/common/admin-console/abstractions/collection.service";
 import { CollectionWithIdRequest } from "@bitwarden/common/admin-console/models/request/collection-with-id.request";
-import { Utils } from "@bitwarden/common/misc/utils";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { ImportCiphersRequest } from "@bitwarden/common/models/request/import-ciphers.request";
 import { ImportOrganizationCiphersRequest } from "@bitwarden/common/models/request/import-organization-ciphers.request";
 import { KvpRequest } from "@bitwarden/common/models/request/kvp.request";

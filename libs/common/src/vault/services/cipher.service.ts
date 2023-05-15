@@ -3,7 +3,7 @@ import { SearchService } from "../../abstractions/search.service";
 import { SettingsService } from "../../abstractions/settings.service";
 import { StateService } from "../../abstractions/state.service";
 import { FieldType, UriMatchType } from "../../enums";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { ErrorResponse } from "../../models/response/error.response";
 import { View } from "../../models/view/view";
 import { CryptoService } from "../../platform/abstractions/crypto.service";

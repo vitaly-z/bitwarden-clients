@@ -20,7 +20,7 @@ import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.servic
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 
-import { ElectronStateService } from "../services/electron-state.service.abstraction";
+import { ElectronStateService } from "../platform/services/electron-state.service.abstraction";
 import { BiometricStorageAction, BiometricMessage } from "../types/biometric-message";
 
 const BroadcasterSubscriptionId = "LockComponent";

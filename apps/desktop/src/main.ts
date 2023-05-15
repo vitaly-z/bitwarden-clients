@@ -19,8 +19,8 @@ import { DesktopCredentialStorageListener } from "./platform/main/desktop-creden
 import { ElectronLogService } from "./platform/services/electron-log.service";
 import { I18nService } from "./platform/services/i18n.service";
 import { ElectronMainMessagingService } from "./services/electron-main-messaging.service";
-import { ElectronStateService } from "./services/electron-state.service";
-import { ElectronStorageService } from "./services/electron-storage.service";
+import { ElectronStateService } from "./platform/services/electron-state.service";
+import { ElectronStorageService } from "./platform/services/electron-storage.service";
 
 export class Main {
   logService: ElectronLogService;

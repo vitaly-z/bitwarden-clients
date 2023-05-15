@@ -3,7 +3,7 @@ import * as crypto from "crypto";
 import * as argon2 from "argon2";
 import * as forge from "node-forge";
 
-import { Utils } from "@bitwarden/common/misc/utils";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { DecryptParameters } from "@bitwarden/common/platform/models/domain/decrypt-parameters";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";

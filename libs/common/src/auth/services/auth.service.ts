@@ -8,7 +8,7 @@ import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
 import { PolicyService } from "../../admin-console/abstractions/policy/policy.service.abstraction";
 import { KdfType, KeySuffixOptions } from "../../enums";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { PreloginRequest } from "../../models/request/prelogin.request";
 import { ErrorResponse } from "../../models/response/error.response";
 import { AuthRequestPushNotification } from "../../models/response/notification.response";

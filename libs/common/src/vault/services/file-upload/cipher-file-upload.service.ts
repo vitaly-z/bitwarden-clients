@@ -3,7 +3,7 @@ import {
   FileUploadApiMethods,
   FileUploadService,
 } from "../../../abstractions/file-upload/file-upload.service";
-import { Utils } from "../../../misc/utils";
+import { Utils } from "../../../platform/misc/utils";
 import { ErrorResponse } from "../../../models/response/error.response";
 import { EncArrayBuffer } from "../../../platform/models/domain/enc-array-buffer";
 import { EncString } from "../../../platform/models/domain/enc-string";

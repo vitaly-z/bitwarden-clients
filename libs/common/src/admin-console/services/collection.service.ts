@@ -1,6 +1,6 @@
 import { StateService } from "../../abstractions/state.service";
 import { ServiceUtils } from "../../misc/serviceUtils";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { TreeNode } from "../../models/domain/tree-node";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { I18nService } from "../../platform/abstractions/i18n.service";

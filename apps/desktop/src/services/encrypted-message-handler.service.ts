@@ -25,7 +25,7 @@ import { MessageResponseData } from "../models/native-messaging/encrypted-messag
 import { SuccessStatusResponse } from "../models/native-messaging/encrypted-message-responses/success-status-response";
 import { UserStatusErrorResponse } from "../models/native-messaging/encrypted-message-responses/user-status-error-response";
 
-import { ElectronStateService } from "./electron-state.service";
+import { ElectronStateService } from "../platform/services/electron-state.service";
 
 export class EncryptedMessageHandlerService {
   constructor(

@@ -5,7 +5,7 @@ import { OrganizationApiServiceAbstraction } from "@bitwarden/common/admin-conso
 import { KeyConnectorService } from "@bitwarden/common/auth/abstractions/key-connector.service";
 import { SecretVerificationRequest } from "@bitwarden/common/auth/models/request/secret-verification.request";
 import { HashPurpose } from "@bitwarden/common/enums";
-import { Utils } from "@bitwarden/common/misc/utils";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { ConsoleLogService } from "@bitwarden/common/platform/services/console-log.service";

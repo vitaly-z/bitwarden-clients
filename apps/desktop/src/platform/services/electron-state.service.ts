@@ -3,7 +3,7 @@ import { StorageOptions } from "@bitwarden/common/models/domain/storage-options"
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { StateService as BaseStateService } from "@bitwarden/common/services/state.service";
 
-import { Account } from "../models/account";
+import { Account } from "../../models/account";
 
 import { ElectronStateService as ElectronStateServiceAbstraction } from "./electron-state.service.abstraction";
 

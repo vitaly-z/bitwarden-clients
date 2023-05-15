@@ -1,7 +1,7 @@
 import { Jsonify } from "type-fest";
 
 import { EncryptionType } from "../../../enums";
-import { Utils } from "../../../misc/utils";
+import { Utils } from "../../../platform/misc/utils";
 
 export class SymmetricCryptoKey {
   key: ArrayBuffer;

@@ -6,7 +6,7 @@ import { MessagingService } from "../../abstractions/messaging.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
 import { PolicyService } from "../../admin-console/abstractions/policy/policy.service.abstraction";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { Account, AccountProfile, AccountTokens } from "../../models/domain/account";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { LogService } from "../../platform/abstractions/log.service";

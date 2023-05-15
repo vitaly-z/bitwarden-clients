@@ -6,7 +6,7 @@ import { EnvironmentService } from "../../abstractions/environment.service";
 import { MessagingService } from "../../abstractions/messaging.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { LogService } from "../../platform/abstractions/log.service";
 import { KeyConnectorService } from "../abstractions/key-connector.service";

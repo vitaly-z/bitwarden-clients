@@ -5,7 +5,7 @@ import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/sym
 import { biometrics, passwords } from "@bitwarden/desktop-native";
 
 import { WindowMain } from "../../../main/window.main";
-import { ElectronStateService } from "../../../services/electron-state.service.abstraction";
+import { ElectronStateService } from "../../services/electron-state.service.abstraction";
 
 import { OsBiometricService } from "./biometrics.service.abstraction";
 

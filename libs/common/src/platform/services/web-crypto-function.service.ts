@@ -1,7 +1,7 @@
 import * as argon2 from "argon2-browser";
 import * as forge from "node-forge";
 
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { CsprngArray } from "../../types/csprng";
 import { CryptoFunctionService } from "../abstractions/crypto-function.service";
 import { DecryptParameters } from "../models/domain/decrypt-parameters";

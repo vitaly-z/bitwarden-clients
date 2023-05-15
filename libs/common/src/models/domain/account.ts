@@ -11,7 +11,7 @@ import { AuthenticationStatus } from "../../auth/enums/authentication-status";
 import { EnvironmentUrls } from "../../auth/models/domain/environment-urls";
 import { ForceResetPasswordReason } from "../../auth/models/domain/force-reset-password-reason";
 import { KdfType, UriMatchType } from "../../enums";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { EncString } from "../../platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
 import { GeneratedPasswordHistory } from "../../tools/generator/password";

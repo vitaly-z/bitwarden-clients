@@ -5,9 +5,9 @@ import { Observable, of, switchMap } from "rxjs";
 import { getHostname, parse } from "tldts";
 import { Merge } from "type-fest";
 
-import { CryptoService } from "../platform/abstractions/crypto.service";
-import { EncryptService } from "../platform/abstractions/encrypt.service";
-import { I18nService } from "../platform/abstractions/i18n.service";
+import { CryptoService } from "../abstractions/crypto.service";
+import { EncryptService } from "../abstractions/encrypt.service";
+import { I18nService } from "../abstractions/i18n.service";
 
 const nodeURL = typeof window === "undefined" ? require("url") : null;
 

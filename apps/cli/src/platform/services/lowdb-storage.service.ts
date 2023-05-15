@@ -9,7 +9,7 @@ import { OperationOptions } from "retry";
 import { AbstractStorageService } from "@bitwarden/common/abstractions/storage.service";
 import { NodeUtils } from "@bitwarden/common/misc/nodeUtils";
 import { sequentialize } from "@bitwarden/common/misc/sequentialize";
-import { Utils } from "@bitwarden/common/misc/utils";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 const retries: OperationOptions = {

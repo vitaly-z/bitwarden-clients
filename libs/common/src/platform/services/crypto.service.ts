@@ -17,7 +17,7 @@ import {
   DEFAULT_ARGON2_PARALLELISM,
   EncryptionType,
 } from "../../enums";
-import { Utils } from "../../misc/utils";
+import { Utils } from "../../platform/misc/utils";
 import { CryptoFunctionService } from "../abstractions/crypto-function.service";
 import { CryptoService as CryptoServiceAbstraction } from "../abstractions/crypto.service";
 import { EncryptService } from "../abstractions/encrypt.service";
