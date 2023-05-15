@@ -4,7 +4,7 @@ import { BiometricKey } from "@bitwarden/common/auth/types/biometric-key";
 import { ConsoleLogService } from "@bitwarden/common/platform/services/console-log.service";
 import { passwords } from "@bitwarden/desktop-native";
 
-import { BiometricMessage, BiometricStorageAction } from "../types/biometric-message";
+import { BiometricMessage, BiometricStorageAction } from "../../types/biometric-message";
 
 import { BiometricsServiceAbstraction } from "./biometric/index";
 

@@ -6,8 +6,8 @@ import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 
-import { BiometricsService, BiometricsServiceAbstraction } from "./main/biometric/index";
-import { DesktopCredentialStorageListener } from "./main/desktop-credential-storage-listener";
+import { BiometricsService, BiometricsServiceAbstraction } from "./platform/main/biometric/index";
+import { DesktopCredentialStorageListener } from "./platform/main/desktop-credential-storage-listener";
 import { MenuMain } from "./main/menu/menu.main";
 import { MessagingMain } from "./main/messaging.main";
 import { NativeMessagingMain } from "./main/native-messaging.main";

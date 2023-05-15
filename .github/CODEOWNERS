@@ -65,3 +65,6 @@ libs/node @bitwarden/team-platform-dev
 
 ## Component Library ##
 libs/components @bitwarden/team-platform-dev
+
+## Desktop native module ##
+apps/desktop/desktop_native @bitwarden/team-platform-dev

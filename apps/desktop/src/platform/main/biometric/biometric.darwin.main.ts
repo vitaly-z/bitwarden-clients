@@ -1,7 +1,7 @@
 import { systemPreferences } from "electron";
 
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { passwords } from "@bitwarden/desktop-native";
 
 import { OsBiometricService } from "./biometrics.service.abstraction";
