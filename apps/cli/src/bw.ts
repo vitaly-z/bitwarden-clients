@@ -68,11 +68,11 @@ import { NodeCryptoFunctionService } from "@bitwarden/node/services/node-crypto-
 
 import { ConsoleLogService } from "./platform/services/console-log.service";
 import { I18nService } from "./platform/services/i18n.service";
+import { LowdbStorageService } from "./platform/services/lowdb-storage.service";
+import { NodeEnvSecureStorageService } from "./platform/services/node-env-secure-storage.service";
 import { Program } from "./program";
 import { CliPlatformUtilsService } from "./services/cli-platform-utils.service";
-import { LowdbStorageService } from "./services/lowdb-storage.service";
 import { NodeApiService } from "./services/node-api.service";
-import { NodeEnvSecureStorageService } from "./services/node-env-secure-storage.service";
 import { SendProgram } from "./tools/send/send.program";
 import { VaultProgram } from "./vault.program";
 
