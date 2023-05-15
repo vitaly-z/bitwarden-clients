@@ -1,4 +1,4 @@
-import { Utils } from "../../platform/misc/utils";
+import { Utils } from "../../misc/utils";
 
 import { EncryptionPair } from "./account";
 

@@ -7,7 +7,8 @@ import { EncryptService } from "../../../platform/abstractions/encrypt.service";
 import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";
 import { ContainerService } from "../../../services/container.service";
 import { CryptoService } from "../../abstractions/crypto.service";
-import { EncString } from "../../platform/models/domain/enc-string";
+
+import { EncString } from "./enc-string";
 
 describe("EncString", () => {
   afterEach(() => {

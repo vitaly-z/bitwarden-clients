@@ -3,8 +3,8 @@ import { devFlagEnabled } from "../flags";
 import { devFlag } from "./dev-flag.decorator";
 
 let devFlagEnabledMock: jest.Mock;
-jest.mock("../platform/flags", () => ({
-  ...jest.requireActual("../platform/flags"),
+jest.mock("../flags", () => ({
+  ...jest.requireActual("../flags"),
   devFlagEnabled: jest.fn(),
 }));
 

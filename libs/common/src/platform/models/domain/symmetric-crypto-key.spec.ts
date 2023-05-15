@@ -1,6 +1,7 @@
 import { makeStaticByteArray } from "../../../../spec";
 import { EncryptionType } from "../../../enums";
-import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
+
+import { SymmetricCryptoKey } from "./symmetric-crypto-key";
 
 describe("SymmetricCryptoKey", () => {
   it("errors if no key", () => {

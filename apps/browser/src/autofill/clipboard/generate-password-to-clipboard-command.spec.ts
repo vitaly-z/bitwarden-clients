@@ -9,7 +9,7 @@ import { BrowserStateService } from "../../platform/services/abstractions/browse
 import { clearClipboardAlarmName } from "./clear-clipboard";
 import { GeneratePasswordToClipboardCommand } from "./generate-password-to-clipboard-command";
 
-jest.mock("../../alarms/alarm-state", () => {
+jest.mock("../../platform/alarms/alarm-state", () => {
   return {
     setAlarmTime: jest.fn(),
   };

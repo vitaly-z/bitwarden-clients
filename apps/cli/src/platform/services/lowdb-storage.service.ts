@@ -7,9 +7,9 @@ import * as lock from "proper-lockfile";
 import { OperationOptions } from "retry";
 
 import { NodeUtils } from "@bitwarden/common/misc/nodeUtils";
-import { sequentialize } from "@bitwarden/common/misc/sequentialize";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { AbstractStorageService } from "@bitwarden/common/platform/abstractions/storage.service";
+import { sequentialize } from "@bitwarden/common/platform/misc/sequentialize";
 import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 const retries: OperationOptions = {
