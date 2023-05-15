@@ -7,7 +7,7 @@ import { Utils } from "@bitwarden/common/misc/utils";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { AutofillService } from "../autofill/services/abstractions/autofill.service";
-import { BrowserApi } from "../browser/browserApi";
+import { BrowserApi } from "../platform/browser/browser-api";
 import { BrowserEnvironmentService } from "../services/browser-environment.service";
 import BrowserPlatformUtilsService from "../services/browserPlatformUtils.service";
 

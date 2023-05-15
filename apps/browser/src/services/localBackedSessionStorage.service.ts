@@ -7,7 +7,7 @@ import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 
 import { devFlag } from "../decorators/dev-flag.decorator";
-import { devFlagEnabled } from "../flags";
+import { devFlagEnabled } from "../platform/flags";
 
 import { AbstractKeyGenerationService } from "./abstractions/abstractKeyGeneration.service";
 import BrowserLocalStorageService from "./browserLocalStorage.service";

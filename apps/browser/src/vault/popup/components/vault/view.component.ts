@@ -26,7 +26,7 @@ import { Cipher } from "@bitwarden/common/vault/models/domain/cipher";
 import { LoginUriView } from "@bitwarden/common/vault/models/view/login-uri.view";
 
 import { AutofillService } from "../../../../autofill/services/abstractions/autofill.service";
-import { BrowserApi } from "../../../../browser/browserApi";
+import { BrowserApi } from "../../../../platform/browser/browser-api";
 import { PopupUtilsService } from "../../../../popup/services/popup-utils.service";
 
 const BroadcasterSubscriptionId = "ChildViewComponent";

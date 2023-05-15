@@ -86,8 +86,8 @@ import { BrowserPolicyService } from "../../admin-console/services/browser-polic
 import { LockGuardService, UnauthGuardService } from "../../auth/popup/services";
 import { AutofillService } from "../../autofill/services/abstractions/autofill.service";
 import MainBackground from "../../background/main.background";
-import { BrowserApi } from "../../browser/browserApi";
 import { Account } from "../../models/account";
+import { BrowserApi } from "../../platform/browser/browser-api";
 import { BrowserStateService as StateServiceAbstraction } from "../../services/abstractions/browser-state.service";
 import { BrowserConfigService } from "../../services/browser-config.service";
 import { BrowserEnvironmentService } from "../../services/browser-environment.service";

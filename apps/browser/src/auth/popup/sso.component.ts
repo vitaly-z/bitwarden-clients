@@ -15,7 +15,7 @@ import { LogService } from "@bitwarden/common/platform/abstractions/log.service"
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
-import { BrowserApi } from "../../browser/browserApi";
+import { BrowserApi } from "../../platform/browser/browser-api";
 
 @Component({
   selector: "app-sso",

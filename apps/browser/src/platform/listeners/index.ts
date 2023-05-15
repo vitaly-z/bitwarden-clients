@@ -1,9 +1,9 @@
-import { CipherContextMenuHandler } from "../autofill/browser/cipher-context-menu-handler";
-import { ContextMenuClickedHandler } from "../autofill/browser/context-menu-clicked-handler";
+import { CipherContextMenuHandler } from "../../autofill/browser/cipher-context-menu-handler";
+import { ContextMenuClickedHandler } from "../../autofill/browser/context-menu-clicked-handler";
 
 import { combine } from "./combine";
-import { onCommandListener } from "./onCommandListener";
-import { onInstallListener } from "./onInstallListener";
+import { onCommandListener } from "./on-command-listener";
+import { onInstallListener } from "./on-install-listener";
 import { UpdateBadge } from "./update-badge";
 
 const tabsOnActivatedListener = combine([

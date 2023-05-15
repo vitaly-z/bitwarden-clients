@@ -19,7 +19,7 @@ import { MessagingService } from "@bitwarden/common/abstractions/messaging.servi
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 
-import { BrowserApi } from "../browser/browserApi";
+import { BrowserApi } from "../platform/browser/browser-api";
 import { BrowserStateService } from "../services/abstractions/browser-state.service";
 
 import { routerTransition } from "./app-routing.animations";

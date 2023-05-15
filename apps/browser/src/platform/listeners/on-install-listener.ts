@@ -2,11 +2,11 @@ import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 
 import {
-  environmentServiceFactory,
   EnvironmentServiceInitOptions,
-} from "../background/service-factories/environment-service.factory";
-import { BrowserApi } from "../browser/browserApi";
-import { Account } from "../models/account";
+  environmentServiceFactory,
+} from "../../background/service-factories/environment-service.factory";
+import { Account } from "../../models/account";
+import { BrowserApi } from "../browser/browser-api";
 
 export async function onInstallListener(details: chrome.runtime.InstalledDetails) {
   const cache = {};

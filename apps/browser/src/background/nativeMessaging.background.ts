@@ -12,7 +12,7 @@ import { LogService } from "@bitwarden/common/platform/abstractions/log.service"
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 
-import { BrowserApi } from "../browser/browserApi";
+import { BrowserApi } from "../platform/browser/browser-api";
 
 import RuntimeBackground from "./runtime.background";
 

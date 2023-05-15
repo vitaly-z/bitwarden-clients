@@ -19,8 +19,8 @@ import { eventCollectionServiceFactory } from "../../background/service-factorie
 import { CachedServices } from "../../background/service-factories/factory-options";
 import { passwordGenerationServiceFactory } from "../../background/service-factories/password-generation-service.factory";
 import { stateServiceFactory } from "../../background/service-factories/state-service.factory";
-import { BrowserApi } from "../../browser/browserApi";
 import { Account } from "../../models/account";
+import { BrowserApi } from "../../platform/browser/browser-api";
 import {
   cipherServiceFactory,
   CipherServiceInitOptions,

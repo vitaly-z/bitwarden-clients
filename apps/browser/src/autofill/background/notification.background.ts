@@ -17,7 +17,7 @@ import AddLoginRuntimeMessage from "../../background/models/addLoginRuntimeMessa
 import ChangePasswordRuntimeMessage from "../../background/models/changePasswordRuntimeMessage";
 import LockedVaultPendingNotificationsItem from "../../background/models/lockedVaultPendingNotificationsItem";
 import { NotificationQueueMessageType } from "../../background/models/notificationQueueMessageType";
-import { BrowserApi } from "../../browser/browserApi";
+import { BrowserApi } from "../../platform/browser/browser-api";
 import { BrowserStateService } from "../../services/abstractions/browser-state.service";
 import { AutofillService } from "../services/abstractions/autofill.service";
 

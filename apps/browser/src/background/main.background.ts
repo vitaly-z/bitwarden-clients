@@ -105,11 +105,11 @@ import { ContextMenuClickedHandler } from "../autofill/browser/context-menu-clic
 import { MainContextMenuHandler } from "../autofill/browser/main-context-menu-handler";
 import { AutofillService as AutofillServiceAbstraction } from "../autofill/services/abstractions/autofill.service";
 import AutofillService from "../autofill/services/autofill.service";
-import { BrowserApi } from "../browser/browserApi";
 import { SafariApp } from "../browser/safariApp";
-import { flagEnabled } from "../flags";
-import { UpdateBadge } from "../listeners/update-badge";
 import { Account } from "../models/account";
+import { BrowserApi } from "../platform/browser/browser-api";
+import { flagEnabled } from "../platform/flags";
+import { UpdateBadge } from "../platform/listeners/update-badge";
 import { BrowserCryptoService } from "../platform/services/browser-crypto.service";
 import { BrowserStateService as StateServiceAbstraction } from "../services/abstractions/browser-state.service";
 import { BrowserEnvironmentService } from "../services/browser-environment.service";

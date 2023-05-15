@@ -18,7 +18,7 @@ import { CipherType } from "@bitwarden/common/vault/enums/cipher-type";
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 
 import { AutofillService } from "../../../../autofill/services/abstractions/autofill.service";
-import { BrowserApi } from "../../../../browser/browserApi";
+import { BrowserApi } from "../../../../platform/browser/browser-api";
 import { PopupUtilsService } from "../../../../popup/services/popup-utils.service";
 import { VaultFilterService } from "../../../services/vault-filter.service";
 

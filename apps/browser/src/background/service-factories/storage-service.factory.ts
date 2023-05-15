@@ -4,7 +4,7 @@ import {
 } from "@bitwarden/common/abstractions/storage.service";
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 
-import { BrowserApi } from "../../browser/browserApi";
+import { BrowserApi } from "../../platform/browser/browser-api";
 import {
   EncryptServiceInitOptions,
   encryptServiceFactory,
