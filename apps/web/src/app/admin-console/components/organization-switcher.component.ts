@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { map, Observable } from "rxjs";
 
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import {
   canAccessAdmin,
   OrganizationService,
 } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
 @Component({
   selector: "app-organization-switcher",

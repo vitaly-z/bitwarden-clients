@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 
 import { ModalRef } from "@bitwarden/angular/components/modal/modal.ref";
 import { ModalConfig } from "@bitwarden/angular/services/modal.service";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { OrganizationUserService } from "@bitwarden/common/abstractions/organization-user/organization-user.service";
 import { OrganizationUserResetPasswordEnrollmentRequest } from "@bitwarden/common/abstractions/organization-user/requests";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
@@ -11,6 +10,7 @@ import { OrganizationApiServiceAbstraction } from "@bitwarden/common/admin-conso
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import { Verification } from "@bitwarden/common/types/verification";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";

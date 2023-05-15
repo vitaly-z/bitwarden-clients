@@ -3,9 +3,9 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { first, switchMap, takeUntil } from "rxjs/operators";
 
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
 @Directive()
 export abstract class BaseAcceptComponent implements OnInit {

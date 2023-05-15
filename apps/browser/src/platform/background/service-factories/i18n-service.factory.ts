@@ -1,8 +1,9 @@
 import { I18nService as AbstractI18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { I18nService as BaseI18nService } from "@bitwarden/common/platform/services/i18n.service";
 
-import { FactoryOptions, CachedServices, factory } from "./factory-options";
 import I18nService from "../../services/i18n.service";
+
+import { FactoryOptions, CachedServices, factory } from "./factory-options";
 
 type I18nServiceFactoryOptions = FactoryOptions & {
   i18nServiceOptions: {

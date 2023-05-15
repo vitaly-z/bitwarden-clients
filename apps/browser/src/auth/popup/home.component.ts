@@ -3,10 +3,10 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { LoginService } from "@bitwarden/common/auth/abstractions/login.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
 @Component({
   selector: "app-home",

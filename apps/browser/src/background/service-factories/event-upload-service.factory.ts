@@ -1,7 +1,6 @@
 import { EventUploadService as AbstractEventUploadService } from "@bitwarden/common/abstractions/event/event-upload.service";
 import { EventUploadService } from "@bitwarden/common/services/event/event-upload.service";
 
-import { apiServiceFactory, ApiServiceInitOptions } from "./api-service.factory";
 import {
   FactoryOptions,
   CachedServices,
@@ -15,6 +14,8 @@ import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../platform/background/service-factories/state-service.factory";
+
+import { apiServiceFactory, ApiServiceInitOptions } from "./api-service.factory";
 
 type EventUploadServiceOptions = FactoryOptions;
 

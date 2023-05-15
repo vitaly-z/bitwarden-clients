@@ -1,7 +1,7 @@
 import { map, Observable } from "rxjs";
 
-import { I18nService } from "../../../platform/abstractions/i18n.service";
 import { Utils } from "../../../misc/utils";
+import { I18nService } from "../../../platform/abstractions/i18n.service";
 import { OrganizationData } from "../../models/data/organization.data";
 import { Organization } from "../../models/domain/organization";
 

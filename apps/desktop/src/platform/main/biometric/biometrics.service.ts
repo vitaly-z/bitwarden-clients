@@ -1,9 +1,9 @@
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
-import { ElectronStateService } from "../../../services/electron-state.service.abstraction";
 import { WindowMain } from "../../../main/window.main";
+import { ElectronStateService } from "../../../services/electron-state.service.abstraction";
 
 import { BiometricsServiceAbstraction, OsBiometricService } from "./biometrics.service.abstraction";
 

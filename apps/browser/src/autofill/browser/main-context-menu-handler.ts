@@ -6,12 +6,8 @@ import { LogService } from "@bitwarden/common/platform/abstractions/log.service"
 import { CipherType } from "@bitwarden/common/vault/enums/cipher-type";
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 
-import { CachedServices } from "../../platform/background/service-factories/factory-options";
-import {
-  stateServiceFactory,
-  StateServiceInitOptions,
-} from "../../platform/background/service-factories/state-service.factory";
 import { Account } from "../../models/account";
+import { CachedServices } from "../../platform/background/service-factories/factory-options";
 import {
   i18nServiceFactory,
   I18nServiceInitOptions,
@@ -20,6 +16,10 @@ import {
   logServiceFactory,
   LogServiceInitOptions,
 } from "../../platform/background/service-factories/log-service.factory";
+import {
+  stateServiceFactory,
+  StateServiceInitOptions,
+} from "../../platform/background/service-factories/state-service.factory";
 import { BrowserStateService } from "../../platform/services/abstractions/browser-state.service";
 
 export const ROOT_ID = "root";

@@ -5,17 +5,17 @@ import {
   tokenServiceFactory,
   TokenServiceInitOptions,
 } from "../../auth/background/service-factories/token-service.factory";
+import {
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../platform/background/service-factories/factory-options";
 
 import { AppIdServiceInitOptions, appIdServiceFactory } from "./app-id-service.factory";
 import {
   environmentServiceFactory,
   EnvironmentServiceInitOptions,
 } from "./environment-service.factory";
-import {
-  CachedServices,
-  factory,
-  FactoryOptions,
-} from "../../platform/background/service-factories/factory-options";
 import {
   PlatformUtilsServiceInitOptions,
   platformUtilsServiceFactory,

@@ -11,7 +11,6 @@ import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,
 } from "../../platform/background/service-factories/crypto-service.factory";
-
 import {
   CachedServices,
   factory,

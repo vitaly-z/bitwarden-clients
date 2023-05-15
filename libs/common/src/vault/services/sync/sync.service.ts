@@ -14,7 +14,6 @@ import { CollectionDetailsResponse } from "../../../admin-console/models/respons
 import { PolicyResponse } from "../../../admin-console/models/response/policy.response";
 import { KeyConnectorService } from "../../../auth/abstractions/key-connector.service";
 import { ForceResetPasswordReason } from "../../../auth/models/domain/force-reset-password-reason";
-import { sequentialize } from "../../../platform/misc/sequentialize";
 import { DomainsResponse } from "../../../models/response/domains.response";
 import {
   SyncCipherNotification,
@@ -24,6 +23,7 @@ import {
 import { ProfileResponse } from "../../../models/response/profile.response";
 import { CryptoService } from "../../../platform/abstractions/crypto.service";
 import { LogService } from "../../../platform/abstractions/log.service";
+import { sequentialize } from "../../../platform/misc/sequentialize";
 import { SendData } from "../../../tools/send/models/data/send.data";
 import { SendResponse } from "../../../tools/send/models/response/send.response";
 import { SendApiService } from "../../../tools/send/services/send-api.service.abstraction";

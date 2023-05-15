@@ -12,7 +12,6 @@ import {
 import { JslibServicesModule } from "@bitwarden/angular/services/jslib-services.module";
 import { ModalService as ModalServiceAbstraction } from "@bitwarden/angular/services/modal.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
-import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService as MessagingServiceAbstraction } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService as PlatformUtilsServiceAbstraction } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService as BaseStateServiceAbstraction } from "@bitwarden/common/abstractions/state.service";
@@ -21,16 +20,17 @@ import { AbstractStorageService } from "@bitwarden/common/abstractions/storage.s
 import { LoginService as LoginServiceAbstraction } from "@bitwarden/common/auth/abstractions/login.service";
 import { LoginService } from "@bitwarden/common/auth/services/login.service";
 import { StateFactory } from "@bitwarden/common/factories/stateFactory";
+import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 import { PasswordRepromptService as PasswordRepromptServiceAbstraction } from "@bitwarden/common/vault/abstractions/password-reprompt.service";
 
 import { PolicyListService } from "../admin-console/core/policy-list.service";
+import { I18nService } from "../platform/core/i18n.service";
 import { PasswordRepromptService } from "../vault/core/password-reprompt.service";
 
 import { BroadcasterMessagingService } from "./broadcaster-messaging.service";
 import { EventService } from "./event.service";
 import { HtmlStorageService } from "./html-storage.service";
-import { I18nService } from "../platform/core/i18n.service";
 import { InitService } from "./init.service";
 import { ModalService } from "./modal.service";
 import { RouterService } from "./router.service";

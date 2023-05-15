@@ -1,9 +1,9 @@
 import { mock, MockProxy } from "jest-mock-extended";
 
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { KdfType } from "@bitwarden/common/enums";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
 import {
   BitwardenPasswordProtectedImporter,

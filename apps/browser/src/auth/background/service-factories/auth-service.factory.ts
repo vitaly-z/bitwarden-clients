@@ -15,11 +15,6 @@ import {
   EnvironmentServiceInitOptions,
 } from "../../../background/service-factories/environment-service.factory";
 import {
-  CachedServices,
-  factory,
-  FactoryOptions,
-} from "../../../platform/background/service-factories/factory-options";
-import {
   messagingServiceFactory,
   MessagingServiceInitOptions,
 } from "../../../background/service-factories/messaging-service.factory";
@@ -32,10 +27,6 @@ import {
   PlatformUtilsServiceInitOptions,
 } from "../../../background/service-factories/platform-utils-service.factory";
 import {
-  stateServiceFactory,
-  StateServiceInitOptions,
-} from "../../../platform/background/service-factories/state-service.factory";
-import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,
 } from "../../../platform/background/service-factories/crypto-service.factory";
@@ -44,6 +35,11 @@ import {
   encryptServiceFactory,
 } from "../../../platform/background/service-factories/encrypt-service.factory";
 import {
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../../platform/background/service-factories/factory-options";
+import {
   i18nServiceFactory,
   I18nServiceInitOptions,
 } from "../../../platform/background/service-factories/i18n-service.factory";
@@ -51,6 +47,10 @@ import {
   logServiceFactory,
   LogServiceInitOptions,
 } from "../../../platform/background/service-factories/log-service.factory";
+import {
+  stateServiceFactory,
+  StateServiceInitOptions,
+} from "../../../platform/background/service-factories/state-service.factory";
 
 import {
   keyConnectorServiceFactory,

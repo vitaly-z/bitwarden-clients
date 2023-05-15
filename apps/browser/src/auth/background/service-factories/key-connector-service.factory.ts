@@ -10,15 +10,6 @@ import {
   ApiServiceInitOptions,
 } from "../../../background/service-factories/api-service.factory";
 import {
-  FactoryOptions,
-  CachedServices,
-  factory,
-} from "../../../platform/background/service-factories/factory-options";
-import {
-  stateServiceFactory,
-  StateServiceInitOptions,
-} from "../../../platform/background/service-factories/state-service.factory";
-import {
   CryptoFunctionServiceInitOptions,
   cryptoFunctionServiceFactory,
 } from "../../../platform/background/service-factories/crypto-function-service.factory";
@@ -27,9 +18,18 @@ import {
   cryptoServiceFactory,
 } from "../../../platform/background/service-factories/crypto-service.factory";
 import {
+  FactoryOptions,
+  CachedServices,
+  factory,
+} from "../../../platform/background/service-factories/factory-options";
+import {
   logServiceFactory,
   LogServiceInitOptions,
 } from "../../../platform/background/service-factories/log-service.factory";
+import {
+  stateServiceFactory,
+  StateServiceInitOptions,
+} from "../../../platform/background/service-factories/state-service.factory";
 
 import { TokenServiceInitOptions, tokenServiceFactory } from "./token-service.factory";
 

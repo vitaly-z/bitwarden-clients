@@ -17,13 +17,13 @@ import {
   DEFAULT_ARGON2_PARALLELISM,
   EncryptionType,
 } from "../../enums";
-import { sequentialize } from "../misc/sequentialize";
 import { Utils } from "../../misc/utils";
-import { EFFLongWordList } from "../misc/wordlist";
 import { CryptoFunctionService } from "../abstractions/crypto-function.service";
 import { CryptoService as CryptoServiceAbstraction } from "../abstractions/crypto.service";
 import { EncryptService } from "../abstractions/encrypt.service";
 import { LogService } from "../abstractions/log.service";
+import { sequentialize } from "../misc/sequentialize";
+import { EFFLongWordList } from "../misc/wordlist";
 import { EncArrayBuffer } from "../models/domain/enc-array-buffer";
 import { EncString } from "../models/domain/enc-string";
 import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";

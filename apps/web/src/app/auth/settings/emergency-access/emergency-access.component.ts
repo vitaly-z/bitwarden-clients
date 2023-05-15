@@ -4,7 +4,6 @@ import { UserNamePipe } from "@bitwarden/angular/pipes/user-name.pipe";
 import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/services/dialog";
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
@@ -18,6 +17,7 @@ import {
 } from "@bitwarden/common/auth/models/response/emergency-access.response";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { EmergencyAccessAddEditComponent } from "./emergency-access-add-edit.component";

@@ -1,6 +1,5 @@
 import { EncryptServiceImplementation } from "@bitwarden/common/platform/services/cryptography/encrypt.service.implementation";
 
-import { FactoryOptions, CachedServices, factory } from "./factory-options";
 import {
   LogServiceInitOptions,
   logServiceFactory,
@@ -10,6 +9,7 @@ import {
   cryptoFunctionServiceFactory,
   CryptoFunctionServiceInitOptions,
 } from "./crypto-function-service.factory";
+import { FactoryOptions, CachedServices, factory } from "./factory-options";
 
 type EncryptServiceFactoryOptions = FactoryOptions & {
   encryptServiceOptions: {

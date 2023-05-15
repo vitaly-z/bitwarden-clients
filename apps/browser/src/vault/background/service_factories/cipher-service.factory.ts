@@ -10,6 +10,22 @@ import {
   cipherFileUploadServiceFactory,
 } from "../../../background/service-factories/cipher-file-upload-service.factory";
 import {
+  searchServiceFactory,
+  SearchServiceInitOptions,
+} from "../../../background/service-factories/search-service.factory";
+import {
+  SettingsServiceInitOptions,
+  settingsServiceFactory,
+} from "../../../background/service-factories/settings-service.factory";
+import {
+  CryptoServiceInitOptions,
+  cryptoServiceFactory,
+} from "../../../platform/background/service-factories/crypto-service.factory";
+import {
+  EncryptServiceInitOptions,
+  encryptServiceFactory,
+} from "../../../platform/background/service-factories/encrypt-service.factory";
+import {
   CachedServices,
   factory,
   FactoryOptions,
@@ -19,25 +35,9 @@ import {
   I18nServiceInitOptions,
 } from "../../../platform/background/service-factories/i18n-service.factory";
 import {
-  searchServiceFactory,
-  SearchServiceInitOptions,
-} from "../../../background/service-factories/search-service.factory";
-import {
-  SettingsServiceInitOptions,
-  settingsServiceFactory,
-} from "../../../background/service-factories/settings-service.factory";
-import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../../platform/background/service-factories/state-service.factory";
-import {
-  CryptoServiceInitOptions,
-  cryptoServiceFactory,
-} from "../../../platform/background/service-factories/crypto-service.factory";
-import {
-  EncryptServiceInitOptions,
-  encryptServiceFactory,
-} from "../../../platform/background/service-factories/encrypt-service.factory";
 
 type CipherServiceFactoryOptions = FactoryOptions;
 

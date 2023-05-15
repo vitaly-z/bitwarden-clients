@@ -14,10 +14,10 @@ import Swal from "sweetalert2";
 
 import { DialogServiceAbstraction, SimpleDialogOptions } from "@bitwarden/angular/services/dialog";
 import { BroadcasterService } from "@bitwarden/common/abstractions/broadcaster.service";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
 import { BrowserApi } from "../platform/browser/browser-api";
 import { BrowserStateService } from "../platform/services/abstractions/browser-state.service";

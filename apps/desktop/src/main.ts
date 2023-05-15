@@ -6,8 +6,6 @@ import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 
-import { BiometricsService, BiometricsServiceAbstraction } from "./platform/main/biometric/index";
-import { DesktopCredentialStorageListener } from "./platform/main/desktop-credential-storage-listener";
 import { MenuMain } from "./main/menu/menu.main";
 import { MessagingMain } from "./main/messaging.main";
 import { NativeMessagingMain } from "./main/native-messaging.main";
@@ -16,11 +14,13 @@ import { TrayMain } from "./main/tray.main";
 import { UpdaterMain } from "./main/updater.main";
 import { WindowMain } from "./main/window.main";
 import { Account } from "./models/account";
+import { BiometricsService, BiometricsServiceAbstraction } from "./platform/main/biometric/index";
+import { DesktopCredentialStorageListener } from "./platform/main/desktop-credential-storage-listener";
 import { ElectronLogService } from "./platform/services/electron-log.service";
+import { I18nService } from "./platform/services/i18n.service";
 import { ElectronMainMessagingService } from "./services/electron-main-messaging.service";
 import { ElectronStateService } from "./services/electron-state.service";
 import { ElectronStorageService } from "./services/electron-storage.service";
-import { I18nService } from "./platform/services/i18n.service";
 
 export class Main {
   logService: ElectronLogService;

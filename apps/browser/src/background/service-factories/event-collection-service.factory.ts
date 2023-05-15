@@ -6,15 +6,6 @@ import {
   OrganizationServiceInitOptions,
 } from "../../admin-console/background/service-factories/organization-service.factory";
 import {
-  cipherServiceFactory,
-  CipherServiceInitOptions,
-} from "../../vault/background/service_factories/cipher-service.factory";
-
-import {
-  eventUploadServiceFactory,
-  EventUploadServiceInitOptions,
-} from "./event-upload-service.factory";
-import {
   FactoryOptions,
   CachedServices,
   factory,
@@ -23,6 +14,15 @@ import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../platform/background/service-factories/state-service.factory";
+import {
+  cipherServiceFactory,
+  CipherServiceInitOptions,
+} from "../../vault/background/service_factories/cipher-service.factory";
+
+import {
+  eventUploadServiceFactory,
+  EventUploadServiceInitOptions,
+} from "./event-upload-service.factory";
 
 type EventCollectionServiceOptions = FactoryOptions;
 

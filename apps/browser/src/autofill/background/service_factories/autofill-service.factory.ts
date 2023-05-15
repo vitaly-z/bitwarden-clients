@@ -7,22 +7,22 @@ import {
   eventCollectionServiceFactory,
 } from "../../../background/service-factories/event-collection-service.factory";
 import {
+  settingsServiceFactory,
+  SettingsServiceInitOptions,
+} from "../../../background/service-factories/settings-service.factory";
+import {
   CachedServices,
   factory,
   FactoryOptions,
 } from "../../../platform/background/service-factories/factory-options";
 import {
-  settingsServiceFactory,
-  SettingsServiceInitOptions,
-} from "../../../background/service-factories/settings-service.factory";
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../../platform/background/service-factories/log-service.factory";
 import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../../platform/background/service-factories/state-service.factory";
-import {
-  logServiceFactory,
-  LogServiceInitOptions,
-} from "../../../platform/background/service-factories/log-service.factory";
 import {
   cipherServiceFactory,
   CipherServiceInitOptions,

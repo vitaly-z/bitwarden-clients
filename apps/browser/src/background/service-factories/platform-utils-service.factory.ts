@@ -1,12 +1,12 @@
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 
-import BrowserPlatformUtilsService from "../../services/browserPlatformUtils.service";
-
 import {
   CachedServices,
   factory,
   FactoryOptions,
 } from "../../platform/background/service-factories/factory-options";
+import BrowserPlatformUtilsService from "../../services/browserPlatformUtils.service";
+
 import { MessagingServiceInitOptions, messagingServiceFactory } from "./messaging-service.factory";
 
 type PlatformUtilsServiceFactoryOptions = FactoryOptions & {

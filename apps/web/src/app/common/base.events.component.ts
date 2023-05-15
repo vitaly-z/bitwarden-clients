@@ -1,11 +1,11 @@
 import { Directive } from "@angular/core";
 
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { EventResponse } from "@bitwarden/common/models/response/event.response";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
 import { EventView } from "@bitwarden/common/models/view/event.view";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { EventService } from "../core";

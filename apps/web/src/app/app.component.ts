@@ -11,7 +11,6 @@ import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/s
 import { BroadcasterService } from "@bitwarden/common/abstractions/broadcaster.service";
 import { ConfigServiceAbstraction } from "@bitwarden/common/abstractions/config/config.service.abstraction";
 import { EventUploadService } from "@bitwarden/common/abstractions/event/event-upload.service";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { NotificationsService } from "@bitwarden/common/abstractions/notifications.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SearchService } from "@bitwarden/common/abstractions/search.service";
@@ -23,6 +22,7 @@ import { InternalPolicyService } from "@bitwarden/common/admin-console/abstracti
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { KeyConnectorService } from "@bitwarden/common/auth/abstractions/key-connector.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { InternalFolderService } from "@bitwarden/common/vault/abstractions/folder/folder.service.abstraction";

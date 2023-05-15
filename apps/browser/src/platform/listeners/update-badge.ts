@@ -9,8 +9,8 @@ import { ContainerService } from "@bitwarden/common/services/container.service";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 
 import { authServiceFactory } from "../../auth/background/service-factories/auth-service.factory";
-import { stateServiceFactory } from "../../platform/background/service-factories/state-service.factory";
 import { Account } from "../../models/account";
+import { stateServiceFactory } from "../../platform/background/service-factories/state-service.factory";
 import { BrowserStateService } from "../../platform/services/abstractions/browser-state.service";
 import BrowserPlatformUtilsService from "../../services/browserPlatformUtils.service";
 import IconDetails from "../../vault/background/models/icon-details";

@@ -18,7 +18,6 @@ import { SearchPipe } from "@bitwarden/angular/pipes/search.pipe";
 import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/services/dialog";
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SearchService } from "@bitwarden/common/abstractions/search.service";
 import { CollectionService } from "@bitwarden/common/admin-console/abstractions/collection.service";
@@ -31,6 +30,7 @@ import {
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { Utils } from "@bitwarden/common/misc/utils";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { GroupService, GroupView } from "../core";

@@ -4,7 +4,6 @@ import { concatMap, filter, map, Observable, Subject, takeUntil, tap } from "rxj
 
 import { DialogServiceAbstraction, SimpleDialogType } from "@bitwarden/angular/services/dialog";
 import { AbstractThemingService } from "@bitwarden/angular/services/theming/theming.service.abstraction";
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SettingsService } from "@bitwarden/common/abstractions/settings.service";
@@ -15,6 +14,7 @@ import { PolicyType } from "@bitwarden/common/admin-console/enums";
 import { ThemeType } from "@bitwarden/common/enums";
 import { VaultTimeoutAction } from "@bitwarden/common/enums/vault-timeout-action.enum";
 import { Utils } from "@bitwarden/common/misc/utils";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
 @Component({
   selector: "app-preferences",

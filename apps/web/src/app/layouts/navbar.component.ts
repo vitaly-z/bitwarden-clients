@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import {
@@ -12,6 +11,7 @@ import { ProviderService } from "@bitwarden/common/admin-console/abstractions/pr
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { TokenService } from "@bitwarden/common/auth/abstractions/token.service";
 import { Provider } from "@bitwarden/common/models/domain/provider";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
 @Component({

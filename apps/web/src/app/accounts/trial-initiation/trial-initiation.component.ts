@@ -5,7 +5,6 @@ import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { first, Subject, takeUntil } from "rxjs";
 
-import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { PolicyApiServiceAbstraction } from "@bitwarden/common/admin-console/abstractions/policy/policy-api.service.abstraction";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
@@ -15,6 +14,7 @@ import { Policy } from "@bitwarden/common/admin-console/models/domain/policy";
 import { PlanType } from "@bitwarden/common/billing/enums";
 import { ProductType } from "@bitwarden/common/enums";
 import { ReferenceEventRequest } from "@bitwarden/common/models/request/reference-event.request";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 
 import { RouterService } from "./../../core/router.service";

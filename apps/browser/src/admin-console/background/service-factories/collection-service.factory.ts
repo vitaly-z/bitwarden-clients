@@ -2,6 +2,10 @@ import { CollectionService as AbstractCollectionService } from "@bitwarden/commo
 import { CollectionService } from "@bitwarden/common/admin-console/services/collection.service";
 
 import {
+  cryptoServiceFactory,
+  CryptoServiceInitOptions,
+} from "../../../platform/background/service-factories/crypto-service.factory";
+import {
   CachedServices,
   factory,
   FactoryOptions,
@@ -14,10 +18,6 @@ import {
   stateServiceFactory as stateServiceFactory,
   StateServiceInitOptions,
 } from "../../../platform/background/service-factories/state-service.factory";
-import {
-  cryptoServiceFactory,
-  CryptoServiceInitOptions,
-} from "../../../platform/background/service-factories/crypto-service.factory";
 
 type CollectionServiceFactoryOptions = FactoryOptions;
 

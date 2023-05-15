@@ -5,8 +5,6 @@ import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,
 } from "../../platform/background/service-factories/crypto-service.factory";
-import { BrowserSendService } from "../../services/browser-send.service";
-
 import {
   FactoryOptions,
   CachedServices,
@@ -20,6 +18,7 @@ import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../platform/background/service-factories/state-service.factory";
+import { BrowserSendService } from "../../services/browser-send.service";
 
 type SendServiceFactoryOptions = FactoryOptions;
 
