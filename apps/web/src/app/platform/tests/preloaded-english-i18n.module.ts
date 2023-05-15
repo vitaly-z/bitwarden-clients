@@ -1,9 +1,9 @@
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 
-import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
-import { I18nService as BaseI18nService } from "@bitwarden/common/services/i18n.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { I18nService as BaseI18nService } from "@bitwarden/common/platform/services/i18n.service";
 
-import eng from "../../locales/en/messages.json";
+import eng from "../../../locales/en/messages.json";
 
 class PreloadedEnglishI18nService extends BaseI18nService {
   constructor() {

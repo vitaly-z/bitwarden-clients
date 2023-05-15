@@ -8,7 +8,10 @@ import {
 import { BrowserSendService } from "../../services/browser-send.service";
 
 import { FactoryOptions, CachedServices, factory } from "./factory-options";
-import { i18nServiceFactory, I18nServiceInitOptions } from "./i18n-service.factory";
+import {
+  i18nServiceFactory,
+  I18nServiceInitOptions,
+} from "../../platform/background/service-factories/i18n-service.factory";
 import { stateServiceFactory, StateServiceInitOptions } from "./state-service.factory";
 
 type SendServiceFactoryOptions = FactoryOptions;

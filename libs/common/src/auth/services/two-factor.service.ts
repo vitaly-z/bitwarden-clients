@@ -1,4 +1,4 @@
-import { I18nService } from "../../abstractions/i18n.service";
+import { I18nService } from "../../platform/abstractions/i18n.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import {
   TwoFactorProviderDetails,

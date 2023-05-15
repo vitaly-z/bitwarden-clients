@@ -9,7 +9,7 @@ import {
 import {
   I18nServiceInitOptions,
   i18nServiceFactory,
-} from "../../../background/service-factories/i18n-service.factory";
+} from "../../../platform/background/service-factories/i18n-service.factory";
 import {
   PlatformUtilsServiceInitOptions,
   platformUtilsServiceFactory,

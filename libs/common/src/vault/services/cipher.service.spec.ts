@@ -2,7 +2,7 @@
 import { Arg, Substitute, SubstituteOf } from "@fluffy-spoon/substitute";
 
 import { ApiService } from "../../abstractions/api.service";
-import { I18nService } from "../../abstractions/i18n.service";
+import { I18nService } from "../../platform/abstractions/i18n.service";
 import { SearchService } from "../../abstractions/search.service";
 import { SettingsService } from "../../abstractions/settings.service";
 import { StateService } from "../../abstractions/state.service";

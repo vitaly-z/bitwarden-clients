@@ -1,7 +1,7 @@
 import { mock, mockReset } from "jest-mock-extended";
 import { lastValueFrom } from "rxjs";
 
-import { I18nService } from "../../abstractions/i18n.service";
+import { I18nService } from "../../platform/abstractions/i18n.service";
 import { OrganizationDomainResponse } from "../../abstractions/organization-domain/responses/organization-domain.response";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 

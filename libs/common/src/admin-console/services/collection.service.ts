@@ -1,4 +1,4 @@
-import { I18nService } from "../../abstractions/i18n.service";
+import { I18nService } from "../../platform/abstractions/i18n.service";
 import { StateService } from "../../abstractions/state.service";
 import { ServiceUtils } from "../../misc/serviceUtils";
 import { Utils } from "../../misc/utils";

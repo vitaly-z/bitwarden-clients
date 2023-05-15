@@ -1,7 +1,10 @@
 import { BrowserEnvironmentService } from "../../services/browser-environment.service";
 
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
-import { logServiceFactory, LogServiceInitOptions } from "./log-service.factory";
+import {
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../platform/background/service-factories/log-service.factory";
 import {
   stateServiceFactory as stateServiceFactory,
   StateServiceInitOptions,

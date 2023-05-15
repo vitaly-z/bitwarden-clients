@@ -20,14 +20,6 @@ import {
   FactoryOptions,
 } from "../../../background/service-factories/factory-options";
 import {
-  i18nServiceFactory,
-  I18nServiceInitOptions,
-} from "../../../background/service-factories/i18n-service.factory";
-import {
-  logServiceFactory,
-  LogServiceInitOptions,
-} from "../../../background/service-factories/log-service.factory";
-import {
   messagingServiceFactory,
   MessagingServiceInitOptions,
 } from "../../../background/service-factories/messaging-service.factory";
@@ -51,6 +43,14 @@ import {
   EncryptServiceInitOptions,
   encryptServiceFactory,
 } from "../../../platform/background/service-factories/encrypt-service.factory";
+import {
+  i18nServiceFactory,
+  I18nServiceInitOptions,
+} from "../../../platform/background/service-factories/i18n-service.factory";
+import {
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../../platform/background/service-factories/log-service.factory";
 
 import {
   keyConnectorServiceFactory,

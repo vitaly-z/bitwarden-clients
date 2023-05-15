@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
-import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { CollectionService } from "@bitwarden/common/admin-console/abstractions/collection.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";

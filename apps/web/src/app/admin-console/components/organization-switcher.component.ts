@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { map, Observable } from "rxjs";
 
-import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import {
   canAccessAdmin,
   OrganizationService,

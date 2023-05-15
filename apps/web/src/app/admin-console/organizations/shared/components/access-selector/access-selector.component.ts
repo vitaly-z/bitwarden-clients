@@ -3,7 +3,7 @@ import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from "@angular/f
 import { Subject, takeUntil } from "rxjs";
 
 import { FormSelectionList } from "@bitwarden/angular/utils/form-selection-list";
-import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { SelectItemView } from "@bitwarden/components/src/multi-select/models/select-item-view";
 
 import {

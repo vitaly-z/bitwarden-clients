@@ -8,7 +8,7 @@ import {
 import {
   LogServiceInitOptions,
   logServiceFactory,
-} from "../../../background/service-factories/log-service.factory";
+} from "../../background/service-factories/log-service.factory";
 
 import {
   cryptoFunctionServiceFactory,

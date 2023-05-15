@@ -7,13 +7,13 @@ import {
   factory,
 } from "../../../background/service-factories/factory-options";
 import {
-  LogServiceInitOptions,
-  logServiceFactory,
-} from "../../../background/service-factories/log-service.factory";
-import {
   CryptoFunctionServiceInitOptions,
   cryptoFunctionServiceFactory,
 } from "../../../platform/background/service-factories/crypto-function-service.factory";
+import {
+  LogServiceInitOptions,
+  logServiceFactory,
+} from "../../../platform/background/service-factories/log-service.factory";
 
 type TotpServiceOptions = FactoryOptions;
 

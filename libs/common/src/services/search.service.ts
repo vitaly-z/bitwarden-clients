@@ -1,6 +1,6 @@
 import * as lunr from "lunr";
 
-import { I18nService } from "../abstractions/i18n.service";
+import { I18nService } from "../platform/abstractions/i18n.service";
 import { SearchService as SearchServiceAbstraction } from "../abstractions/search.service";
 import { FieldType, UriMatchType } from "../enums";
 import { LogService } from "../platform/abstractions/log.service";

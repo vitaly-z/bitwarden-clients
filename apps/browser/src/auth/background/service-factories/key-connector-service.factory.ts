@@ -15,10 +15,6 @@ import {
   factory,
 } from "../../../background/service-factories/factory-options";
 import {
-  logServiceFactory,
-  LogServiceInitOptions,
-} from "../../../background/service-factories/log-service.factory";
-import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../../background/service-factories/state-service.factory";
@@ -30,6 +26,10 @@ import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,
 } from "../../../platform/background/service-factories/crypto-service.factory";
+import {
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../../platform/background/service-factories/log-service.factory";
 
 import { TokenServiceInitOptions, tokenServiceFactory } from "./token-service.factory";
 

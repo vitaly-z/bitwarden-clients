@@ -1,6 +1,6 @@
 import { BehaviorSubject, concatMap } from "rxjs";
 
-import { I18nService } from "../../../abstractions/i18n.service";
+import { I18nService } from "../../../platform/abstractions/i18n.service";
 import { StateService } from "../../../abstractions/state.service";
 import { SEND_KDF_ITERATIONS } from "../../../enums";
 import { Utils } from "../../../misc/utils";

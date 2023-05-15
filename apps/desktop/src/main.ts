@@ -20,7 +20,7 @@ import { ElectronLogService } from "./platform/services/electron-log.service";
 import { ElectronMainMessagingService } from "./services/electron-main-messaging.service";
 import { ElectronStateService } from "./services/electron-state.service";
 import { ElectronStorageService } from "./services/electron-storage.service";
-import { I18nService } from "./services/i18n.service";
+import { I18nService } from "./platform/services/i18n.service";
 
 export class Main {
   logService: ElectronLogService;

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ipcRenderer } from "electron";
 import Swal from "sweetalert2";
 
-import { I18nService } from "@bitwarden/common/abstractions/i18n.service";
+import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { NativeMessagingVersion } from "@bitwarden/common/enums";
 import { Utils } from "@bitwarden/common/misc/utils";

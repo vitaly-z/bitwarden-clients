@@ -1,9 +1,16 @@
 import { SearchService as AbstractSearchService } from "@bitwarden/common/abstractions/search.service";
 import { SearchService } from "@bitwarden/common/services/search.service";
 
+import {
+  i18nServiceFactory,
+  I18nServiceInitOptions,
+} from "../../platform/background/service-factories/i18n-service.factory";
+import {
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../platform/background/service-factories/log-service.factory";
+
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
-import { i18nServiceFactory, I18nServiceInitOptions } from "./i18n-service.factory";
-import { logServiceFactory, LogServiceInitOptions } from "./log-service.factory";
 
 type SearchServiceFactoryOptions = FactoryOptions;
 

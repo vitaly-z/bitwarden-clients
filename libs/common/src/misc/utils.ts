@@ -5,7 +5,7 @@ import { Observable, of, switchMap } from "rxjs";
 import { getHostname, parse } from "tldts";
 import { Merge } from "type-fest";
 
-import { I18nService } from "../abstractions/i18n.service";
+import { I18nService } from "../platform/abstractions/i18n.service";
 import { CryptoService } from "../platform/abstractions/crypto.service";
 import { EncryptService } from "../platform/abstractions/encrypt.service";
 

@@ -1,7 +1,7 @@
 import { any, mock, MockProxy } from "jest-mock-extended";
 import { BehaviorSubject, firstValueFrom } from "rxjs";
 
-import { I18nService } from "../../../abstractions/i18n.service";
+import { I18nService } from "../../../platform/abstractions/i18n.service";
 import { StateService } from "../../../abstractions/state.service";
 import { CryptoFunctionService } from "../../../platform/abstractions/crypto-function.service";
 import { CryptoService } from "../../../platform/abstractions/crypto.service";

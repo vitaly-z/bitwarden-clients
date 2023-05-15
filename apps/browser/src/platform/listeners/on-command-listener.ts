@@ -7,13 +7,13 @@ import { autofillServiceFactory } from "../../autofill/background/service_factor
 import { GeneratePasswordToClipboardCommand } from "../../autofill/clipboard";
 import { AutofillTabCommand } from "../../autofill/commands/autofill-tab-command";
 import { CachedServices } from "../../background/service-factories/factory-options";
-import { logServiceFactory } from "../../background/service-factories/log-service.factory";
 import {
   PasswordGenerationServiceInitOptions,
   passwordGenerationServiceFactory,
 } from "../../background/service-factories/password-generation-service.factory";
 import { stateServiceFactory } from "../../background/service-factories/state-service.factory";
 import { Account } from "../../models/account";
+import { logServiceFactory } from "../background/service-factories/log-service.factory";
 import { BrowserApi } from "../browser/browser-api";
 
 export const onCommandListener = async (command: string, tab: chrome.tabs.Tab) => {
@@ -91,7 +91,7 @@ const doGeneratePasswordToClipboard = async (tab: chrome.tabs.Tab): Promise<void
     },
     platformUtilsServiceOptions: {
       biometricCallback: () => Promise.resolve(true),
-      clipboardWriteCallback: (_clipboardValue, _clearMs) => Promise.resolve(),
+      clipboardWriteCallback: () => Promise.resolve(),
       win: self,
     },
     stateMigrationServiceOptions: {

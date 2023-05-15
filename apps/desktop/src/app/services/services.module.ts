@@ -14,7 +14,7 @@ import { JslibServicesModule } from "@bitwarden/angular/services/jslib-services.
 import { AbstractThemingService } from "@bitwarden/angular/services/theming/theming.service.abstraction";
 import { BroadcasterService as BroadcasterServiceAbstraction } from "@bitwarden/common/abstractions/broadcaster.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
-import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/abstractions/i18n.service";
+import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService as MessagingServiceAbstraction } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService as PlatformUtilsServiceAbstraction } from "@bitwarden/common/abstractions/platformUtils.service";
 import { StateService as StateServiceAbstraction } from "@bitwarden/common/abstractions/state.service";
@@ -53,7 +53,7 @@ import { ElectronRendererStorageService } from "../../services/electron-renderer
 import { ElectronStateService } from "../../services/electron-state.service";
 import { ElectronStateService as ElectronStateServiceAbstraction } from "../../services/electron-state.service.abstraction";
 import { EncryptedMessageHandlerService } from "../../services/encrypted-message-handler.service";
-import { I18nService } from "../../services/i18n.service";
+import { I18nService } from "../../platform/services/i18n.service";
 import { NativeMessageHandlerService } from "../../services/native-message-handler.service";
 import { NativeMessagingService } from "../../services/native-messaging.service";
 import { PasswordRepromptService } from "../../vault/services/password-reprompt.service";

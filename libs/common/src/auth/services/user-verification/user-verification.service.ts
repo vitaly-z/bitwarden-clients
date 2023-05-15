@@ -1,4 +1,4 @@
-import { I18nService } from "../../../abstractions/i18n.service";
+import { I18nService } from "../../../platform/abstractions/i18n.service";
 import { UserVerificationApiServiceAbstraction } from "../../../abstractions/userVerification/userVerification-api.service.abstraction";
 import { UserVerificationService as UserVerificationServiceAbstraction } from "../../../abstractions/userVerification/userVerification.service.abstraction";
 import { CryptoService } from "../../../platform/abstractions/crypto.service";

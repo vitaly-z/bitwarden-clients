@@ -3,7 +3,7 @@ import { Observable, Subject } from "rxjs";
 import { ApiService } from "../../abstractions/api.service";
 import { AppIdService } from "../../abstractions/appId.service";
 import { EnvironmentService } from "../../abstractions/environment.service";
-import { I18nService } from "../../abstractions/i18n.service";
+import { I18nService } from "../../platform/abstractions/i18n.service";
 import { MessagingService } from "../../abstractions/messaging.service";
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
 import { StateService } from "../../abstractions/state.service";

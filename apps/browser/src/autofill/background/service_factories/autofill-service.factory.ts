@@ -12,10 +12,6 @@ import {
   FactoryOptions,
 } from "../../../background/service-factories/factory-options";
 import {
-  logServiceFactory,
-  LogServiceInitOptions,
-} from "../../../background/service-factories/log-service.factory";
-import {
   settingsServiceFactory,
   SettingsServiceInitOptions,
 } from "../../../background/service-factories/settings-service.factory";
@@ -23,6 +19,10 @@ import {
   stateServiceFactory,
   StateServiceInitOptions,
 } from "../../../background/service-factories/state-service.factory";
+import {
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../../platform/background/service-factories/log-service.factory";
 import {
   cipherServiceFactory,
   CipherServiceInitOptions,

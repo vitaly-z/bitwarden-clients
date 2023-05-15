@@ -6,10 +6,6 @@ import {
   factory,
 } from "../../../background/service-factories/factory-options";
 import {
-  LogServiceInitOptions,
-  logServiceFactory,
-} from "../../../background/service-factories/log-service.factory";
-import {
   PlatformUtilsServiceInitOptions,
   platformUtilsServiceFactory,
 } from "../../../background/service-factories/platform-utils-service.factory";
@@ -17,6 +13,10 @@ import {
   StateServiceInitOptions,
   stateServiceFactory,
 } from "../../../background/service-factories/state-service.factory";
+import {
+  LogServiceInitOptions,
+  logServiceFactory,
+} from "../../background/service-factories/log-service.factory";
 import { BrowserCryptoService } from "../../services/browser-crypto.service";
 
 import {

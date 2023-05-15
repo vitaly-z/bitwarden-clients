@@ -3,7 +3,10 @@ import { EventUploadService } from "@bitwarden/common/services/event/event-uploa
 
 import { apiServiceFactory, ApiServiceInitOptions } from "./api-service.factory";
 import { FactoryOptions, CachedServices, factory } from "./factory-options";
-import { logServiceFactory, LogServiceInitOptions } from "./log-service.factory";
+import {
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../platform/background/service-factories/log-service.factory";
 import { stateServiceFactory, StateServiceInitOptions } from "./state-service.factory";
 
 type EventUploadServiceOptions = FactoryOptions;

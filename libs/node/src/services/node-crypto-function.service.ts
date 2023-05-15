@@ -4,8 +4,8 @@ import * as argon2 from "argon2";
 import * as forge from "node-forge";
 
 import { Utils } from "@bitwarden/common/misc/utils";
-import { DecryptParameters } from "@bitwarden/common/models/domain/decrypt-parameters";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
+import { DecryptParameters } from "@bitwarden/common/platform/models/domain/decrypt-parameters";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 import { CsprngArray } from "@bitwarden/common/types/csprng";
 

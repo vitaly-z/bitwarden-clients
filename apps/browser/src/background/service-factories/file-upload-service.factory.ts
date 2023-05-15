@@ -1,8 +1,12 @@
 import { FileUploadService as FileUploadServiceAbstraction } from "@bitwarden/common/abstractions/file-upload/file-upload.service";
 import { FileUploadService } from "@bitwarden/common/services/file-upload/file-upload.service";
 
+import {
+  logServiceFactory,
+  LogServiceInitOptions,
+} from "../../platform/background/service-factories/log-service.factory";
+
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
-import { logServiceFactory, LogServiceInitOptions } from "./log-service.factory";
 
 type FileUploadServiceFactoryOptions = FactoryOptions;
 

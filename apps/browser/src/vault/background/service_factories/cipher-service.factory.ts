@@ -17,7 +17,7 @@ import {
 import {
   i18nServiceFactory,
   I18nServiceInitOptions,
-} from "../../../background/service-factories/i18n-service.factory";
+} from "../../../platform/background/service-factories/i18n-service.factory";
 import {
   searchServiceFactory,
   SearchServiceInitOptions,
