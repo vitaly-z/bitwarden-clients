@@ -18,7 +18,7 @@ import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.serv
 
 import { BrowserSendComponentState } from "../../../models/browserSendComponentState";
 import { PopupUtilsService } from "../../../popup/services/popup-utils.service";
-import { BrowserStateService } from "../../../services/abstractions/browser-state.service";
+import { BrowserStateService } from "../../../platform/services/abstractions/browser-state.service";
 
 const ComponentId = "SendComponent";
 

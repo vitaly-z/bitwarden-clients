@@ -6,7 +6,11 @@ import {
   LogServiceInitOptions,
 } from "../../platform/background/service-factories/log-service.factory";
 
-import { CachedServices, factory, FactoryOptions } from "./factory-options";
+import {
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../platform/background/service-factories/factory-options";
 
 type FileUploadServiceFactoryOptions = FactoryOptions;
 

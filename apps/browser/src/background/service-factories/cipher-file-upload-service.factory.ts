@@ -2,7 +2,11 @@ import { CipherFileUploadService as CipherFileUploadServiceAbstraction } from "@
 import { CipherFileUploadService } from "@bitwarden/common/vault/services/file-upload/cipher-file-upload.service";
 
 import { apiServiceFactory, ApiServiceInitOptions } from "./api-service.factory";
-import { FactoryOptions, CachedServices, factory } from "./factory-options";
+import {
+  FactoryOptions,
+  CachedServices,
+  factory,
+} from "../../platform/background/service-factories/factory-options";
 import {
   fileUploadServiceFactory,
   FileUploadServiceInitOptions,

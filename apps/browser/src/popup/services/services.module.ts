@@ -17,7 +17,6 @@ import { EventCollectionService } from "@bitwarden/common/abstractions/event/eve
 import { EventUploadService } from "@bitwarden/common/abstractions/event/event-upload.service";
 import { FileUploadService } from "@bitwarden/common/abstractions/file-upload/file-upload.service";
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
-import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { NotificationsService } from "@bitwarden/common/abstractions/notifications.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
@@ -57,6 +56,7 @@ import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
+import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService as LogServiceAbstraction } from "@bitwarden/common/platform/abstractions/log.service";
 import { ConsoleLogService } from "@bitwarden/common/platform/services/console-log.service";
 import { ContainerService } from "@bitwarden/common/services/container.service";
@@ -88,13 +88,13 @@ import { AutofillService } from "../../autofill/services/abstractions/autofill.s
 import MainBackground from "../../background/main.background";
 import { Account } from "../../models/account";
 import { BrowserApi } from "../../platform/browser/browser-api";
-import { BrowserStateService as StateServiceAbstraction } from "../../services/abstractions/browser-state.service";
+import { BrowserStateService as StateServiceAbstraction } from "../../platform/services/abstractions/browser-state.service";
+import { BrowserI18nService } from "../../platform/services/browser-i18n.service";
+import { BrowserStateService } from "../../platform/services/browser-state.service";
 import { BrowserConfigService } from "../../services/browser-config.service";
 import { BrowserEnvironmentService } from "../../services/browser-environment.service";
-import { BrowserI18nService } from "../../platform/services/browser-i18n.service";
 import { BrowserSendService } from "../../services/browser-send.service";
 import { BrowserSettingsService } from "../../services/browser-settings.service";
-import { BrowserStateService } from "../../services/browser-state.service";
 import { BrowserFileDownloadService } from "../../services/browserFileDownloadService";
 import BrowserMessagingService from "../../services/browserMessaging.service";
 import BrowserMessagingPrivateModePopupService from "../../services/browserMessagingPrivateModePopup.service";
@@ -107,6 +107,7 @@ import { DebounceNavigationService } from "./debounceNavigationService";
 import { InitService } from "./init.service";
 import { PopupSearchService } from "./popup-search.service";
 import { PopupUtilsService } from "./popup-utils.service";
+
 
 const needsBackgroundInit = BrowserApi.getBackgroundPage() == null;
 const isPrivateMode = needsBackgroundInit && BrowserApi.manifestVersion !== 3;

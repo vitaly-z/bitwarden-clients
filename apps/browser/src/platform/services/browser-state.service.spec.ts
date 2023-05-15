@@ -12,10 +12,10 @@ import { StateMigrationService } from "@bitwarden/common/services/stateMigration
 import { SendType } from "@bitwarden/common/tools/send/enums/send-type";
 import { SendView } from "@bitwarden/common/tools/send/models/view/send.view";
 
-import { Account } from "../models/account";
-import { BrowserComponentState } from "../models/browserComponentState";
-import { BrowserGroupingsComponentState } from "../models/browserGroupingsComponentState";
-import { BrowserSendComponentState } from "../models/browserSendComponentState";
+import { Account } from "../../models/account";
+import { BrowserComponentState } from "../../models/browserComponentState";
+import { BrowserGroupingsComponentState } from "../../models/browserGroupingsComponentState";
+import { BrowserSendComponentState } from "../../models/browserSendComponentState";
 
 import { BrowserStateService } from "./browser-state.service";
 

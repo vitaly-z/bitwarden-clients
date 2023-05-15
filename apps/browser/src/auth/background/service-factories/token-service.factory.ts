@@ -5,11 +5,11 @@ import {
   FactoryOptions,
   CachedServices,
   factory,
-} from "../../../background/service-factories/factory-options";
+} from "../../../platform/background/service-factories/factory-options";
 import {
   stateServiceFactory,
   StateServiceInitOptions,
-} from "../../../background/service-factories/state-service.factory";
+} from "../../../platform/background/service-factories/state-service.factory";
 
 type TokenServiceFactoryOptions = FactoryOptions;
 

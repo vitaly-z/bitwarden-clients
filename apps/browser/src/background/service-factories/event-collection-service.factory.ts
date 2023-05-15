@@ -14,8 +14,15 @@ import {
   eventUploadServiceFactory,
   EventUploadServiceInitOptions,
 } from "./event-upload-service.factory";
-import { FactoryOptions, CachedServices, factory } from "./factory-options";
-import { stateServiceFactory, StateServiceInitOptions } from "./state-service.factory";
+import {
+  FactoryOptions,
+  CachedServices,
+  factory,
+} from "../../platform/background/service-factories/factory-options";
+import {
+  stateServiceFactory,
+  StateServiceInitOptions,
+} from "../../platform/background/service-factories/state-service.factory";
 
 type EventCollectionServiceOptions = FactoryOptions;
 

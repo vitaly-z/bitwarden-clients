@@ -2,8 +2,15 @@ import { SettingsService as AbstractSettingsService } from "@bitwarden/common/ab
 
 import { BrowserSettingsService } from "../../services/browser-settings.service";
 
-import { FactoryOptions, CachedServices, factory } from "./factory-options";
-import { stateServiceFactory, StateServiceInitOptions } from "./state-service.factory";
+import {
+  FactoryOptions,
+  CachedServices,
+  factory,
+} from "../../platform/background/service-factories/factory-options";
+import {
+  stateServiceFactory,
+  StateServiceInitOptions,
+} from "../../platform/background/service-factories/state-service.factory";
 
 type SettingsServiceFactoryOptions = FactoryOptions;
 

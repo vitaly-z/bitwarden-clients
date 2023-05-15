@@ -1,7 +1,7 @@
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 
-import { AbstractKeyGenerationService } from "./abstractions/abstractKeyGeneration.service";
+import { AbstractKeyGenerationService } from "./abstractions/abstract-key-generation.service";
 
 export class KeyGenerationService implements AbstractKeyGenerationService {
   constructor(private cryptoFunctionService: CryptoFunctionService) {}

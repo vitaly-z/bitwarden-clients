@@ -1,14 +1,11 @@
 import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 
-import { Account } from "../../models/account";
-import {
-  logServiceFactory,
-  LogServiceInitOptions,
-} from "../../platform/background/service-factories/log-service.factory";
+import { Account } from "../../../models/account";
 import { BrowserStateService } from "../../services/browser-state.service";
 
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
+import { logServiceFactory, LogServiceInitOptions } from "./log-service.factory";
 import {
   stateMigrationServiceFactory,
   StateMigrationServiceInitOptions,

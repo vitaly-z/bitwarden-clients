@@ -7,12 +7,19 @@ import {
 } from "../../platform/background/service-factories/crypto-service.factory";
 import { BrowserSendService } from "../../services/browser-send.service";
 
-import { FactoryOptions, CachedServices, factory } from "./factory-options";
+import {
+  FactoryOptions,
+  CachedServices,
+  factory,
+} from "../../platform/background/service-factories/factory-options";
 import {
   i18nServiceFactory,
   I18nServiceInitOptions,
 } from "../../platform/background/service-factories/i18n-service.factory";
-import { stateServiceFactory, StateServiceInitOptions } from "./state-service.factory";
+import {
+  stateServiceFactory,
+  StateServiceInitOptions,
+} from "../../platform/background/service-factories/state-service.factory";
 
 type SendServiceFactoryOptions = FactoryOptions;
 

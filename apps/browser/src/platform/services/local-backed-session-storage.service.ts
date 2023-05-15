@@ -7,11 +7,11 @@ import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 
 import { devFlag } from "../decorators/dev-flag.decorator";
-import { devFlagEnabled } from "../platform/flags";
+import { devFlagEnabled } from "../flags";
 
-import { AbstractKeyGenerationService } from "./abstractions/abstractKeyGeneration.service";
-import BrowserLocalStorageService from "./browserLocalStorage.service";
-import BrowserMemoryStorageService from "./browserMemoryStorage.service";
+import { AbstractKeyGenerationService } from "./abstractions/abstract-key-generation.service";
+import BrowserLocalStorageService from "./browser-local-storage.service";
+import BrowserMemoryStorageService from "./browser-memory-storage.service";
 
 const keys = {
   encKey: "localEncryptionKey",

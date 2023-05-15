@@ -12,7 +12,7 @@ import {
   authServiceFactory,
   AuthServiceInitOptions,
 } from "../../auth/background/service-factories/auth-service.factory";
-import { CachedServices } from "../../background/service-factories/factory-options";
+import { CachedServices } from "../../platform/background/service-factories/factory-options";
 import { Account } from "../../models/account";
 import { BrowserApi } from "../../platform/browser/browser-api";
 import {

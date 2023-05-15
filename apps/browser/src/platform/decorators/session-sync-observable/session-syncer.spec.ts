@@ -4,7 +4,7 @@ import { BehaviorSubject, ReplaySubject } from "rxjs";
 
 import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 
-import { BrowserApi } from "../../platform/browser/browser-api";
+import { BrowserApi } from "../../browser/browser-api";
 
 import { SessionSyncer } from "./session-syncer";
 import { SyncedItemMetadata } from "./sync-item-metadata";

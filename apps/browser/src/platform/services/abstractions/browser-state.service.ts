@@ -1,10 +1,10 @@
 import { StateService as BaseStateServiceAbstraction } from "@bitwarden/common/abstractions/state.service";
 import { StorageOptions } from "@bitwarden/common/models/domain/storage-options";
 
-import { Account } from "../../models/account";
-import { BrowserComponentState } from "../../models/browserComponentState";
-import { BrowserGroupingsComponentState } from "../../models/browserGroupingsComponentState";
-import { BrowserSendComponentState } from "../../models/browserSendComponentState";
+import { Account } from "../../../models/account";
+import { BrowserComponentState } from "../../../models/browserComponentState";
+import { BrowserGroupingsComponentState } from "../../../models/browserGroupingsComponentState";
+import { BrowserSendComponentState } from "../../../models/browserSendComponentState";
 
 export abstract class BrowserStateService extends BaseStateServiceAbstraction<Account> {
   getBrowserGroupingComponentState: (

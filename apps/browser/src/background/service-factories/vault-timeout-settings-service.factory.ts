@@ -13,12 +13,15 @@ import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,
 } from "../../platform/background/service-factories/crypto-service.factory";
-
-import { CachedServices, factory, FactoryOptions } from "./factory-options";
 import {
-  stateServiceFactory as stateServiceFactory,
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../platform/background/service-factories/factory-options";
+import {
   StateServiceInitOptions,
-} from "./state-service.factory";
+  stateServiceFactory,
+} from "../../platform/background/service-factories/state-service.factory";
 
 type VaultTimeoutSettingsServiceFactoryOptions = FactoryOptions;
 

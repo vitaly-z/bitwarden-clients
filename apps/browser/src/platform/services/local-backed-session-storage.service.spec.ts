@@ -6,10 +6,10 @@ import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 import { EncryptServiceImplementation } from "@bitwarden/common/platform/services/cryptography/encrypt.service.implementation";
 
-import BrowserLocalStorageService from "./browserLocalStorage.service";
-import BrowserMemoryStorageService from "./browserMemoryStorage.service";
+import BrowserLocalStorageService from "./browser-local-storage.service";
+import BrowserMemoryStorageService from "./browser-memory-storage.service";
 import { KeyGenerationService } from "./keyGeneration.service";
-import { LocalBackedSessionStorageService } from "./localBackedSessionStorage.service";
+import { LocalBackedSessionStorageService } from "./local-backed-session-storage.service";
 
 describe("Browser Session Storage Service", () => {
   let encryptService: SubstituteOf<EncryptServiceImplementation>;

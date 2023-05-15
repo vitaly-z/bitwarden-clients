@@ -1,9 +1,5 @@
-import {
-  FactoryOptions,
-  CachedServices,
-  factory,
-} from "../../../background/service-factories/factory-options";
-import { KeyGenerationService } from "../../../services/keyGeneration.service";
+import { FactoryOptions, CachedServices, factory } from "./factory-options";
+import { KeyGenerationService } from "../../services/keyGeneration.service";
 
 import {
   cryptoFunctionServiceFactory,

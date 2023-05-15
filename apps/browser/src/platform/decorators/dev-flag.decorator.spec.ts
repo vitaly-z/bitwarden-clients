@@ -1,4 +1,4 @@
-import { devFlagEnabled } from "../platform/flags";
+import { devFlagEnabled } from "../flags";
 
 import { devFlag } from "./dev-flag.decorator";
 

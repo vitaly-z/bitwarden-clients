@@ -16,9 +16,9 @@ import {
 import { totpServiceFactory } from "../../auth/background/service-factories/totp-service.factory";
 import LockedVaultPendingNotificationsItem from "../../background/models/lockedVaultPendingNotificationsItem";
 import { eventCollectionServiceFactory } from "../../background/service-factories/event-collection-service.factory";
-import { CachedServices } from "../../background/service-factories/factory-options";
+import { CachedServices } from "../../platform/background/service-factories/factory-options";
 import { passwordGenerationServiceFactory } from "../../background/service-factories/password-generation-service.factory";
-import { stateServiceFactory } from "../../background/service-factories/state-service.factory";
+import { stateServiceFactory } from "../../platform/background/service-factories/state-service.factory";
 import { Account } from "../../models/account";
 import { BrowserApi } from "../../platform/browser/browser-api";
 import {

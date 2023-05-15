@@ -11,7 +11,11 @@ import {
   environmentServiceFactory,
   EnvironmentServiceInitOptions,
 } from "./environment-service.factory";
-import { CachedServices, factory, FactoryOptions } from "./factory-options";
+import {
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../platform/background/service-factories/factory-options";
 import {
   PlatformUtilsServiceInitOptions,
   platformUtilsServiceFactory,

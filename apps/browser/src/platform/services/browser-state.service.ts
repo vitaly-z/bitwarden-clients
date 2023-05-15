@@ -4,11 +4,11 @@ import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { StorageOptions } from "@bitwarden/common/models/domain/storage-options";
 import { StateService as BaseStateService } from "@bitwarden/common/services/state.service";
 
+import { Account } from "../../models/account";
+import { BrowserComponentState } from "../../models/browserComponentState";
+import { BrowserGroupingsComponentState } from "../../models/browserGroupingsComponentState";
+import { BrowserSendComponentState } from "../../models/browserSendComponentState";
 import { browserSession, sessionSync } from "../decorators/session-sync-observable";
-import { Account } from "../models/account";
-import { BrowserComponentState } from "../models/browserComponentState";
-import { BrowserGroupingsComponentState } from "../models/browserGroupingsComponentState";
-import { BrowserSendComponentState } from "../models/browserSendComponentState";
 
 import { BrowserStateService as StateServiceAbstraction } from "./abstractions/browser-state.service";
 

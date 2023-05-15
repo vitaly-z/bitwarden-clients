@@ -18,7 +18,7 @@ import {
   CachedServices,
   factory,
   FactoryOptions,
-} from "../../../background/service-factories/factory-options";
+} from "../../../platform/background/service-factories/factory-options";
 import {
   messagingServiceFactory,
   MessagingServiceInitOptions,
@@ -34,7 +34,7 @@ import {
 import {
   stateServiceFactory,
   StateServiceInitOptions,
-} from "../../../background/service-factories/state-service.factory";
+} from "../../../platform/background/service-factories/state-service.factory";
 import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,

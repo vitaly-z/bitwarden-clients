@@ -1,10 +1,6 @@
 import { CryptoService as AbstractCryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 
-import {
-  FactoryOptions,
-  CachedServices,
-  factory,
-} from "../../../background/service-factories/factory-options";
+import { FactoryOptions, CachedServices, factory } from "./factory-options";
 import {
   PlatformUtilsServiceInitOptions,
   platformUtilsServiceFactory,
@@ -12,7 +8,7 @@ import {
 import {
   StateServiceInitOptions,
   stateServiceFactory,
-} from "../../../background/service-factories/state-service.factory";
+} from "../../../platform/background/service-factories/state-service.factory";
 import {
   LogServiceInitOptions,
   logServiceFactory,

@@ -2,7 +2,11 @@ import { MessagingService as AbstractMessagingService } from "@bitwarden/common/
 
 import BrowserMessagingService from "../../services/browserMessaging.service";
 
-import { CachedServices, factory, FactoryOptions } from "./factory-options";
+import {
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../platform/background/service-factories/factory-options";
 
 type MessagingServiceFactoryOptions = FactoryOptions;
 

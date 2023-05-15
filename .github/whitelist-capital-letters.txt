@@ -113,5 +113,4 @@
 ./apps/browser/src/services/browserMessagingPrivateModePopup.service.ts
 ./apps/browser/src/services/browserMessaging.service.ts
 ./apps/browser/src/services/keyGeneration.service.ts
-./apps/browser/src/services/abstractChromeStorageApi.service.ts
 ./SECURITY.md

@@ -15,7 +15,7 @@ import { SendApiService } from "@bitwarden/common/tools/send/services/send-api.s
 import { SendService } from "@bitwarden/common/tools/send/services/send.service.abstraction";
 
 import { PopupUtilsService } from "../../../popup/services/popup-utils.service";
-import { BrowserStateService } from "../../../services/abstractions/browser-state.service";
+import { BrowserStateService } from "../../../platform/services/abstractions/browser-state.service";
 
 @Component({
   selector: "app-send-add-edit",

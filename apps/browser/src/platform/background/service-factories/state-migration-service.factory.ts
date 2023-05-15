@@ -2,7 +2,7 @@ import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { StateMigrationService } from "@bitwarden/common/services/stateMigration.service";
 
-import { Account } from "../../models/account";
+import { Account } from "../../../models/account";
 
 import { CachedServices, factory, FactoryOptions } from "./factory-options";
 import {

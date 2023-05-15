@@ -12,8 +12,15 @@ import {
   cryptoServiceFactory,
 } from "../../platform/background/service-factories/crypto-service.factory";
 
-import { CachedServices, factory, FactoryOptions } from "./factory-options";
-import { stateServiceFactory, StateServiceInitOptions } from "./state-service.factory";
+import {
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../platform/background/service-factories/factory-options";
+import {
+  stateServiceFactory,
+  StateServiceInitOptions,
+} from "../../platform/background/service-factories/state-service.factory";
 
 type PasswordGenerationServiceFactoryOptions = FactoryOptions;
 

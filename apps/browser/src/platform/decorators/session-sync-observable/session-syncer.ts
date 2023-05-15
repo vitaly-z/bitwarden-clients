@@ -3,7 +3,7 @@ import { BehaviorSubject, concatMap, ReplaySubject, skip, Subject, Subscription 
 import { AbstractMemoryStorageService } from "@bitwarden/common/abstractions/storage.service";
 import { Utils } from "@bitwarden/common/misc/utils";
 
-import { BrowserApi } from "../../platform/browser/browser-api";
+import { BrowserApi } from "../../browser/browser-api";
 
 import { SyncedItemMetadata } from "./sync-item-metadata";
 

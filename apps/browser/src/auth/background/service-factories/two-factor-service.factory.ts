@@ -5,7 +5,7 @@ import {
   FactoryOptions,
   CachedServices,
   factory,
-} from "../../../background/service-factories/factory-options";
+} from "../../../platform/background/service-factories/factory-options";
 import {
   I18nServiceInitOptions,
   i18nServiceFactory,

@@ -16,6 +16,15 @@ import {
   CryptoServiceInitOptions,
   cryptoServiceFactory,
 } from "../../platform/background/service-factories/crypto-service.factory";
+import {
+  CachedServices,
+  factory,
+  FactoryOptions,
+} from "../../platform/background/service-factories/factory-options";
+import {
+  StateServiceInitOptions,
+  stateServiceFactory,
+} from "../../platform/background/service-factories/state-service.factory";
 import VaultTimeoutService from "../../services/vaultTimeout/vaultTimeout.service";
 import {
   cipherServiceFactory,
@@ -26,17 +35,12 @@ import {
   FolderServiceInitOptions,
 } from "../../vault/background/service_factories/folder-service.factory";
 
-import { CachedServices, factory, FactoryOptions } from "./factory-options";
 import { messagingServiceFactory, MessagingServiceInitOptions } from "./messaging-service.factory";
 import {
   platformUtilsServiceFactory,
   PlatformUtilsServiceInitOptions,
 } from "./platform-utils-service.factory";
 import { searchServiceFactory, SearchServiceInitOptions } from "./search-service.factory";
-import {
-  stateServiceFactory as stateServiceFactory,
-  StateServiceInitOptions,
-} from "./state-service.factory";
 import {
   vaultTimeoutSettingsServiceFactory,
   VaultTimeoutSettingsServiceInitOptions,

@@ -10,7 +10,7 @@ import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 import { FieldView } from "@bitwarden/common/vault/models/view/field.view";
 
 import { BrowserApi } from "../../platform/browser/browser-api";
-import { BrowserStateService } from "../../services/abstractions/browser-state.service";
+import { BrowserStateService } from "../../platform/services/abstractions/browser-state.service";
 import AutofillField from "../models/autofill-field";
 import AutofillPageDetails from "../models/autofill-page-details";
 import AutofillScript from "../models/autofill-script";

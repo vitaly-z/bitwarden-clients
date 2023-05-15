@@ -20,7 +20,7 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 
 import { BrowserApi } from "../platform/browser/browser-api";
-import { BrowserStateService } from "../services/abstractions/browser-state.service";
+import { BrowserStateService } from "../platform/services/abstractions/browser-state.service";
 
 import { routerTransition } from "./app-routing.animations";
 
