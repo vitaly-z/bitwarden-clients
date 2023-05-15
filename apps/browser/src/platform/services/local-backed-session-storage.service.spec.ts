@@ -8,7 +8,7 @@ import { EncryptServiceImplementation } from "@bitwarden/common/platform/service
 
 import BrowserLocalStorageService from "./browser-local-storage.service";
 import BrowserMemoryStorageService from "./browser-memory-storage.service";
-import { KeyGenerationService } from "./keyGeneration.service";
+import { KeyGenerationService } from "./key-generation.service";
 import { LocalBackedSessionStorageService } from "./local-backed-session-storage.service";
 
 describe("Browser Session Storage Service", () => {

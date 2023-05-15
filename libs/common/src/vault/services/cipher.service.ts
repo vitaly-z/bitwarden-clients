@@ -4,7 +4,7 @@ import { SearchService } from "../../abstractions/search.service";
 import { SettingsService } from "../../abstractions/settings.service";
 import { StateService } from "../../abstractions/state.service";
 import { FieldType, UriMatchType } from "../../enums";
-import { sequentialize } from "../../misc/sequentialize";
+import { sequentialize } from "../../platform/misc/sequentialize";
 import { Utils } from "../../misc/utils";
 import { ErrorResponse } from "../../models/response/error.response";
 import { View } from "../../models/view/view";

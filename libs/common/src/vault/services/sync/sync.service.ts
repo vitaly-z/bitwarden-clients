@@ -14,7 +14,7 @@ import { CollectionDetailsResponse } from "../../../admin-console/models/respons
 import { PolicyResponse } from "../../../admin-console/models/response/policy.response";
 import { KeyConnectorService } from "../../../auth/abstractions/key-connector.service";
 import { ForceResetPasswordReason } from "../../../auth/models/domain/force-reset-password-reason";
-import { sequentialize } from "../../../misc/sequentialize";
+import { sequentialize } from "../../../platform/misc/sequentialize";
 import { DomainsResponse } from "../../../models/response/domains.response";
 import {
   SyncCipherNotification,

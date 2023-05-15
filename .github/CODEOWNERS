@@ -62,6 +62,8 @@ libs/angular/src/platform @bitwarden/team-platform-dev
 libs/common/src/platform @bitwarden/team-platform-dev
 # Node-specifc platform files
 libs/node @bitwarden/team-platform-dev
+# Web utils used across app and connectors
+apps/web/src/utils/ @bitwarden/team-platform-dev
 
 ## Component Library ##
 libs/components @bitwarden/team-platform-dev

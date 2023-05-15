@@ -18,7 +18,7 @@ import { Utils } from "@bitwarden/common/misc/utils";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 
-import { flagEnabled } from "../../flags";
+import { flagEnabled } from "../../platform/flags";
 import { ElectronStateService } from "../../services/electron-state.service.abstraction";
 import { isWindowsStore } from "../../utils";
 import { SetPinComponent } from "../components/set-pin.component";

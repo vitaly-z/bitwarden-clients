@@ -121,7 +121,7 @@ import BrowserLocalStorageService from "../platform/services/browser-local-stora
 import BrowserMessagingService from "../services/browserMessaging.service";
 import BrowserMessagingPrivateModeBackgroundService from "../services/browserMessagingPrivateModeBackground.service";
 import BrowserPlatformUtilsService from "../services/browserPlatformUtils.service";
-import { KeyGenerationService } from "../platform/services/keyGeneration.service";
+import { KeyGenerationService } from "../platform/services/key-generation.service";
 import { LocalBackedSessionStorageService } from "../platform/services/local-backed-session-storage.service";
 import VaultTimeoutService from "../services/vaultTimeout/vaultTimeout.service";
 import { BrowserFolderService } from "../vault/services/browser-folder.service";
