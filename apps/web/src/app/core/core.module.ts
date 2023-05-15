@@ -30,12 +30,12 @@ import { PasswordRepromptService } from "../vault/core/password-reprompt.service
 
 import { BroadcasterMessagingService } from "./broadcaster-messaging.service";
 import { EventService } from "./event.service";
-import { HtmlStorageService } from "./html-storage.service";
+import { HtmlStorageService } from "../platform/core/html-storage.service";
 import { InitService } from "./init.service";
 import { ModalService } from "./modal.service";
 import { RouterService } from "./router.service";
-import { Account, GlobalState, StateService } from "./state";
-import { StateMigrationService } from "./state-migration.service";
+import { Account, GlobalState, StateService } from "../platform/core/state";
+import { StateMigrationService } from "../platform/core/state-migration.service";
 import { WebFileDownloadService } from "./web-file-download.service";
 import { WebPlatformUtilsService } from "./web-platform-utils.service";
 
