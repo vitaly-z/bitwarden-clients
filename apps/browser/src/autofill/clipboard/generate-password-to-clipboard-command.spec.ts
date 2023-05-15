@@ -2,7 +2,7 @@ import { mock, MockProxy } from "jest-mock-extended";
 
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 
-import { setAlarmTime } from "../../alarms/alarm-state";
+import { setAlarmTime } from "../../platform/alarms/alarm-state";
 import { BrowserApi } from "../../platform/browser/browser-api";
 import { BrowserStateService } from "../../services/abstractions/browser-state.service";
 

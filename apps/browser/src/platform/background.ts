@@ -3,10 +3,10 @@
 // import MainBackground from "./background/main.background";
 // import { BrowserApi } from "./browser/browserApi";
 
-import { onAlarmListener } from "../alarms/on-alarm-listener";
-import { registerAlarms } from "../alarms/register-alarms";
 import MainBackground from "../background/main.background";
 
+import { onAlarmListener } from "./alarms/on-alarm-listener";
+import { registerAlarms } from "./alarms/register-alarms";
 import { BrowserApi } from "./browser/browser-api";
 import {
   contextMenusClickedListener,

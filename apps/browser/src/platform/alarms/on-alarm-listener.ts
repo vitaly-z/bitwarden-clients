@@ -1,4 +1,4 @@
-import { ClearClipboard, clearClipboardAlarmName } from "../autofill/clipboard";
+import { ClearClipboard, clearClipboardAlarmName } from "../../autofill/clipboard";
 
 import { alarmKeys, clearAlarmTime, getAlarmTime } from "./alarm-state";
 
