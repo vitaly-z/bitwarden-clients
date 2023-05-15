@@ -46,7 +46,6 @@
 ./libs/common/src/abstractions/appId.service.ts
 ./libs/common/src/services/azureFileUpload.service.ts
 ./libs/common/src/services/stateMigration.service.ts
-./libs/common/src/services/consoleLog.service.ts
 ./libs/common/src/services/formValidationErrors.service.ts
 ./libs/common/src/services/vaultTimeout/vaultTimeoutSettings.service.ts
 ./libs/common/src/services/vaultTimeout/vaultTimeout.service.ts
@@ -102,8 +101,6 @@
 ./apps/browser/src/safari/safari/SafariWebExtensionHandler.swift
 ./apps/browser/src/safari/safari/Info.plist
 ./apps/browser/src/safari/desktop.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
-./apps/browser/src/listeners/onCommandListener.ts
-./apps/browser/src/listeners/onInstallListener.ts
 ./apps/browser/src/services/browserFileDownloadService.ts
 ./apps/browser/src/services/localBackedSessionStorage.service.spec.ts
 ./apps/browser/src/services/browserMessagingPrivateModeBackground.service.ts
