@@ -37,8 +37,8 @@ export interface EntityEventsDialogParams {
 export class EntityEventsComponent implements OnInit {
   loading = true;
   continuationToken: string;
-  dataSource = new TableDataSource<EventView>();
-  filterFormGroup = this.formBuilder.group({
+  protected dataSource = new TableDataSource<EventView>();
+  protected filterFormGroup = this.formBuilder.group({
     start: [""],
     end: [""],
   });
