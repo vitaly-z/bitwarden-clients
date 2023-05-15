@@ -3,13 +3,13 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { TwoFactorProviderType } from "@bitwarden/common/auth/enums/two-factor-provider-type";
 import { EmailTokenRequest } from "@bitwarden/common/auth/models/request/email-token.request";
 import { EmailRequest } from "@bitwarden/common/auth/models/request/email.request";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 @Component({
   selector: "app-change-email",

@@ -2,9 +2,9 @@ import * as path from "path";
 
 import { app } from "electron";
 
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
-import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
+import { MemoryStorageService } from "@bitwarden/common/platform/services/memory-storage.service";
 
 import { MenuMain } from "./main/menu/menu.main";
 import { MessagingMain } from "./main/messaging.main";
@@ -17,10 +17,10 @@ import { Account } from "./models/account";
 import { BiometricsService, BiometricsServiceAbstraction } from "./platform/main/biometric/index";
 import { DesktopCredentialStorageListener } from "./platform/main/desktop-credential-storage-listener";
 import { ElectronLogService } from "./platform/services/electron-log.service";
-import { I18nService } from "./platform/services/i18n.service";
-import { ElectronMainMessagingService } from "./services/electron-main-messaging.service";
 import { ElectronStateService } from "./platform/services/electron-state.service";
 import { ElectronStorageService } from "./platform/services/electron-storage.service";
+import { I18nService } from "./platform/services/i18n.service";
+import { ElectronMainMessagingService } from "./services/electron-main-messaging.service";
 
 export class Main {
   logService: ElectronLogService;

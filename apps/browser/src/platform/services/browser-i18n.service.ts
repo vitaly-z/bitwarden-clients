@@ -1,6 +1,6 @@
 import { ReplaySubject } from "rxjs";
 
-import { StateService } from "@bitwarden/common/abstractions/state.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 import { browserSession, sessionSync } from "../decorators/session-sync-observable";
 

@@ -14,9 +14,9 @@ import { PolicyService } from "@bitwarden/common/admin-console/abstractions/poli
 import { PolicyType } from "@bitwarden/common/admin-console/enums";
 import { DeviceType, ThemeType, KeySuffixOptions } from "@bitwarden/common/enums";
 import { VaultTimeoutAction } from "@bitwarden/common/enums/vault-timeout-action.enum";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 import { flagEnabled } from "../../platform/flags";
 import { ElectronStateService } from "../../platform/services/electron-state.service.abstraction";

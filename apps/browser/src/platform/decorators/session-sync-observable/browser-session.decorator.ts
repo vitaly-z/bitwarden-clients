@@ -1,6 +1,6 @@
 import { Constructor } from "type-fest";
 
-import { AbstractMemoryStorageService } from "@bitwarden/common/abstractions/storage.service";
+import { AbstractMemoryStorageService } from "@bitwarden/common/platform/abstractions/storage.service";
 
 import { SessionStorable } from "./session-storable";
 import { SessionSyncer } from "./session-syncer";

@@ -1,8 +1,8 @@
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
 import { CipherType } from "@bitwarden/common/vault/enums/cipher-type";
 import { CipherView } from "@bitwarden/common/vault/models/view/cipher.view";
 

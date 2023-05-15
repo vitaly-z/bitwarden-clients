@@ -9,7 +9,6 @@ import { mock, MockProxy } from "jest-mock-extended";
 import { BehaviorSubject, of } from "rxjs";
 
 import { I18nPipe } from "@bitwarden/angular/platform/pipes/i18n.pipe";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { PolicyApiServiceAbstraction } from "@bitwarden/common/admin-console/abstractions/policy/policy-api.service.abstraction";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
 import { MasterPasswordPolicyOptions } from "@bitwarden/common/admin-console/models/domain/master-password-policy-options";
@@ -18,6 +17,7 @@ import { PlanType } from "@bitwarden/common/billing/enums";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 import { RouterService } from "../../core";
 

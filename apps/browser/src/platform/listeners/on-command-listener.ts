@@ -1,6 +1,6 @@
 import { AuthenticationStatus } from "@bitwarden/common/auth/enums/authentication-status";
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
 
 import { authServiceFactory } from "../../auth/background/service-factories/auth-service.factory";
 import { autofillServiceFactory } from "../../autofill/background/service_factories/autofill-service.factory";

@@ -9,7 +9,6 @@ import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { VaultTimeoutService } from "@bitwarden/common/abstractions/vaultTimeout/vaultTimeout.service";
 import { VaultTimeoutSettingsService } from "@bitwarden/common/abstractions/vaultTimeout/vaultTimeoutSettings.service";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
@@ -19,6 +18,7 @@ import { DeviceType } from "@bitwarden/common/enums";
 import { VaultTimeoutAction } from "@bitwarden/common/enums/vault-timeout-action.enum";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 import { BiometricErrors, BiometricErrorTypes } from "../../models/biometricErrors";
 import { BrowserApi } from "../../platform/browser/browser-api";

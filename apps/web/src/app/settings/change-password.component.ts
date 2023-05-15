@@ -10,7 +10,6 @@ import { MessagingService } from "@bitwarden/common/abstractions/messaging.servi
 import { OrganizationUserService } from "@bitwarden/common/abstractions/organization-user/organization-user.service";
 import { OrganizationUserResetPasswordEnrollmentRequest } from "@bitwarden/common/abstractions/organization-user/requests";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { OrganizationApiServiceAbstraction } from "@bitwarden/common/admin-console/abstractions/organization/organization-api.service.abstraction";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { PolicyService } from "@bitwarden/common/admin-console/abstractions/policy/policy.service.abstraction";
@@ -18,10 +17,11 @@ import { KeyConnectorService } from "@bitwarden/common/auth/abstractions/key-con
 import { EmergencyAccessStatusType } from "@bitwarden/common/auth/enums/emergency-access-status-type";
 import { EmergencyAccessUpdateRequest } from "@bitwarden/common/auth/models/request/emergency-access-update.request";
 import { PasswordRequest } from "@bitwarden/common/auth/models/request/password.request";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { UpdateKeyRequest } from "@bitwarden/common/models/request/update-key.request";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";

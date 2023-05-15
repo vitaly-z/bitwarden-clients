@@ -22,15 +22,6 @@ import { NotificationsService } from "@bitwarden/common/abstractions/notificatio
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SearchService as SearchServiceAbstraction } from "@bitwarden/common/abstractions/search.service";
 import { SettingsService } from "@bitwarden/common/abstractions/settings.service";
-import {
-  StateService as BaseStateServiceAbstraction,
-  StateService,
-} from "@bitwarden/common/abstractions/state.service";
-import { StateMigrationService } from "@bitwarden/common/abstractions/stateMigration.service";
-import {
-  AbstractMemoryStorageService,
-  AbstractStorageService,
-} from "@bitwarden/common/abstractions/storage.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { UserVerificationService } from "@bitwarden/common/abstractions/userVerification/userVerification.service.abstraction";
 import { VaultTimeoutService } from "@bitwarden/common/abstractions/vaultTimeout/vaultTimeout.service";
@@ -51,13 +42,22 @@ import { TokenService } from "@bitwarden/common/auth/abstractions/token.service"
 import { TwoFactorService } from "@bitwarden/common/auth/abstractions/two-factor.service";
 import { AuthService } from "@bitwarden/common/auth/services/auth.service";
 import { LoginService } from "@bitwarden/common/auth/services/login.service";
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
 import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService as LogServiceAbstraction } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateMigrationService } from "@bitwarden/common/platform/abstractions/state-migration.service";
+import {
+  StateService as BaseStateServiceAbstraction,
+  StateService,
+} from "@bitwarden/common/platform/abstractions/state.service";
+import {
+  AbstractMemoryStorageService,
+  AbstractStorageService,
+} from "@bitwarden/common/platform/abstractions/storage.service";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
 import { ConsoleLogService } from "@bitwarden/common/platform/services/console-log.service";
 import { ContainerService } from "@bitwarden/common/services/container.service";
 import { SearchService } from "@bitwarden/common/services/search.service";

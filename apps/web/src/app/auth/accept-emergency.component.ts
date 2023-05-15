@@ -3,9 +3,9 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { EmergencyAccessAcceptRequest } from "@bitwarden/common/auth/models/request/emergency-access-accept.request";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 import { BaseAcceptComponent } from "../common/base.accept.component";
 

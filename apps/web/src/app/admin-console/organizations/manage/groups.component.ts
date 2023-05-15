@@ -28,10 +28,10 @@ import {
   CollectionResponse,
 } from "@bitwarden/common/admin-console/models/response/collection.response";
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 import { GroupService, GroupView } from "../core";
 

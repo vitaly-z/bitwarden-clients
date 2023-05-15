@@ -1,6 +1,6 @@
 import { ApiService } from "../../../abstractions/api.service";
-import { StateService } from "../../../abstractions/state.service";
 import { CryptoService } from "../../../platform/abstractions/crypto.service";
+import { StateService } from "../../../platform/abstractions/state.service";
 import { EFFLongWordList } from "../../../platform/misc/wordlist";
 
 import {

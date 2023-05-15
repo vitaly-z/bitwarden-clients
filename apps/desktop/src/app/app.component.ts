@@ -24,7 +24,6 @@ import { NotificationsService } from "@bitwarden/common/abstractions/notificatio
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SearchService } from "@bitwarden/common/abstractions/search.service";
 import { SettingsService } from "@bitwarden/common/abstractions/settings.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { SystemService } from "@bitwarden/common/abstractions/system.service";
 import { VaultTimeoutService } from "@bitwarden/common/abstractions/vaultTimeout/vaultTimeout.service";
 import { VaultTimeoutSettingsService } from "@bitwarden/common/abstractions/vaultTimeout/vaultTimeoutSettings.service";
@@ -37,6 +36,7 @@ import { ForceResetPasswordReason } from "@bitwarden/common/auth/models/domain/f
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { InternalFolderService } from "@bitwarden/common/vault/abstractions/folder/folder.service.abstraction";

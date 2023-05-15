@@ -1,6 +1,6 @@
-import { StateService } from "@bitwarden/common/abstractions/state.service";
-import { StorageOptions } from "@bitwarden/common/models/domain/storage-options";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
+import { StorageOptions } from "@bitwarden/common/platform/models/domain/storage-options";
 
 import { Account } from "../../models/account";
 

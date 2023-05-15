@@ -2,10 +2,10 @@ import { firstValueFrom } from "rxjs";
 
 import { MessagingService } from "../abstractions/messaging.service";
 import { PlatformUtilsService } from "../abstractions/platformUtils.service";
-import { StateService } from "../abstractions/state.service";
 import { SystemService as SystemServiceAbstraction } from "../abstractions/system.service";
 import { AuthService } from "../auth/abstractions/auth.service";
 import { AuthenticationStatus } from "../auth/enums/authentication-status";
+import { StateService } from "../platform/abstractions/state.service";
 import { Utils } from "../platform/misc/utils";
 
 export class SystemService implements SystemServiceAbstraction {

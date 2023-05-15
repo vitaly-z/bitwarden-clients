@@ -1,11 +1,11 @@
 import { BehaviorSubject, concatMap } from "rxjs";
 
-import { StateService } from "../../../abstractions/state.service";
 import { SEND_KDF_ITERATIONS } from "../../../enums";
-import { Utils } from "../../../platform/misc/utils";
 import { CryptoFunctionService } from "../../../platform/abstractions/crypto-function.service";
 import { CryptoService } from "../../../platform/abstractions/crypto.service";
 import { I18nService } from "../../../platform/abstractions/i18n.service";
+import { StateService } from "../../../platform/abstractions/state.service";
+import { Utils } from "../../../platform/misc/utils";
 import { EncArrayBuffer } from "../../../platform/models/domain/enc-array-buffer";
 import { EncString } from "../../../platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "../../../platform/models/domain/symmetric-crypto-key";

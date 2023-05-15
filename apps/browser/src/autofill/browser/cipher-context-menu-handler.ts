@@ -1,8 +1,8 @@
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { AuthenticationStatus } from "@bitwarden/common/auth/enums/authentication-status";
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
 import { Utils } from "@bitwarden/common/platform/misc/utils";
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { CipherRepromptType } from "@bitwarden/common/vault/enums/cipher-reprompt-type";
 import { CipherType } from "@bitwarden/common/vault/enums/cipher-type";

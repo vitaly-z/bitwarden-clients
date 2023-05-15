@@ -4,9 +4,9 @@ import { ActivatedRoute } from "@angular/router";
 import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { GeneratorComponent as BaseGeneratorComponent } from "@bitwarden/angular/tools/generator/components/generator.component";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 import { UsernameGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/username";
 

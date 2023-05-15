@@ -4,8 +4,8 @@ import {
   EnvironmentService as EnvironmentServiceAbstraction,
   Urls,
 } from "../abstractions/environment.service";
-import { StateService } from "../abstractions/state.service";
 import { EnvironmentUrls } from "../auth/models/domain/environment-urls";
+import { StateService } from "../platform/abstractions/state.service";
 
 export class EnvironmentService implements EnvironmentServiceAbstraction {
   private readonly urlsSubject = new Subject<Urls>();

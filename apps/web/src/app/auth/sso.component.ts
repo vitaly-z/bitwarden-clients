@@ -8,7 +8,6 @@ import { EnvironmentService } from "@bitwarden/common/abstractions/environment.s
 import { OrgDomainApiServiceAbstraction } from "@bitwarden/common/abstractions/organization-domain/org-domain-api.service.abstraction";
 import { OrganizationDomainSsoDetailsResponse } from "@bitwarden/common/abstractions/organization-domain/responses/organization-domain-sso-details.response";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { ValidationService } from "@bitwarden/common/abstractions/validation.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { LoginService } from "@bitwarden/common/auth/abstractions/login.service";
@@ -17,6 +16,7 @@ import { ErrorResponse } from "@bitwarden/common/models/response/error.response"
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 
 @Component({

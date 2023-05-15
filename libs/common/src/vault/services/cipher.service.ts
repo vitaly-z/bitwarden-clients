@@ -1,15 +1,15 @@
 import { ApiService } from "../../abstractions/api.service";
 import { SearchService } from "../../abstractions/search.service";
 import { SettingsService } from "../../abstractions/settings.service";
-import { StateService } from "../../abstractions/state.service";
 import { FieldType, UriMatchType } from "../../enums";
-import { Utils } from "../../platform/misc/utils";
 import { ErrorResponse } from "../../models/response/error.response";
 import { View } from "../../models/view/view";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { EncryptService } from "../../platform/abstractions/encrypt.service";
 import { I18nService } from "../../platform/abstractions/i18n.service";
+import { StateService } from "../../platform/abstractions/state.service";
 import { sequentialize } from "../../platform/misc/sequentialize";
+import { Utils } from "../../platform/misc/utils";
 import Domain from "../../platform/models/domain/domain-base";
 import { EncArrayBuffer } from "../../platform/models/domain/enc-array-buffer";
 import { EncString } from "../../platform/models/domain/enc-string";

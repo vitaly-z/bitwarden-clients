@@ -16,12 +16,12 @@ import { EventCollectionService } from "@bitwarden/common/abstractions/event/eve
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { TokenService } from "@bitwarden/common/auth/abstractions/token.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { FolderService } from "@bitwarden/common/vault/abstractions/folder/folder.service.abstraction";
 import { PasswordRepromptService } from "@bitwarden/common/vault/abstractions/password-reprompt.service";

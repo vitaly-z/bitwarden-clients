@@ -1,12 +1,12 @@
 import { ApiService } from "../../abstractions/api.service";
-import { StateService } from "../../abstractions/state.service";
 import { OrganizationService } from "../../admin-console/abstractions/organization/organization.service.abstraction";
 import { OrganizationUserType } from "../../admin-console/enums";
-import { Utils } from "../../platform/misc/utils";
 import { KeysRequest } from "../../models/request/keys.request";
 import { CryptoFunctionService } from "../../platform/abstractions/crypto-function.service";
 import { CryptoService } from "../../platform/abstractions/crypto.service";
 import { LogService } from "../../platform/abstractions/log.service";
+import { StateService } from "../../platform/abstractions/state.service";
+import { Utils } from "../../platform/misc/utils";
 import { SymmetricCryptoKey } from "../../platform/models/domain/symmetric-crypto-key";
 import { KeyConnectorService as KeyConnectorServiceAbstraction } from "../abstractions/key-connector.service";
 import { TokenService } from "../abstractions/token.service";

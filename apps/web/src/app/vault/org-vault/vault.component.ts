@@ -44,10 +44,10 @@ import { Organization } from "@bitwarden/common/admin-console/models/domain/orga
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { EventType } from "@bitwarden/common/enums";
 import { ServiceUtils } from "@bitwarden/common/misc/serviceUtils";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { TreeNode } from "@bitwarden/common/models/domain/tree-node";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { PasswordRepromptService } from "@bitwarden/common/vault/abstractions/password-reprompt.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";

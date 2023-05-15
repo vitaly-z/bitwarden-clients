@@ -1,7 +1,7 @@
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
-import { StorageOptions } from "@bitwarden/common/models/domain/storage-options";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
-import { StateService as BaseStateService } from "@bitwarden/common/services/state.service";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
+import { StorageOptions } from "@bitwarden/common/platform/models/domain/storage-options";
+import { StateService as BaseStateService } from "@bitwarden/common/platform/services/state.service";
 
 import { Account } from "../../models/account";
 

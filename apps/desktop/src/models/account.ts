@@ -4,7 +4,7 @@ import {
   Account as BaseAccount,
   AccountSettings as BaseAccountSettings,
   AccountKeys as BaseAccountKeys,
-} from "@bitwarden/common/models/domain/account";
+} from "@bitwarden/common/platform/models/domain/account";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 
 export class AccountSettings extends BaseAccountSettings {

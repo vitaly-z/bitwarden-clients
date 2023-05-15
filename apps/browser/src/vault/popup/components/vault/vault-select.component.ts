@@ -18,8 +18,8 @@ import { BehaviorSubject, concatMap, map, merge, Observable, Subject, takeUntil 
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 import { VaultFilterService } from "../../../services/vault-filter.service";
 

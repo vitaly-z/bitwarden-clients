@@ -37,7 +37,6 @@ import { EventCollectionService } from "@bitwarden/common/abstractions/event/eve
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SearchService } from "@bitwarden/common/abstractions/search.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { CollectionService } from "@bitwarden/common/admin-console/abstractions/collection.service";
 import { OrganizationService } from "@bitwarden/common/admin-console/abstractions/organization/organization.service.abstraction";
@@ -47,11 +46,12 @@ import { TokenService } from "@bitwarden/common/auth/abstractions/token.service"
 import { DEFAULT_PBKDF2_ITERATIONS, EventType, KdfType } from "@bitwarden/common/enums";
 import { FeatureFlag } from "@bitwarden/common/enums/feature-flag.enum";
 import { ServiceUtils } from "@bitwarden/common/misc/serviceUtils";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { TreeNode } from "@bitwarden/common/models/domain/tree-node";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { PasswordRepromptService } from "@bitwarden/common/vault/abstractions/password-reprompt.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";

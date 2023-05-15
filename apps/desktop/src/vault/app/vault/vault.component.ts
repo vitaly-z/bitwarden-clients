@@ -19,10 +19,10 @@ import { BroadcasterService } from "@bitwarden/common/abstractions/broadcaster.s
 import { EventCollectionService } from "@bitwarden/common/abstractions/event/event-collection.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { TotpService } from "@bitwarden/common/abstractions/totp.service";
 import { EventType } from "@bitwarden/common/enums";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { PasswordRepromptService } from "@bitwarden/common/vault/abstractions/password-reprompt.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 import { CipherRepromptType } from "@bitwarden/common/vault/enums/cipher-reprompt-type";

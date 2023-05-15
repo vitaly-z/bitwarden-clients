@@ -3,9 +3,9 @@ import {
   FileUploadApiMethods,
   FileUploadService,
 } from "../../../abstractions/file-upload/file-upload.service";
-import { Utils } from "../../../platform/misc/utils";
 import { ErrorResponse } from "../../../models/response/error.response";
 import { ListResponse } from "../../../models/response/list.response";
+import { Utils } from "../../../platform/misc/utils";
 import { EncArrayBuffer } from "../../../platform/models/domain/enc-array-buffer";
 import { SendType } from "../enums/send-type";
 import { SendData } from "../models/data/send.data";

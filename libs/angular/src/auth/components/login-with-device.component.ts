@@ -7,7 +7,6 @@ import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { AppIdService } from "@bitwarden/common/abstractions/appId.service";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { ValidationService } from "@bitwarden/common/abstractions/validation.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { LoginService } from "@bitwarden/common/auth/abstractions/login.service";
@@ -16,12 +15,13 @@ import { ForceResetPasswordReason } from "@bitwarden/common/auth/models/domain/f
 import { PasswordlessLogInCredentials } from "@bitwarden/common/auth/models/domain/log-in-credentials";
 import { PasswordlessCreateAuthRequest } from "@bitwarden/common/auth/models/request/passwordless-create-auth.request";
 import { AuthRequestResponse } from "@bitwarden/common/auth/models/response/auth-request.response";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { ErrorResponse } from "@bitwarden/common/models/response/error.response";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 

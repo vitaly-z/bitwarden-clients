@@ -4,10 +4,10 @@ import { BehaviorSubject, firstValueFrom } from "rxjs";
 
 import { CryptoService } from "../platform/abstractions/crypto.service";
 import { EncryptService } from "../platform/abstractions/encrypt.service";
+import { StateService } from "../platform/services/state.service";
 
 import { ContainerService } from "./container.service";
 import { SettingsService } from "./settings.service";
-import { StateService } from "./state.service";
 
 describe("SettingsService", () => {
   let settingsService: SettingsService;

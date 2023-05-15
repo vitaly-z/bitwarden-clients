@@ -5,11 +5,11 @@ import { SsoComponent as BaseSsoComponent } from "@bitwarden/angular/auth/compon
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 

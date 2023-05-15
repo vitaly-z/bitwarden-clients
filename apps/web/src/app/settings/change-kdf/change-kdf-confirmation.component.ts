@@ -5,13 +5,13 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { KdfConfig } from "@bitwarden/common/auth/models/domain/kdf-config";
 import { KdfType } from "@bitwarden/common/enums";
 import { KdfRequest } from "@bitwarden/common/models/request/kdf.request";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 @Component({
   selector: "app-change-kdf-confirmation",

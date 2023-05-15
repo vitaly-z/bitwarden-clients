@@ -8,10 +8,10 @@ import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUti
 import { UserVerificationService } from "@bitwarden/common/abstractions/userVerification/userVerification.service.abstraction";
 import { OrganizationApiServiceAbstraction } from "@bitwarden/common/admin-console/abstractions/organization/organization-api.service.abstraction";
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { Verification } from "@bitwarden/common/types/verification";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 

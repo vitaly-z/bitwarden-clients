@@ -1,4 +1,4 @@
-import { StateService } from "../../abstractions/state.service";
+import { StateService } from "../../platform/abstractions/state.service";
 import { Utils } from "../../platform/misc/utils";
 import { TokenService as TokenServiceAbstraction } from "../abstractions/token.service";
 import { IdentityTokenResponse } from "../models/response/identity-token.response";

@@ -1,50 +1,56 @@
 import { BehaviorSubject, concatMap } from "rxjs";
 import { Jsonify, JsonValue } from "type-fest";
 
+import { CollectionData } from "../../admin-console/models/data/collection.data";
+import { EncryptedOrganizationKeyData } from "../../admin-console/models/data/encrypted-organization-key.data";
+import { OrganizationData } from "../../admin-console/models/data/organization.data";
+import { PolicyData } from "../../admin-console/models/data/policy.data";
+import { ProviderData } from "../../admin-console/models/data/provider.data";
+import { Policy } from "../../admin-console/models/domain/policy";
+import { CollectionView } from "../../admin-console/models/view/collection.view";
+import { EnvironmentUrls } from "../../auth/models/domain/environment-urls";
+import { ForceResetPasswordReason } from "../../auth/models/domain/force-reset-password-reason";
+import { KdfConfig } from "../../auth/models/domain/kdf-config";
+import { BiometricKey } from "../../auth/types/biometric-key";
+import {
+  HtmlStorageLocation,
+  KdfType,
+  StorageLocation,
+  ThemeType,
+  UriMatchType,
+} from "../../enums";
+import { VaultTimeoutAction } from "../../enums/vault-timeout-action.enum";
+import { EventData } from "../../models/data/event.data";
+import { ServerConfigData } from "../../models/data/server-config.data";
+import { WindowState } from "../../models/domain/window-state";
+import { GeneratedPasswordHistory } from "../../tools/generator/password";
+import { SendData } from "../../tools/send/models/data/send.data";
+import { SendView } from "../../tools/send/models/view/send.view";
+import { CipherData } from "../../vault/models/data/cipher.data";
+import { FolderData } from "../../vault/models/data/folder.data";
+import { LocalData } from "../../vault/models/data/local.data";
+import { CipherView } from "../../vault/models/view/cipher.view";
+import { AddEditCipherInfo } from "../../vault/types/add-edit-cipher-info";
+import { LogService } from "../abstractions/log.service";
+import { StateMigrationService } from "../abstractions/state-migration.service";
 import { StateService as StateServiceAbstraction } from "../abstractions/state.service";
-import { StateMigrationService } from "../abstractions/stateMigration.service";
 import {
   AbstractMemoryStorageService,
   AbstractStorageService,
 } from "../abstractions/storage.service";
-import { CollectionData } from "../admin-console/models/data/collection.data";
-import { EncryptedOrganizationKeyData } from "../admin-console/models/data/encrypted-organization-key.data";
-import { OrganizationData } from "../admin-console/models/data/organization.data";
-import { PolicyData } from "../admin-console/models/data/policy.data";
-import { ProviderData } from "../admin-console/models/data/provider.data";
-import { Policy } from "../admin-console/models/domain/policy";
-import { CollectionView } from "../admin-console/models/view/collection.view";
-import { EnvironmentUrls } from "../auth/models/domain/environment-urls";
-import { ForceResetPasswordReason } from "../auth/models/domain/force-reset-password-reason";
-import { KdfConfig } from "../auth/models/domain/kdf-config";
-import { BiometricKey } from "../auth/types/biometric-key";
-import { HtmlStorageLocation, KdfType, StorageLocation, ThemeType, UriMatchType } from "../enums";
-import { VaultTimeoutAction } from "../enums/vault-timeout-action.enum";
-import { StateFactory } from "../factories/stateFactory";
-import { Utils } from "../platform/misc/utils";
-import { EventData } from "../models/data/event.data";
-import { ServerConfigData } from "../models/data/server-config.data";
+import { StateFactory } from "../factories/state-factory";
+import { Utils } from "../misc/utils";
 import {
   Account,
   AccountData,
   AccountSettings,
   AccountSettingsSettings,
 } from "../models/domain/account";
+import { EncString } from "../models/domain/enc-string";
 import { GlobalState } from "../models/domain/global-state";
 import { State } from "../models/domain/state";
 import { StorageOptions } from "../models/domain/storage-options";
-import { WindowState } from "../models/domain/window-state";
-import { LogService } from "../platform/abstractions/log.service";
-import { EncString } from "../platform/models/domain/enc-string";
-import { SymmetricCryptoKey } from "../platform/models/domain/symmetric-crypto-key";
-import { GeneratedPasswordHistory } from "../tools/generator/password";
-import { SendData } from "../tools/send/models/data/send.data";
-import { SendView } from "../tools/send/models/view/send.view";
-import { CipherData } from "../vault/models/data/cipher.data";
-import { FolderData } from "../vault/models/data/folder.data";
-import { LocalData } from "../vault/models/data/local.data";
-import { CipherView } from "../vault/models/view/cipher.view";
-import { AddEditCipherInfo } from "../vault/types/add-edit-cipher-info";
+import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 
 const keys = {
   state: "state",

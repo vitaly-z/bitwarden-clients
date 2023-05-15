@@ -1,7 +1,6 @@
 import { ApiService } from "../../../abstractions/api.service";
 import { MessagingService } from "../../../abstractions/messaging.service";
 import { SettingsService } from "../../../abstractions/settings.service";
-import { StateService } from "../../../abstractions/state.service";
 import { CollectionService } from "../../../admin-console/abstractions/collection.service";
 import { InternalOrganizationService } from "../../../admin-console/abstractions/organization/organization.service.abstraction";
 import { InternalPolicyService } from "../../../admin-console/abstractions/policy/policy.service.abstraction";
@@ -23,6 +22,7 @@ import {
 import { ProfileResponse } from "../../../models/response/profile.response";
 import { CryptoService } from "../../../platform/abstractions/crypto.service";
 import { LogService } from "../../../platform/abstractions/log.service";
+import { StateService } from "../../../platform/abstractions/state.service";
 import { sequentialize } from "../../../platform/misc/sequentialize";
 import { SendData } from "../../../tools/send/models/data/send.data";
 import { SendResponse } from "../../../tools/send/models/response/send.response";

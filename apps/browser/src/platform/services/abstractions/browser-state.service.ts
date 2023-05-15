@@ -1,5 +1,5 @@
-import { StateService as BaseStateServiceAbstraction } from "@bitwarden/common/abstractions/state.service";
-import { StorageOptions } from "@bitwarden/common/models/domain/storage-options";
+import { StateService as BaseStateServiceAbstraction } from "@bitwarden/common/platform/abstractions/state.service";
+import { StorageOptions } from "@bitwarden/common/platform/models/domain/storage-options";
 
 import { Account } from "../../../models/account";
 import { BrowserComponentState } from "../../../models/browserComponentState";

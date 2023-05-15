@@ -2,7 +2,7 @@ import { awaitAsync } from "@bitwarden/angular/../test-utils";
 import { mock, MockProxy } from "jest-mock-extended";
 import { BehaviorSubject, ReplaySubject } from "rxjs";
 
-import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
+import { MemoryStorageService } from "@bitwarden/common/platform/services/memory-storage.service";
 
 import { BrowserApi } from "../../browser/browser-api";
 

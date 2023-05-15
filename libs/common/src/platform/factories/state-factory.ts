@@ -1,8 +1,8 @@
 import { Account } from "../models/domain/account";
 import { GlobalState } from "../models/domain/global-state";
 
-import { AccountFactory } from "./accountFactory";
-import { GlobalStateFactory } from "./globalStateFactory";
+import { AccountFactory } from "./account-factory";
+import { GlobalStateFactory } from "./global-state-factory";
 
 export class StateFactory<
   TGlobal extends GlobalState = GlobalState,

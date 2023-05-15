@@ -2,8 +2,8 @@ import * as fs from "fs";
 import * as path from "path";
 
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { NodeUtils } from "@bitwarden/common/misc/nodeUtils";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { SendType } from "@bitwarden/common/tools/send/enums/send-type";
 import { SendApiService } from "@bitwarden/common/tools/send/services/send-api.service.abstraction";
 import { SendService } from "@bitwarden/common/tools/send/services/send.service.abstraction";

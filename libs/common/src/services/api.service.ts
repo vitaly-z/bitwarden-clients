@@ -112,7 +112,6 @@ import { SubscriptionResponse } from "../billing/models/response/subscription.re
 import { TaxInfoResponse } from "../billing/models/response/tax-info.response";
 import { TaxRateResponse } from "../billing/models/response/tax-rate.response";
 import { DeviceType } from "../enums";
-import { Utils } from "../platform/misc/utils";
 import { CollectionBulkDeleteRequest } from "../models/request/collection-bulk-delete.request";
 import { DeleteRecoverRequest } from "../models/request/delete-recover.request";
 import { EventRequest } from "../models/request/event.request";
@@ -135,6 +134,7 @@ import { EventResponse } from "../models/response/event.response";
 import { ListResponse } from "../models/response/list.response";
 import { ProfileResponse } from "../models/response/profile.response";
 import { UserKeyResponse } from "../models/response/user-key.response";
+import { Utils } from "../platform/misc/utils";
 import { AttachmentRequest } from "../vault/models/request/attachment.request";
 import { CipherBulkDeleteRequest } from "../vault/models/request/cipher-bulk-delete.request";
 import { CipherBulkMoveRequest } from "../vault/models/request/cipher-bulk-move.request";

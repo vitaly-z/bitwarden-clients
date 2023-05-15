@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
 
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 @Injectable({
   providedIn: "root",

@@ -4,10 +4,10 @@ import { Router } from "@angular/router";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { TokenService } from "@bitwarden/common/auth/abstractions/token.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 
 import { PaymentComponent } from "../billing/settings/payment.component";

@@ -2,13 +2,13 @@
 import { Substitute, SubstituteOf } from "@fluffy-spoon/substitute";
 import { MockProxy, any, mock } from "jest-mock-extended";
 
+import { StateVersion } from "../../enums";
 import { AbstractStorageService } from "../abstractions/storage.service";
-import { StateVersion } from "../enums";
-import { StateFactory } from "../factories/stateFactory";
+import { StateFactory } from "../factories/state-factory";
 import { Account } from "../models/domain/account";
 import { GlobalState } from "../models/domain/global-state";
 
-import { StateMigrationService } from "./stateMigration.service";
+import { StateMigrationService } from "./state-migration.service";
 
 const userId = "USER_ID";
 

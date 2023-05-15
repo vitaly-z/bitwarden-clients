@@ -10,18 +10,18 @@ import {
   FormValidationErrorsService,
 } from "@bitwarden/common/abstractions/formValidationErrors.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { PasswordLogInCredentials } from "@bitwarden/common/auth/models/domain/log-in-credentials";
 import { RegisterResponse } from "@bitwarden/common/auth/models/response/register.response";
 import { DEFAULT_KDF_CONFIG, DEFAULT_KDF_TYPE } from "@bitwarden/common/enums";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { KeysRequest } from "@bitwarden/common/models/request/keys.request";
 import { ReferenceEventRequest } from "@bitwarden/common/models/request/reference-event.request";
 import { RegisterRequest } from "@bitwarden/common/models/request/register.request";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 
 import { CaptchaProtectedComponent } from "../auth/components/captcha-protected.component";

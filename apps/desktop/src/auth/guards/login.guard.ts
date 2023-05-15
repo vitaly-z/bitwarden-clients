@@ -3,8 +3,8 @@ import { CanActivate } from "@angular/router";
 import { firstValueFrom } from "rxjs";
 
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 const maxAllowedAccounts = 5;
 

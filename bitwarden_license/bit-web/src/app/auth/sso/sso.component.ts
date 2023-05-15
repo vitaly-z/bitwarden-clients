@@ -27,8 +27,8 @@ import { SsoConfigApi } from "@bitwarden/common/auth/models/api/sso-config.api";
 import { OrganizationSsoRequest } from "@bitwarden/common/auth/models/request/organization-sso.request";
 import { OrganizationSsoResponse } from "@bitwarden/common/auth/models/response/organization-sso.response";
 import { SsoConfigView } from "@bitwarden/common/auth/models/view/sso-config.view";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 import { ssoTypeValidator } from "./sso-type.validator";
 

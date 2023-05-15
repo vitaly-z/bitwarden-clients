@@ -2,9 +2,9 @@ import { ConfigServiceAbstraction } from "@bitwarden/common/abstractions/config/
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { NotificationsService } from "@bitwarden/common/abstractions/notifications.service";
 import { SystemService } from "@bitwarden/common/abstractions/system.service";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 import { AutofillService } from "../autofill/services/abstractions/autofill.service";
 import { BrowserApi } from "../platform/browser/browser-api";

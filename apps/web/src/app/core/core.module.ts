@@ -14,28 +14,28 @@ import { ModalService as ModalServiceAbstraction } from "@bitwarden/angular/serv
 import { FileDownloadService } from "@bitwarden/common/abstractions/fileDownload/fileDownload.service";
 import { MessagingService as MessagingServiceAbstraction } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService as PlatformUtilsServiceAbstraction } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService as BaseStateServiceAbstraction } from "@bitwarden/common/abstractions/state.service";
-import { StateMigrationService as StateMigrationServiceAbstraction } from "@bitwarden/common/abstractions/stateMigration.service";
-import { AbstractStorageService } from "@bitwarden/common/abstractions/storage.service";
 import { LoginService as LoginServiceAbstraction } from "@bitwarden/common/auth/abstractions/login.service";
 import { LoginService } from "@bitwarden/common/auth/services/login.service";
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
 import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
-import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
+import { StateMigrationService as StateMigrationServiceAbstraction } from "@bitwarden/common/platform/abstractions/state-migration.service";
+import { StateService as BaseStateServiceAbstraction } from "@bitwarden/common/platform/abstractions/state.service";
+import { AbstractStorageService } from "@bitwarden/common/platform/abstractions/storage.service";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
+import { MemoryStorageService } from "@bitwarden/common/platform/services/memory-storage.service";
 import { PasswordRepromptService as PasswordRepromptServiceAbstraction } from "@bitwarden/common/vault/abstractions/password-reprompt.service";
 
 import { PolicyListService } from "../admin-console/core/policy-list.service";
+import { HtmlStorageService } from "../platform/core/html-storage.service";
 import { I18nService } from "../platform/core/i18n.service";
+import { Account, GlobalState, StateService } from "../platform/core/state";
+import { StateMigrationService } from "../platform/core/state-migration.service";
 import { PasswordRepromptService } from "../vault/core/password-reprompt.service";
 
 import { BroadcasterMessagingService } from "./broadcaster-messaging.service";
 import { EventService } from "./event.service";
-import { HtmlStorageService } from "../platform/core/html-storage.service";
 import { InitService } from "./init.service";
 import { ModalService } from "./modal.service";
 import { RouterService } from "./router.service";
-import { Account, GlobalState, StateService } from "../platform/core/state";
-import { StateMigrationService } from "../platform/core/state-migration.service";
 import { WebFileDownloadService } from "./web-file-download.service";
 import { WebPlatformUtilsService } from "./web-platform-utils.service";
 

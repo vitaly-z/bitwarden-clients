@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { UriMatchType } from "@bitwarden/common/enums";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
 
 import { BrowserApi } from "../../platform/browser/browser-api";
 

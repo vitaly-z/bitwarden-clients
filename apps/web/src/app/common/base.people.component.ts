@@ -7,7 +7,6 @@ import { ModalService } from "@bitwarden/angular/services/modal.service";
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SearchService } from "@bitwarden/common/abstractions/search.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { ValidationService } from "@bitwarden/common/abstractions/validation.service";
 import {
   OrganizationUserStatusType,
@@ -16,11 +15,12 @@ import {
   ProviderUserType,
 } from "@bitwarden/common/admin-console/enums";
 import { ProviderUserUserDetailsResponse } from "@bitwarden/common/admin-console/models/response/provider/provider-user.response";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 import { OrganizationUserView } from "../admin-console/organizations/core/views/organization-user.view";
 import { UserConfirmComponent } from "../admin-console/organizations/manage/user-confirm.component";

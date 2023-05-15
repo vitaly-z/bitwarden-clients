@@ -2,8 +2,8 @@ import * as fs from "fs";
 
 import { ipcMain } from "electron";
 
-import { AbstractStorageService } from "@bitwarden/common/abstractions/storage.service";
 import { NodeUtils } from "@bitwarden/common/misc/nodeUtils";
+import { AbstractStorageService } from "@bitwarden/common/platform/abstractions/storage.service";
 
 // See: https://github.com/sindresorhus/electron-store/blob/main/index.d.ts
 interface ElectronStoreOptions {

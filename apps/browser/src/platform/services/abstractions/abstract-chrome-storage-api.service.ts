@@ -1,4 +1,4 @@
-import { AbstractStorageService } from "@bitwarden/common/abstractions/storage.service";
+import { AbstractStorageService } from "@bitwarden/common/platform/abstractions/storage.service";
 
 export default abstract class AbstractChromeStorageService implements AbstractStorageService {
   protected abstract chromeStorageApi: chrome.storage.StorageArea;

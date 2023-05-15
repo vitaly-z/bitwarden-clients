@@ -8,13 +8,13 @@ import { AppIdService } from "@bitwarden/common/abstractions/appId.service";
 import { EnvironmentService } from "@bitwarden/common/abstractions/environment.service";
 import { FormValidationErrorsService } from "@bitwarden/common/abstractions/formValidationErrors.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { AuthService } from "@bitwarden/common/auth/abstractions/auth.service";
 import { LoginService } from "@bitwarden/common/auth/abstractions/login.service";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { PasswordGenerationServiceAbstraction } from "@bitwarden/common/tools/generator/password";
 import { SyncService } from "@bitwarden/common/vault/abstractions/sync/sync.service.abstraction";
 

@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 
 import { ApiService } from "@bitwarden/common/abstractions/api.service";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { ListResponse } from "@bitwarden/common/models/response/list.response";
 import { CryptoFunctionService } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { EncString } from "@bitwarden/common/platform/models/domain/enc-string";
 import { SymmetricCryptoKey } from "@bitwarden/common/platform/models/domain/symmetric-crypto-key";
 

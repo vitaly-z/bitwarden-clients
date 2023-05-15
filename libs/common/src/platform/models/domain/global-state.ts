@@ -1,7 +1,6 @@
-import { EnvironmentUrls } from "../../auth/models/domain/environment-urls";
-import { StateVersion, ThemeType } from "../../enums";
-
-import { WindowState } from "./window-state";
+import { EnvironmentUrls } from "../../../auth/models/domain/environment-urls";
+import { StateVersion, ThemeType } from "../../../enums";
+import { WindowState } from "../../../models/domain/window-state";
 
 export class GlobalState {
   enableAlwaysOnTop?: boolean;

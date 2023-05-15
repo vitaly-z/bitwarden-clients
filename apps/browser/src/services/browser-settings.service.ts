@@ -1,6 +1,6 @@
 import { BehaviorSubject } from "rxjs";
 
-import { AccountSettingsSettings } from "@bitwarden/common/models/domain/account";
+import { AccountSettingsSettings } from "@bitwarden/common/platform/models/domain/account";
 import { SettingsService } from "@bitwarden/common/services/settings.service";
 
 import { browserSession, sessionSync } from "../platform/decorators/session-sync-observable";

@@ -1,14 +1,14 @@
 import { mock, MockProxy } from "jest-mock-extended";
 
+import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
 import {
   AbstractMemoryStorageService,
   AbstractStorageService,
-} from "@bitwarden/common/abstractions/storage.service";
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
-import { State } from "@bitwarden/common/models/domain/state";
-import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
-import { StateMigrationService } from "@bitwarden/common/services/stateMigration.service";
+} from "@bitwarden/common/platform/abstractions/storage.service";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
+import { State } from "@bitwarden/common/platform/models/domain/state";
+import { StateMigrationService } from "@bitwarden/common/platform/services/state-migration.service";
 import { SendType } from "@bitwarden/common/tools/send/enums/send-type";
 import { SendView } from "@bitwarden/common/tools/send/models/view/send.view";
 

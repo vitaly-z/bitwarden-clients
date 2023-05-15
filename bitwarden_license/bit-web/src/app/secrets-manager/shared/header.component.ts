@@ -3,8 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { combineLatest, map, Observable } from "rxjs";
 
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
-import { AccountProfile } from "@bitwarden/common/models/domain/account";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { AccountProfile } from "@bitwarden/common/platform/models/domain/account";
 
 @Component({
   selector: "sm-header",

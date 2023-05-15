@@ -1,7 +1,6 @@
 import * as bigInt from "big-integer";
 
 import { PlatformUtilsService } from "../../abstractions/platformUtils.service";
-import { StateService } from "../../abstractions/state.service";
 import { EncryptedOrganizationKeyData } from "../../admin-console/models/data/encrypted-organization-key.data";
 import { BaseEncryptedOrganizationKey } from "../../admin-console/models/domain/encrypted-organization-key";
 import { ProfileOrganizationResponse } from "../../admin-console/models/response/profile-organization.response";
@@ -22,6 +21,7 @@ import { CryptoFunctionService } from "../abstractions/crypto-function.service";
 import { CryptoService as CryptoServiceAbstraction } from "../abstractions/crypto.service";
 import { EncryptService } from "../abstractions/encrypt.service";
 import { LogService } from "../abstractions/log.service";
+import { StateService } from "../abstractions/state.service";
 import { sequentialize } from "../misc/sequentialize";
 import { EFFLongWordList } from "../misc/wordlist";
 import { EncArrayBuffer } from "../models/domain/enc-array-buffer";

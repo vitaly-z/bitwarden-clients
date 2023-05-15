@@ -10,9 +10,9 @@ import {
   OrganizationUserType,
 } from "@bitwarden/common/admin-console/enums";
 import { SelectionReadOnlyRequest } from "@bitwarden/common/admin-console/models/request/selection-read-only.request";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 
 @Component({
   selector: "app-entity-users",

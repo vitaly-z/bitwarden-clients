@@ -5,7 +5,6 @@ import { AuditService } from "@bitwarden/common/abstractions/audit.service";
 import { EventCollectionService } from "@bitwarden/common/abstractions/event/event-collection.service";
 import { MessagingService } from "@bitwarden/common/abstractions/messaging.service";
 import { PlatformUtilsService } from "@bitwarden/common/abstractions/platformUtils.service";
-import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { CollectionService } from "@bitwarden/common/admin-console/abstractions/collection.service";
 import {
   isMember,
@@ -16,9 +15,10 @@ import { OrganizationUserStatusType, PolicyType } from "@bitwarden/common/admin-
 import { Organization } from "@bitwarden/common/admin-console/models/domain/organization";
 import { CollectionView } from "@bitwarden/common/admin-console/models/view/collection.view";
 import { EventType, SecureNoteType, UriMatchType } from "@bitwarden/common/enums";
-import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { I18nService } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService } from "@bitwarden/common/platform/abstractions/log.service";
+import { StateService } from "@bitwarden/common/platform/abstractions/state.service";
+import { Utils } from "@bitwarden/common/platform/misc/utils";
 import { SendApiService } from "@bitwarden/common/tools/send/services/send-api.service.abstraction";
 import { CipherService } from "@bitwarden/common/vault/abstractions/cipher.service";
 import { FolderService } from "@bitwarden/common/vault/abstractions/folder/folder.service.abstraction";

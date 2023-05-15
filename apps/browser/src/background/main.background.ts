@@ -12,10 +12,6 @@ import { NotificationsService as NotificationsServiceAbstraction } from "@bitwar
 import { PlatformUtilsService as PlatformUtilsServiceAbstraction } from "@bitwarden/common/abstractions/platformUtils.service";
 import { SearchService as SearchServiceAbstraction } from "@bitwarden/common/abstractions/search.service";
 import { SettingsService as SettingsServiceAbstraction } from "@bitwarden/common/abstractions/settings.service";
-import {
-  AbstractMemoryStorageService,
-  AbstractStorageService,
-} from "@bitwarden/common/abstractions/storage.service";
 import { SystemService as SystemServiceAbstraction } from "@bitwarden/common/abstractions/system.service";
 import { TotpService as TotpServiceAbstraction } from "@bitwarden/common/abstractions/totp.service";
 import { UserVerificationApiServiceAbstraction } from "@bitwarden/common/abstractions/userVerification/userVerification-api.service.abstraction";
@@ -40,16 +36,22 @@ import { TokenService } from "@bitwarden/common/auth/services/token.service";
 import { TwoFactorService } from "@bitwarden/common/auth/services/two-factor.service";
 import { UserVerificationApiService } from "@bitwarden/common/auth/services/user-verification/user-verification-api.service";
 import { UserVerificationService } from "@bitwarden/common/auth/services/user-verification/user-verification.service";
-import { StateFactory } from "@bitwarden/common/factories/stateFactory";
-import { GlobalState } from "@bitwarden/common/models/domain/global-state";
 import { CryptoFunctionService as CryptoFunctionServiceAbstraction } from "@bitwarden/common/platform/abstractions/crypto-function.service";
 import { CryptoService as CryptoServiceAbstraction } from "@bitwarden/common/platform/abstractions/crypto.service";
 import { EncryptService } from "@bitwarden/common/platform/abstractions/encrypt.service";
 import { I18nService as I18nServiceAbstraction } from "@bitwarden/common/platform/abstractions/i18n.service";
 import { LogService as LogServiceAbstraction } from "@bitwarden/common/platform/abstractions/log.service";
+import {
+  AbstractMemoryStorageService,
+  AbstractStorageService,
+} from "@bitwarden/common/platform/abstractions/storage.service";
+import { StateFactory } from "@bitwarden/common/platform/factories/state-factory";
+import { GlobalState } from "@bitwarden/common/platform/models/domain/global-state";
 import { ConsoleLogService } from "@bitwarden/common/platform/services/console-log.service";
 import { EncryptServiceImplementation } from "@bitwarden/common/platform/services/cryptography/encrypt.service.implementation";
 import { MultithreadEncryptServiceImplementation } from "@bitwarden/common/platform/services/cryptography/multithread-encrypt.service.implementation";
+import { MemoryStorageService } from "@bitwarden/common/platform/services/memory-storage.service";
+import { StateMigrationService } from "@bitwarden/common/platform/services/state-migration.service";
 import { WebCryptoFunctionService } from "@bitwarden/common/platform/services/web-crypto-function.service";
 import { AvatarUpdateService } from "@bitwarden/common/services/account/avatar-update.service";
 import { ApiService } from "@bitwarden/common/services/api.service";
@@ -60,10 +62,8 @@ import { ContainerService } from "@bitwarden/common/services/container.service";
 import { EventCollectionService } from "@bitwarden/common/services/event/event-collection.service";
 import { EventUploadService } from "@bitwarden/common/services/event/event-upload.service";
 import { FileUploadService } from "@bitwarden/common/services/file-upload/file-upload.service";
-import { MemoryStorageService } from "@bitwarden/common/services/memoryStorage.service";
 import { NotificationsService } from "@bitwarden/common/services/notifications.service";
 import { SearchService } from "@bitwarden/common/services/search.service";
-import { StateMigrationService } from "@bitwarden/common/services/stateMigration.service";
 import { SystemService } from "@bitwarden/common/services/system.service";
 import { TotpService } from "@bitwarden/common/services/totp.service";
 import { VaultTimeoutSettingsService } from "@bitwarden/common/services/vaultTimeout/vaultTimeoutSettings.service";
