@@ -3,7 +3,7 @@ import { DeviceResponse } from "../../abstractions/devices/responses/device.resp
 import { Utils } from "../../misc/utils";
 import { ApiService } from "../api.service";
 
-import { DeviceEncryptedUserSymmetricKeyRequest } from "./requests/device-encrypted-user-symmetric-key.request";
+import { TrustDeviceKeysRequest as TrustedDeviceKeysRequest } from "./requests/trusted-device-keys.request";
 
 export class DevicesApiServiceImplementation implements DevicesApiServiceAbstraction {
   constructor(private apiService: ApiService) {}
@@ -24,15 +24,21 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
     return r as boolean;
   }
 
-  async createDeviceEncryptedUserSymmetricKey(
+  async createTrustedDeviceKeys(
     deviceId: string,
-    deviceEncryptedUserSymmetricKey: string
+    devicePublicKeyEncryptedUserDataKey: string,
+    userDataKeyEncryptedDevicePublicKey: string,
+    deviceKeyEncryptedDevicePrivateKey: string
   ): Promise<DeviceResponse> {
-    const request = new DeviceEncryptedUserSymmetricKeyRequest(deviceEncryptedUserSymmetricKey);
+    const request = new TrustedDeviceKeysRequest(
+      devicePublicKeyEncryptedUserDataKey,
+      userDataKeyEncryptedDevicePublicKey,
+      deviceKeyEncryptedDevicePrivateKey
+    );
 
     const result = await this.apiService.send(
       "POST",
-      `/devices/${deviceId}/key`,
+      `/devices/${deviceId}/keys`,
       request,
       true,
       true
@@ -41,15 +47,21 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
     return new DeviceResponse(result);
   }
 
-  async updateDeviceEncryptedUserSymmetricKey(
+  async updateTrustedDeviceKeys(
     deviceId: string,
-    deviceEncryptedUserSymmetricKey: string
+    devicePublicKeyEncryptedUserDataKey: string,
+    userDataKeyEncryptedDevicePublicKey: string,
+    deviceKeyEncryptedDevicePrivateKey: string
   ): Promise<DeviceResponse> {
-    const request = new DeviceEncryptedUserSymmetricKeyRequest(deviceEncryptedUserSymmetricKey);
+    const request = new TrustedDeviceKeysRequest(
+      devicePublicKeyEncryptedUserDataKey,
+      userDataKeyEncryptedDevicePublicKey,
+      deviceKeyEncryptedDevicePrivateKey
+    );
 
     const result = await this.apiService.send(
       "PUT",
-      `/devices/${deviceId}/key`,
+      `/devices/${deviceId}/keys`,
       request,
       true,
       true

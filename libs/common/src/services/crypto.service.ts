@@ -1,7 +1,10 @@
 import * as bigInt from "big-integer";
 
+import { AppIdService } from "../abstractions/appId.service";
 import { CryptoService as CryptoServiceAbstraction } from "../abstractions/crypto.service";
 import { CryptoFunctionService } from "../abstractions/cryptoFunction.service";
+import { DevicesApiServiceAbstraction } from "../abstractions/devices/devices-api.service.abstraction";
+import { DeviceResponse } from "../abstractions/devices/responses/device.response";
 import { EncryptService } from "../abstractions/encrypt.service";
 import { LogService } from "../abstractions/log.service";
 import { PlatformUtilsService } from "../abstractions/platformUtils.service";
@@ -35,7 +38,9 @@ export class CryptoService implements CryptoServiceAbstraction {
     protected encryptService: EncryptService,
     protected platformUtilService: PlatformUtilsService,
     protected logService: LogService,
-    protected stateService: StateService
+    protected stateService: StateService,
+    protected appIdService: AppIdService,
+    protected devicesApiService: DevicesApiServiceAbstraction
   ) {}
 
   async setKey(key: SymmetricCryptoKey, userId?: string): Promise<any> {
@@ -714,6 +719,70 @@ export class CryptoService implements CryptoServiceAbstraction {
     return true;
   }
 
+  // Start Trusted Device Encryption
+  async trustDevice(): Promise<DeviceResponse> {
+    // Generate deviceKey
+    const deviceKey = await this.makeDeviceKey();
+
+    // Generate asymmetric RSA key pair: devicePrivateKey, devicePublicKey
+    const [devicePublicKey, devicePrivateKey] = await this.cryptoFunctionService.rsaGenerateKeyPair(
+      2048
+    );
+
+    // Get user data symmetric key
+    const userDataKey: SymmetricCryptoKey = await this.getKey();
+
+    // TODO: get naming consistent across the board.
+    // const [encryptedUserDataKey, encryptedDevicePublicKey, encryptedDevicePrivateKey] =
+    const [
+      devicePublicKeyEncryptedUserDataKey,
+      userDataKeyEncryptedDevicePublicKey,
+      deviceKeyEncryptedDevicePrivateKey,
+    ] = await Promise.all([
+      // Encrypt user data symmetric key with the DevicePublicKey
+      this.rsaEncrypt(userDataKey.encKey, devicePublicKey),
+
+      // Encrypt devicePublicKey with user data symmetric key
+      this.encryptService.encrypt(devicePublicKey, userDataKey),
+
+      // Encrypt devicePrivateKey with deviceKey
+      this.encryptService.encrypt(devicePrivateKey, deviceKey),
+    ]);
+
+    const deviceId = await this.appIdService.getAppId();
+    // TODO: encString.data vs encString.encryptedString();
+    return this.devicesApiService.createTrustedDeviceKeys(
+      deviceId,
+      devicePublicKeyEncryptedUserDataKey.encryptedString,
+      userDataKeyEncryptedDevicePublicKey.encryptedString,
+      deviceKeyEncryptedDevicePrivateKey.encryptedString
+    );
+  }
+
+  async getDeviceKey(): Promise<SymmetricCryptoKey> {
+    // Check if device key is already stored
+    const existingDeviceKey = await this.stateService.getDeviceKey();
+
+    if (existingDeviceKey != null) {
+      return existingDeviceKey;
+    } else {
+      return this.makeDeviceKey();
+    }
+  }
+
+  async makeDeviceKey(): Promise<SymmetricCryptoKey> {
+    // Create 512-bit device key
+    const randomBytes: CsprngArray = await this.cryptoFunctionService.randomBytes(64);
+    const deviceKey = new SymmetricCryptoKey(randomBytes);
+
+    // Save device key in secure storage
+    await this.stateService.setDeviceKey(deviceKey);
+
+    return deviceKey;
+  }
+
+  // End Trusted Device Encryption
+
   // ---HELPERS---
 
   protected async storeKey(key: SymmetricCryptoKey, userId?: string) {
@@ -847,23 +916,5 @@ export class CryptoService implements CryptoServiceAbstraction {
     const symmetricCryptoKey = new SymmetricCryptoKey(decEncKey);
     await this.stateService.setDecryptedCryptoSymmetricKey(symmetricCryptoKey);
     return symmetricCryptoKey;
-  }
-
-  async getDeviceKey(): Promise<SymmetricCryptoKey> {
-    // Check if device key is already stored
-    let deviceKey = await this.stateService.getDeviceKey();
-
-    if (deviceKey != null) {
-      return deviceKey;
-    } else {
-      // Create 512-bit device key
-      const randomBytes: CsprngArray = await this.cryptoFunctionService.randomBytes(64);
-      deviceKey = new SymmetricCryptoKey(randomBytes);
-
-      // Save device key in secure storage
-      await this.stateService.setDeviceKey(deviceKey);
-
-      return deviceKey;
-    }
   }
 }

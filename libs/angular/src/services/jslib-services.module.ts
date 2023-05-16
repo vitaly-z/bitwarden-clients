@@ -353,6 +353,8 @@ import { AbstractThemingService } from "./theming/theming.service.abstraction";
         PlatformUtilsServiceAbstraction,
         LogService,
         StateServiceAbstraction,
+        AppIdServiceAbstraction,
+        DevicesApiServiceAbstraction,
       ],
     },
     {

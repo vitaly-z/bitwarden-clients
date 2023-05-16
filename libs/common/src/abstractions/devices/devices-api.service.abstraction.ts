@@ -3,12 +3,17 @@ import { DeviceResponse } from "./responses/device.response";
 export abstract class DevicesApiServiceAbstraction {
   getKnownDevice: (email: string, deviceIdentifier: string) => Promise<boolean>;
 
-  updateDeviceEncryptedUserSymmetricKey: (
+  createTrustedDeviceKeys: (
     deviceId: string,
-    deviceEncryptedUserSymmetricKey: string
+    devicePublicKeyEncryptedUserDataKey: string,
+    userDataKeyEncryptedDevicePublicKey: string,
+    deviceKeyEncryptedDevicePrivateKey: string
   ) => Promise<DeviceResponse>;
-  createDeviceEncryptedUserSymmetricKey: (
+
+  updateTrustedDeviceKeys: (
     deviceId: string,
-    deviceEncryptedUserSymmetricKey: string
+    devicePublicKeyEncryptedUserDataKey: string,
+    userDataKeyEncryptedDevicePublicKey: string,
+    deviceKeyEncryptedDevicePrivateKey: string
   ) => Promise<DeviceResponse>;
 }
