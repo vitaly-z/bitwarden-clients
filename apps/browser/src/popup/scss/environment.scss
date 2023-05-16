@@ -57,9 +57,10 @@ html.browser_safari {
     font-weight: 600;
   }  
   
-  .cursor-pointer {
-    cursor: pointer;
-  }
+  a,
+  a label:hover {
+    cursor:pointer;
+   }
 }
 
 .environment-selector-dialog {

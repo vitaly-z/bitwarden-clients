@@ -8,12 +8,12 @@
     aria-controls="cdk-overlay-container"
     [ngSwitch]="selectedEnvironment"
   >
-    <label *ngSwitchCase="ServerEnvironmentType.US" class="text-primary cursor-pointer">{{ "us" | i18n }}</label>
-    <label *ngSwitchCase="ServerEnvironmentType.EU" class="text-primary cursor-pointer">{{ "eu" | i18n }}</label>
-    <label *ngSwitchCase="ServerEnvironmentType.SelfHosted" class="text-primary cursor-pointer">{{
+    <label *ngSwitchCase="ServerEnvironmentType.US" class="text-primary">{{ "us" | i18n }}</label>
+    <label *ngSwitchCase="ServerEnvironmentType.EU" class="text-primary">{{ "eu" | i18n }}</label>
+    <label *ngSwitchCase="ServerEnvironmentType.SelfHosted" class="text-primary">{{
       "selfHosted" | i18n
     }}</label>
-    <i class="bwi bwi-fw bwi-sm bwi-angle-down cursor-pointer" aria-hidden="true"></i>
+    <i class="bwi bwi-fw bwi-sm bwi-angle-down" aria-hidden="true"></i>
   </a>
 </label>
 
