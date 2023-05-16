@@ -108,7 +108,6 @@ import { InitService } from "./init.service";
 import { PopupSearchService } from "./popup-search.service";
 import { PopupUtilsService } from "./popup-utils.service";
 
-
 const needsBackgroundInit = BrowserApi.getBackgroundPage() == null;
 const isPrivateMode = needsBackgroundInit && BrowserApi.manifestVersion !== 3;
 const mainBackground: MainBackground = needsBackgroundInit
