@@ -30,7 +30,6 @@ export interface EntityEventsDialogParams {
 
 @Component({
   imports: [SharedModule],
-  selector: "app-entity-events",
   templateUrl: "entity-events.component.html",
   standalone: true,
 })
