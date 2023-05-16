@@ -3,7 +3,7 @@ import { DeviceResponse } from "../../abstractions/devices/responses/device.resp
 import { Utils } from "../../misc/utils";
 import { ApiService } from "../api.service";
 
-import { TrustDeviceKeysRequest as TrustedDeviceKeysRequest } from "./requests/trusted-device-keys.request";
+import { TrustedDeviceKeysRequest } from "./requests/trusted-device-keys.request";
 
 export class DevicesApiServiceImplementation implements DevicesApiServiceAbstraction {
   constructor(private apiService: ApiService) {}
@@ -26,13 +26,13 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
 
   async createTrustedDeviceKeys(
     deviceId: string,
-    devicePublicKeyEncryptedUserDataKey: string,
-    userDataKeyEncryptedDevicePublicKey: string,
+    devicePublicKeyEncryptedUserSymKey: string,
+    userSymKeyEncryptedDevicePublicKey: string,
     deviceKeyEncryptedDevicePrivateKey: string
   ): Promise<DeviceResponse> {
     const request = new TrustedDeviceKeysRequest(
-      devicePublicKeyEncryptedUserDataKey,
-      userDataKeyEncryptedDevicePublicKey,
+      devicePublicKeyEncryptedUserSymKey,
+      userSymKeyEncryptedDevicePublicKey,
       deviceKeyEncryptedDevicePrivateKey
     );
 
@@ -49,13 +49,13 @@ export class DevicesApiServiceImplementation implements DevicesApiServiceAbstrac
 
   async updateTrustedDeviceKeys(
     deviceId: string,
-    devicePublicKeyEncryptedUserDataKey: string,
-    userDataKeyEncryptedDevicePublicKey: string,
+    devicePublicKeyEncryptedUserSymKey: string,
+    userSymKeyEncryptedDevicePublicKey: string,
     deviceKeyEncryptedDevicePrivateKey: string
   ): Promise<DeviceResponse> {
     const request = new TrustedDeviceKeysRequest(
-      devicePublicKeyEncryptedUserDataKey,
-      userDataKeyEncryptedDevicePublicKey,
+      devicePublicKeyEncryptedUserSymKey,
+      userSymKeyEncryptedDevicePublicKey,
       deviceKeyEncryptedDevicePrivateKey
     );
 

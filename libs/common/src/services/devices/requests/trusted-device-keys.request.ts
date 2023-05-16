@@ -1,4 +1,5 @@
-export class TrustDeviceKeysRequest {
+export class TrustedDeviceKeysRequest {
+  // TODO: finalize names with Justin
   constructor(
     public publicKeyEncryptedSymmetricKey: string,
     public symmetricKeyEncryptedPublicKey: string,

@@ -730,31 +730,29 @@ export class CryptoService implements CryptoServiceAbstraction {
     );
 
     // Get user data symmetric key
-    const userDataKey: SymmetricCryptoKey = await this.getKey();
+    const userSymKey: SymmetricCryptoKey = await this.getKey();
 
-    // TODO: get naming consistent across the board.
-    // const [encryptedUserDataKey, encryptedDevicePublicKey, encryptedDevicePrivateKey] =
     const [
-      devicePublicKeyEncryptedUserDataKey,
-      userDataKeyEncryptedDevicePublicKey,
+      devicePublicKeyEncryptedUserSymKey,
+      userSymKeyEncryptedDevicePublicKey,
       deviceKeyEncryptedDevicePrivateKey,
     ] = await Promise.all([
       // Encrypt user data symmetric key with the DevicePublicKey
-      this.rsaEncrypt(userDataKey.encKey, devicePublicKey),
+      this.rsaEncrypt(userSymKey.encKey, devicePublicKey),
 
       // Encrypt devicePublicKey with user data symmetric key
-      this.encryptService.encrypt(devicePublicKey, userDataKey),
+      this.encryptService.encrypt(devicePublicKey, userSymKey),
 
       // Encrypt devicePrivateKey with deviceKey
       this.encryptService.encrypt(devicePrivateKey, deviceKey),
     ]);
 
+    // Send encrypted keys to server
     const deviceId = await this.appIdService.getAppId();
-    // TODO: encString.data vs encString.encryptedString();
     return this.devicesApiService.createTrustedDeviceKeys(
       deviceId,
-      devicePublicKeyEncryptedUserDataKey.encryptedString,
-      userDataKeyEncryptedDevicePublicKey.encryptedString,
+      devicePublicKeyEncryptedUserSymKey.encryptedString,
+      userSymKeyEncryptedDevicePublicKey.encryptedString,
       deviceKeyEncryptedDevicePrivateKey.encryptedString
     );
   }

@@ -8,6 +8,7 @@ import { EncryptService } from "../abstractions/encrypt.service";
 import { LogService } from "../abstractions/log.service";
 import { PlatformUtilsService } from "../abstractions/platformUtils.service";
 import { StateService } from "../abstractions/state.service";
+import { EncryptionType } from "../enums/encryption-type.enum";
 import { EncString } from "../models/domain/enc-string";
 import { SymmetricCryptoKey } from "../models/domain/symmetric-crypto-key";
 import { CryptoService } from "../services/crypto.service";
@@ -50,6 +51,7 @@ describe("cryptoService", () => {
 
   describe("Trusted Device Encryption", () => {
     const deviceKeyBytesLength = 64;
+    const userSymKeyBytesLength = 64;
 
     describe("getDeviceKey", () => {
       let mockRandomBytes: CsprngArray;
@@ -120,13 +122,28 @@ describe("cryptoService", () => {
       });
     });
 
-    // TODO: get this test suite working
     describe("trustDevice", () => {
-      let mockRandomBytes: CsprngArray;
+      let mockDeviceKeyRandomBytes: CsprngArray;
       let mockDeviceKey: SymmetricCryptoKey;
-      let mockRsaKeyPair: [ArrayBuffer, ArrayBuffer];
-      let mockEncString: EncString;
-      let mockDeviceResponse: DeviceResponse;
+
+      let mockUserSymKeyRandomBytes: CsprngArray;
+      let mockUserSymKey: SymmetricCryptoKey;
+
+      const deviceRsaKeyLength = 2048;
+      let mockDeviceRsaKeyPair: [ArrayBuffer, ArrayBuffer];
+      let mockDevicePrivateKey: ArrayBuffer;
+      let mockDevicePublicKey: ArrayBuffer;
+      let mockDevicePublicKeyEncryptedUserSymKey: EncString;
+      let mockUserSymKeyEncryptedDevicePublicKey: EncString;
+      let mockDeviceKeyEncryptedDevicePrivateKey: EncString;
+
+      const mockDeviceResponse: DeviceResponse = new DeviceResponse({
+        Id: "mockId",
+        Name: "mockName",
+        Identifier: "mockIdentifier",
+        Type: "mockType",
+        CreationDate: "mockCreationDate",
+      });
 
       const mockDeviceId = "mockDeviceId";
 
@@ -139,23 +156,36 @@ describe("cryptoService", () => {
       let devicesApiServiceCreateTrustedDeviceKeysSpy: jest.SpyInstance;
 
       beforeEach(() => {
-        mockRandomBytes = new Uint8Array(deviceKeyBytesLength).buffer as CsprngArray;
-        mockDeviceKey = new SymmetricCryptoKey(mockRandomBytes);
+        // Setup all spies and default return values for the happy path
 
-        mockRsaKeyPair = [
-          new ArrayBuffer(deviceKeyBytesLength),
-          new ArrayBuffer(deviceKeyBytesLength),
+        mockDeviceKeyRandomBytes = new Uint8Array(deviceKeyBytesLength).buffer as CsprngArray;
+        mockDeviceKey = new SymmetricCryptoKey(mockDeviceKeyRandomBytes);
+
+        mockUserSymKeyRandomBytes = new Uint8Array(userSymKeyBytesLength).buffer as CsprngArray;
+        mockUserSymKey = new SymmetricCryptoKey(mockUserSymKeyRandomBytes);
+
+        mockDeviceRsaKeyPair = [
+          new ArrayBuffer(deviceRsaKeyLength),
+          new ArrayBuffer(deviceRsaKeyLength),
         ];
 
-        mockEncString = new EncString("encryptedData");
+        mockDevicePublicKey = mockDeviceRsaKeyPair[0];
+        mockDevicePrivateKey = mockDeviceRsaKeyPair[1];
 
-        mockDeviceResponse = new DeviceResponse({
-          Id: "mockId",
-          Name: "mockName",
-          Identifier: "mockIdentifier",
-          Type: "mockType",
-          CreationDate: "mockCreationDate",
-        });
+        mockDevicePublicKeyEncryptedUserSymKey = new EncString(
+          EncryptionType.Rsa2048_OaepSha1_B64,
+          "mockDevicePublicKeyEncryptedUserSymKey"
+        );
+
+        mockUserSymKeyEncryptedDevicePublicKey = new EncString(
+          EncryptionType.AesCbc256_HmacSha256_B64,
+          "mockUserSymKeyEncryptedDevicePublicKey"
+        );
+
+        mockDeviceKeyEncryptedDevicePrivateKey = new EncString(
+          EncryptionType.AesCbc256_HmacSha256_B64,
+          "mockDeviceKeyEncryptedDevicePrivateKey"
+        );
 
         makeDeviceKeySpy = jest
           .spyOn(cryptoService, "makeDeviceKey")
@@ -163,15 +193,24 @@ describe("cryptoService", () => {
 
         rsaGenerateKeyPairSpy = jest
           .spyOn(cryptoFunctionService, "rsaGenerateKeyPair")
-          .mockResolvedValue(mockRsaKeyPair);
+          .mockResolvedValue(mockDeviceRsaKeyPair);
 
-        getKeySpy = jest.spyOn(cryptoService, "getKey").mockResolvedValue(mockDeviceKey);
+        getKeySpy = jest.spyOn(cryptoService, "getKey").mockResolvedValue(mockUserSymKey);
 
-        rsaEncryptSpy = jest.spyOn(cryptoService, "rsaEncrypt").mockResolvedValue(mockEncString);
+        rsaEncryptSpy = jest
+          .spyOn(cryptoService, "rsaEncrypt")
+          .mockResolvedValue(mockDevicePublicKeyEncryptedUserSymKey);
 
         encryptServiceEncryptSpy = jest
           .spyOn(encryptService, "encrypt")
-          .mockResolvedValue(mockEncString);
+          .mockImplementation((plainValue, key) => {
+            if (plainValue === mockDevicePublicKey && key === mockUserSymKey) {
+              return Promise.resolve(mockUserSymKeyEncryptedDevicePublicKey);
+            }
+            if (plainValue === mockDevicePrivateKey && key === mockDeviceKey) {
+              return Promise.resolve(mockDeviceKeyEncryptedDevicePrivateKey);
+            }
+          });
 
         appIdServiceGetAppIdSpy = jest
           .spyOn(appIdService, "getAppId")
@@ -196,14 +235,63 @@ describe("cryptoService", () => {
         expect(devicesApiServiceCreateTrustedDeviceKeysSpy).toHaveBeenCalledTimes(1);
         expect(devicesApiServiceCreateTrustedDeviceKeysSpy).toHaveBeenCalledWith(
           mockDeviceId,
-          mockEncString.encryptedString,
-          mockEncString.encryptedString,
-          mockEncString.encryptedString
+          mockDevicePublicKeyEncryptedUserSymKey.encryptedString,
+          mockUserSymKeyEncryptedDevicePublicKey.encryptedString,
+          mockDeviceKeyEncryptedDevicePrivateKey.encryptedString
         );
 
         expect(response).toBeInstanceOf(DeviceResponse);
         expect(response).toEqual(mockDeviceResponse);
       });
+
+      const methodsToTestForErrorsOrInvalidReturns = [
+        {
+          method: "makeDeviceKey",
+          spy: () => makeDeviceKeySpy,
+          errorText: "makeDeviceKey error",
+        },
+        {
+          method: "rsaGenerateKeyPair",
+          spy: () => rsaGenerateKeyPairSpy,
+          errorText: "rsaGenerateKeyPair error",
+        },
+        {
+          method: "getKey",
+          spy: () => getKeySpy,
+          errorText: "getKey error",
+        },
+        {
+          method: "rsaEncrypt",
+          spy: () => rsaEncryptSpy,
+          errorText: "rsaEncrypt error",
+        },
+        {
+          method: "encryptService.encrypt",
+          spy: () => encryptServiceEncryptSpy,
+          errorText: "encryptService.encrypt error",
+        },
+      ];
+
+      describe.each(methodsToTestForErrorsOrInvalidReturns)(
+        "trustDevice error handling and invalid return testing",
+        ({ method, spy, errorText }) => {
+          // ensures that error propagation works correctly
+          it(`throws an error if ${method} fails`, async () => {
+            const methodSpy = spy();
+            methodSpy.mockRejectedValue(new Error(errorText));
+            await expect(cryptoService.trustDevice()).rejects.toThrow(errorText);
+          });
+
+          test.each([null, undefined])(
+            `throws an error if ${method} returns %s`,
+            async (invalidValue) => {
+              const methodSpy = spy();
+              methodSpy.mockResolvedValue(invalidValue);
+              await expect(cryptoService.trustDevice()).rejects.toThrow();
+            }
+          );
+        }
+      );
     });
   });
 });
