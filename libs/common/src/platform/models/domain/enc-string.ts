@@ -2,11 +2,11 @@ import { Jsonify } from "type-fest";
 
 import { EncryptionType, EXPECTED_NUM_PARTS_BY_ENCRYPTION_TYPE } from "../../../enums";
 import { Utils } from "../../../platform/misc/utils";
-import { IEncrypted } from "../../interfaces/IEncrypted";
+import { encrypted } from "../../interfaces/encrypted";
 
 import { SymmetricCryptoKey } from "./symmetric-crypto-key";
 
-export class EncString implements IEncrypted {
+export class EncString implements encrypted {
   encryptedString?: string;
   encryptionType?: EncryptionType;
   decryptedValue?: string;
