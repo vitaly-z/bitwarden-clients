@@ -4578,10 +4578,10 @@
     "message": "Enrollment will allow organization administrators to change your master password"
   },
   "resetPasswordPolicy": {
-    "message": "Master password reset"
+    "message": "Account recovery administration"
   },
   "resetPasswordPolicyDescription": {
-    "message": "Allow admins to reset master passwords for members."
+    "message": "Recover member accounts when master password or trusted devices are forgotten or lost. The recovery processes is based on the account encryption method."
   },
   "resetPasswordPolicyWarning": {
     "message": "Members in the organization will need to self-enroll or be auto-enrolled before administrators can reset their master password."
