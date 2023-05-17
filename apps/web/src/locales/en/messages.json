@@ -6817,5 +6817,8 @@
   },
   "recoverAccount": {
     "message": "Recover account"
+  },
+  "updatedTempPassword": {
+    "message": "User updated a password issued through account recovery."
   }
 }

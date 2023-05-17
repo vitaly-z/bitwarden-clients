@@ -75,7 +75,7 @@ export class EventService {
         msg = humanReadableMsg = this.i18nService.t("exportedVault");
         break;
       case EventType.User_UpdatedTempPassword:
-        msg = humanReadableMsg = this.i18nService.t("updatedMasterPassword");
+        msg = humanReadableMsg = this.i18nService.t("updatedTempPassword");
         break;
       case EventType.User_MigratedKeyToKeyConnector:
         msg = humanReadableMsg = this.i18nService.t("migratedKeyConnector");
