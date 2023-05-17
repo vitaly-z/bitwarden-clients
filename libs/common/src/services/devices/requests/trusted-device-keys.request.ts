@@ -1,8 +1,7 @@
 export class TrustedDeviceKeysRequest {
-  // TODO: finalize names with Justin
   constructor(
-    public publicKeyEncryptedSymmetricKey: string,
-    public symmetricKeyEncryptedPublicKey: string,
-    public deviceKeyEncryptedPrivateKey: string
+    public devicePublicKeyEncryptedUserSymKey: string,
+    public userSymKeyEncryptedDevicePublicKey: string,
+    public deviceKeyEncryptedDevicePrivateKey: string
   ) {}
 }
