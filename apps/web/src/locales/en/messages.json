@@ -4493,13 +4493,13 @@
   "hintEqualsPassword": {
     "message": "Your password hint cannot be the same as your password."
   },
-  "enrollPasswordReset": {
+  "enrollAccountRecovery": {
     "message": "Enroll in account recovery"
   },
-  "enrolledPasswordReset": {
+  "enrolledAccountRecovery": {
     "message": "Enrolled in account recovery"
   },
-  "withdrawPasswordReset": {
+  "withdrawAccountRecovery": {
     "message": "Withdraw from account recovery"
   },
   "enrollPasswordResetSuccess": {
@@ -4508,7 +4508,7 @@
   "withdrawPasswordResetSuccess": {
     "message": "Withdrawal success!"
   },
-  "eventEnrollPasswordReset": {
+  "eventEnrollAccountRecovery": {
     "message": "User $ID$ enrolled in account recovery.",
     "placeholders": {
       "id": {
@@ -4517,7 +4517,7 @@
       }
     }
   },
-  "eventWithdrawPasswordReset": {
+  "eventWithdrawAccountRecovery": {
     "message": "User $ID$ withdrew from account recovery.",
     "placeholders": {
       "id": {
@@ -4577,10 +4577,10 @@
   "resetPasswordEnrollmentWarning": {
     "message": "Enrollment will allow organization administrators to change your master password"
   },
-  "resetPasswordPolicy": {
+  "accountRecoveryPolicy": {
     "message": "Account recovery administration"
   },
-  "resetPasswordPolicyDescription": {
+  "accountRecoveryPolicyDescription": {
     "message": "Recover member accounts when master password or trusted devices are forgotten or lost. The recovery processes is based on the account encryption method."
   },
   "resetPasswordPolicyWarning": {
@@ -6803,15 +6803,15 @@
   "trustedDeviceEncryption": {
     "message": "Trusted device encryption"
   },
-  "memberDecryptionTdeDescStart": {
+  "memberDecryptionTdeDescriptionStart": {
     "message": "Once authenticated, members will decrypt vault data using a key stored on their device. The",
     "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'Once authenticated, members will decrypt vault data using a key stored on their device. The account recovery administration policy with automatic enrollment will turn on when this option is used.'"
   },
-  "memberDecryptionTdeDescLink": {
+  "memberDecryptionTdeDescriptionLink": {
     "message": "account recovery administration policy",
     "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'Once authenticated, members will decrypt vault data using a key stored on their device. The account recovery administration policy with automatic enrollment will turn on when this option is used.'"
   },
-  "memberDecryptionTdeDescEnd": {
+  "memberDecryptionTdeDescriptionEnd": {
     "message": "with automatic enrollment will turn on when this option is used.",
     "description": "This will be used as part of a larger sentence, broken up to include links. The full sentence will read 'Once authenticated, members will decrypt vault data using a key stored on their device. The account recovery administration policy with automatic enrollment will turn on when this option is used.'"
   },
