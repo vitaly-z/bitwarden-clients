@@ -4494,13 +4494,13 @@
     "message": "Your password hint cannot be the same as your password."
   },
   "enrollPasswordReset": {
-    "message": "Enroll in password reset"
+    "message": "Enroll in account recovery"
   },
   "enrolledPasswordReset": {
-    "message": "Enrolled in password reset"
+    "message": "Enrolled in account recovery"
   },
   "withdrawPasswordReset": {
-    "message": "Withdraw from password reset"
+    "message": "Withdraw from account recovery"
   },
   "enrollPasswordResetSuccess": {
     "message": "Enrollment success!"
@@ -4509,7 +4509,7 @@
     "message": "Withdrawal success!"
   },
   "eventEnrollPasswordReset": {
-    "message": "User $ID$ enrolled in password reset.",
+    "message": "User $ID$ enrolled in account recovery.",
     "placeholders": {
       "id": {
         "content": "$1",
@@ -4518,7 +4518,7 @@
     }
   },
   "eventWithdrawPasswordReset": {
-    "message": "User $ID$ withdrew from password reset.",
+    "message": "User $ID$ withdrew from account recovery.",
     "placeholders": {
       "id": {
         "content": "$1",
